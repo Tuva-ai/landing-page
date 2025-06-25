@@ -67,10 +67,6 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            
-            .footer {
-                bottom: 1rem;
-            }
         }
 
         body {
@@ -79,8 +75,7 @@
             color: #ffffff;
             min-height: 100vh;
             display: flex;
-            align-items: center;
-            justify-content: center;
+            flex-direction: column;
             overflow-x: hidden;
             position: relative;
         }
@@ -105,13 +100,19 @@
             100% { background-position: 0% 50%; }
         }
 
+        .main-content {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
         .container {
             text-align: center;
             max-width: 600px;
-            padding: 2rem;
             position: relative;
             z-index: 1;
-            margin-bottom: 8rem;
         }
 
         .logo {
@@ -219,6 +220,49 @@
             opacity: 1;
         }
 
+        /* Footer styles */
+        .footer {
+            position: relative;
+            z-index: 1;
+            padding: 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .footer-links a {
+            color: #b0b0b0;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #64ffda;
+        }
+
+        .footer-copyright {
+            color: #666;
+            font-size: 0.85rem;
+        }
+
         /* Floating particles effect */
         .particle {
             position: absolute;
@@ -247,8 +291,6 @@
             }
         }
 
-
-
         @media (max-width: 768px) {
             .container {
                 padding: 1rem;
@@ -266,32 +308,56 @@
                 flex-direction: column;
                 gap: 0.8rem;
             }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1 class="logo">TUVA</h1>
-        <p class="tagline">Experiment at the speed of thought.</p>
-        
-        <form class="email-form" name="waitlist" method="POST" netlify netlify-honeypot="bot-field" id="emailForm">
-            <input type="hidden" name="form-name" value="waitlist" />
-            <input type="hidden" name="bot-field" />
-            <input 
-                type="email" 
-                name="email"
-                class="email-input" 
-                placeholder="your@email.edu" 
-                required 
-                id="emailInput"
-            >
-            <button type="submit" class="submit-btn">Join Waitlist</button>
-        </form>
-        
-        <div class="success-message" id="successMessage">
-            Thanks! We'll be in touch soon.
-    
+    <div class="main-content">
+        <div class="container">
+            <h1 class="logo">TUVA</h1>
+            <p class="tagline">Experiment at the speed of thought.</p>
+            
+            <form class="email-form" name="waitlist" method="POST" netlify netlify-honeypot="bot-field" id="emailForm">
+                <input type="hidden" name="form-name" value="waitlist" />
+                <input type="hidden" name="bot-field" />
+                <input 
+                    type="email" 
+                    name="email"
+                    class="email-input" 
+                    placeholder="your@email.edu" 
+                    required 
+                    id="emailInput"
+                >
+                <button type="submit" class="submit-btn">Join Waitlist</button>
+            </form>
+            
+            <div class="success-message" id="successMessage">
+                Thanks! We'll be in touch soon.
+            </div>
+        </div>
     </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="/about">About</a>
+                <a href="/research">Research</a>
+                <a href="/careers">Careers</a>
+                <a href="/blog">Blog</a>
+                <a href="mailto:hello@tuva.ai">Contact</a>
+                <a href="https://twitter.com/tuvaai" target="_blank" rel="noopener noreferrer">Twitter</a>
+                <a href="https://github.com/tuvaai" target="_blank" rel="noopener noreferrer">GitHub</a>
+            </div>
+            <div class="footer-copyright">
+                © 2025 Tuva. All rights reserved.
+            </div>
+        </div>
+    </footer>
 
     <script>
         // Create floating particles
