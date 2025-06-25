@@ -1,0 +1,51 @@
+[build]
+  publish = "."
+
+# Security headers
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+
+# Cache static assets
+[[headers]]
+  for = "/*.css"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000"
+
+[[headers]]
+  for = "/*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000"
+
+[[headers]]
+  for = "/*.png"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000"
+
+[[headers]]
+  for = "/*.jpg"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000"
+
+# Redirect www to non-www (optional - uncomment if using www)
+# [[redirects]]
+#   from = "https://www.tuva.ai/*"
+#   to = "https://tuva.ai/:splat"
+#   status = 301
+#   force = true
+
+# Security redirects
+[[redirects]]
+  from = "/admin/*"
+  to = "/"
+  status = 404
+
+[[redirects]]
+  from = "/wp-admin/*"
+  to = "/"
+  status = 404

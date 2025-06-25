@@ -3,12 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tuva - AI-Assisted Scientific Computing</title>
+    
+    <!-- SEO Meta Tags -->
+    <title>Tuva - AI-Assisted Scientific Computing Platform</title>
+    <meta name="description" content="Transform your research workflow with Tuva. An AI-powered platform that converts natural language research goals into executable code for computational biologists and researchers.">
+    <meta name="keywords" content="AI research, scientific computing, computational biology, natural language programming, research automation, scientific workflow">
+    <meta name="author" content="Tuva">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://tuva.ai">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://tuva.ai">
+    <meta property="og:title" content="Tuva - AI-Assisted Scientific Computing">
+    <meta property="og:description" content="Think in science. Code in natural language. Join the waitlist for the AI platform transforming research workflows.">
+    <meta property="og:image" content="https://tuva.ai/og-image.jpg">
+    <meta property="og:site_name" content="Tuva">
+    <meta property="og:locale" content="en_US">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://tuva.ai">
+    <meta property="twitter:title" content="Tuva - AI-Assisted Scientific Computing">
+    <meta property="twitter:description" content="Think in science. Code in natural language. Join the waitlist for the AI platform transforming research workflows.">
+    <meta property="twitter:image" content="https://tuva.ai/og-image.jpg">
+    <meta property="twitter:creator" content="@tuvaai">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧬</text></svg>">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧬</text></svg>">
+    
+    <!-- Additional Meta -->
+    <meta name="theme-color" content="#64ffda">
+    <meta name="msapplication-TileColor" content="#0a0a0a">
+    <meta name="application-name" content="Tuva">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Tuva",
+      "description": "AI-assisted scientific computing platform that converts natural language research goals into executable code",
+      "applicationCategory": "ScientificApplication",
+      "operatingSystem": "Web",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "provider": {
+        "@type": "Organization",
+        "name": "Tuva"
+      }
+    }
+    </script>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            
+            .footer {
+                bottom: 1rem;
+            }
         }
 
         body {
@@ -184,6 +242,44 @@
             }
         }
 
+        .footer {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 1.5s forwards;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+
+        .social-link {
+            color: #666;
+            transition: all 0.3s ease;
+            padding: 0.5rem;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+        }
+
+        .social-link:hover {
+            color: #64ffda;
+            transform: translateY(-2px);
+            background: rgba(100, 255, 218, 0.1);
+        }
+
+        .footer-text {
+            font-size: 0.8rem;
+            color: #444;
+            margin: 0;
+        }
+
         @media (max-width: 768px) {
             .container {
                 padding: 1rem;
@@ -225,6 +321,20 @@
         
         <div class="success-message" id="successMessage">
             Thanks! We'll be in touch soon.
+            <div class="footer">
+            <div class="social-links">
+                <a href="https://twitter.com/tuvaai" target="_blank" rel="noopener noreferrer" class="social-link">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                    </svg>
+                </a>
+                <a href="mailto:hello@tuva.ai" class="social-link">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                    </svg>
+                </a>
+            </div>
+            <p class="footer-text">© 2025 Tuva. Building the future of research.</p>
         </div>
     </div>
 
