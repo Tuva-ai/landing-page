@@ -222,45 +222,33 @@
 
         /* Footer styles */
         .footer {
-            position: relative;
-            z-index: 1;
-            padding: 2rem;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 1.5rem;
             text-align: center;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            background: rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(10px);
+            z-index: 1;
         }
 
         .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-            align-items: center;
-        }
-
-        .footer-links {
             display: flex;
             gap: 2rem;
-            flex-wrap: wrap;
             justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            color: #666;
+            font-size: 0.85rem;
         }
 
-        .footer-links a {
-            color: #b0b0b0;
+        .footer-content a {
+            color: #666;
             text-decoration: none;
-            font-size: 0.9rem;
             transition: color 0.3s ease;
         }
 
-        .footer-links a:hover {
-            color: #64ffda;
-        }
-
-        .footer-copyright {
-            color: #666;
-            font-size: 0.85rem;
+        .footer-content a:hover {
+            color: #b0b0b0;
         }
 
         /* Floating particles effect */
@@ -308,11 +296,6 @@
                 flex-direction: column;
                 gap: 0.8rem;
             }
-
-            .footer-links {
-                flex-direction: column;
-                gap: 1rem;
-            }
         }
     </style>
 </head>
@@ -344,18 +327,9 @@
 
     <footer class="footer">
         <div class="footer-content">
-            <div class="footer-links">
-                <a href="/about">About</a>
-                <a href="/research">Research</a>
-                <a href="/careers">Careers</a>
-                <a href="/blog">Blog</a>
-                <a href="mailto:hello@tuva.ai">Contact</a>
-                <a href="https://twitter.com/tuvaai" target="_blank" rel="noopener noreferrer">Twitter</a>
-                <a href="https://github.com/tuvaai" target="_blank" rel="noopener noreferrer">GitHub</a>
-            </div>
-            <div class="footer-copyright">
-                © 2025 Tuva. All rights reserved.
-            </div>
+            <a href="mailto:hello@tuva.ai">hello@tuva.ai</a>
+            <a href="https://twitter.com/TuvaAI" target="_blank" rel="noopener noreferrer">@TuvaAI</a>
+            <span>© 2025 Tuva</span>
         </div>
     </footer>
 
