@@ -107,6 +107,7 @@
             padding: 2rem;
             position: relative;
             z-index: 1;
+            margin-bottom: 8rem;
         }
 
         .logo {
@@ -243,13 +244,14 @@
         }
 
         .footer {
-            position: absolute;
+            position: fixed;
             bottom: 2rem;
             left: 50%;
             transform: translateX(-50%);
             text-align: center;
             opacity: 0;
             animation: fadeInUp 1s ease-out 1.5s forwards;
+            z-index: 10;
         }
 
         .social-links {
@@ -303,7 +305,7 @@
 <body>
     <div class="container">
         <h1 class="logo">TUVA</h1>
-        <p class="tagline">Think in science. Code in natural language.</p>
+        <p class="tagline">Research at the speed of thought.</p>
         
         <form class="email-form" name="waitlist" method="POST" netlify netlify-honeypot="bot-field" id="emailForm">
             <input type="hidden" name="form-name" value="waitlist" />
