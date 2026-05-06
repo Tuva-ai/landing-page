@@ -145,6 +145,33 @@
             gap: 1.5rem;
         }
 
+        .header-nav {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .header-nav a {
+            color: #1a1a1a;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        body.dark-mode .header-nav a {
+            color: #FAFAF8;
+        }
+
+        .header-nav a:hover {
+            color: #666666;
+        }
+
+        body.dark-mode .header-nav a:hover {
+            color: #cccccc;
+        }
+
         /* Main content wrapper */
         .main-content {
             flex: 1;
@@ -173,25 +200,30 @@
 
         /* Hero Section */
         .hero {
-            padding: 4rem 2rem 3rem;
+            padding: 3rem 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
 
         .hero .section-container {
             display: flex;
+            flex-direction: column;
             align-items: center;
-            gap: 3rem;
+            gap: 2rem;
+            text-align: center;
+            max-width: 700px;
         }
 
         .hero-content {
             flex: 1;
-            text-align: left;
+            text-align: center;
+            width: 100%;
         }
 
         .hero-visual {
-            flex: 0 0 300px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            display: none;
         }
 
         .hero-title {
@@ -217,14 +249,6 @@
         .lissajous-canvas {
             width: 280px;
             height: 280px;
-            border: 2px solid #1a1a1a;
-            border-radius: 4px;
-            background: #ffffff;
-        }
-
-        body.dark-mode .lissajous-canvas {
-            background: #2a2a2a;
-            border-color: #FAFAF8;
         }
 
         /* Context Map Section */
@@ -274,9 +298,47 @@
         .cta-buttons {
             display: flex;
             gap: 1rem;
-            justify-content: flex-start;
-            margin-bottom: 1rem;
+            justify-content: center;
+            margin-bottom: 0;
             flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .email-input-waitlist {
+            padding: 0.875rem 1.5rem;
+            background: #ffffff;
+            border: 2px solid #d0d0d0;
+            border-radius: 4px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            color: #1a1a1a;
+            min-width: 240px;
+            transition: all 0.2s ease;
+            outline: none;
+        }
+
+        body.dark-mode .email-input-waitlist {
+            background: #2a2a2a;
+            border-color: #4a4a4a;
+            color: #FAFAF8;
+        }
+
+        .email-input-waitlist:focus {
+            border-color: #1a1a1a;
+            box-shadow: 0 0 0 2px rgba(26, 26, 26, 0.1);
+        }
+
+        body.dark-mode .email-input-waitlist:focus {
+            border-color: #FAFAF8;
+            box-shadow: 0 0 0 2px rgba(250, 250, 248, 0.1);
+        }
+
+        .email-input-waitlist::placeholder {
+            color: #999999;
+        }
+
+        body.dark-mode .email-input-waitlist::placeholder {
+            color: #888888;
         }
 
         .btn {
@@ -341,7 +403,11 @@
 
         /* Video Section */
         .video-section {
-            padding: 3rem 2rem;
+            padding: 2rem 2rem 3rem;
+            background: inherit;
+            margin-top: -2rem;
+            position: relative;
+            z-index: 10;
         }
 
         .video-placeholder {
@@ -388,6 +454,7 @@
             text-transform: uppercase;
             letter-spacing: 0.05em;
             margin-bottom: 1rem;
+            text-align: center;
         }
 
         body.dark-mode .validation-label {
@@ -398,6 +465,7 @@
             font-size: 1.2rem;
             font-weight: 500;
             color: #1a1a1a;
+            text-align: center;
         }
 
         body.dark-mode .validation-text {
@@ -613,6 +681,122 @@
             display: inline-block;
         }
 
+        /* FAQ Section */
+        .faq-section {
+            padding: 5rem 2rem;
+            background: #f5faf5;
+        }
+
+        body.dark-mode .faq-section {
+            background: #1a1a1a;
+        }
+
+        .faq-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .faq-title {
+            font-size: 2.2rem;
+            font-weight: 600;
+            margin-bottom: 3rem;
+            text-align: center;
+            color: #1a1a1a;
+        }
+
+        body.dark-mode .faq-title {
+            color: #FAFAF8;
+        }
+
+        .faq-item {
+            margin-bottom: 1.5rem;
+            border: 2px solid #d0d0d0;
+            border-radius: 4px;
+            overflow: hidden;
+            background: #FAFAF8;
+        }
+
+        body.dark-mode .faq-item {
+            border-color: #4a4a4a;
+            background: #2a2a2a;
+        }
+
+        .faq-question {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.5rem;
+            background: #FAFAF8;
+            cursor: pointer;
+            transition: background 0.2s ease;
+            border: none;
+            width: 100%;
+            text-align: left;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: #1a1a1a;
+        }
+
+        body.dark-mode .faq-question {
+            background: #2a2a2a;
+            color: #FAFAF8;
+        }
+
+        .faq-question:hover {
+            background: #f0f0f0;
+        }
+
+        body.dark-mode .faq-question:hover {
+            background: #3a3a3a;
+        }
+
+        .faq-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 20px;
+            height: 20px;
+            flex-shrink: 0;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-toggle svg {
+            width: 18px;
+            height: 18px;
+            stroke: #1a1a1a;
+            stroke-width: 2;
+        }
+
+        body.dark-mode .faq-toggle svg {
+            stroke: #FAFAF8;
+        }
+
+        .faq-item.active .faq-toggle {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            padding: 0 1.5rem;
+            color: #4a4a4a;
+            font-size: 0.9rem;
+            line-height: 1.8;
+            background: #FAFAF8;
+        }
+
+        body.dark-mode .faq-answer {
+            color: #d1d5db;
+            background: #2a2a2a;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            padding: 1.5rem;
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             .hero {
@@ -693,6 +877,9 @@
             <span class="logo-text">Tuva AI</span>
         </a>
         <div class="header-right">
+            <nav class="header-nav">
+                <a href="#faq">FAQ</a>
+            </nav>
             <div class="theme-toggle">
                 <button class="theme-option active" data-theme="light" title="Light mode">
                     <svg class="theme-icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -720,21 +907,27 @@
         <!-- Hero Section -->
         <section class="hero section">
             <div class="section-container">
+                <div class="hero-content">
+                    <h1 class="hero-title">AI that understands your research.</h1>
+                    <p class="hero-subtitle">A computational research interface that learns your project with you, automating the tedious parts of science so that you can focus on the fun stuff.</p>
+                    <form class="cta-buttons" name="waitlist" method="POST" netlify>
+                        <input
+                            type="email"
+                            name="email"
+                            class="email-input-waitlist"
+                            placeholder="Your email"
+                            required
+                        >
+                        <button type="submit" class="btn btn-primary">Join Waitlist</button>
+                    </form>
+                </div>
                 <div class="hero-visual">
                     <canvas id="lissajousCanvas" class="lissajous-canvas"></canvas>
-                </div>
-                <div class="hero-content">
-                    <h1 class="hero-title">Break down knowledge silos.</h1>
-                    <p class="hero-subtitle">Tuva learns your research project as you build it. Automate literature review, ideation, and data analysis. Let AI swarms handle the tedious parts so you can focus on the discoveries.</p>
-                    <div class="cta-buttons">
-                        <button class="btn btn-primary" onclick="scrollToValidation()">Join Waitlist</button>
-                        <a href="https://tuva-ai.notion.site/" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Learn More</a>
-                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Video Section -->
+        <!-- Video Section (Peeking from bottom of hero) -->
         <section class="video-section section">
             <div class="section-container">
                 <div class="video-placeholder">
@@ -757,7 +950,7 @@
         <!-- Features Section -->
         <section class="features-section section">
             <div class="section-container">
-                <h2 class="section-title">What Tuva Does</h2>
+                <h2 class="section-title">Product Features</h2>
 
                 <!-- Feature 1: Context Mapping -->
                 <div class="feature-item">
@@ -793,6 +986,61 @@
                 </div>
             </div>
         </section>
+
+        <!-- FAQ Section -->
+        <section class="faq-section" id="faq">
+            <div class="faq-container">
+                <h2 class="faq-title">Frequently Asked Questions</h2>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>I already use AI tools for coding, literature reviews, paper analysis, and writing. What does Tuva do that these together do not?</span>
+                        <div class="faq-toggle">
+                            <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </div>
+                    </button>
+                    <div class="faq-answer">At Tuva, we are not attempting to automate away the scientific process. Instead, we are building an intelligent workspace for your research. It is a workspace that understands the context and direction of your project from start to finish; that will connect you to specialized tools while maintaining consistency between them; and that will allow you to collaborate with a tool that already understands your research plan and workflows. Tuva indexes your whole project context – code, notebooks, PDFs, meeting notes, planning documents – into one intelligent and dynamic knowledge base, and pulls the right information in at the right time. It is built so that you can keep using the same stack of tools you do now, but with more consistency in results. Jumping between open tools means you are the integration layer. Tuva closes that gap.</div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Where does my data live? Does it leave my machine?</span>
+                        <div class="faq-toggle">
+                            <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </div>
+                    </button>
+                    <div class="faq-answer">The only data that leaves your machine is the metadata around your tool usage - i.e. whether and how much you are using Tuva - and the information necessary for user authentication. None of the contents of your research, nor of your interactions with Tuva, are shared with us or the developers of the models on which Tuva runs. That being said, researchers working in regulated environments (HIPAA, ITAR, IRB-restricted data, industry NDAs) should consult with their PIs and management before using Tuva to ensure compliance.</div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>What file types does Tuva index?</span>
+                        <div class="faq-toggle">
+                            <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </div>
+                    </button>
+                    <div class="faq-answer">Tuva currently works particularly well for source code, Jupyter notebooks, markdown notes, PDFs, and data README-style files. If a specific format is load-bearing for your workflow, ask before you download. We would rather tell you "not yet" than have you find out after install.</div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>What happens when my papers or code change after I've indexed them?</span>
+                        <div class="faq-toggle">
+                            <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </div>
+                    </button>
+                    <div class="faq-answer">Tuva automatically re-indexes as files change. You can always review the current state of the knowledge base, and sources can be added or removed explicitly. Answers will cite into the exact location, matching the up-to-date state: page 3 of the paper, line 86 of model.py, a function name, a notebook cell. When you edit a database, Tuva will point to the new line numbers. When you drop a new PDF into the folder, it joins the corpus without a manual rebuild.</div>
+                </div>
+            </div>
+        </section>
     </main>
 
     <!-- Footer -->
@@ -809,6 +1057,14 @@
         const THEME_KEY = 'tuva-theme-preference';
         let currentTheme = localStorage.getItem(THEME_KEY) || 'system';
         let systemDarkMode = false;
+
+        // FAQ functionality
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const faqItem = question.parentElement;
+                faqItem.classList.toggle('active');
+            });
+        });
 
         // Check system preference
         function getSystemDarkMode() {
@@ -896,7 +1152,7 @@
             }
 
             function getBackgroundColor() {
-                return document.body.classList.contains('dark-mode') ? '#2a2a2a' : '#ffffff';
+                return document.body.classList.contains('dark-mode') ? '#1a1a1a' : '#f5faf5';
             }
 
             function resizeCanvas() {
