@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- SEO Meta Tags -->
-    <title>Tuva - Intelligent AI for Scientific Research</title>
-    <meta name="description" content="Tuva helps researchers work faster with contextual AI that learns your research, connects your tools, and automates your workflows.">
+    <title>Tuva - Contextual AI for Scientific Research</title>
+    <meta name="description" content="Tuva helps researchers ideate, review literature, and analyze data faster with contextual AI that learns your project as it grows.">
     <meta name="keywords" content="research AI, scientific computing, research assistants, computational research, R&D automation">
     <meta name="author" content="Tuva">
     <meta name="robots" content="index, follow">
@@ -15,7 +15,7 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://tuva.ai">
-    <meta property="og:title" content="Tuva - Intelligent AI for Scientific Research">
+    <meta property="og:title" content="Tuva - Contextual AI for Scientific Research">
     <meta property="og:description" content="Work faster with AI that understands your research.">
     <meta property="og:image" content="https://tuva.ai/og-image.jpg">
     <meta property="og:site_name" content="Tuva">
@@ -23,7 +23,7 @@
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://tuva.ai">
-    <meta property="twitter:title" content="Tuva - Intelligent AI for Scientific Research">
+    <meta property="twitter:title" content="Tuva - Contextual AI for Scientific Research">
     <meta property="twitter:description" content="Work faster with AI that understands your research.">
     <meta property="twitter:creator" content="@tuvaai">
 
@@ -33,7 +33,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
     <style>
         * {
@@ -42,20 +42,39 @@
             box-sizing: border-box;
         }
 
+        :root {
+            --bg: #ffffff;
+            --bg-soft: #fafafa;
+            --bg-card: #f9f9f9;
+            --border: #f0f0f0;
+            --border-strong: #e0e0e0;
+            --text: #1a1a1a;
+            --text-secondary: #666666;
+            --text-tertiary: #999999;
+            --accent: #1a1a1a;
+        }
+
+        body.dark-mode {
+            --bg: #0f0f0f;
+            --bg-soft: #141414;
+            --bg-card: #1a1a1a;
+            --border: #2a2a2a;
+            --border-strong: #3a3a3a;
+            --text: #ffffff;
+            --text-secondary: #cccccc;
+            --text-tertiary: #888888;
+            --accent: #ffffff;
+        }
+
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            background: #ffffff;
-            color: #1a1a1a;
+            background: var(--bg);
+            color: var(--text);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             overflow-x: hidden;
             line-height: 1.6;
-        }
-
-        body.dark-mode {
-            background: #0f0f0f;
-            color: #ffffff;
         }
 
         /* Header */
@@ -68,14 +87,14 @@
             justify-content: space-between;
             align-items: center;
             gap: 1.5rem;
-            background: rgba(255, 255, 255, 0.95);
-            border-bottom: 1px solid #f0f0f0;
-            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.85);
+            border-bottom: 1px solid var(--border);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
         }
 
         body.dark-mode .header {
-            background: rgba(15, 15, 15, 0.95);
-            border-bottom-color: #2a2a2a;
+            background: rgba(15, 15, 15, 0.85);
         }
 
         .logo-section {
@@ -83,22 +102,13 @@
             align-items: center;
             gap: 0.75rem;
             text-decoration: none;
-            color: #1a1a1a;
+            color: var(--text);
             transition: opacity 0.2s ease;
         }
 
-        body.dark-mode .logo-section {
-            color: #ffffff;
-        }
+        .logo-section:hover { opacity: 0.7; }
 
-        .logo-section:hover {
-            opacity: 0.7;
-        }
-
-        .logo-image {
-            height: 28px;
-            width: auto;
-        }
+        .logo-image { height: 28px; width: auto; }
 
         .logo-text {
             font-size: 0.95rem;
@@ -114,29 +124,19 @@
 
         .header-nav {
             display: flex;
-            gap: 2rem;
+            gap: 1.75rem;
             align-items: center;
         }
 
         .header-nav a {
-            color: #1a1a1a;
+            color: var(--text);
             text-decoration: none;
             font-size: 0.9rem;
             font-weight: 500;
             transition: color 0.2s ease;
         }
 
-        body.dark-mode .header-nav a {
-            color: #ffffff;
-        }
-
-        .header-nav a:hover {
-            color: #666666;
-        }
-
-        body.dark-mode .header-nav a:hover {
-            color: #cccccc;
-        }
+        .header-nav a:hover { color: var(--text-secondary); }
 
         /* Main content */
         .main-content {
@@ -155,9 +155,38 @@
             margin: 0 auto;
         }
 
+        .section-eyebrow {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--text-tertiary);
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.25rem;
+            text-align: center;
+            color: var(--text);
+            letter-spacing: -0.5px;
+            line-height: 1.15;
+        }
+
+        .section-subtitle {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            text-align: center;
+            max-width: 640px;
+            margin: 0 auto 4rem;
+            line-height: 1.7;
+        }
+
         /* Hero Section */
         .hero {
-            padding: 3rem 2rem;
+            padding: 4rem 2rem 2rem;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -170,7 +199,29 @@
             align-items: center;
             gap: 2rem;
             text-align: center;
-            max-width: 700px;
+            max-width: 760px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.4rem 0.9rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            font-size: 0.78rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            letter-spacing: 0.01em;
+        }
+
+        .hero-badge .dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #10b981;
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.18);
         }
 
         .hero-content {
@@ -180,54 +231,21 @@
         }
 
         .hero-title {
-            font-size: 3.5rem;
+            font-size: 3.75rem;
             font-weight: 700;
             margin-bottom: 1.5rem;
-            line-height: 1.1;
-            letter-spacing: -1px;
-            color: #1a1a1a;
+            line-height: 1.05;
+            letter-spacing: -1.5px;
+            color: var(--text);
         }
-
-        body.dark-mode .hero-title {
-            color: #ffffff;
-        }
-
 
         .hero-subtitle {
-            font-size: 1.15rem;
+            font-size: 1.2rem;
             font-weight: 400;
-            color: #666666;
-            margin-bottom: 2rem;
-            max-width: 600px;
-            line-height: 1.8;
-        }
-
-        body.dark-mode .hero-subtitle {
-            color: #cccccc;
-        }
-
-        .hero-visual {
-            display: none;
-        }
-
-        .demo-box {
-            width: 100%;
-            height: 100%;
-            background: #f9f9f9;
-            border-radius: 12px;
-            border: 1px solid #e0e0e0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #999999;
-            font-size: 1rem;
-            overflow: hidden;
-        }
-
-        body.dark-mode .demo-box {
-            background: #1a1a1a;
-            border-color: #2a2a2a;
-            color: #777777;
+            color: var(--text-secondary);
+            margin: 0 auto 2rem;
+            max-width: 620px;
+            line-height: 1.7;
         }
 
         .cta-button {
@@ -239,8 +257,8 @@
             width: auto;
             height: 65px;
             padding: 0 1.25rem;
-            background: #1a1a1a;
-            color: #ffffff;
+            background: var(--accent);
+            color: var(--bg);
             border: none;
             border-radius: 8px;
             font-family: 'Inter', sans-serif;
@@ -255,9 +273,7 @@
         }
 
         body.dark-mode .cta-button {
-            background: #ffffff;
-            color: #1a1a1a;
-            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.08);
         }
 
         .cta-button:hover {
@@ -267,42 +283,6 @@
 
         body.dark-mode .cta-button:hover {
             box-shadow: 0 8px 25px rgba(255, 255, 255, 0.12);
-        }
-
-        /* Header CTA Button (Get Started) */
-        .header-cta {
-            display: inline-block;
-            padding: 0.75rem 1.75rem;
-            background: #1a1a1a;
-            color: #ffffff;
-            border: none;
-            border-radius: 6px;
-            font-family: 'Inter', sans-serif;
-            font-size: 0.9rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            text-decoration: none;
-            box-shadow: none;
-            position: static;
-            margin: 0;
-            width: auto;
-            height: auto;
-        }
-
-        body.dark-mode .header-cta {
-            background: #ffffff;
-            color: #1a1a1a;
-        }
-
-        .header-cta:hover {
-            background: #333333;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-        }
-
-        body.dark-mode .header-cta:hover {
-            background: #e8e8e8;
         }
 
         .cta-button-canvas {
@@ -317,12 +297,32 @@
             white-space: nowrap;
         }
 
-
-        /* Waitlist Button Section */
-        .waitlist-button-section {
-            display: none;
+        /* Header CTA Button */
+        .header-cta {
+            display: inline-block;
+            padding: 0.75rem 1.4rem;
+            background: var(--accent);
+            color: var(--bg);
+            border: none;
+            border-radius: 6px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
         }
 
+        .header-cta:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        body.dark-mode .header-cta:hover {
+            box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+        }
+
+        /* Waitlist Form */
         .waitlist-form {
             display: flex;
             gap: 0.75rem;
@@ -333,202 +333,524 @@
 
         .email-input {
             padding: 1.5rem 1.25rem;
-            background: #ffffff;
-            border: 1px solid #e0e0e0;
+            background: var(--bg);
+            border: 1px solid var(--border-strong);
             border-radius: 8px;
             font-family: 'Inter', sans-serif;
             font-size: 0.9rem;
-            color: #1a1a1a;
+            color: var(--text);
             min-width: 280px;
             transition: all 0.2s ease;
             outline: none;
         }
 
-        body.dark-mode .email-input {
-            background: #1a1a1a;
-            border-color: #3a3a3a;
-            color: #ffffff;
-        }
-
         .email-input:focus {
-            border-color: #1a1a1a;
+            border-color: var(--accent);
             box-shadow: 0 0 0 3px rgba(26, 26, 26, 0.1);
         }
 
         body.dark-mode .email-input:focus {
-            border-color: #ffffff;
             box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.1);
         }
 
-        .email-input::placeholder {
-            color: #999999;
-        }
+        .email-input::placeholder { color: var(--text-tertiary); }
 
-        body.dark-mode .email-input::placeholder {
-            color: #666666;
-        }
-
-        /* Video/Demo Section that peeks from bottom of hero */
+        /* Hero Video Section */
         .hero-video-section {
             padding: 2rem 2rem 3rem;
             position: relative;
             z-index: 10;
-            margin-top: -2rem;
         }
 
         .hero-video-container {
             max-width: 1000px;
             margin: 0 auto;
             aspect-ratio: 16 / 9;
-            background: #f9f9f9;
+            background: var(--bg-card);
             border-radius: 12px;
-            border: 1px solid #e0e0e0;
+            border: 1px solid var(--border-strong);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #999999;
+            color: var(--text-tertiary);
             font-size: 1rem;
             text-align: center;
+            box-shadow: 0 20px 60px -20px rgba(0, 0, 0, 0.15);
         }
 
         body.dark-mode .hero-video-container {
-            background: #1a1a1a;
-            border-color: #2a2a2a;
-            color: #777777;
+            box-shadow: 0 20px 60px -20px rgba(0, 0, 0, 0.6);
         }
 
-        /* Validation Section */
-        .validation-section {
+        /* Logo Strip */
+        .logo-strip {
             padding: 3rem 2rem;
             text-align: center;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            background: var(--bg-soft);
         }
 
-        .validation-label {
-            font-size: 0.8rem;
-            color: #999999;
+        .logo-strip-label {
+            font-size: 0.75rem;
+            color: var(--text-tertiary);
             text-transform: uppercase;
-            letter-spacing: 0.1em;
-            margin-bottom: 1rem;
-            font-weight: 500;
+            letter-spacing: 0.12em;
+            margin-bottom: 1.75rem;
+            font-weight: 600;
         }
 
-        body.dark-mode .validation-label {
-            color: #888888;
+        .logo-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3rem;
+            align-items: center;
+            justify-content: center;
+            max-width: 1100px;
+            margin: 0 auto;
         }
 
-        .validation-text {
-            font-size: 1.1rem;
-            font-weight: 500;
-            color: #1a1a1a;
+        .logo-pill {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            opacity: 0.7;
+            letter-spacing: -0.3px;
+            transition: opacity 0.2s ease;
+            font-family: 'Inter', serif;
         }
 
-        body.dark-mode .validation-text {
-            color: #ffffff;
+        .logo-pill:hover { opacity: 1; }
+
+        /* Problem Section */
+        .problem-section {
+            padding: 6rem 2rem;
+            background: var(--bg);
+        }
+
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .problem-card {
+            padding: 2rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .problem-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--border-strong);
+        }
+
+        .problem-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            background: var(--bg);
+            border: 1px solid var(--border-strong);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.25rem;
+            color: var(--text);
+        }
+
+        .problem-card h3 {
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-bottom: 0.6rem;
+            color: var(--text);
+            letter-spacing: -0.2px;
+        }
+
+        .problem-card p {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
         }
 
         /* Features Section */
         .features-section {
-            padding: 5rem 2rem 2rem 2rem;
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 4rem;
-            text-align: center;
-            color: #1a1a1a;
-        }
-
-        body.dark-mode .section-title {
-            color: #ffffff;
+            padding: 6rem 2rem 3rem;
+            background: var(--bg-soft);
         }
 
         .feature-item {
-            max-width: 1200px;
-            margin: 0 auto 4rem;
+            max-width: 1100px;
+            margin: 0 auto 5rem;
             display: flex;
             gap: 3rem;
             align-items: flex-start;
         }
 
+        .feature-item:last-of-type { margin-bottom: 0; }
+
+        .feature-item.reverse { flex-direction: row-reverse; }
+
         .feature-icon-box {
-            flex: 0 0 280px;
-            height: 280px;
-            background: #f9f9f9;
+            flex: 0 0 320px;
+            height: 320px;
+            background: var(--bg-card);
             border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            border: 1px solid #f0f0f0;
+            border: 1px solid var(--border);
+            overflow: hidden;
         }
 
-        body.dark-mode .feature-icon-box {
-            background: #1a1a1a;
-            border-color: #2a2a2a;
-        }
-
-        .feature-icon-box svg {
-            width: 140px;
-            height: 140px;
+        .feature-icon-box canvas {
+            width: 100% !important;
+            height: 100% !important;
+            border-radius: 12px;
         }
 
         .feature-content {
             flex: 1;
-            padding-top: 2rem;
+            padding-top: 1rem;
+        }
+
+        .feature-tag {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--text-tertiary);
+            margin-bottom: 0.75rem;
         }
 
         .feature-title {
-            font-size: 1.8rem;
+            font-size: 1.85rem;
             font-weight: 700;
             margin-bottom: 1rem;
-            color: #1a1a1a;
-        }
-
-        body.dark-mode .feature-title {
-            color: #ffffff;
+            color: var(--text);
+            letter-spacing: -0.4px;
         }
 
         .feature-description {
             font-size: 1rem;
-            color: #666666;
+            color: var(--text-secondary);
+            line-height: 1.75;
+            margin-bottom: 1.25rem;
+        }
+
+        .feature-bullets {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .feature-bullets li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.6rem;
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .feature-bullets li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--text);
+            font-weight: 600;
+        }
+
+        /* How It Works */
+        .how-it-works {
+            padding: 6rem 2rem;
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            max-width: 1100px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .step-card {
+            padding: 2rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            position: relative;
+        }
+
+        .step-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--accent);
+            color: var(--bg);
+            font-weight: 700;
+            font-size: 1rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .step-card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.6rem;
+            color: var(--text);
+            letter-spacing: -0.2px;
+        }
+
+        .step-card p {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* Use Cases */
+        .use-cases {
+            padding: 6rem 2rem;
+            background: var(--bg-soft);
+        }
+
+        .use-cases-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .use-case-card {
+            padding: 2.25rem;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .use-case-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--border-strong);
+        }
+
+        .use-case-card .domain-tag {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-tertiary);
+            margin-bottom: 0.75rem;
+            padding: 0.25rem 0.65rem;
+            background: var(--bg-card);
+            border-radius: 999px;
+            border: 1px solid var(--border);
+        }
+
+        .use-case-card h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: var(--text);
+            letter-spacing: -0.3px;
+        }
+
+        .use-case-card p {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* Vision Section */
+        .vision-section {
+            padding: 6rem 2rem;
+            background: var(--bg);
+        }
+
+        .vision-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: var(--text);
+            color: var(--bg);
+            border-radius: 16px;
+            padding: 4rem 3rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        body.dark-mode .vision-container {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+        }
+
+        .vision-block .label {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            opacity: 0.55;
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+
+        .vision-block h3 {
+            font-size: 1.85rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            letter-spacing: -0.5px;
+            line-height: 1.15;
+        }
+
+        .vision-block p {
+            font-size: 1.02rem;
+            line-height: 1.7;
+            opacity: 0.85;
+        }
+
+        .vision-divider {
+            width: 1px;
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 6rem 2rem;
+            background: var(--bg-soft);
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .testimonial-card {
+            padding: 2rem;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .testimonial-quote {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--text);
+            font-weight: 400;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 0.85rem;
+            margin-top: auto;
+        }
+
+        .testimonial-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #e0e0e0, #c0c0c0);
+            flex-shrink: 0;
+        }
+
+        body.dark-mode .testimonial-avatar {
+            background: linear-gradient(135deg, #3a3a3a, #2a2a2a);
+        }
+
+        .testimonial-meta .name {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .testimonial-meta .role {
+            font-size: 0.82rem;
+            color: var(--text-tertiary);
+            margin-top: 2px;
+        }
+
+        /* About Section */
+        .about-section {
+            padding: 6rem 2rem;
+            background: var(--bg);
+        }
+
+        .about-container {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .about-text {
+            font-size: 1.15rem;
             line-height: 1.8;
+            color: var(--text-secondary);
+            margin: 0 auto 3rem;
+            max-width: 720px;
         }
 
-        body.dark-mode .feature-description {
-            color: #cccccc;
+        .about-text strong { color: var(--text); font-weight: 600; }
+
+        .investor-label {
+            font-size: 0.75rem;
+            color: var(--text-tertiary);
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
         }
 
-        /* FAQ Section */
-        .faq-section {
-            padding: 5rem 2rem;
+        .investor-row {
+            display: flex;
+            gap: 3rem;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
         }
+
+        .investor-name {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text);
+            opacity: 0.75;
+            letter-spacing: -0.3px;
+        }
+
+        .investor-divider {
+            width: 1px;
+            height: 24px;
+            background: var(--border-strong);
+        }
+
+        /* FAQ */
+        .faq-section { padding: 6rem 2rem; background: var(--bg-soft); }
 
         .faq-container {
             max-width: 900px;
             margin: 0 auto;
         }
 
-        .faq-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 3rem;
-            text-align: center;
-            color: #1a1a1a;
-        }
-
-        body.dark-mode .faq-title {
-            color: #ffffff;
-        }
-
         .faq-item {
-            margin-bottom: 1.5rem;
-            border: 1px solid #f0f0f0;
+            margin-bottom: 1rem;
+            border: 1px solid var(--border);
             border-radius: 8px;
             overflow: hidden;
-        }
-
-        body.dark-mode .faq-item {
-            border-color: #2a2a2a;
+            background: var(--bg);
         }
 
         .faq-question {
@@ -536,7 +858,7 @@
             align-items: center;
             justify-content: space-between;
             padding: 1.5rem;
-            background: #f9f9f9;
+            background: var(--bg);
             cursor: pointer;
             transition: background 0.2s ease;
             border: none;
@@ -545,22 +867,10 @@
             font-family: 'Inter', sans-serif;
             font-size: 1rem;
             font-weight: 600;
-            color: #1a1a1a;
+            color: var(--text);
         }
 
-        body.dark-mode .faq-question {
-            background: #1a1a1a;
-            border-color: #2a2a2a;
-            color: #ffffff;
-        }
-
-        .faq-question:hover {
-            background: #f0f0f0;
-        }
-
-        body.dark-mode .faq-question:hover {
-            background: #2a2a2a;
-        }
+        .faq-question:hover { background: var(--bg-card); }
 
         .faq-toggle {
             display: flex;
@@ -575,11 +885,7 @@
         .faq-toggle svg {
             width: 20px;
             height: 20px;
-            stroke: #1a1a1a;
-        }
-
-        body.dark-mode .faq-toggle svg {
-            stroke: #ffffff;
+            stroke: var(--text);
         }
 
         .faq-item.active .faq-toggle {
@@ -591,72 +897,130 @@
             overflow: hidden;
             transition: max-height 0.3s ease;
             padding: 0 1.5rem;
-            color: #666666;
+            color: var(--text-secondary);
             font-size: 0.95rem;
             line-height: 1.8;
         }
 
-        body.dark-mode .faq-answer {
-            color: #cccccc;
+        .faq-item.active .faq-answer {
+            max-height: 800px;
+            padding: 0 1.5rem 1.5rem;
         }
 
-        .faq-item.active .faq-answer {
-            max-height: 500px;
-            padding: 1.5rem;
+        /* Final CTA */
+        .final-cta {
+            padding: 6rem 2rem;
+            text-align: center;
+            background: var(--bg);
+            border-top: 1px solid var(--border);
+        }
+
+        .final-cta h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text);
+            letter-spacing: -0.5px;
+            line-height: 1.15;
+        }
+
+        .final-cta p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 2.5rem;
+            max-width: 540px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.7;
         }
 
         /* Footer */
         .footer {
-            padding: 2.5rem;
-            border-top: 1px solid #f0f0f0;
-            text-align: center;
+            padding: 4rem 2rem 2rem;
+            border-top: 1px solid var(--border);
+            background: var(--bg-soft);
         }
 
-        body.dark-mode .footer {
-            border-top-color: #2a2a2a;
-        }
-
-        .footer-content {
-            display: flex;
-            gap: 2rem;
-            justify-content: center;
-            align-items: center;
-            flex-wrap: wrap;
+        .footer-grid {
             max-width: 1200px;
             margin: 0 auto;
-            color: #999999;
-            font-size: 0.85rem;
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr;
+            gap: 3rem;
+            padding-bottom: 3rem;
         }
 
-        body.dark-mode .footer-content {
-            color: #888888;
+        .footer-brand .logo-section { margin-bottom: 1rem; }
+
+        .footer-brand p {
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            max-width: 260px;
         }
 
-        .footer-content a {
-            color: inherit;
+        .footer-col h4 {
+            font-size: 0.78rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text);
+            margin-bottom: 1rem;
+        }
+
+        .footer-col ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.65rem;
+        }
+
+        .footer-col a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s ease;
+        }
+
+        .footer-col a:hover { color: var(--text); }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+            display: flex;
+            gap: 1.5rem;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            color: var(--text-tertiary);
+            font-size: 0.82rem;
+        }
+
+        .footer-bottom-links {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-bottom-links a {
+            color: var(--text-tertiary);
             text-decoration: none;
             transition: color 0.2s ease;
         }
 
-        .footer-content a:hover {
-            color: #1a1a1a;
-        }
-
-        body.dark-mode .footer-content a:hover {
-            color: #ffffff;
-        }
+        .footer-bottom-links a:hover { color: var(--text); }
 
         /* Theme Toggle */
         .theme-toggle {
             display: inline-flex;
-            border: 1px solid #e0e0e0;
+            border: 1px solid var(--border-strong);
             border-radius: 6px;
             overflow: hidden;
             background: transparent;
-        }
-
-        body.dark-mode .theme-toggle {
-            border-color: #3a3a3a;
         }
 
         .theme-option {
@@ -665,33 +1029,18 @@
             transition: all 0.2s ease;
             border: none;
             background: transparent;
-            color: #1a1a1a;
+            color: var(--text);
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 1rem;
         }
 
-        body.dark-mode .theme-toggle .theme-option {
-            color: #ffffff;
-        }
-
-        .theme-option:hover {
-            background: #f5f5f5;
-        }
-
-        body.dark-mode .theme-option:hover {
-            background: #2a2a2a;
-        }
+        .theme-option:hover { background: var(--bg-card); }
 
         .theme-option.active {
-            background: #1a1a1a;
-            color: #ffffff;
-        }
-
-        body.dark-mode .theme-option.active {
-            background: #ffffff;
-            color: #1a1a1a;
+            background: var(--accent);
+            color: var(--bg);
         }
 
         .theme-icon {
@@ -702,73 +1051,56 @@
 
         /* Responsive */
         @media (max-width: 1024px) {
-            .hero .section-container {
-                gap: 2rem;
-            }
+            .footer-grid { grid-template-columns: 1.5fr 1fr 1fr; }
+            .footer-col:nth-child(4), .footer-col:nth-child(5) { grid-column: span 1; }
+        }
 
-            .hero-visual {
-                flex: 0 0 300px;
-                height: 280px;
+        @media (max-width: 900px) {
+            .vision-container {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+                padding: 3rem 2rem;
             }
+            .vision-divider { display: none; }
         }
 
         @media (max-width: 768px) {
-            .hero {
-                padding: 3rem 1.5rem 2rem;
+            .header { padding: 1rem 1.25rem; }
+            .header-nav { display: none; }
+            .header-right { gap: 0.75rem; }
+
+            .hero { padding: 3rem 1.5rem 2rem; }
+            .hero-title { font-size: 2.25rem; letter-spacing: -1px; }
+            .hero-subtitle { font-size: 1rem; }
+
+            .section { padding: 4rem 1.5rem; }
+            .section-title { font-size: 1.85rem; margin-bottom: 0.75rem; }
+            .section-subtitle { margin-bottom: 2.5rem; }
+
+            .problem-grid,
+            .steps-grid,
+            .use-cases-grid,
+            .testimonial-grid {
+                grid-template-columns: 1fr;
             }
 
-            .hero .section-container {
+            .feature-item, .feature-item.reverse {
                 flex-direction: column;
                 gap: 2rem;
             }
 
-            .hero-visual {
-                flex: none;
-                width: 100%;
-                height: 280px;
-            }
+            .feature-icon-box { flex: none; width: 100%; height: 240px; }
 
-            .hero-content {
-                text-align: center;
-            }
+            .vision-block h3 { font-size: 1.5rem; }
 
-            .hero-title {
-                font-size: 2rem;
-                justify-content: center;
-            }
+            .final-cta h2 { font-size: 1.85rem; }
 
-            .hero-subtitle {
-                font-size: 1rem;
-                margin-left: 0;
-                margin-right: 0;
-            }
-
-            .section {
-                padding: 3rem 1.5rem;
-            }
-
-            .feature-item {
-                flex-direction: column;
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
                 gap: 2rem;
             }
 
-            .feature-icon-box {
-                flex: none;
-                width: 100%;
-            }
-
-            .section-title {
-                font-size: 1.8rem;
-                margin-bottom: 2.5rem;
-            }
-
-            .header {
-                padding: 1rem 1.5rem;
-            }
-
-            .header-right {
-                gap: 1rem;
-            }
+            .footer-brand { grid-column: 1 / -1; }
         }
     </style>
 </head>
@@ -781,6 +1113,8 @@
         </a>
         <div class="header-right">
             <nav class="header-nav">
+                <a href="#product">Product</a>
+                <a href="#use-cases">Use cases</a>
                 <a href="#faq">FAQ</a>
             </nav>
             <div class="theme-toggle">
@@ -811,7 +1145,7 @@
             <div class="section-container">
                 <div class="hero-content">
                     <h1 class="hero-title">AI that understands your research.</h1>
-                    <p class="hero-subtitle">A computational research interface that learns your project with you, automating the tedious parts of science so that you can focus on the fun stuff.</p>
+                    <p class="hero-subtitle">A computational research interface that learns your project as it grows — automating the tedious parts of science so you can focus on the discoveries.</p>
                     <form class="waitlist-form" name="waitlist" method="POST" netlify>
                         <input
                             type="email"
@@ -826,13 +1160,10 @@
                         </button>
                     </form>
                 </div>
-                <div class="hero-visual">
-                    <div class="demo-box">Product demo coming soon</div>
-                </div>
             </div>
         </section>
 
-        <!-- Hero Video Section (Peeking from bottom) -->
+        <!-- Hero Video Section -->
         <section class="hero-video-section">
             <div class="hero-video-container">
                 <div style="text-align: center;">
@@ -842,59 +1173,246 @@
             </div>
         </section>
 
-        <!-- Validation Section -->
-        <section class="validation-section">
+        <!-- Logo Strip -->
+        <section class="logo-strip">
+            <div class="logo-strip-label">Trusted by researchers at</div>
+            <div class="logo-row">
+                <span class="logo-pill">Stanford</span>
+                <span class="logo-pill">MIT</span>
+                <span class="logo-pill">Harvard</span>
+                <span class="logo-pill">Caltech</span>
+                <span class="logo-pill">Princeton</span>
+                <span class="logo-pill">Berkeley</span>
+            </div>
+        </section>
+
+        <!-- Problem Section -->
+        <section class="problem-section">
             <div class="section-container">
-                <div class="validation-label">Trusted by researchers at</div>
-                <p class="validation-text">Stanford • MIT • Harvard • And more</p>
+                <span class="section-eyebrow" style="display:block;text-align:center;">The Problem</span>
+                <h2 class="section-title">Research moves at the speed of context.</h2>
+                <p class="section-subtitle">Modern R&D is splintered across a dozen tools that don't talk to each other. The cost is paid in lost time, lost insight, and lost momentum.</p>
+
+                <div class="problem-grid">
+                    <div class="problem-card">
+                        <div class="problem-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+                        </div>
+                        <h3>Knowledge silos</h3>
+                        <p>Project context lives in fragments: a Slack thread, a notebook, a stale README, a PI's head. New collaborators re-learn it from scratch.</p>
+                    </div>
+                    <div class="problem-card">
+                        <div class="problem-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33h0a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51h0a1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82v0a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+                        </div>
+                        <h3>Tool fragmentation</h3>
+                        <p>You stitch together GitHub, Notion, Jupyter, ChatGPT, Zotero. Every handoff loses something. <em>You</em> are the integration layer.</p>
+                    </div>
+                    <div class="problem-card">
+                        <div class="problem-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                        </div>
+                        <h3>Lost context</h3>
+                        <p>Generic AI assistants don't know your model, your data, or last week's lab meeting. They produce confident answers about the wrong problem.</p>
+                    </div>
+                </div>
             </div>
         </section>
 
         <!-- Features Section -->
-        <section class="features-section section">
+        <section class="features-section section" id="product">
             <div class="section-container">
-                <h2 class="section-title">Product Features</h2>
+                <span class="section-eyebrow" style="display:block;text-align:center;">The Product</span>
+                <h2 class="section-title">An interface that learns alongside you.</h2>
+                <p class="section-subtitle">Tuva indexes your project end-to-end, then puts that context to work — surfacing, connecting, and automating across the tools you already use.</p>
 
                 <!-- Feature 1: Knowledge Base -->
                 <div class="feature-item">
                     <div class="feature-icon-box">
-                        <canvas id="knowledgeGraphCanvas" style="width: 100%; height: 100%; border-radius: 12px;"></canvas>
+                        <canvas id="knowledgeGraphCanvas"></canvas>
                     </div>
                     <div class="feature-content">
-                        <h3 class="feature-title">Intelligent Knowledge Base</h3>
-                        <p class="feature-description">Tuva builds a comprehensive knowledge graph of your research as it evolves. It understands relationships across papers, experiments, and datasets—automatically surfacing relevant context exactly when you need it.</p>
+                        <div class="feature-tag">01 · Knowledge</div>
+                        <h3 class="feature-title">A living knowledge base</h3>
+                        <p class="feature-description">Tuva builds a granular knowledge graph of your research — code, notebooks, PDFs, planning docs, meeting notes — and keeps it current as files change. No manual rebuilds, no stale answers.</p>
+                        <ul class="feature-bullets">
+                            <li>Continuous re-indexing of source files and PDFs</li>
+                            <li>Citations down to the line, page, or notebook cell</li>
+                            <li>Surfaces relationships across papers, experiments, and datasets</li>
+                        </ul>
                     </div>
                 </div>
 
                 <!-- Feature 2: Interoperability -->
-                <div class="feature-item">
+                <div class="feature-item reverse">
                     <div class="feature-icon-box">
-                        <canvas id="interopCanvas" style="width: 100%; height: 100%; border-radius: 12px;"></canvas>
+                        <canvas id="interopCanvas"></canvas>
                     </div>
                     <div class="feature-content">
-                        <h3 class="feature-title">Interoperability</h3>
-                        <p class="feature-description">Work with the tools you already use. Tuva integrates seamlessly with Notion, GitHub, Slack, and your favorite research platforms—no vendor lock-in, just smarter collaboration.</p>
+                        <div class="feature-tag">02 · Interoperability</div>
+                        <h3 class="feature-title">Connects the tools you already use</h3>
+                        <p class="feature-description">Bring your stack. Tuva integrates with the editors, notebooks, and document tools you live in — so context flows between them instead of stalling at every boundary.</p>
+                        <ul class="feature-bullets">
+                            <li>Native integrations with GitHub, Notion, Slack, and Jupyter</li>
+                            <li>Local-first by default — your data stays where it lives</li>
+                            <li>No vendor lock-in: take your knowledge graph with you</li>
+                        </ul>
                     </div>
                 </div>
 
-                <!-- Feature 3: Skill-Building -->
+                <!-- Feature 3: Skills -->
                 <div class="feature-item">
                     <div class="feature-icon-box">
-                        <canvas id="skillBuildingCanvas" style="width: 100%; height: 100%; border-radius: 12px;"></canvas>
+                        <canvas id="skillBuildingCanvas"></canvas>
                     </div>
                     <div class="feature-content">
-                        <h3 class="feature-title">Skill-Building</h3>
-                        <p class="feature-description">Design custom workflows tailored to your research. Create repeatable skills that automate your tedious tasks and let you focus on the science that matters.</p>
+                        <div class="feature-tag">03 · Automation</div>
+                        <h3 class="feature-title">Custom skills for repeat work</h3>
+                        <p class="feature-description">Codify the workflows your lab runs over and over — figure regeneration, lit-review summaries, parameter sweeps — into repeatable skills your whole team can call on.</p>
+                        <ul class="feature-bullets">
+                            <li>Turn ad-hoc prompts into versioned, shareable skills</li>
+                            <li>Compose skills into multi-step research pipelines</li>
+                            <li>Run on-demand or schedule against new data</li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </section>
-    </main>
 
-        <!-- FAQ Section -->
+        <!-- How It Works -->
+        <section class="how-it-works" id="how-it-works">
+            <div class="section-container">
+                <span class="section-eyebrow" style="display:block;text-align:center;">How it works</span>
+                <h2 class="section-title">Three steps from cold start to context.</h2>
+                <p class="section-subtitle">Get up and running in minutes. Tuva does the heavy lifting in the background while you keep working the way you already do.</p>
+
+                <div class="steps-grid">
+                    <div class="step-card">
+                        <div class="step-number">1</div>
+                        <h3>Point it at your project</h3>
+                        <p>Connect a folder, a repo, a Notion workspace. Tuva indexes everything in place — no migration, no copy-paste.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">2</div>
+                        <h3>Ask in context</h3>
+                        <p>Chat against your full project. Answers cite back to the exact file, page, or cell — not a hallucinated paraphrase.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">3</div>
+                        <h3>Automate the tedious parts</h3>
+                        <p>Save the workflows you repeat as skills. Run them on demand or trigger them as new data lands. <em>(To be expanded.)</em></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Use Cases -->
+        <section class="use-cases" id="use-cases">
+            <div class="section-container">
+                <span class="section-eyebrow" style="display:block;text-align:center;">Use cases</span>
+                <h2 class="section-title">Built for every research domain.</h2>
+                <p class="section-subtitle">Tuva is domain-agnostic by design — it learns your project, whatever shape it takes. A few examples of how researchers are putting it to work today.</p>
+
+                <div class="use-cases-grid">
+                    <div class="use-case-card">
+                        <span class="domain-tag">Computational Biology</span>
+                        <h3>From raw sequencing to figure-ready</h3>
+                        <p>Lorem ipsum dolor sit amet. Use Tuva to keep pipelines, lab notebooks, and the literature in lockstep. Reproduce a colleague's analysis from six months ago without paging through Slack. <em>(Copy to be finalized.)</em></p>
+                    </div>
+                    <div class="use-case-card">
+                        <span class="domain-tag">Materials Science</span>
+                        <h3>Structured search across simulation runs</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tuva indexes parameter sweeps, simulation outputs, and the underlying papers — so "have we tried this before?" gets a concrete answer. <em>(Copy to be finalized.)</em></p>
+                    </div>
+                    <div class="use-case-card">
+                        <span class="domain-tag">ML Research</span>
+                        <h3>Project memory for fast-moving labs</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur. Track what worked, what didn't, and why — across months of experiments and dozens of teammates. New hires onboard in days, not weeks. <em>(Copy to be finalized.)</em></p>
+                    </div>
+                    <div class="use-case-card">
+                        <span class="domain-tag">Theoretical & Applied</span>
+                        <h3>Reasoning over your own derivations</h3>
+                        <p>Lorem ipsum dolor sit amet. Index your TeX sources, derivation notes, and reference papers. Ask follow-ups that actually engage with <em>your</em> argument, not the generic textbook one. <em>(Copy to be finalized.)</em></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Vision -->
+        <section class="vision-section">
+            <div class="section-container">
+                <div class="vision-container">
+                    <div class="vision-block">
+                        <span class="label">Today</span>
+                        <h3>Faster, smarter research.</h3>
+                        <p>Tuva helps you ideate, review literature, and analyze data at a pace that's hard to imagine without it. The tedious parts collapse. The interesting parts get more of your time.</p>
+                    </div>
+                    <div class="vision-divider"></div>
+                    <div class="vision-block">
+                        <span class="label">Tomorrow</span>
+                        <h3>Swarms of bespoke research agents.</h3>
+                        <p>Equip every R&D team with armies of specialized agents — running experiments, scanning the literature, proposing the next move — all working over a shared, evolving knowledge base of your science.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials -->
+        <section class="testimonials">
+            <div class="section-container">
+                <span class="section-eyebrow" style="display:block;text-align:center;">From the field</span>
+                <h2 class="section-title">What researchers are saying.</h2>
+                <p class="section-subtitle">Early users across academic and industrial labs are putting Tuva to work on their hardest projects. <em>(Real quotes to be added.)</em></p>
+
+                <div class="testimonial-grid">
+                    <div class="testimonial-card">
+                        <p class="testimonial-quote">"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." <em>— placeholder quote</em></p>
+                        <div class="testimonial-author">
+                            <div class="testimonial-avatar"></div>
+                            <div class="testimonial-meta">
+                                <div class="name">Dr. Jane Doe</div>
+                                <div class="role">Principal Investigator · Placeholder Lab</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <p class="testimonial-quote">"Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." <em>— placeholder quote</em></p>
+                        <div class="testimonial-author">
+                            <div class="testimonial-avatar"></div>
+                            <div class="testimonial-meta">
+                                <div class="name">John Smith</div>
+                                <div class="role">PhD Candidate · Placeholder University</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <p class="testimonial-quote">"Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur." <em>— placeholder quote</em></p>
+                        <div class="testimonial-author">
+                            <div class="testimonial-avatar"></div>
+                            <div class="testimonial-meta">
+                                <div class="name">Dr. Alex Chen</div>
+                                <div class="role">Research Scientist · Placeholder Co.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Built by researchers -->
+        <section class="about-section">
+            <div class="about-container">
+                <h2 class="section-title">Built by researchers, for researchers.</h2>
+                <p class="about-text">Tuva is a team of researchers who got tired of being the integration layer between their own tools. We dogfood everything we ship — if it doesn't make <strong>our</strong> research better, it doesn't ship.</p>
+            </div>
+        </section>
+
+        <!-- FAQ -->
         <section class="faq-section" id="faq">
             <div class="faq-container">
-                <h2 class="faq-title">Frequently Asked Questions</h2>
+                <span class="section-eyebrow" style="display:block;text-align:center;">FAQ</span>
+                <h2 class="section-title">Frequently asked questions.</h2>
+                <p class="section-subtitle">Don't see yours? <a href="mailto:hello@tuva.ai" style="color: var(--text); text-decoration: underline;">Drop us a line</a>.</p>
 
                 <div class="faq-item">
                     <button class="faq-question">
@@ -905,7 +1423,7 @@
                             </svg>
                         </div>
                     </button>
-                    <div class="faq-answer">At Tuva, we are not attempting to automate away the scientific process. Instead, we are building an intelligent workspace for your research. It is a workspace that understands the context and direction of your project from start to finish; that will connect you to specialized tools while maintaining consistency between them; and that will allow you to collaborate with a tool that already understands your research plan and workflows. Tuva indexes your whole project context – code, notebooks, PDFs, meeting notes, planning documents – into one intelligent and dynamic knowledge base, and pulls the right information in at the right time. It is built so that you can keep using the same stack of tools you do now, but with more consistency in results. Jumping between open tools means you are the integration layer. Tuva closes that gap.</div>
+                    <div class="faq-answer">At Tuva, we are not attempting to automate away the scientific process. Instead, we are building an intelligent workspace for your research. It is a workspace that understands the context and direction of your project from start to finish; that will connect you to specialized tools while maintaining consistency between them; and that will allow you to collaborate with a tool that already understands your research plan and workflows. Tuva indexes your whole project context — code, notebooks, PDFs, meeting notes, planning documents — into one intelligent and dynamic knowledge base, and pulls the right information in at the right time. It is built so that you can keep using the same stack of tools you do now, but with more consistency in results. Jumping between open tools means you are the integration layer. Tuva closes that gap.</div>
                 </div>
 
                 <div class="faq-item">
@@ -917,7 +1435,7 @@
                             </svg>
                         </div>
                     </button>
-                    <div class="faq-answer">The only data that leaves your machine is the metadata around your tool usage - i.e. whether and how much you are using Tuva - and the information necessary for user authentication. None of the contents of your research, nor of your interactions with Tuva, are shared with us or the developers of the models on which Tuva runs. That being said, researchers working in regulated environments (HIPAA, ITAR, IRB-restricted data, industry NDAs) should consult with their PIs and management before using Tuva to ensure compliance.</div>
+                    <div class="faq-answer">The only data that leaves your machine is the metadata around your tool usage — i.e. whether and how much you are using Tuva — and the information necessary for user authentication. None of the contents of your research, nor of your interactions with Tuva, are shared with us or the developers of the models on which Tuva runs. That being said, researchers working in regulated environments (HIPAA, ITAR, IRB-restricted data, industry NDAs) should consult with their PIs and management before using Tuva to ensure compliance.</div>
                 </div>
 
                 <div class="faq-item">
@@ -943,16 +1461,82 @@
                     </button>
                     <div class="faq-answer">Tuva automatically re-indexes as files change. You can always review the current state of the knowledge base, and sources can be added or removed explicitly. Answers will cite into the exact location, matching the up-to-date state: page 3 of the paper, line 86 of model.py, a function name, a notebook cell. When you edit a database, Tuva will point to the new line numbers. When you drop a new PDF into the folder, it joins the corpus without a manual rebuild.</div>
                 </div>
+
             </div>
+        </section>
+
+        <!-- Final CTA -->
+        <section class="final-cta">
+            <h2>Ready to put your research on a faster path?</h2>
+            <p>Join the waitlist and we'll reach out as we open up access. No spam, no marketing blasts — just a heads-up when there's a seat for you.</p>
+            <form class="waitlist-form" name="waitlist-bottom" method="POST" netlify>
+                <input
+                    type="email"
+                    name="email"
+                    class="email-input"
+                    placeholder="Your email"
+                    required
+                >
+                <button type="submit" class="cta-button">
+                    <div class="cta-button-text">Join Waitlist</div>
+                </button>
+            </form>
         </section>
     </main>
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="footer-content">
-            <a href="mailto:hello@tuva.ai">hello@tuva.ai</a>
-            <a href="https://twitter.com/TuvaAI" target="_blank" rel="noopener noreferrer">@TuvaAI</a>
-            <span>© 2025 Tuva AI, Inc.</span>
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="/" class="logo-section">
+                    <img src="Tuva_Logo%20+%20Icon_Black.png" alt="Tuva" class="logo-image">
+                    <span class="logo-text">Tuva AI</span>
+                </a>
+                <p>Contextual AI for scientific research. Built by researchers, for researchers.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Product</h4>
+                <ul>
+                    <li><a href="#product">Features</a></li>
+                    <li><a href="#how-it-works">How it works</a></li>
+                    <li><a href="#use-cases">Use cases</a></li>
+                    <li><a href="https://tuva-ai.notion.site/" target="_blank" rel="noopener noreferrer">Get started</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="#">Blog <em>(soon)</em></a></li>
+                    <li><a href="#">Careers <em>(soon)</em></a></li>
+                    <li><a href="mailto:hello@tuva.ai">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="#">Docs <em>(soon)</em></a></li>
+                    <li><a href="#">Changelog <em>(soon)</em></a></li>
+                    <li><a href="#">Research <em>(soon)</em></a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Connect</h4>
+                <ul>
+                    <li><a href="https://twitter.com/TuvaAI" target="_blank" rel="noopener noreferrer">Twitter / X</a></li>
+                    <li><a href="#">LinkedIn <em>(soon)</em></a></li>
+                    <li><a href="#">GitHub <em>(soon)</em></a></li>
+                    <li><a href="mailto:hello@tuva.ai">hello@tuva.ai</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>© 2026 Tuva AI, Inc. All rights reserved.</span>
+            <div class="footer-bottom-links">
+                <a href="#">Privacy</a>
+                <a href="#">Terms</a>
+                <a href="#">Security</a>
+            </div>
         </div>
     </footer>
 
@@ -967,10 +1551,6 @@
 
             function getLineColor() {
                 return document.body.classList.contains('dark-mode') ? '#1a1a1a' : '#ffffff';
-            }
-
-            function getBackgroundColor() {
-                return 'transparent';
             }
 
             function resizeCanvas() {
@@ -989,10 +1569,8 @@
                 const rotationAngle = time * 0.75;
                 const perspectiveDistance = 500;
 
-                // Clear with transparency
                 ctx.clearRect(0, 0, width, height);
 
-                // Generate Lissajous points with 3D Y-axis rotation
                 const points = [];
                 for (let t = 0; t <= Math.PI * 2; t += Math.PI / 60) {
                     let x = Math.sin(5 * t) * scale;
@@ -1007,12 +1585,10 @@
                     const perspective = perspectiveDistance / (perspectiveDistance + z3d);
                     const screenX = centerX + x3d * perspective;
                     const screenY = centerY + y * perspective;
-                    const depth = perspective;
 
-                    points.push({ x: screenX, y: screenY, depth });
+                    points.push({ x: screenX, y: screenY, depth: perspective });
                 }
 
-                // Draw the curve
                 ctx.strokeStyle = getLineColor();
                 ctx.lineCap = 'round';
                 ctx.lineJoin = 'round';
@@ -1023,94 +1599,6 @@
                     const avgDepth = (p1.depth + p2.depth) / 2;
                     ctx.lineWidth = 0.6 + avgDepth * 0.3;
                     ctx.globalAlpha = 0.8 + avgDepth * 0.2;
-
-                    ctx.beginPath();
-                    ctx.moveTo(p1.x, p1.y);
-                    ctx.lineTo(p2.x, p2.y);
-                    ctx.stroke();
-                }
-
-                ctx.globalAlpha = 1;
-            }
-
-            function animate() {
-                animationTime += 0.016;
-                drawLissajous(animationTime);
-                requestAnimationFrame(animate);
-            }
-
-            resizeCanvas();
-            window.addEventListener('resize', resizeCanvas);
-            animate();
-        }
-
-        // Lissajous animation
-        function initLissajous() {
-            const canvas = document.getElementById('lissajousCanvas');
-            if (!canvas) return;
-
-            const ctx = canvas.getContext('2d');
-            let animationTime = 0;
-
-            function getLineColor() {
-                return document.body.classList.contains('dark-mode') ? '#ffffff' : '#1a1a1a';
-            }
-
-            function getBackgroundColor() {
-                return document.body.classList.contains('dark-mode') ? '#1a1a1a' : '#f9f9f9';
-            }
-
-            function resizeCanvas() {
-                const rect = canvas.getBoundingClientRect();
-                canvas.width = rect.width * window.devicePixelRatio;
-                canvas.height = rect.height * window.devicePixelRatio;
-                ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
-            }
-
-            function drawLissajous(time) {
-                const width = canvas.width / window.devicePixelRatio;
-                const height = canvas.height / window.devicePixelRatio;
-                const centerX = width / 2;
-                const centerY = height / 2;
-                const scale = Math.min(width, height) / 3.8;
-                const rotationAngle = time * 0.5;
-                const perspectiveDistance = 500;
-
-                // Clear
-                ctx.fillStyle = getBackgroundColor();
-                ctx.fillRect(0, 0, width, height);
-
-                // Generate Lissajous points with 3D Y-axis rotation
-                const points = [];
-                for (let t = 0; t <= Math.PI * 2; t += Math.PI / 80) {
-                    let x = Math.sin(5 * t) * scale;
-                    let y = Math.sin(3 * t) * scale;
-                    let z = 0;
-
-                    const cos = Math.cos(rotationAngle);
-                    const sin = Math.sin(rotationAngle);
-                    const x3d = x * cos + z * sin;
-                    const z3d = -x * sin + z * cos;
-
-                    const perspective = perspectiveDistance / (perspectiveDistance + z3d);
-                    const screenX = centerX + x3d * perspective;
-                    const screenY = centerY + y * perspective;
-                    const depth = perspective;
-
-                    points.push({ x: screenX, y: screenY, depth });
-                }
-
-                // Draw the curve
-                ctx.strokeStyle = getLineColor();
-                ctx.lineCap = 'round';
-                ctx.lineJoin = 'round';
-
-                for (let i = 0; i < points.length - 1; i++) {
-                    const p1 = points[i];
-                    const p2 = points[i + 1];
-                    const avgDepth = (p1.depth + p2.depth) / 2;
-                    ctx.lineWidth = 1.5 + avgDepth * 1;
-                    ctx.globalAlpha = 0.7 + avgDepth * 0.3;
 
                     ctx.beginPath();
                     ctx.moveTo(p1.x, p1.y);
@@ -1143,18 +1631,6 @@
             const numNodes = 20;
             let animationTime = 0;
 
-            // Initialize nodes with random positions
-            for (let i = 0; i < numNodes; i++) {
-                nodes.push({
-                    x: Math.random() * 200 + 40,
-                    y: Math.random() * 200 + 40,
-                    vx: (Math.random() - 0.5) * 0.5,
-                    vy: (Math.random() - 0.5) * 0.5,
-                    color: colors[Math.floor(Math.random() * colors.length)],
-                    radius: Math.random() * 3 + 4
-                });
-            }
-
             function getLineColor() {
                 return document.body.classList.contains('dark-mode') ? '#ffffff' : '#1a1a1a';
             }
@@ -1168,6 +1644,21 @@
                 canvas.width = box.clientWidth * window.devicePixelRatio;
                 canvas.height = box.clientHeight * window.devicePixelRatio;
                 ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+
+                if (nodes.length === 0) {
+                    const w = canvas.width / window.devicePixelRatio;
+                    const h = canvas.height / window.devicePixelRatio;
+                    for (let i = 0; i < numNodes; i++) {
+                        nodes.push({
+                            x: Math.random() * (w - 80) + 40,
+                            y: Math.random() * (h - 80) + 40,
+                            vx: (Math.random() - 0.5) * 0.5,
+                            vy: (Math.random() - 0.5) * 0.5,
+                            color: colors[Math.floor(Math.random() * colors.length)],
+                            radius: Math.random() * 3 + 4
+                        });
+                    }
+                }
             }
 
             function drawGraph() {
@@ -1176,18 +1667,14 @@
                 const centerX = width / 2;
                 const centerY = height / 2;
 
-                // Clear
                 ctx.fillStyle = getBackgroundColor();
                 ctx.fillRect(0, 0, width, height);
 
-                // Update node positions with simple physics
                 for (let i = 0; i < nodes.length; i++) {
-                    // Pulse cycle: 8 seconds total, pull for first 3 seconds
                     const cycleTime = animationTime % 8;
                     const isPulling = cycleTime < 3;
 
                     if (isPulling) {
-                        // Gently pull toward center
                         const dx = centerX - nodes[i].x;
                         const dy = centerY - nodes[i].y;
                         const dist = Math.sqrt(dx * dx + dy * dy);
@@ -1199,7 +1686,6 @@
                         }
                     }
 
-                    // Gentle bounce off edges
                     if (nodes[i].x < 35 || nodes[i].x > width - 35) nodes[i].vx *= -0.5;
                     if (nodes[i].y < 35 || nodes[i].y > height - 35) nodes[i].vy *= -0.5;
 
@@ -1207,7 +1693,6 @@
                     nodes[i].y = Math.max(35, Math.min(height - 35, nodes[i].y + nodes[i].vy));
                 }
 
-                // Update and draw edges
                 ctx.strokeStyle = getLineColor();
                 ctx.globalAlpha = 0.15;
                 ctx.lineWidth = 0.8;
@@ -1229,7 +1714,6 @@
 
                 ctx.globalAlpha = 1;
 
-                // Draw nodes
                 for (let node of nodes) {
                     ctx.fillStyle = node.color;
                     ctx.beginPath();
@@ -1255,15 +1739,14 @@
             if (!canvas) return;
 
             const ctx = canvas.getContext('2d');
-            const colors = ['#3b82f6', '#ef4444', '#10b981', '#f59e0b', '#8b5cf6'];
             let animationTime = 0;
 
-            // Central node and satellite nodes
-            const centralNode = { x: 140, y: 140, radius: 8, color: '#3b82f6' };
+            const centralNode = { x: 160, y: 160, radius: 8, color: '#3b82f6' };
             const satelliteNodes = [
-                { angle: 0, radius: 50, color: '#ef4444' },
-                { angle: Math.PI * 0.66, radius: 50, color: '#10b981' },
-                { angle: Math.PI * 1.33, radius: 50, color: '#f59e0b' },
+                { angle: 0, radius: 70, color: '#ef4444' },
+                { angle: Math.PI * 0.5, radius: 70, color: '#10b981' },
+                { angle: Math.PI, radius: 70, color: '#f59e0b' },
+                { angle: Math.PI * 1.5, radius: 70, color: '#8b5cf6' },
             ];
 
             function getLineColor() {
@@ -1279,26 +1762,28 @@
                 canvas.width = box.clientWidth * window.devicePixelRatio;
                 canvas.height = box.clientHeight * window.devicePixelRatio;
                 ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+
+                const w = canvas.width / window.devicePixelRatio;
+                const h = canvas.height / window.devicePixelRatio;
+                centralNode.x = w / 2;
+                centralNode.y = h / 2;
             }
 
             function drawVisualization(time) {
                 const width = canvas.width / window.devicePixelRatio;
                 const height = canvas.height / window.devicePixelRatio;
 
-                // Clear
                 ctx.fillStyle = getBackgroundColor();
                 ctx.fillRect(0, 0, width, height);
 
-                // Draw connecting lines with animation
                 ctx.strokeStyle = getLineColor();
                 ctx.globalAlpha = 0.3;
                 ctx.lineWidth = 1.2;
 
-                satelliteNodes.forEach((node, index) => {
-                    const x = centralNode.x + Math.cos(node.angle) * node.radius;
-                    const y = centralNode.y + Math.sin(node.angle) * node.radius;
+                satelliteNodes.forEach((node) => {
+                    const x = centralNode.x + Math.cos(node.angle + time * 0.2) * node.radius;
+                    const y = centralNode.y + Math.sin(node.angle + time * 0.2) * node.radius;
 
-                    // Animated dashed effect
                     const dashOffset = (time * 50) % 8;
                     ctx.setLineDash([2, 2]);
                     ctx.lineDashOffset = -dashOffset;
@@ -1312,25 +1797,21 @@
                 ctx.setLineDash([]);
                 ctx.globalAlpha = 1;
 
-                // Draw central node
                 ctx.fillStyle = centralNode.color;
                 ctx.beginPath();
                 ctx.arc(centralNode.x, centralNode.y, centralNode.radius, 0, Math.PI * 2);
                 ctx.fill();
 
-                // Draw satellite nodes with orbit effect
-                satelliteNodes.forEach((node, index) => {
-                    const x = centralNode.x + Math.cos(node.angle) * node.radius;
-                    const y = centralNode.y + Math.sin(node.angle) * node.radius;
+                satelliteNodes.forEach((node) => {
+                    const x = centralNode.x + Math.cos(node.angle + time * 0.2) * node.radius;
+                    const y = centralNode.y + Math.sin(node.angle + time * 0.2) * node.radius;
 
-                    // Glow effect
                     ctx.fillStyle = node.color;
                     ctx.globalAlpha = 0.2;
                     ctx.beginPath();
-                    ctx.arc(x, y, 10, 0, Math.PI * 2);
+                    ctx.arc(x, y, 12, 0, Math.PI * 2);
                     ctx.fill();
 
-                    // Main node
                     ctx.globalAlpha = 1;
                     ctx.fillStyle = node.color;
                     ctx.beginPath();
@@ -1359,11 +1840,10 @@
             let animationTime = 0;
             const colors = ['#3b82f6', '#10b981', '#f59e0b', '#8b5cf6'];
 
-            // Pipeline stages
             const stages = [
                 { x: 40, label: 'Input', color: '#3b82f6' },
-                { x: 95, label: 'Process', color: '#10b981' },
-                { x: 150, label: 'Output', color: '#f59e0b' },
+                { x: 100, label: 'Process', color: '#10b981' },
+                { x: 160, label: 'Output', color: '#f59e0b' },
             ];
 
             const items = [];
@@ -1394,13 +1874,11 @@
                 const width = canvas.width / window.devicePixelRatio;
                 const height = canvas.height / window.devicePixelRatio;
 
-                // Clear
                 ctx.fillStyle = getBackgroundColor();
                 ctx.fillRect(0, 0, width, height);
 
                 const centerY = height / 2;
 
-                // Draw pipeline connection
                 ctx.strokeStyle = getLineColor();
                 ctx.globalAlpha = 0.15;
                 ctx.lineWidth = 1;
@@ -1410,25 +1888,22 @@
                 ctx.stroke();
                 ctx.globalAlpha = 1;
 
-                // Draw stage nodes
-                stages.forEach((stage, index) => {
+                stages.forEach((stage) => {
                     const x = (stage.x / 200) * (width - 60) + 30;
 
-                    // Stage circle
                     ctx.fillStyle = stage.color;
                     ctx.globalAlpha = 0.3;
                     ctx.beginPath();
-                    ctx.arc(x, centerY, 12, 0, Math.PI * 2);
+                    ctx.arc(x, centerY, 14, 0, Math.PI * 2);
                     ctx.fill();
 
                     ctx.globalAlpha = 1;
                     ctx.fillStyle = stage.color;
                     ctx.beginPath();
-                    ctx.arc(x, centerY, 8, 0, Math.PI * 2);
+                    ctx.arc(x, centerY, 9, 0, Math.PI * 2);
                     ctx.fill();
                 });
 
-                // Draw moving items through pipeline
                 items.forEach((item, idx) => {
                     item.progress += 0.002;
                     if (item.progress > 1) {
@@ -1443,19 +1918,18 @@
                     const endX = (nextStage.x / 200) * (width - 60) + 30;
 
                     const x = startX + (endX - startX) * item.progress;
-                    const y = centerY + Math.sin(time * 3 + idx) * 15;
+                    const y = centerY + Math.sin(time * 3 + idx) * 18;
 
-                    // Item with glow
                     ctx.fillStyle = item.color;
                     ctx.globalAlpha = 0.3;
                     ctx.beginPath();
-                    ctx.arc(x, y, 8, 0, Math.PI * 2);
+                    ctx.arc(x, y, 9, 0, Math.PI * 2);
                     ctx.fill();
 
                     ctx.globalAlpha = 1;
                     ctx.fillStyle = item.color;
                     ctx.beginPath();
-                    ctx.arc(x, y, 4, 0, Math.PI * 2);
+                    ctx.arc(x, y, 4.5, 0, Math.PI * 2);
                     ctx.fill();
                 });
             }
@@ -1472,20 +1946,17 @@
         }
 
         // Initialize on load
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', () => {
-                initButtonLissajous();
-                initLissajous();
-                initKnowledgeGraph();
-                initInteropVisualization();
-                initSkillBuildingVisualization();
-            });
-        } else {
+        function initAll() {
             initButtonLissajous();
-            initLissajous();
             initKnowledgeGraph();
             initInteropVisualization();
             initSkillBuildingVisualization();
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initAll);
+        } else {
+            initAll();
         }
 
         // FAQ functionality
@@ -1493,6 +1964,17 @@
             question.addEventListener('click', () => {
                 const faqItem = question.parentElement;
                 faqItem.classList.toggle('active');
+            });
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target && this.getAttribute('href').length > 1) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
             });
         });
 
@@ -1535,7 +2017,7 @@
         applyTheme(currentTheme);
 
         if (window.matchMedia) {
-            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
                 if (currentTheme === 'system') {
                     applyTheme('system');
                 }
