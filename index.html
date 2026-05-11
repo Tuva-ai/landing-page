@@ -19,14 +19,12 @@
     <meta property="og:description" content="Break down knowledge silos. Speed up R&D. Build with AI that understands your work.">
     <meta property="og:image" content="https://tuva.ai/og-image.jpg">
     <meta property="og:site_name" content="Tuva">
-    <meta property="og:locale" content="en_US">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://tuva.ai">
     <meta property="twitter:title" content="Tuva - Contextual AI for Scientific Research">
     <meta property="twitter:description" content="Break down knowledge silos. Speed up R&D. Build with AI that understands your work.">
-    <meta property="twitter:image" content="https://tuva.ai/og-image.jpg">
     <meta property="twitter:creator" content="@tuvaai">
 
     <!-- Favicon -->
@@ -34,58 +32,58 @@
     <link rel="icon" type="image/png" href="Tuva_Icon_White.png" media="(prefers-color-scheme: dark)">
     <link rel="apple-touch-icon" type="image/png" href="Tuva_Logo%20+%20Icon_Black.png">
 
-    <!-- Additional Meta -->
-    <meta name="theme-color" content="#FAFAF8">
-    <meta name="msapplication-TileColor" content="#FAFAF8">
-    <meta name="application-name" content="Tuva">
-
-    <!-- Structured Data -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
-      "name": "Tuva",
-      "description": "Contextual AI for scientific research. Learn your project details, automate tedious work, ship faster.",
-      "applicationCategory": "ScientificApplication",
-      "operatingSystem": "Web",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD"
-      },
-      "provider": {
-        "@type": "Organization",
-        "name": "Tuva"
-      }
-    }
-    </script>
+    <meta name="theme-color" content="#f5faf5">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg: #f5faf5;
+            --bg-soft: #ecf5ec;
+            --bg-card: #ffffff;
+            --border: #c8d9c8;
+            --border-strong: #1a1a1a;
+            --text: #1a1a1a;
+            --text-secondary: #4a4a4a;
+            --text-tertiary: #6b7280;
+            --accent: #1a1a1a;
+            --accent-fg: #FAFAF8;
+            --pale-green: #d4e8d4;
+            --c-blue: #3b82f6;
+            --c-red:  #ef4444;
+            --c-green:#10b981;
+            --c-orange:#f97316;
+            --c-purple:#a855f7;
+        }
+
+        body.dark-mode {
+            --bg: #3a3a3d;
+            --bg-soft: #45454a;
+            --bg-card: #505057;
+            --border: #6b6b72;
+            --border-strong: #FAFAF8;
+            --text: #FAFAF8;
+            --text-secondary: #d8dadd;
+            --text-tertiary: #a8aab0;
+            --accent: #FAFAF8;
+            --accent-fg: #3a3a3d;
+            --pale-green: #4d5d4d;
         }
 
         body {
             font-family: 'JetBrains Mono', 'Courier New', monospace;
-            background: #f5faf5;
-            color: #1a1a1a;
+            background: var(--bg);
+            color: var(--text);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             overflow-x: hidden;
             transition: background-color 0.3s ease, color 0.3s ease;
             line-height: 1.6;
-        }
-
-        body.dark-mode {
-            background: #1a1a1a;
-            color: #FAFAF8;
         }
 
         /* Header */
@@ -99,13 +97,13 @@
             align-items: center;
             gap: 1.5rem;
             background: rgba(245, 250, 245, 0.95);
-            border-bottom: 1px solid #d9e5d9;
+            border-bottom: 2px solid var(--border);
             backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
         }
 
         body.dark-mode .header {
-            background: rgba(26, 26, 26, 0.95);
-            border-bottom-color: #333333;
+            background: rgba(58, 58, 61, 0.92);
         }
 
         .logo-section {
@@ -113,31 +111,16 @@
             align-items: center;
             gap: 0.75rem;
             text-decoration: none;
-            color: #1a1a1a;
+            color: var(--text);
             transition: opacity 0.2s ease;
         }
 
-        body.dark-mode .logo-section {
-            color: #FAFAF8;
-        }
+        .logo-section:hover { opacity: 0.7; }
 
-        .logo-section:hover {
-            opacity: 0.7;
-        }
+        .logo-image { height: 28px; width: auto; }
+        body.dark-mode .logo-image { height: 32px; }
 
-        .logo-image {
-            height: 28px;
-            width: auto;
-        }
-
-        body.dark-mode .logo-image {
-            height: 32px;
-        }
-
-        .logo-text {
-            font-size: 1rem;
-            font-weight: 600;
-        }
+        .logo-text { font-size: 1rem; font-weight: 600; }
 
         .header-right {
             display: flex;
@@ -152,7 +135,7 @@
         }
 
         .header-nav a {
-            color: #1a1a1a;
+            color: var(--text);
             text-decoration: none;
             font-size: 0.85rem;
             font-family: 'JetBrains Mono', monospace;
@@ -160,45 +143,56 @@
             transition: color 0.2s ease;
         }
 
-        body.dark-mode .header-nav a {
-            color: #FAFAF8;
-        }
+        .header-nav a:hover { color: var(--text-tertiary); }
 
-        .header-nav a:hover {
-            color: #666666;
-        }
-
-        body.dark-mode .header-nav a:hover {
-            color: #cccccc;
-        }
-
-        /* Main content wrapper */
+        /* Main */
         .main-content {
             flex: 1;
             display: flex;
             flex-direction: column;
         }
 
-        /* Sections */
         .section {
             padding: 4rem 2rem;
-            border-bottom: 1px solid #d9e5d9;
+            border-bottom: 2px solid var(--border);
         }
 
-        body.dark-mode .section {
-            border-bottom-color: #333333;
-        }
-
-        .section:last-of-type {
-            border-bottom: none;
-        }
+        .section:last-of-type { border-bottom: none; }
 
         .section-container {
             max-width: 1200px;
             margin: 0 auto;
         }
 
-        /* Hero Section */
+        .section-eyebrow {
+            display: inline-block;
+            font-size: 0.78rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--text-tertiary);
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-align: center;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+        }
+
+        .section-subtitle {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            text-align: center;
+            max-width: 640px;
+            margin: 0 auto 3rem;
+            line-height: 1.7;
+        }
+
+        /* Hero */
         .hero {
             padding: 3rem 2rem;
             display: flex;
@@ -222,10 +216,6 @@
             width: 100%;
         }
 
-        .hero-visual {
-            display: none;
-        }
-
         .hero-title {
             font-size: 2.8rem;
             font-weight: 600;
@@ -237,110 +227,15 @@
         .hero-subtitle {
             font-size: 1.1rem;
             font-weight: 400;
-            color: #4a4a4a;
+            color: var(--text-secondary);
             margin-bottom: 2rem;
             line-height: 1.7;
         }
 
-        body.dark-mode .hero-subtitle {
-            color: #d1d5db;
-        }
+        .hero-visual { display: none; }
+        .lissajous-canvas { width: 280px; height: 280px; }
 
-        .lissajous-canvas {
-            width: 280px;
-            height: 280px;
-        }
-
-        /* Context Map Section */
-        .context-section {
-            padding: 3rem 2rem;
-        }
-
-        .context-canvas {
-            width: 280px;
-            height: 280px;
-            border: 2px solid #1a1a1a;
-            border-radius: 4px;
-            background: #ffffff;
-        }
-
-        body.dark-mode .context-canvas {
-            background: #2a2a2a;
-            border-color: #FAFAF8;
-        }
-
-        .robot-canvas {
-            width: 280px;
-            height: 280px;
-            border: 2px solid #1a1a1a;
-            border-radius: 4px;
-            background: #ffffff;
-        }
-
-        body.dark-mode .robot-canvas {
-            background: #2a2a2a;
-            border-color: #FAFAF8;
-        }
-
-        .ampersand-canvas {
-            width: 280px;
-            height: 280px;
-            border: 2px solid #1a1a1a;
-            border-radius: 4px;
-            background: #ffffff;
-        }
-
-        body.dark-mode .ampersand-canvas {
-            background: #2a2a2a;
-            border-color: #FAFAF8;
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            margin-bottom: 0;
-            flex-wrap: wrap;
-            align-items: center;
-        }
-
-        .email-input-waitlist {
-            padding: 0.875rem 1.5rem;
-            background: #ffffff;
-            border: 2px solid #d0d0d0;
-            border-radius: 4px;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.9rem;
-            color: #1a1a1a;
-            min-width: 240px;
-            transition: all 0.2s ease;
-            outline: none;
-        }
-
-        body.dark-mode .email-input-waitlist {
-            background: #2a2a2a;
-            border-color: #4a4a4a;
-            color: #FAFAF8;
-        }
-
-        .email-input-waitlist:focus {
-            border-color: #1a1a1a;
-            box-shadow: 0 0 0 2px rgba(26, 26, 26, 0.1);
-        }
-
-        body.dark-mode .email-input-waitlist:focus {
-            border-color: #FAFAF8;
-            box-shadow: 0 0 0 2px rgba(250, 250, 248, 0.1);
-        }
-
-        .email-input-waitlist::placeholder {
-            color: #999999;
-        }
-
-        body.dark-mode .email-input-waitlist::placeholder {
-            color: #888888;
-        }
-
+        /* Buttons */
         .btn {
             padding: 0.875rem 2rem;
             border-radius: 4px;
@@ -356,15 +251,9 @@
         }
 
         .btn-primary {
-            background: #1a1a1a;
-            border-color: #1a1a1a;
-            color: #FAFAF8;
-        }
-
-        body.dark-mode .btn-primary {
-            background: #FAFAF8;
-            border-color: #FAFAF8;
-            color: #1a1a1a;
+            background: var(--accent);
+            border-color: var(--accent);
+            color: var(--accent-fg);
         }
 
         .btn-primary:hover {
@@ -376,38 +265,226 @@
         body.dark-mode .btn-primary:hover {
             background: #d1d5db;
             border-color: #d1d5db;
-            transform: scale(1.05);
         }
 
         .btn-secondary {
             background: transparent;
-            border-color: #1a1a1a;
-            color: #1a1a1a;
-        }
-
-        body.dark-mode .btn-secondary {
-            border-color: #FAFAF8;
-            color: #FAFAF8;
+            border-color: var(--accent);
+            color: var(--text);
         }
 
         .btn-secondary:hover {
-            background: #1a1a1a;
-            color: #FAFAF8;
+            background: var(--accent);
+            color: var(--accent-fg);
         }
 
-        body.dark-mode .btn-secondary:hover {
-            background: #FAFAF8;
-            color: #1a1a1a;
+        /* Buttons with rotating lissajous canvas inside */
+        .btn.has-canvas {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.55rem;
+            padding: 0.45rem 1.3rem 0.45rem 0.55rem;
+            height: 56px;
         }
 
+        .btn-canvas {
+            width: 44px;
+            height: 44px;
+            flex-shrink: 0;
+        }
 
-        /* Video Section */
-        .video-section {
-            padding: 2rem 2rem 3rem;
-            background: inherit;
-            margin-top: -2rem;
+        .btn-text { line-height: 1; }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .email-input-waitlist {
+            padding: 0.875rem 1.5rem;
+            background: var(--bg-card);
+            border: 2px solid #d0d0d0;
+            border-radius: 4px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            color: var(--text);
+            min-width: 240px;
+            transition: all 0.2s ease;
+            outline: none;
+        }
+
+        body.dark-mode .email-input-waitlist {
+            border-color: #6b6b72;
+        }
+
+        .email-input-waitlist:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 2px rgba(26, 26, 26, 0.1);
+        }
+
+        body.dark-mode .email-input-waitlist:focus {
+            box-shadow: 0 0 0 2px rgba(250, 250, 248, 0.1);
+        }
+
+        .email-input-waitlist::placeholder { color: var(--text-tertiary); }
+
+        /* Logo strip */
+        .logo-strip {
+            padding: 3rem 2rem;
+            background: linear-gradient(135deg, #f9f8f6 0%, #f3f3f1 100%);
+            border-bottom: 2px solid var(--border);
+        }
+
+        body.dark-mode .logo-strip {
+            background: linear-gradient(135deg, #45454a 0%, #3a3a3d 100%);
+        }
+
+        .logo-strip-label {
+            font-size: 0.78rem;
+            color: var(--text-tertiary);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .logo-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.85rem;
+            align-items: center;
+            justify-content: center;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .logo-pill {
+            padding: 0.45rem 0.95rem;
+            border: 2px solid var(--border);
+            border-radius: 4px;
+            background: var(--bg-card);
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            letter-spacing: -0.01em;
+            transition: transform 0.15s ease, border-color 0.15s ease;
+        }
+
+        body.dark-mode .logo-pill { background: var(--bg-card); }
+
+        .logo-pill:hover {
+            transform: translateY(-2px);
+            border-color: var(--text);
+        }
+
+        /* Rotating quote section (testimonials, lifted above the video) */
+        .quote-section {
+            padding: 5rem 2rem 4rem;
+            background: var(--bg);
+            border-bottom: 2px solid var(--border);
+        }
+
+        .quote-rotator {
+            max-width: 760px;
+            margin: 0 auto;
+            background: var(--bg-card);
+            border: 2px solid var(--text);
+            border-radius: 4px;
+            padding: 2.5rem 2.5rem 3.25rem;
             position: relative;
-            z-index: 10;
+            min-height: 240px;
+            box-shadow: 6px 6px 0 var(--pale-green);
+        }
+
+        body.dark-mode .quote-rotator { background: var(--bg-card); }
+
+        .quote-slide {
+            display: none;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .quote-slide.active {
+            display: flex;
+            animation: quoteFade 0.45s ease;
+        }
+
+        @keyframes quoteFade {
+            from { opacity: 0; transform: translateY(4px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .quote-text {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: var(--text);
+        }
+
+        .quote-author {
+            display: flex;
+            align-items: center;
+            gap: 0.85rem;
+        }
+
+        .quote-avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 4px;
+            border: 2px solid var(--text);
+            flex-shrink: 0;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            overflow: hidden;
+        }
+        .quote-avatar i { display: block; }
+        .qa-1 i:nth-child(1) { background: var(--c-blue); }
+        .qa-1 i:nth-child(2) { background: var(--c-orange); }
+        .qa-1 i:nth-child(3) { background: var(--c-green); }
+        .qa-1 i:nth-child(4) { background: var(--c-purple); }
+        .qa-2 i:nth-child(1) { background: var(--c-green); }
+        .qa-2 i:nth-child(2) { background: var(--c-purple); }
+        .qa-2 i:nth-child(3) { background: var(--c-orange); }
+        .qa-2 i:nth-child(4) { background: var(--c-blue); }
+        .qa-3 i:nth-child(1) { background: var(--c-purple); }
+        .qa-3 i:nth-child(2) { background: var(--c-green); }
+        .qa-3 i:nth-child(3) { background: var(--c-blue); }
+        .qa-3 i:nth-child(4) { background: var(--c-orange); }
+
+        .quote-name { font-size: 0.9rem; font-weight: 600; color: var(--text); }
+        .quote-role { font-size: 0.8rem; color: var(--text-tertiary); margin-top: 2px; }
+
+        .quote-dots {
+            position: absolute;
+            bottom: 1.1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 0.4rem;
+        }
+
+        .quote-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 2px;
+            border: 1.5px solid var(--text);
+            background: transparent;
+            cursor: pointer;
+            padding: 0;
+            transition: background 0.15s ease;
+        }
+
+        .quote-dot.active { background: var(--text); }
+
+        /* Video */
+        .video-section {
+            padding: 4rem 2rem;
+            border-bottom: 2px solid var(--border);
         }
 
         .video-placeholder {
@@ -427,268 +504,414 @@
         }
 
         body.dark-mode .video-placeholder {
-            background: linear-gradient(135deg, #2a2a2a 0%, #1f1f1f 100%);
-            border-color: #444444;
-            color: #9ca3af;
+            background: linear-gradient(135deg, #505057 0%, #45454a 100%);
+            border-color: #6b6b72;
+            color: #a8aab0;
         }
 
-        /* Validation Bar */
-        .validation-section {
-            padding: 3rem 2rem;
-            background: linear-gradient(135deg, #f9f8f6 0%, #f3f3f1 100%);
+        /* Problem */
+        .problem-section {
+            padding: 5rem 2rem;
+            background: var(--bg);
+            border-bottom: 2px solid var(--border);
         }
 
-        body.dark-mode .validation-section {
-            background: linear-gradient(135deg, #232323 0%, #1f1f1f 100%);
-        }
-
-        .validation-content {
-            max-width: 1200px;
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            max-width: 1100px;
             margin: 0 auto;
-            text-align: center;
         }
 
-        .validation-label {
-            font-size: 0.85rem;
-            color: #6b7280;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-bottom: 1rem;
-            text-align: center;
+        .problem-card {
+            padding: 2rem;
+            background: var(--bg-card);
+            border: 2px solid var(--border);
+            border-radius: 4px;
+            transition: all 0.2s ease;
         }
 
-        body.dark-mode .validation-label {
-            color: #9ca3af;
+        body.dark-mode .problem-card { background: var(--bg-card); }
+
+        .problem-card:hover {
+            border-color: var(--text);
+            transform: translateY(-2px);
+            box-shadow: 6px 6px 0 var(--text);
         }
 
-        .validation-text {
+        .problem-icon {
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid var(--text);
+            border-radius: 4px;
+            margin-bottom: 1.25rem;
             font-size: 1.2rem;
-            font-weight: 500;
-            color: #1a1a1a;
-            text-align: center;
+            font-weight: 700;
+            color: #fff;
         }
 
-        body.dark-mode .validation-text {
-            color: #FAFAF8;
-        }
+        .problem-icon.c-1 { background: var(--c-blue); }
+        .problem-icon.c-2 { background: var(--c-orange); }
+        .problem-icon.c-3 { background: var(--c-purple); }
 
-        /* Features Section */
-        .features-section {
-            padding: 4rem 2rem;
-        }
-
-        .section-title {
-            font-size: 2rem;
+        .problem-card h3 {
+            font-size: 1.1rem;
             font-weight: 600;
-            margin-bottom: 3rem;
-            text-align: center;
+            margin-bottom: 0.6rem;
+            color: var(--text);
+        }
+
+        .problem-card p {
+            font-size: 0.92rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* Use Cases (chips: by field + by task) */
+        .use-cases {
+            padding: 5rem 2rem;
+            border-bottom: 2px solid var(--border);
+        }
+
+        .use-case-block {
+            max-width: 1000px;
+            margin: 0 auto 2.5rem;
+        }
+
+        .use-case-block:last-child { margin-bottom: 0; }
+
+        .use-case-block-header {
+            display: flex;
+            align-items: center;
+            gap: 0.85rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .use-case-block-tag {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: #fff;
+            padding: 0.3rem 0.65rem;
+            border: 2px solid var(--text);
+            border-radius: 4px;
+        }
+
+        .use-case-block-tag.t-blue { background: var(--c-blue); }
+        .use-case-block-tag.t-orange { background: var(--c-orange); }
+
+        .use-case-block-header h3 {
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--text);
+            letter-spacing: -0.01em;
+        }
+
+        .chip-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+        }
+
+        .chip {
+            padding: 0.6rem 1rem;
+            background: var(--bg-card);
+            border: 2px solid var(--text);
+            border-radius: 4px;
+            font-size: 0.88rem;
+            font-weight: 500;
+            color: var(--text);
+            transition: all 0.15s ease;
+            cursor: default;
+        }
+
+        body.dark-mode .chip { background: var(--bg-card); }
+
+        .chip:hover {
+            transform: translateY(-2px);
+            box-shadow: 3px 3px 0 var(--text);
+        }
+
+        .chip.chip-accent { background: var(--pale-green); }
+        body.dark-mode .chip.chip-accent { background: var(--pale-green); color: var(--text); }
+
+        /* Features (existing 3 items, with right-left-right) */
+        .features-section {
+            padding: 5rem 2rem;
+            border-bottom: 2px solid var(--border);
         }
 
         .feature-item {
-            max-width: 1200px;
-            margin: 0 auto 3rem;
+            max-width: 1100px;
+            margin: 0 auto 3.5rem;
             display: flex;
-            gap: 2rem;
+            gap: 2.5rem;
             align-items: flex-start;
         }
+
+        .feature-item.reverse { flex-direction: row-reverse; }
+
+        .feature-item:last-of-type { margin-bottom: 0; }
 
         .feature-item-visual {
             flex: 0 0 280px;
         }
 
+        .context-canvas, .robot-canvas, .ampersand-canvas {
+            width: 280px;
+            height: 280px;
+            border: 2px solid var(--text);
+            border-radius: 4px;
+            background: var(--bg-card);
+        }
+
+        body.dark-mode .context-canvas,
+        body.dark-mode .robot-canvas,
+        body.dark-mode .ampersand-canvas {
+            background: var(--bg-card);
+            border-color: var(--text);
+        }
+
         .feature-item-text {
             flex: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
+            padding-top: 0.5rem;
         }
+
+        .feature-tag {
+            display: inline-block;
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--text);
+            background: var(--pale-green);
+            padding: 0.2rem 0.55rem;
+            border: 1.5px solid var(--text);
+            border-radius: 3px;
+            margin-bottom: 0.85rem;
+        }
+
+        body.dark-mode .feature-tag { background: var(--pale-green); color: var(--text); }
 
         .feature-item-title {
             font-size: 1.5rem;
             font-weight: 600;
-            margin-bottom: 1rem;
-            color: #1a1a1a;
-        }
-
-        body.dark-mode .feature-item-title {
-            color: #FAFAF8;
+            margin-bottom: 0.85rem;
+            color: var(--text);
         }
 
         .feature-item-description {
-            font-size: 1rem;
-            color: #4a4a4a;
+            font-size: 0.98rem;
+            color: var(--text-secondary);
             line-height: 1.7;
-        }
-
-        body.dark-mode .feature-item-description {
-            color: #d1d5db;
-        }
-
-        .features-grid {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .feature-box {
-            padding: 2rem;
-            border: 2px solid #c8d9c8;
-            border-radius: 4px;
-            background: rgba(255, 255, 255, 0.6);
-            transition: all 0.2s ease;
-        }
-
-        body.dark-mode .feature-box {
-            border-color: #444444;
-            background: rgba(42, 42, 42, 0.4);
-        }
-
-        .feature-box:hover {
-            border-color: #1a1a1a;
-            background: rgba(255, 255, 255, 0.95);
-            box-shadow: 0 6px 16px rgba(26, 26, 26, 0.12);
-            transform: translateY(-2px);
-        }
-
-        body.dark-mode .feature-box:hover {
-            border-color: #FAFAF8;
-            background: rgba(42, 42, 42, 0.8);
-            box-shadow: 0 6px 16px rgba(250, 250, 248, 0.12);
-            transform: translateY(-2px);
-        }
-
-        .feature-icon {
-            font-size: 2rem;
             margin-bottom: 1rem;
         }
 
-        .feature-title {
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 0.75rem;
+        .feature-bullets {
+            list-style: none;
+            padding: 0;
+            margin: 0;
         }
 
-        .feature-description {
-            font-size: 0.95rem;
-            color: #4a4a4a;
+        .feature-bullets li {
+            position: relative;
+            padding-left: 1.6rem;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
             line-height: 1.6;
         }
 
-        body.dark-mode .feature-description {
-            color: #d1d5db;
+        .feature-bullets li::before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: var(--c-green);
+            font-weight: 700;
         }
 
-        /* Footer */
-        .footer {
+        /* How It Works */
+        .how-it-works {
+            padding: 5rem 2rem;
+            background: var(--bg-soft);
+            border-bottom: 2px solid var(--border);
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .step-card {
             padding: 2rem;
-            border-top: 1px solid #e5e5e3;
+            background: var(--bg-card);
+            border: 2px solid var(--text);
+            border-radius: 4px;
+            position: relative;
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
+        }
+
+        body.dark-mode .step-card { background: var(--bg-card); }
+
+        .step-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 6px 6px 0 var(--text);
+        }
+
+        .step-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 42px;
+            height: 42px;
+            border-radius: 4px;
+            border: 2px solid var(--text);
+            color: #fff;
+            font-weight: 700;
+            font-size: 1.05rem;
+            font-family: 'JetBrains Mono', monospace;
+            margin-bottom: 1.25rem;
+        }
+
+        .step-number.s-1 { background: var(--c-blue); }
+        .step-number.s-2 { background: var(--c-green); }
+        .step-number.s-3 { background: var(--c-orange); }
+
+        .step-card h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.65rem;
+            color: var(--text);
+        }
+
+        .step-card p {
+            font-size: 0.92rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* Vision (terminal-style callout) */
+        .vision-section {
+            padding: 5rem 2rem;
+            background: var(--bg);
+            border-bottom: 2px solid var(--border);
+        }
+
+        .vision-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: var(--text);
+            color: var(--bg);
+            border: 2px solid var(--text);
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 8px 8px 0 var(--pale-green);
+        }
+
+        body.dark-mode .vision-container {
+            background: var(--bg-card);
+            color: var(--text);
+            box-shadow: 8px 8px 0 var(--pale-green);
+        }
+
+        .vision-bar {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.65rem 1rem;
+            background: rgba(255, 255, 255, 0.06);
+            border-bottom: 1.5px solid rgba(255, 255, 255, 0.15);
+            font-size: 0.78rem;
+            letter-spacing: 0.05em;
+            opacity: 0.85;
+        }
+
+        body.dark-mode .vision-bar {
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        .vision-bar .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 2px;
+            border: 1px solid currentColor;
+        }
+        .vision-bar .dot.r { background: var(--c-red); }
+        .vision-bar .dot.y { background: var(--c-orange); }
+        .vision-bar .dot.g { background: var(--c-green); }
+        .vision-bar .title { margin-left: 0.5rem; opacity: 0.9; }
+
+        .vision-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            padding: 2.5rem;
+            gap: 2.5rem;
+            align-items: start;
+        }
+
+        .vision-block .label {
+            display: inline-block;
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+            padding: 0.25rem 0.55rem;
+            border: 1.5px solid currentColor;
+            border-radius: 3px;
+            margin-bottom: 1rem;
+            opacity: 0.85;
+        }
+
+        .vision-block h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.85rem;
+            line-height: 1.25;
+            letter-spacing: -0.01em;
+        }
+
+        .vision-block p {
+            font-size: 0.95rem;
+            line-height: 1.75;
+            opacity: 0.88;
+        }
+
+        /* Built by researchers */
+        .about-section {
+            padding: 5rem 2rem;
+            background: var(--bg);
+            border-bottom: 2px solid var(--border);
+        }
+
+        .about-container {
+            max-width: 760px;
+            margin: 0 auto;
             text-align: center;
         }
 
-        body.dark-mode .footer {
-            border-top-color: #333333;
-        }
-
-        .footer-content {
-            display: flex;
-            gap: 2rem;
-            justify-content: center;
-            align-items: center;
-            flex-wrap: wrap;
-            max-width: 1200px;
+        .about-text {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: var(--text-secondary);
             margin: 0 auto;
-            color: #6b7280;
-            font-size: 0.85rem;
         }
 
-        body.dark-mode .footer-content {
-            color: #9ca3af;
-        }
+        .about-text strong { color: var(--text); font-weight: 600; }
 
-        .footer-content a {
-            color: inherit;
-            text-decoration: none;
-            transition: color 0.2s ease;
-        }
-
-        .footer-content a:hover {
-            color: #1a1a1a;
-        }
-
-        body.dark-mode .footer-content a:hover {
-            color: #FAFAF8;
-        }
-
-        /* Theme Toggle */
-        .theme-toggle {
-            display: inline-flex;
-            border: 2px solid #1a1a1a;
-            border-radius: 4px;
-            overflow: hidden;
-            background: transparent;
-        }
-
-        body.dark-mode .theme-toggle {
-            border-color: #FAFAF8;
-        }
-
-        .theme-option {
-            padding: 0.5rem 0.75rem;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            border: none;
-            background: transparent;
-            color: #1a1a1a;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1rem;
-            border-right: 1px solid #1a1a1a;
-        }
-
-        body.dark-mode .theme-toggle .theme-option {
-            color: #FAFAF8;
-            border-right-color: #FAFAF8;
-        }
-
-        .theme-option:last-child {
-            border-right: none;
-        }
-
-        .theme-option:hover {
-            background: rgba(26, 26, 26, 0.1);
-        }
-
-        body.dark-mode .theme-option:hover {
-            background: rgba(250, 250, 248, 0.1);
-        }
-
-        .theme-option.active {
-            background: #1a1a1a;
-            color: #FAFAF8;
-        }
-
-        body.dark-mode .theme-option.active {
-            background: #FAFAF8;
-            color: #1a1a1a;
-        }
-
-        .theme-icon {
-            width: 16px;
-            height: 16px;
-            display: inline-block;
-        }
-
-        /* FAQ Section */
+        /* FAQ */
         .faq-section {
             padding: 5rem 2rem;
-            background: #f5faf5;
-        }
-
-        body.dark-mode .faq-section {
-            background: #1a1a1a;
+            background: var(--bg);
+            border-bottom: 2px solid var(--border);
         }
 
         .faq-container {
@@ -696,20 +919,8 @@
             margin: 0 auto;
         }
 
-        .faq-title {
-            font-size: 2.2rem;
-            font-weight: 600;
-            margin-bottom: 3rem;
-            text-align: center;
-            color: #1a1a1a;
-        }
-
-        body.dark-mode .faq-title {
-            color: #FAFAF8;
-        }
-
         .faq-item {
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
             border: 2px solid #d0d0d0;
             border-radius: 4px;
             overflow: hidden;
@@ -717,8 +928,8 @@
         }
 
         body.dark-mode .faq-item {
-            border-color: #4a4a4a;
-            background: #2a2a2a;
+            border-color: #6b6b72;
+            background: var(--bg-card);
         }
 
         .faq-question {
@@ -738,18 +949,10 @@
             color: #1a1a1a;
         }
 
-        body.dark-mode .faq-question {
-            background: #2a2a2a;
-            color: #FAFAF8;
-        }
+        body.dark-mode .faq-question { background: var(--bg-card); color: var(--text); }
 
-        .faq-question:hover {
-            background: #f0f0f0;
-        }
-
-        body.dark-mode .faq-question:hover {
-            background: #3a3a3a;
-        }
+        .faq-question:hover { background: #f0f0f0; }
+        body.dark-mode .faq-question:hover { background: #5a5a62; }
 
         .faq-toggle {
             display: flex;
@@ -768,13 +971,9 @@
             stroke-width: 2;
         }
 
-        body.dark-mode .faq-toggle svg {
-            stroke: #FAFAF8;
-        }
+        body.dark-mode .faq-toggle svg { stroke: var(--text); }
 
-        .faq-item.active .faq-toggle {
-            transform: rotate(180deg);
-        }
+        .faq-item.active .faq-toggle { transform: rotate(180deg); }
 
         .faq-answer {
             max-height: 0;
@@ -787,85 +986,190 @@
             background: #FAFAF8;
         }
 
-        body.dark-mode .faq-answer {
-            color: #d1d5db;
-            background: #2a2a2a;
+        body.dark-mode .faq-answer { color: var(--text-secondary); background: var(--bg-card); }
+
+        .faq-item.active .faq-answer { max-height: 800px; padding: 1.5rem; }
+
+        /* Final CTA */
+        .final-cta {
+            padding: 5rem 2rem;
+            text-align: center;
+            background: var(--pale-green);
+            border-bottom: 2px solid var(--border);
         }
 
-        .faq-item.active .faq-answer {
-            max-height: 500px;
-            padding: 1.5rem;
+        body.dark-mode .final-cta {
+            background: var(--pale-green);
         }
+
+        .final-cta h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 0.85rem;
+            color: var(--text);
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+        }
+
+        .final-cta p {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            margin: 0 auto 2rem;
+            max-width: 520px;
+            line-height: 1.7;
+        }
+
+        /* Footer */
+        .footer {
+            padding: 3.5rem 2rem 2rem;
+            border-top: 2px solid var(--border);
+            background: var(--bg);
+        }
+
+        .footer-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr;
+            gap: 2.5rem;
+            padding-bottom: 2.5rem;
+        }
+
+        .footer-brand .logo-section { margin-bottom: 1rem; }
+
+        .footer-brand p {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            max-width: 260px;
+        }
+
+        .footer-col h4 {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--text);
+            margin-bottom: 1rem;
+        }
+
+        .footer-col ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+
+        .footer-col a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.88rem;
+            transition: color 0.2s ease;
+        }
+
+        .footer-col a:hover { color: var(--text); }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 2rem;
+            border-top: 2px solid var(--border);
+            display: flex;
+            gap: 1.5rem;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            color: var(--text-tertiary);
+            font-size: 0.82rem;
+        }
+
+        .footer-bottom-links {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-bottom-links a {
+            color: var(--text-tertiary);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .footer-bottom-links a:hover { color: var(--text); }
+
+        /* Theme toggle */
+        .theme-toggle {
+            display: inline-flex;
+            border: 2px solid var(--accent);
+            border-radius: 4px;
+            overflow: hidden;
+            background: transparent;
+        }
+
+        .theme-option {
+            padding: 0.5rem 0.75rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: none;
+            background: transparent;
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            border-right: 1px solid var(--accent);
+        }
+
+        .theme-option:last-child { border-right: none; }
+
+        .theme-option:hover { background: rgba(26, 26, 26, 0.1); }
+        body.dark-mode .theme-option:hover { background: rgba(250, 250, 248, 0.1); }
+
+        .theme-option.active {
+            background: var(--accent);
+            color: var(--accent-fg);
+        }
+
+        .theme-icon { width: 16px; height: 16px; display: inline-block; }
 
         /* Responsive */
+        @media (max-width: 1024px) {
+            .footer-grid { grid-template-columns: 1.5fr 1fr 1fr; }
+        }
+
+        @media (max-width: 900px) {
+            .vision-grid { grid-template-columns: 1fr; padding: 2rem; gap: 2rem; }
+        }
+
         @media (max-width: 768px) {
-            .hero {
-                padding: 2rem 1.5rem;
-            }
-
-            .hero .section-container {
-                flex-direction: column;
-                gap: 2rem;
-            }
-
-            .hero-visual {
-                flex: none;
-                width: 100%;
-                max-width: 280px;
-                margin: 0 auto;
-            }
-
-            .hero-content {
-                text-align: center;
-            }
-
-            .hero-title {
-                font-size: 1.8rem;
-            }
-
-            .hero-subtitle {
-                font-size: 1rem;
-            }
-
-            .section {
-                padding: 2.5rem 1.5rem;
-            }
-
-            .cta-buttons {
-                flex-direction: column;
-                justify-content: center;
-            }
-
-            .btn {
-                width: 100%;
-            }
-
-            .feature-item {
+            .hero { padding: 2rem 1.5rem; }
+            .hero .section-container { flex-direction: column; gap: 2rem; }
+            .hero-title { font-size: 1.8rem; }
+            .hero-subtitle { font-size: 1rem; }
+            .section { padding: 2.5rem 1.5rem; }
+            .section-title { font-size: 1.6rem; }
+            .cta-buttons { flex-direction: column; justify-content: center; }
+            .btn { width: 100%; }
+            .btn.has-canvas { width: 100%; }
+            .feature-item, .feature-item.reverse {
                 flex-direction: column;
                 gap: 1.5rem;
                 margin-bottom: 2rem;
             }
-
-            .feature-item-visual {
-                flex: none;
-                width: 100%;
-                max-width: 280px;
-                margin: 0 auto;
-            }
-
-            .features-grid {
+            .feature-item-visual { flex: none; width: 100%; max-width: 280px; margin: 0 auto; }
+            .problem-grid, .steps-grid {
                 grid-template-columns: 1fr;
-                gap: 1.5rem;
             }
-
-            .header {
-                padding: 1rem 1.5rem;
-            }
-
-            .footer-content {
-                gap: 1rem;
-                font-size: 0.8rem;
-            }
+            .header { padding: 1rem 1.5rem; }
+            .header-nav { display: none; }
+            .header-right { gap: 0.75rem; }
+            .footer-grid { grid-template-columns: 1fr 1fr; gap: 1.75rem; }
+            .footer-brand { grid-column: 1 / -1; }
+            .final-cta h2 { font-size: 1.6rem; }
+            .use-case-block-header { flex-direction: column; align-items: flex-start; gap: 0.6rem; }
+            .quote-rotator { padding: 2rem 1.5rem 3rem; }
         }
     </style>
 </head>
@@ -878,6 +1182,8 @@
         </a>
         <div class="header-right">
             <nav class="header-nav">
+                <a href="#product">Product</a>
+                <a href="#use-cases">Use cases</a>
                 <a href="#faq">FAQ</a>
             </nav>
             <div class="theme-toggle">
@@ -904,7 +1210,7 @@
 
     <!-- Main Content -->
     <main class="main-content">
-        <!-- Hero Section -->
+        <!-- Hero -->
         <section class="hero section">
             <div class="section-container">
                 <div class="hero-content">
@@ -918,7 +1224,10 @@
                             placeholder="Your email"
                             required
                         >
-                        <button type="submit" class="btn btn-primary">Join Waitlist</button>
+                        <button type="submit" class="btn btn-primary has-canvas">
+                            <canvas id="heroBtnCanvas" class="btn-canvas"></canvas>
+                            <span class="btn-text">Join Waitlist</span>
+                        </button>
                     </form>
                 </div>
                 <div class="hero-visual">
@@ -927,8 +1236,77 @@
             </div>
         </section>
 
-        <!-- Video Section (Peeking from bottom of hero) -->
-        <section class="video-section section">
+        <!-- Logo Strip (moved above video) -->
+        <section class="logo-strip">
+            <div class="logo-strip-label">Trusted by researchers from</div>
+            <div class="logo-row">
+                <span class="logo-pill">Stanford</span>
+                <span class="logo-pill">MIT</span>
+                <span class="logo-pill">Harvard</span>
+                <span class="logo-pill">Caltech</span>
+                <span class="logo-pill">Princeton</span>
+                <span class="logo-pill">Berkeley</span>
+                <span class="logo-pill">Oxford</span>
+                <span class="logo-pill">Cambridge</span>
+                <span class="logo-pill">ETH Zürich</span>
+                <span class="logo-pill">Imperial College</span>
+                <span class="logo-pill">UCL</span>
+                <span class="logo-pill">CMU</span>
+                <span class="logo-pill">UCSF</span>
+            </div>
+        </section>
+
+        <!-- Rotating Quotes (moved above video) -->
+        <section class="quote-section">
+            <div class="section-container">
+                <div style="text-align:center;">
+                    <span class="section-eyebrow">From the field</span>
+                </div>
+                <h2 class="section-title">What researchers are saying.</h2>
+                <p class="section-subtitle">Early users across academic and industrial labs are putting Tuva to work on their hardest projects. <em>(Real quotes to be added.)</em></p>
+
+                <div class="quote-rotator" id="quoteRotator">
+                    <div class="quote-slide active" data-index="0">
+                        <p class="quote-text">"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tuva changed how my lab tracks experiments across months of work." <em>— placeholder quote</em></p>
+                        <div class="quote-author">
+                            <div class="quote-avatar qa-1"><i></i><i></i><i></i><i></i></div>
+                            <div>
+                                <div class="quote-name">Dr. Jane Doe</div>
+                                <div class="quote-role">Principal Investigator · Placeholder Lab</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="quote-slide" data-index="1">
+                        <p class="quote-text">"Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. I onboard new students twice as fast now." <em>— placeholder quote</em></p>
+                        <div class="quote-author">
+                            <div class="quote-avatar qa-2"><i></i><i></i><i></i><i></i></div>
+                            <div>
+                                <div class="quote-name">John Smith</div>
+                                <div class="quote-role">PhD Candidate · Placeholder University</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="quote-slide" data-index="2">
+                        <p class="quote-text">"Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Citations down to the exact line — game changer." <em>— placeholder quote</em></p>
+                        <div class="quote-author">
+                            <div class="quote-avatar qa-3"><i></i><i></i><i></i><i></i></div>
+                            <div>
+                                <div class="quote-name">Dr. Alex Chen</div>
+                                <div class="quote-role">Research Scientist · Placeholder Co.</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="quote-dots">
+                        <button class="quote-dot active" data-slide="0" aria-label="Quote 1"></button>
+                        <button class="quote-dot" data-slide="1" aria-label="Quote 2"></button>
+                        <button class="quote-dot" data-slide="2" aria-label="Quote 3"></button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Video -->
+        <section class="video-section">
             <div class="section-container">
                 <div class="video-placeholder">
                     <div style="text-align: center;">
@@ -939,58 +1317,215 @@
             </div>
         </section>
 
-        <!-- Validation Section -->
-        <section class="validation-section" id="validation">
+        <!-- Problem -->
+        <section class="problem-section">
             <div class="section-container">
-                <div class="validation-label">Trusted by researchers from</div>
-                <p class="validation-text">Stanford • MIT • Harvard • And more</p>
+                <div style="text-align:center;">
+                    <span class="section-eyebrow">The Problem</span>
+                </div>
+                <h2 class="section-title">Research moves at the speed of context.</h2>
+                <p class="section-subtitle">Modern R&D is splintered across a dozen tools that don't talk to each other. The cost is paid in lost time, lost insight, and lost momentum.</p>
+
+                <div class="problem-grid">
+                    <div class="problem-card">
+                        <div class="problem-icon c-1">▦</div>
+                        <h3>Knowledge silos</h3>
+                        <p>Project context lives in fragments: a Slack thread, a notebook, a stale README, a PI's head. New collaborators re-learn it from scratch.</p>
+                    </div>
+                    <div class="problem-card">
+                        <div class="problem-icon c-2">⚙</div>
+                        <h3>Tool fragmentation</h3>
+                        <p>You stitch together GitHub, Notion, Jupyter, ChatGPT, Zotero. Every handoff loses something. <em>You</em> are the integration layer.</p>
+                    </div>
+                    <div class="problem-card">
+                        <div class="problem-icon c-3">◷</div>
+                        <h3>Lost context</h3>
+                        <p>Generic AI assistants don't know your model, your data, or last week's lab meeting. They produce confident answers about the wrong problem.</p>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <!-- Features Section -->
-        <section class="features-section section">
+        <!-- Use Cases (moved above features; restructured) -->
+        <section class="use-cases" id="use-cases">
             <div class="section-container">
-                <h2 class="section-title">Product Features</h2>
+                <div style="text-align:center;">
+                    <span class="section-eyebrow">Use cases</span>
+                </div>
+                <h2 class="section-title">Built for every research domain — and every research task.</h2>
+                <p class="section-subtitle">Tuva is domain-agnostic by design. It learns your project, whatever field you're in and whatever you're trying to do with it.</p>
 
-                <!-- Feature 1: Context Mapping -->
-                <div class="feature-item">
+                <div class="use-case-block">
+                    <div class="use-case-block-header">
+                        <span class="use-case-block-tag t-blue">By field</span>
+                        <h3>Across every research domain</h3>
+                    </div>
+                    <div class="chip-grid">
+                        <span class="chip">Molecular Dynamics</span>
+                        <span class="chip">Omics &amp; Genomics</span>
+                        <span class="chip">Physics &amp; Astronomy</span>
+                        <span class="chip">Chemistry &amp; Materials</span>
+                        <span class="chip">ML &amp; AI Research</span>
+                        <span class="chip">Neuroscience</span>
+                        <span class="chip">Theoretical Modeling</span>
+                        <span class="chip">Engineering &amp; Applied</span>
+                        <span class="chip chip-accent">+ many more</span>
+                    </div>
+                </div>
+
+                <div class="use-case-block">
+                    <div class="use-case-block-header">
+                        <span class="use-case-block-tag t-orange">By task</span>
+                        <h3>Across every research task</h3>
+                    </div>
+                    <div class="chip-grid">
+                        <span class="chip">Ideate &amp; explore</span>
+                        <span class="chip">Write code (Python / R / Jupyter)</span>
+                        <span class="chip">Analyze data in notebooks</span>
+                        <span class="chip">Read &amp; search literature</span>
+                        <span class="chip">Draft papers &amp; figures</span>
+                        <span class="chip">Reproduce experiments</span>
+                        <span class="chip">Plan studies</span>
+                        <span class="chip">Brainstorm hypotheses</span>
+                        <span class="chip chip-accent">+ many more</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features (right-left-right) -->
+        <section class="features-section" id="product">
+            <div class="section-container">
+                <div style="text-align:center;">
+                    <span class="section-eyebrow">The Product</span>
+                </div>
+                <h2 class="section-title">An interface that learns alongside you.</h2>
+                <p class="section-subtitle">Tuva indexes your project end-to-end, then puts that context to work — surfacing, connecting, and automating across the tools you already use.</p>
+
+                <!-- Feature 1: Knowledge → graphic RIGHT, text LEFT -->
+                <div class="feature-item reverse">
                     <div class="feature-item-visual">
                         <canvas id="contextCanvas" class="context-canvas"></canvas>
                     </div>
                     <div class="feature-item-text">
+                        <span class="feature-tag">01 · Knowledge</span>
                         <h3 class="feature-item-title">Continuous Context Mapping</h3>
-                        <p class="feature-item-description">Tuva builds a rich knowledge graph of your research as it evolves. Different pieces of context—across papers, experiments, datasets—light up as they relate to your current work. Discover connections you'd miss in a spreadsheet.</p>
+                        <p class="feature-item-description">Tuva builds a rich knowledge graph of your research as it evolves. Different pieces of context — across papers, experiments, datasets — light up as they relate to your current work. Discover connections you'd miss in a spreadsheet.</p>
+                        <ul class="feature-bullets">
+                            <li>Continuous re-indexing of source files and PDFs</li>
+                            <li>Citations down to the line, page, or notebook cell</li>
+                            <li>Surfaces relationships across papers, experiments, and datasets</li>
+                        </ul>
                     </div>
                 </div>
 
-                <!-- Feature 2: Interoperability -->
+                <!-- Feature 2: Interoperability → graphic LEFT, text RIGHT (default) -->
                 <div class="feature-item">
                     <div class="feature-item-visual">
                         <canvas id="ampersandCanvas" class="ampersand-canvas"></canvas>
                     </div>
                     <div class="feature-item-text">
+                        <span class="feature-tag">02 · Interoperability</span>
                         <h3 class="feature-item-title">Interoperability</h3>
-                        <p class="feature-item-description">Connect to the tools your team already loves. Tuva integrates with your existing research stack.</p>
+                        <p class="feature-item-description">Connect to the tools your team already loves. Tuva integrates with your existing research stack — so context flows between them instead of stalling at every boundary.</p>
+                        <ul class="feature-bullets">
+                            <li>Native integrations with GitHub, Notion, Slack, and Jupyter</li>
+                            <li>Local-first by default — your data stays where it lives</li>
+                            <li>No vendor lock-in: take your knowledge graph with you</li>
+                        </ul>
                     </div>
                 </div>
 
-                <!-- Feature 3: Skill-Building -->
-                <div class="feature-item">
+                <!-- Feature 3: Automation → graphic RIGHT, text LEFT -->
+                <div class="feature-item reverse">
                     <div class="feature-item-visual">
                         <canvas id="robotCanvas" class="robot-canvas"></canvas>
                     </div>
                     <div class="feature-item-text">
+                        <span class="feature-tag">03 · Automation</span>
                         <h3 class="feature-item-title">Skill-Building</h3>
-                        <p class="feature-item-description">Design repeatable actions and codify them as skills. Let Tuva automate the workflows you build.</p>
+                        <p class="feature-item-description">Design repeatable actions and codify them as skills. Let Tuva automate the workflows you build — figure regeneration, lit-review summaries, parameter sweeps — into repeatable skills your whole team can call on.</p>
+                        <ul class="feature-bullets">
+                            <li>Turn ad-hoc prompts into versioned, shareable skills</li>
+                            <li>Compose skills into multi-step research pipelines</li>
+                            <li>Run on-demand or schedule against new data</li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- FAQ Section -->
+        <!-- How It Works -->
+        <section class="how-it-works" id="how-it-works">
+            <div class="section-container">
+                <div style="text-align:center;">
+                    <span class="section-eyebrow">How it works</span>
+                </div>
+                <h2 class="section-title">Three steps from cold start to context.</h2>
+                <p class="section-subtitle">Get up and running in minutes. Tuva does the heavy lifting in the background while you keep working the way you already do.</p>
+
+                <div class="steps-grid">
+                    <div class="step-card">
+                        <div class="step-number s-1">01</div>
+                        <h3>Point it at your project</h3>
+                        <p>Connect a folder, a repo, a Notion workspace. Tuva indexes everything in place — no migration, no copy-paste.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number s-2">02</div>
+                        <h3>Ask in context</h3>
+                        <p>Chat against your full project. Answers cite back to the exact file, page, or cell — not a hallucinated paraphrase.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number s-3">03</div>
+                        <h3>Automate the tedious parts</h3>
+                        <p>Save the workflows you repeat as skills. Run them on demand or trigger them as new data lands. <em>(To be expanded.)</em></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Vision -->
+        <section class="vision-section">
+            <div class="section-container">
+                <div class="vision-container">
+                    <div class="vision-bar">
+                        <span class="dot r"></span>
+                        <span class="dot y"></span>
+                        <span class="dot g"></span>
+                        <span class="title">~/tuva/vision &nbsp; &nbsp; today · tomorrow</span>
+                    </div>
+                    <div class="vision-grid">
+                        <div class="vision-block">
+                            <span class="label">Today</span>
+                            <h3>Faster, smarter research.</h3>
+                            <p>Tuva helps you ideate, review literature, and analyze data at a pace that's hard to imagine without it. The tedious parts collapse. The interesting parts get more of your time.</p>
+                        </div>
+                        <div class="vision-block">
+                            <span class="label">Tomorrow</span>
+                            <h3>Swarms of bespoke research agents.</h3>
+                            <p>Equip every R&D team with armies of specialized agents — running experiments, scanning the literature, proposing the next move — all working over a shared, evolving knowledge base of your science.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Built by researchers -->
+        <section class="about-section">
+            <div class="about-container">
+                <h2 class="section-title">Built by researchers, for researchers.</h2>
+                <p class="about-text">Tuva is a team of researchers who got tired of being the integration layer between their own tools. We dogfood everything we ship — if it doesn't make <strong>our</strong> research better, it doesn't ship.</p>
+            </div>
+        </section>
+
+        <!-- FAQ -->
         <section class="faq-section" id="faq">
             <div class="faq-container">
-                <h2 class="faq-title">Frequently Asked Questions</h2>
+                <div style="text-align:center;">
+                    <span class="section-eyebrow">FAQ</span>
+                </div>
+                <h2 class="section-title">Frequently asked questions.</h2>
+                <p class="section-subtitle">Don't see yours? <a href="mailto:hello@tuva.ai" style="color: var(--text); text-decoration: underline;">Drop us a line</a>.</p>
 
                 <div class="faq-item">
                     <button class="faq-question">
@@ -1041,14 +1576,80 @@
                 </div>
             </div>
         </section>
+
+        <!-- Final CTA -->
+        <section class="final-cta">
+            <h2>Ready to put your research on a faster path?</h2>
+            <p>Join the waitlist and we'll reach out as we open up access. No spam, no marketing blasts — just a heads-up when there's a seat for you.</p>
+            <form class="cta-buttons" name="waitlist-bottom" method="POST" netlify>
+                <input
+                    type="email"
+                    name="email"
+                    class="email-input-waitlist"
+                    placeholder="Your email"
+                    required
+                >
+                <button type="submit" class="btn btn-primary has-canvas">
+                    <canvas id="ctaBtnCanvas" class="btn-canvas"></canvas>
+                    <span class="btn-text">Join Waitlist</span>
+                </button>
+            </form>
+        </section>
     </main>
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="footer-content">
-            <a href="mailto:hello@tuva.ai">hello@tuva.ai</a>
-            <a href="https://twitter.com/TuvaAI" target="_blank" rel="noopener noreferrer">@TuvaAI</a>
-            <span>© 2025 Tuva AI, Inc.</span>
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="/" class="logo-section">
+                    <img src="Tuva_Logo%20+%20Icon_Black.png" alt="Tuva" class="logo-image">
+                    <span class="logo-text">Tuva AI</span>
+                </a>
+                <p>Contextual AI for scientific research. Built by researchers, for researchers.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Product</h4>
+                <ul>
+                    <li><a href="#product">Features</a></li>
+                    <li><a href="#how-it-works">How it works</a></li>
+                    <li><a href="#use-cases">Use cases</a></li>
+                    <li><a href="https://tuva-ai.notion.site/" target="_blank" rel="noopener noreferrer">Get started</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="#">Blog <em>(soon)</em></a></li>
+                    <li><a href="#">Careers <em>(soon)</em></a></li>
+                    <li><a href="mailto:hello@tuva.ai">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="#">Docs <em>(soon)</em></a></li>
+                    <li><a href="#">Changelog <em>(soon)</em></a></li>
+                    <li><a href="#">Research <em>(soon)</em></a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Connect</h4>
+                <ul>
+                    <li><a href="https://twitter.com/TuvaAI" target="_blank" rel="noopener noreferrer">Twitter / X</a></li>
+                    <li><a href="#">LinkedIn <em>(soon)</em></a></li>
+                    <li><a href="#">GitHub <em>(soon)</em></a></li>
+                    <li><a href="mailto:hello@tuva.ai">hello@tuva.ai</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>© 2026 Tuva AI, Inc. All rights reserved.</span>
+            <div class="footer-bottom-links">
+                <a href="#">Privacy</a>
+                <a href="#">Terms</a>
+                <a href="#">Security</a>
+            </div>
         </div>
     </footer>
 
@@ -1056,43 +1657,24 @@
         // Theme management
         const THEME_KEY = 'tuva-theme-preference';
         let currentTheme = localStorage.getItem(THEME_KEY) || 'system';
-        let systemDarkMode = false;
 
-        // FAQ functionality
-        document.querySelectorAll('.faq-question').forEach(question => {
-            question.addEventListener('click', () => {
-                const faqItem = question.parentElement;
-                faqItem.classList.toggle('active');
-            });
-        });
-
-        // Check system preference
         function getSystemDarkMode() {
             return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
         }
 
-        // Apply theme
         function applyTheme(theme) {
             const body = document.body;
             let isDark = false;
+            if (theme === 'system') isDark = getSystemDarkMode();
+            else isDark = theme === 'dark';
 
-            if (theme === 'system') {
-                isDark = getSystemDarkMode();
-            } else {
-                isDark = theme === 'dark';
-            }
-
-            if (isDark) {
-                body.classList.add('dark-mode');
-            } else {
-                body.classList.remove('dark-mode');
-            }
+            if (isDark) body.classList.add('dark-mode');
+            else body.classList.remove('dark-mode');
 
             updateLogo(isDark);
             updateActiveOption();
         }
 
-        // Update logo
         function updateLogo(isDark) {
             const logoImage = document.getElementById('logoImage');
             if (logoImage) {
@@ -1100,31 +1682,21 @@
             }
         }
 
-        // Update active option in button bar
         function updateActiveOption() {
             document.querySelectorAll('.theme-option').forEach(option => {
                 option.classList.remove('active');
-                if (option.dataset.theme === currentTheme) {
-                    option.classList.add('active');
-                }
+                if (option.dataset.theme === currentTheme) option.classList.add('active');
             });
         }
 
-        // Initialize theme
-        systemDarkMode = getSystemDarkMode();
         applyTheme(currentTheme);
 
-        // Listen for system preference changes
         if (window.matchMedia) {
-            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-                systemDarkMode = e.matches;
-                if (currentTheme === 'system') {
-                    applyTheme('system');
-                }
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+                if (currentTheme === 'system') applyTheme('system');
             });
         }
 
-        // Theme option clicks
         document.querySelectorAll('.theme-option').forEach(option => {
             option.addEventListener('click', () => {
                 currentTheme = option.dataset.theme;
@@ -1133,27 +1705,143 @@
             });
         });
 
-        // Scroll to validation section
-        function scrollToValidation() {
-            const validationSection = document.getElementById('validation');
-            validationSection.scrollIntoView({ behavior: 'smooth' });
+        // FAQ
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const faqItem = question.parentElement;
+                faqItem.classList.toggle('active');
+            });
+        });
+
+        // Smooth scroll for anchors
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href.length > 1) {
+                    const target = document.querySelector(href);
+                    if (target) {
+                        e.preventDefault();
+                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                }
+            });
+        });
+
+        // Rotating quote box
+        function initQuoteRotator() {
+            const rotator = document.getElementById('quoteRotator');
+            if (!rotator) return;
+            const slides = rotator.querySelectorAll('.quote-slide');
+            const dots = rotator.querySelectorAll('.quote-dot');
+            if (slides.length === 0) return;
+
+            let current = 0;
+            const interval = 6500;
+            let timer;
+
+            function show(idx) {
+                slides.forEach((s, i) => s.classList.toggle('active', i === idx));
+                dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+                current = idx;
+            }
+            function next() { show((current + 1) % slides.length); }
+            function start() { clearInterval(timer); timer = setInterval(next, interval); }
+
+            dots.forEach((dot, i) => {
+                dot.addEventListener('click', () => {
+                    show(i);
+                    start();
+                });
+            });
+
+            start();
         }
 
-        // Lissajous curve animation with 3D Y-axis rotation
-        function initLissajous() {
-            const canvas = document.getElementById('lissajousCanvas');
+        // Button-sized rotating lissajous (one per button)
+        function initButtonLissajous(canvasId) {
+            const canvas = document.getElementById(canvasId);
             if (!canvas) return;
-
             const ctx = canvas.getContext('2d');
             let animationTime = 0;
 
             function getLineColor() {
-                return document.body.classList.contains('dark-mode') ? '#FAFAF8' : '#1a1a1a';
+                // light mode: button is dark, line is light; dark mode: button is light, line is dark grey
+                return document.body.classList.contains('dark-mode') ? '#3a3a3d' : '#FAFAF8';
             }
 
-            function getBackgroundColor() {
-                return document.body.classList.contains('dark-mode') ? '#1a1a1a' : '#f5faf5';
+            function resizeCanvas() {
+                const rect = canvas.getBoundingClientRect();
+                canvas.width = rect.width * window.devicePixelRatio;
+                canvas.height = rect.height * window.devicePixelRatio;
+                ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
             }
+
+            function drawLissajous(time) {
+                const width = canvas.width / window.devicePixelRatio;
+                const height = canvas.height / window.devicePixelRatio;
+                const centerX = width / 2;
+                const centerY = height / 2;
+                const scale = Math.min(width, height) / 4.5;
+                const rotationAngle = time * 0.75;
+                const perspectiveDistance = 500;
+
+                ctx.clearRect(0, 0, width, height);
+
+                const points = [];
+                for (let t = 0; t <= Math.PI * 2; t += Math.PI / 60) {
+                    let x = Math.sin(5 * t) * scale;
+                    let y = Math.sin(3 * t) * scale;
+                    let z = 0;
+                    const cos = Math.cos(rotationAngle);
+                    const sin = Math.sin(rotationAngle);
+                    const x3d = x * cos + z * sin;
+                    const z3d = -x * sin + z * cos;
+                    const perspective = perspectiveDistance / (perspectiveDistance + z3d);
+                    points.push({
+                        x: centerX + x3d * perspective,
+                        y: centerY + y * perspective,
+                        depth: perspective
+                    });
+                }
+
+                ctx.strokeStyle = getLineColor();
+                ctx.lineCap = 'round';
+                ctx.lineJoin = 'round';
+
+                for (let i = 0; i < points.length - 1; i++) {
+                    const p1 = points[i];
+                    const p2 = points[i + 1];
+                    const avgDepth = (p1.depth + p2.depth) / 2;
+                    ctx.lineWidth = 0.6 + avgDepth * 0.3;
+                    ctx.globalAlpha = 0.8 + avgDepth * 0.2;
+                    ctx.beginPath();
+                    ctx.moveTo(p1.x, p1.y);
+                    ctx.lineTo(p2.x, p2.y);
+                    ctx.stroke();
+                }
+                ctx.globalAlpha = 1;
+            }
+
+            function animate() {
+                animationTime += 0.016;
+                drawLissajous(animationTime);
+                requestAnimationFrame(animate);
+            }
+
+            resizeCanvas();
+            window.addEventListener('resize', resizeCanvas);
+            animate();
+        }
+
+        // Lissajous (hidden hero canvas, kept for compatibility)
+        function initLissajous() {
+            const canvas = document.getElementById('lissajousCanvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            let animationTime = 0;
+
+            function getLineColor() { return document.body.classList.contains('dark-mode') ? '#FAFAF8' : '#1a1a1a'; }
+            function getBackgroundColor() { return document.body.classList.contains('dark-mode') ? '#3a3a3d' : '#f5faf5'; }
 
             function resizeCanvas() {
                 const rect = canvas.getBoundingClientRect();
@@ -1170,33 +1858,26 @@
                 const scale = Math.min(width, height) / 3.2;
                 const perspectiveDistance = 500;
 
-                // Clear canvas
                 ctx.fillStyle = getBackgroundColor();
                 ctx.fillRect(0, 0, width, height);
 
-                // Generate Lissajous points and rotate around Y axis in 3D
                 const points = [];
                 for (let t = 0; t <= Math.PI * 2; t += Math.PI / 80) {
                     let x = Math.sin(5 * t) * scale;
                     let y = Math.sin(3 * t) * scale;
                     let z = 0;
-
-                    // Rotate around Y axis
                     const cos = Math.cos(rotationAngle);
                     const sin = Math.sin(rotationAngle);
                     const x3d = x * cos + z * sin;
                     const z3d = -x * sin + z * cos;
-
-                    // Perspective projection
                     const perspective = perspectiveDistance / (perspectiveDistance + z3d);
-                    const screenX = centerX + x3d * perspective;
-                    const screenY = centerY + y * perspective;
-                    const depth = perspective; // Use for opacity/width variation
-
-                    points.push({ x: screenX, y: screenY, depth });
+                    points.push({
+                        x: centerX + x3d * perspective,
+                        y: centerY + y * perspective,
+                        depth: perspective
+                    });
                 }
 
-                // Draw with varying line width based on depth (visual enhancement)
                 ctx.strokeStyle = getLineColor();
                 ctx.lineCap = 'round';
                 ctx.lineJoin = 'round';
@@ -1204,60 +1885,42 @@
                 for (let i = 0; i < points.length - 1; i++) {
                     const p1 = points[i];
                     const p2 = points[i + 1];
-
                     const avgDepth = (p1.depth + p2.depth) / 2;
                     ctx.lineWidth = 1.5 + avgDepth * 1.5;
                     ctx.globalAlpha = 0.7 + avgDepth * 0.3;
-
                     ctx.beginPath();
                     ctx.moveTo(p1.x, p1.y);
                     ctx.lineTo(p2.x, p2.y);
                     ctx.stroke();
                 }
-
                 ctx.globalAlpha = 1;
             }
 
             function animate() {
                 animationTime += 0.008;
-                const rotationAngle = animationTime;
-                drawLissajous(rotationAngle);
+                drawLissajous(animationTime);
                 requestAnimationFrame(animate);
             }
-
             resizeCanvas();
             window.addEventListener('resize', resizeCanvas);
             animate();
         }
 
-        // Context map brick animation
+        // Context bricks
         function initContextMap() {
             const canvas = document.getElementById('contextCanvas');
             if (!canvas) return;
-
             const ctx = canvas.getContext('2d');
             let animationTime = 0;
 
-            const colors = {
-                blue: '#3b82f6',
-                red: '#ef4444',
-                green: '#10b981',
-                purple: '#a855f7',
-                orange: '#f97316'
-            };
-
+            const colors = { blue: '#3b82f6', red: '#ef4444', green: '#10b981', purple: '#a855f7', orange: '#f97316' };
             const colorNames = Object.keys(colors);
             const bricks = [];
             const brickSize = 30;
             const gap = 2;
 
-            function getBackgroundColor() {
-                return document.body.classList.contains('dark-mode') ? '#2a2a2a' : '#ffffff';
-            }
-
-            function getBorderColor() {
-                return document.body.classList.contains('dark-mode') ? '#FAFAF8' : '#1a1a1a';
-            }
+            function getBackgroundColor() { return document.body.classList.contains('dark-mode') ? '#505057' : '#ffffff'; }
+            function getBorderColor() { return document.body.classList.contains('dark-mode') ? '#FAFAF8' : '#1a1a1a'; }
 
             function resizeCanvas() {
                 const rect = canvas.getBoundingClientRect();
@@ -1272,42 +1935,32 @@
                 const height = canvas.height / window.devicePixelRatio;
                 const cols = Math.floor((width - 20) / (brickSize + gap));
                 const rows = Math.floor((height - 20) / (brickSize + gap));
-                const maxBricks = Math.ceil((cols * rows) / 2.2); // Fill roughly half
+                const maxBricks = Math.ceil((cols * rows) / 2.2);
 
                 let brickCount = 0;
                 for (let row = rows - 1; row >= 0 && brickCount < maxBricks; row--) {
                     for (let col = 0; col < cols && brickCount < maxBricks; col++) {
-                        // Random chance to include brick (creates organic pile)
                         if (Math.random() > 0.3 || row === rows - 1) {
                             const x = 10 + col * (brickSize + gap);
                             const y = height - 10 - (rows - row) * (brickSize + gap);
                             const colorKey = colorNames[Math.floor(Math.random() * colorNames.length)];
-
-                            bricks.push({
-                                x,
-                                y,
-                                size: brickSize,
-                                color: colorKey,
-                                baseColor: colors[colorKey]
-                            });
+                            bricks.push({ x, y, size: brickSize, color: colorKey, baseColor: colors[colorKey] });
                             brickCount++;
                         }
                     }
                 }
             }
 
-            function drawBricks(activeColor, intensity) {
+            function drawBricks(activeColor) {
                 const bgColor = getBackgroundColor();
                 const borderColor = getBorderColor();
                 const textColor = document.body.classList.contains('dark-mode') ? '#FAFAF8' : '#1a1a1a';
                 const width = canvas.width / window.devicePixelRatio;
                 const height = canvas.height / window.devicePixelRatio;
 
-                // Clear
                 ctx.fillStyle = bgColor;
                 ctx.fillRect(0, 0, width, height);
 
-                // Draw heading
                 ctx.fillStyle = textColor;
                 ctx.font = 'bold 16px "JetBrains Mono"';
                 ctx.textAlign = 'center';
@@ -1315,63 +1968,45 @@
                 ctx.fillText('Intelligent', width / 2, 12);
                 ctx.fillText('Knowledge Base', width / 2, 32);
 
-                // Draw bricks
                 bricks.forEach(brick => {
-                    let opacity = 0.25; // Dim by default
-
-                    if (brick.color === activeColor) {
-                        opacity = 1; // Bright when active
-                    }
+                    let opacity = 0.25;
+                    if (brick.color === activeColor) opacity = 1;
 
                     ctx.fillStyle = brick.baseColor;
                     ctx.globalAlpha = opacity;
                     ctx.fillRect(brick.x, brick.y, brick.size, brick.size);
 
-                    // Border
                     ctx.strokeStyle = borderColor;
                     ctx.lineWidth = 1;
                     ctx.globalAlpha = opacity * 0.6;
                     ctx.strokeRect(brick.x, brick.y, brick.size, brick.size);
                 });
-
                 ctx.globalAlpha = 1;
             }
 
             function animate() {
-                // Cycle through colors
-                const cycleTime = 3; // seconds per color
+                const cycleTime = 3;
                 const colorIndex = Math.floor((animationTime / cycleTime) % colorNames.length);
-                const activeColor = colorNames[colorIndex];
-
-                drawBricks(activeColor, 1);
-                animationTime += 1 / 60; // Assuming 60fps
+                drawBricks(colorNames[colorIndex]);
+                animationTime += 1 / 60;
                 requestAnimationFrame(animate);
             }
 
             resizeCanvas();
             generateBricks();
-            window.addEventListener('resize', () => {
-                resizeCanvas();
-                generateBricks();
-            });
+            window.addEventListener('resize', () => { resizeCanvas(); generateBricks(); });
             animate();
         }
 
-        // Skill-building machine with conveyer belt
+        // Skill-building machine
         function initRobot() {
             const canvas = document.getElementById('robotCanvas');
             if (!canvas) return;
-
             const ctx = canvas.getContext('2d');
             let animationTime = 0;
 
-            function getLineColor() {
-                return document.body.classList.contains('dark-mode') ? '#FAFAF8' : '#1a1a1a';
-            }
-
-            function getBackgroundColor() {
-                return document.body.classList.contains('dark-mode') ? '#2a2a2a' : '#ffffff';
-            }
+            function getLineColor() { return document.body.classList.contains('dark-mode') ? '#FAFAF8' : '#1a1a1a'; }
+            function getBackgroundColor() { return document.body.classList.contains('dark-mode') ? '#505057' : '#ffffff'; }
 
             function resizeCanvas() {
                 const rect = canvas.getBoundingClientRect();
@@ -1386,11 +2021,9 @@
                 const lineColor = getLineColor();
                 const bgColor = getBackgroundColor();
 
-                // Clear
                 ctx.fillStyle = bgColor;
                 ctx.fillRect(0, 0, width, height);
 
-                // Draw heading
                 ctx.fillStyle = lineColor;
                 ctx.font = 'bold 14px "JetBrains Mono"';
                 ctx.textAlign = 'center';
@@ -1404,11 +2037,8 @@
 
                 ctx.strokeStyle = lineColor;
                 ctx.lineWidth = 2;
-
-                // Machine body (rectangle)
                 ctx.strokeRect(machineX, machineY, machineWidth, machineHeight);
 
-                // Lissajous inside machine
                 const lissScale = 12;
                 ctx.lineWidth = 1.5;
                 ctx.beginPath();
@@ -1417,33 +2047,25 @@
                     const y = Math.sin(3 * t) * lissScale;
                     const px = machineX + machineWidth / 2 + x;
                     const py = machineY + machineHeight / 2 + y;
-
-                    if (t === 0) {
-                        ctx.moveTo(px, py);
-                    } else {
-                        ctx.lineTo(px, py);
-                    }
+                    if (t === 0) ctx.moveTo(px, py);
+                    else ctx.lineTo(px, py);
                 }
                 ctx.stroke();
 
-                // Conveyer belt
                 const beltStartX = machineX + machineWidth;
                 const beltY = machineY + machineHeight / 2;
                 const beltLength = 120;
 
-                // Belt lines (top and bottom)
                 ctx.lineWidth = 2;
                 ctx.beginPath();
                 ctx.moveTo(beltStartX, beltY - 8);
                 ctx.lineTo(beltStartX + beltLength, beltY - 8);
                 ctx.stroke();
-
                 ctx.beginPath();
                 ctx.moveTo(beltStartX, beltY + 8);
                 ctx.lineTo(beltStartX + beltLength, beltY + 8);
                 ctx.stroke();
 
-                // Belt movement pattern
                 ctx.lineWidth = 1;
                 ctx.setLineDash([4, 4]);
                 ctx.beginPath();
@@ -1452,7 +2074,6 @@
                 ctx.stroke();
                 ctx.setLineDash([]);
 
-                // Skills moving on conveyer
                 const skillColors = ['#3b82f6', '#ef4444', '#10b981', '#a855f7', '#f97316'];
                 const skillShapes = ['circle', 'square', 'triangle', 'circle', 'square'];
                 const numSkills = 5;
@@ -1469,7 +2090,6 @@
                         const skillSize = 6;
 
                         ctx.fillStyle = skillColor;
-
                         if (skillShape === 'circle') {
                             ctx.beginPath();
                             ctx.arc(skillX, skillY, skillSize, 0, Math.PI * 2);
@@ -1499,21 +2119,15 @@
             animate();
         }
 
-        // Interoperability tool connector graphic
+        // Interoperability "ampersand"
         function initAmpersand() {
             const canvas = document.getElementById('ampersandCanvas');
             if (!canvas) return;
-
             const ctx = canvas.getContext('2d');
             let animationTime = 0;
 
-            function getLineColor() {
-                return document.body.classList.contains('dark-mode') ? '#FAFAF8' : '#1a1a1a';
-            }
-
-            function getBackgroundColor() {
-                return document.body.classList.contains('dark-mode') ? '#2a2a2a' : '#ffffff';
-            }
+            function getLineColor() { return document.body.classList.contains('dark-mode') ? '#FAFAF8' : '#1a1a1a'; }
+            function getBackgroundColor() { return document.body.classList.contains('dark-mode') ? '#505057' : '#ffffff'; }
 
             function resizeCanvas() {
                 const rect = canvas.getBoundingClientRect();
@@ -1530,11 +2144,9 @@
                 const bgColor = getBackgroundColor();
                 const lineColor = getLineColor();
 
-                // Clear
                 ctx.fillStyle = bgColor;
                 ctx.fillRect(0, 0, width, height);
 
-                // Draw heading
                 ctx.fillStyle = lineColor;
                 ctx.font = 'bold 14px "JetBrains Mono"';
                 ctx.textAlign = 'center';
@@ -1543,10 +2155,8 @@
                 ctx.fillText('Tools', width / 2, 30);
 
                 const mainCircleRadius = 50;
-                const divotRadius = 5;
                 const toolShapeRadius = 12;
 
-                // Draw main pale green circle with border
                 ctx.fillStyle = '#d4e8d4';
                 ctx.beginPath();
                 ctx.arc(centerX, centerY, mainCircleRadius, 0, Math.PI * 2);
@@ -1558,15 +2168,12 @@
                 ctx.arc(centerX, centerY, mainCircleRadius, 0, Math.PI * 2);
                 ctx.stroke();
 
-                // Draw divots around circumference and place tool shapes
                 const toolColors = ['#3b82f6', '#ef4444', '#10b981', '#a855f7', '#f97316'];
                 const toolShapes = ['circle', 'triangle', 'square', 'circle', 'triangle'];
                 const numTools = 5;
 
                 for (let i = 0; i < numTools; i++) {
                     const angle = (i / numTools) * Math.PI * 2 - Math.PI / 2;
-
-                    // Draw tool shape
                     const toolX = centerX + Math.cos(angle) * (mainCircleRadius + 25);
                     const toolY = centerY + Math.sin(angle) * (mainCircleRadius + 25);
                     const toolColor = toolColors[i];
@@ -1591,49 +2198,37 @@
                     }
                 }
 
-                // Draw rotating Lissajous inside main circle
                 const lissScale = mainCircleRadius * 0.6;
                 const rotationAngle = time * 0.5;
-
-                // Generate and draw Lissajous with 3D Y-axis rotation
                 const perspectiveDistance = 500;
                 const points = [];
                 for (let t = 0; t <= Math.PI * 2; t += Math.PI / 60) {
                     let x = Math.sin(5 * t) * lissScale;
                     let y = Math.sin(3 * t) * lissScale;
                     let z = 0;
-
                     const cos = Math.cos(rotationAngle);
                     const sin = Math.sin(rotationAngle);
                     const x3d = x * cos + z * sin;
                     const z3d = -x * sin + z * cos;
-
                     const perspective = perspectiveDistance / (perspectiveDistance + z3d);
-                    const screenX = centerX + x3d * perspective;
-                    const screenY = centerY + y * perspective;
-                    const depth = perspective;
-
-                    points.push({ x: screenX, y: screenY, depth });
+                    points.push({ x: centerX + x3d * perspective, y: centerY + y * perspective, depth: perspective });
                 }
 
                 ctx.strokeStyle = lineColor;
                 ctx.lineWidth = 1.5;
                 ctx.lineCap = 'round';
                 ctx.lineJoin = 'round';
-
                 for (let i = 0; i < points.length - 1; i++) {
                     const p1 = points[i];
                     const p2 = points[i + 1];
                     const avgDepth = (p1.depth + p2.depth) / 2;
                     ctx.lineWidth = 1 + avgDepth * 1.2;
                     ctx.globalAlpha = 0.7 + avgDepth * 0.3;
-
                     ctx.beginPath();
                     ctx.moveTo(p1.x, p1.y);
                     ctx.lineTo(p2.x, p2.y);
                     ctx.stroke();
                 }
-
                 ctx.globalAlpha = 1;
             }
 
@@ -1648,19 +2243,21 @@
             animate();
         }
 
-        // Initialize on load
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', () => {
-                initLissajous();
-                initContextMap();
-                initRobot();
-                initAmpersand();
-            });
-        } else {
+        // Init all
+        function initAll() {
             initLissajous();
             initContextMap();
             initRobot();
             initAmpersand();
+            initButtonLissajous('heroBtnCanvas');
+            initButtonLissajous('ctaBtnCanvas');
+            initQuoteRotator();
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initAll);
+        } else {
+            initAll();
         }
     </script>
 </body>
