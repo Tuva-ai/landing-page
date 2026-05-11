@@ -207,7 +207,7 @@
             align-items: center;
             gap: 2rem;
             text-align: center;
-            max-width: 700px;
+            max-width: 920px;
         }
 
         .hero-content {
@@ -228,7 +228,8 @@
             font-size: 1.1rem;
             font-weight: 400;
             color: var(--text-secondary);
-            margin-bottom: 2rem;
+            max-width: 720px;
+            margin: 0 auto 2rem;
             line-height: 1.7;
         }
 
@@ -332,31 +333,31 @@
 
         .email-input-waitlist::placeholder { color: var(--text-tertiary); }
 
-        /* Logo strip */
+        /* Logo strip — thin, greyscale */
         .logo-strip {
-            padding: 3rem 2rem;
-            background: linear-gradient(135deg, #f9f8f6 0%, #f3f3f1 100%);
+            padding: 1.4rem 2rem;
+            background: var(--bg);
             border-bottom: 2px solid var(--border);
         }
 
         body.dark-mode .logo-strip {
-            background: linear-gradient(135deg, #45454a 0%, #3a3a3d 100%);
+            background: var(--bg);
         }
 
         .logo-strip-label {
-            font-size: 0.78rem;
+            font-size: 0.7rem;
             color: var(--text-tertiary);
             text-transform: uppercase;
-            letter-spacing: 0.15em;
-            margin-bottom: 1.5rem;
+            letter-spacing: 0.18em;
+            margin-bottom: 0.9rem;
             text-align: center;
-            font-weight: 600;
+            font-weight: 500;
         }
 
         .logo-row {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.85rem;
+            gap: 2.25rem;
             align-items: center;
             justify-content: center;
             max-width: 1100px;
@@ -364,23 +365,21 @@
         }
 
         .logo-pill {
-            padding: 0.45rem 0.95rem;
-            border: 2px solid var(--border);
-            border-radius: 4px;
-            background: var(--bg-card);
-            font-size: 0.85rem;
+            padding: 0;
+            border: none;
+            background: transparent;
+            font-size: 0.95rem;
             font-weight: 600;
-            color: var(--text-secondary);
+            color: var(--text-tertiary);
             letter-spacing: -0.01em;
-            transition: transform 0.15s ease, border-color 0.15s ease;
+            opacity: 0.55;
+            filter: grayscale(100%);
+            transition: opacity 0.15s ease;
         }
 
-        body.dark-mode .logo-pill { background: var(--bg-card); }
+        body.dark-mode .logo-pill { background: transparent; }
 
-        .logo-pill:hover {
-            transform: translateY(-2px);
-            border-color: var(--text);
-        }
+        .logo-pill:hover { opacity: 1; }
 
         /* Rotating quote section (testimonials, lifted above the video) */
         .quote-section {
@@ -577,12 +576,16 @@
             border-bottom: 2px solid var(--border);
         }
 
-        .use-case-block {
-            max-width: 1000px;
-            margin: 0 auto 2.5rem;
+        .use-case-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+            max-width: 1100px;
+            margin: 0 auto;
+            align-items: start;
         }
 
-        .use-case-block:last-child { margin-bottom: 0; }
+        .use-case-block { margin: 0; }
 
         .use-case-block-header {
             display: flex;
@@ -1026,50 +1029,35 @@
             background: var(--bg);
         }
 
-        .footer-grid {
+        .footer-row {
             max-width: 1200px;
             margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr;
-            gap: 2.5rem;
-            padding-bottom: 2.5rem;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            gap: 2.25rem;
+            flex-wrap: wrap;
         }
 
-        .footer-brand .logo-section { margin-bottom: 1rem; }
-
-        .footer-brand p {
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-            line-height: 1.7;
-            max-width: 260px;
-        }
-
-        .footer-col h4 {
+        .footer-label {
             font-size: 0.75rem;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.15em;
             color: var(--text);
-            margin-bottom: 1rem;
+            white-space: nowrap;
         }
 
-        .footer-col ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-            gap: 0.6rem;
-        }
-
-        .footer-col a {
+        .footer-row a {
             color: var(--text-secondary);
             text-decoration: none;
-            font-size: 0.88rem;
+            font-size: 0.9rem;
             transition: color 0.2s ease;
+            white-space: nowrap;
         }
 
-        .footer-col a:hover { color: var(--text); }
+        .footer-row a:hover { color: var(--text); }
 
         .footer-bottom {
             max-width: 1200px;
@@ -1159,7 +1147,7 @@
                 margin-bottom: 2rem;
             }
             .feature-item-visual { flex: none; width: 100%; max-width: 280px; margin: 0 auto; }
-            .problem-grid, .steps-grid {
+            .problem-grid, .steps-grid, .use-case-row {
                 grid-template-columns: 1fr;
             }
             .header { padding: 1rem 1.5rem; }
@@ -1184,7 +1172,9 @@
             <nav class="header-nav">
                 <a href="#product">Product</a>
                 <a href="#use-cases">Use cases</a>
+                <a href="#how-it-works">Getting started</a>
                 <a href="#faq">FAQ</a>
+                <a href="https://tuva-ai.notion.site/" target="_blank" rel="noopener noreferrer">Careers</a>
             </nav>
             <div class="theme-toggle">
                 <button class="theme-option active" data-theme="light" title="Light mode">
@@ -1204,7 +1194,10 @@
                     </svg>
                 </button>
             </div>
-            <a href="https://tuva-ai.notion.site/" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Join us</a>
+            <a href="#waitlist" class="btn btn-primary has-canvas">
+                <canvas id="headerBtnCanvas" class="btn-canvas"></canvas>
+                <span class="btn-text">Join Waitlist</span>
+            </a>
         </div>
     </header>
 
@@ -1244,64 +1237,8 @@
                 <span class="logo-pill">MIT</span>
                 <span class="logo-pill">Harvard</span>
                 <span class="logo-pill">Caltech</span>
-                <span class="logo-pill">Princeton</span>
-                <span class="logo-pill">Berkeley</span>
                 <span class="logo-pill">Oxford</span>
-                <span class="logo-pill">Cambridge</span>
                 <span class="logo-pill">ETH Zürich</span>
-                <span class="logo-pill">Imperial College</span>
-                <span class="logo-pill">UCL</span>
-                <span class="logo-pill">CMU</span>
-                <span class="logo-pill">UCSF</span>
-            </div>
-        </section>
-
-        <!-- Rotating Quotes (moved above video) -->
-        <section class="quote-section">
-            <div class="section-container">
-                <div style="text-align:center;">
-                    <span class="section-eyebrow">From the field</span>
-                </div>
-                <h2 class="section-title">What researchers are saying.</h2>
-                <p class="section-subtitle">Early users across academic and industrial labs are putting Tuva to work on their hardest projects. <em>(Real quotes to be added.)</em></p>
-
-                <div class="quote-rotator" id="quoteRotator">
-                    <div class="quote-slide active" data-index="0">
-                        <p class="quote-text">"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tuva changed how my lab tracks experiments across months of work." <em>— placeholder quote</em></p>
-                        <div class="quote-author">
-                            <div class="quote-avatar qa-1"><i></i><i></i><i></i><i></i></div>
-                            <div>
-                                <div class="quote-name">Dr. Jane Doe</div>
-                                <div class="quote-role">Principal Investigator · Placeholder Lab</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="quote-slide" data-index="1">
-                        <p class="quote-text">"Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. I onboard new students twice as fast now." <em>— placeholder quote</em></p>
-                        <div class="quote-author">
-                            <div class="quote-avatar qa-2"><i></i><i></i><i></i><i></i></div>
-                            <div>
-                                <div class="quote-name">John Smith</div>
-                                <div class="quote-role">PhD Candidate · Placeholder University</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="quote-slide" data-index="2">
-                        <p class="quote-text">"Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Citations down to the exact line — game changer." <em>— placeholder quote</em></p>
-                        <div class="quote-author">
-                            <div class="quote-avatar qa-3"><i></i><i></i><i></i><i></i></div>
-                            <div>
-                                <div class="quote-name">Dr. Alex Chen</div>
-                                <div class="quote-role">Research Scientist · Placeholder Co.</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="quote-dots">
-                        <button class="quote-dot active" data-slide="0" aria-label="Quote 1"></button>
-                        <button class="quote-dot" data-slide="1" aria-label="Quote 2"></button>
-                        <button class="quote-dot" data-slide="2" aria-label="Quote 3"></button>
-                    </div>
-                </div>
             </div>
         </section>
 
@@ -1317,7 +1254,8 @@
             </div>
         </section>
 
-        <!-- Problem -->
+        <!-- Problem section — commented out per design decision -->
+        <!--
         <section class="problem-section">
             <div class="section-container">
                 <div style="text-align:center;">
@@ -1328,70 +1266,24 @@
 
                 <div class="problem-grid">
                     <div class="problem-card">
-                        <div class="problem-icon c-1">▦</div>
+                        <div class="problem-icon c-1">&#9638;</div>
                         <h3>Knowledge silos</h3>
                         <p>Project context lives in fragments: a Slack thread, a notebook, a stale README, a PI's head. New collaborators re-learn it from scratch.</p>
                     </div>
                     <div class="problem-card">
-                        <div class="problem-icon c-2">⚙</div>
+                        <div class="problem-icon c-2">&#9881;</div>
                         <h3>Tool fragmentation</h3>
-                        <p>You stitch together GitHub, Notion, Jupyter, ChatGPT, Zotero. Every handoff loses something. <em>You</em> are the integration layer.</p>
+                        <p>You stitch together GitHub, Notion, Jupyter, ChatGPT, Zotero. Every handoff loses something. You are the integration layer.</p>
                     </div>
                     <div class="problem-card">
-                        <div class="problem-icon c-3">◷</div>
+                        <div class="problem-icon c-3">&#9783;</div>
                         <h3>Lost context</h3>
                         <p>Generic AI assistants don't know your model, your data, or last week's lab meeting. They produce confident answers about the wrong problem.</p>
                     </div>
                 </div>
             </div>
         </section>
-
-        <!-- Use Cases (moved above features; restructured) -->
-        <section class="use-cases" id="use-cases">
-            <div class="section-container">
-                <div style="text-align:center;">
-                    <span class="section-eyebrow">Use cases</span>
-                </div>
-                <h2 class="section-title">Built for every research domain — and every research task.</h2>
-                <p class="section-subtitle">Tuva is domain-agnostic by design. It learns your project, whatever field you're in and whatever you're trying to do with it.</p>
-
-                <div class="use-case-block">
-                    <div class="use-case-block-header">
-                        <span class="use-case-block-tag t-blue">By field</span>
-                        <h3>Across every research domain</h3>
-                    </div>
-                    <div class="chip-grid">
-                        <span class="chip">Molecular Dynamics</span>
-                        <span class="chip">Omics &amp; Genomics</span>
-                        <span class="chip">Physics &amp; Astronomy</span>
-                        <span class="chip">Chemistry &amp; Materials</span>
-                        <span class="chip">ML &amp; AI Research</span>
-                        <span class="chip">Neuroscience</span>
-                        <span class="chip">Theoretical Modeling</span>
-                        <span class="chip">Engineering &amp; Applied</span>
-                        <span class="chip chip-accent">+ many more</span>
-                    </div>
-                </div>
-
-                <div class="use-case-block">
-                    <div class="use-case-block-header">
-                        <span class="use-case-block-tag t-orange">By task</span>
-                        <h3>Across every research task</h3>
-                    </div>
-                    <div class="chip-grid">
-                        <span class="chip">Ideate &amp; explore</span>
-                        <span class="chip">Write code (Python / R / Jupyter)</span>
-                        <span class="chip">Analyze data in notebooks</span>
-                        <span class="chip">Read &amp; search literature</span>
-                        <span class="chip">Draft papers &amp; figures</span>
-                        <span class="chip">Reproduce experiments</span>
-                        <span class="chip">Plan studies</span>
-                        <span class="chip">Brainstorm hypotheses</span>
-                        <span class="chip chip-accent">+ many more</span>
-                    </div>
-                </div>
-            </div>
-        </section>
+        -->
 
         <!-- Features (right-left-right) -->
         <section class="features-section" id="product">
@@ -1455,14 +1347,63 @@
             </div>
         </section>
 
-        <!-- How It Works -->
+        <!-- Use Cases -->
+        <section class="use-cases" id="use-cases">
+            <div class="section-container">
+                <div style="text-align:center;">
+                    <span class="section-eyebrow">Use cases</span>
+                </div>
+                <h2 class="section-title">Built for every research domain — and every research task.</h2>
+                <p class="section-subtitle">Tuva is domain-agnostic by design. It learns your project, whatever field you're in and whatever you're trying to do with it.</p>
+
+                <div class="use-case-row">
+                    <div class="use-case-block">
+                        <div class="use-case-block-header">
+                            <span class="use-case-block-tag t-blue">By field</span>
+                            <h3>Across every research domain</h3>
+                        </div>
+                        <div class="chip-grid">
+                            <span class="chip">Molecular Dynamics</span>
+                            <span class="chip">Omics &amp; Genomics</span>
+                            <span class="chip">Physics &amp; Astronomy</span>
+                            <span class="chip">Chemistry &amp; Materials</span>
+                            <span class="chip">ML &amp; AI Research</span>
+                            <span class="chip">Neuroscience</span>
+                            <span class="chip">Theoretical Modeling</span>
+                            <span class="chip">Engineering &amp; Applied</span>
+                            <span class="chip chip-accent">+ many more</span>
+                        </div>
+                    </div>
+
+                    <div class="use-case-block">
+                        <div class="use-case-block-header">
+                            <span class="use-case-block-tag t-orange">By task</span>
+                            <h3>Across every research task</h3>
+                        </div>
+                        <div class="chip-grid">
+                            <span class="chip">Ideate &amp; explore</span>
+                            <span class="chip">Write code (Python / R / Jupyter)</span>
+                            <span class="chip">Analyze data in notebooks</span>
+                            <span class="chip">Read &amp; search literature</span>
+                            <span class="chip">Draft papers &amp; figures</span>
+                            <span class="chip">Reproduce experiments</span>
+                            <span class="chip">Plan studies</span>
+                            <span class="chip">Brainstorm hypotheses</span>
+                            <span class="chip chip-accent">+ many more</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Getting Started -->
         <section class="how-it-works" id="how-it-works">
             <div class="section-container">
                 <div style="text-align:center;">
-                    <span class="section-eyebrow">How it works</span>
+                    <span class="section-eyebrow">Getting started</span>
                 </div>
-                <h2 class="section-title">Three steps from cold start to context.</h2>
-                <p class="section-subtitle">Get up and running in minutes. Tuva does the heavy lifting in the background while you keep working the way you already do.</p>
+                <h2 class="section-title">Get up and running in three steps.</h2>
+                <p class="section-subtitle">Tuva does the heavy lifting in the background while you keep working the way you already do.</p>
 
                 <div class="steps-grid">
                     <div class="step-card">
@@ -1484,7 +1425,8 @@
             </div>
         </section>
 
-        <!-- Vision -->
+        <!-- Vision section — commented out per design decision -->
+        <!--
         <section class="vision-section">
             <div class="section-container">
                 <div class="vision-container">
@@ -1503,20 +1445,13 @@
                         <div class="vision-block">
                             <span class="label">Tomorrow</span>
                             <h3>Swarms of bespoke research agents.</h3>
-                            <p>Equip every R&D team with armies of specialized agents — running experiments, scanning the literature, proposing the next move — all working over a shared, evolving knowledge base of your science.</p>
+                            <p>Equip every R and D team with armies of specialized agents — running experiments, scanning the literature, proposing the next move — all working over a shared, evolving knowledge base of your science.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-
-        <!-- Built by researchers -->
-        <section class="about-section">
-            <div class="about-container">
-                <h2 class="section-title">Built by researchers, for researchers.</h2>
-                <p class="about-text">Tuva is a team of researchers who got tired of being the integration layer between their own tools. We dogfood everything we ship — if it doesn't make <strong>our</strong> research better, it doesn't ship.</p>
-            </div>
-        </section>
+        -->
 
         <!-- FAQ -->
         <section class="faq-section" id="faq">
@@ -1577,8 +1512,53 @@
             </div>
         </section>
 
+        <!-- By researchers, for researchers — attestations + rotating quotes -->
+        <section class="about-section" id="attestations">
+            <div class="section-container">
+                <h2 class="section-title" style="margin-bottom: 2.75rem;">By researchers, for researchers.</h2>
+
+                <div class="quote-rotator" id="quoteRotator">
+                    <div class="quote-slide active" data-index="0">
+                        <p class="quote-text">"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tuva changed how my lab tracks experiments across months of work." <em>— placeholder quote</em></p>
+                        <div class="quote-author">
+                            <div class="quote-avatar qa-1"><i></i><i></i><i></i><i></i></div>
+                            <div>
+                                <div class="quote-name">Dr. Jane Doe</div>
+                                <div class="quote-role">Principal Investigator · Placeholder Lab</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="quote-slide" data-index="1">
+                        <p class="quote-text">"Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. I onboard new students twice as fast now." <em>— placeholder quote</em></p>
+                        <div class="quote-author">
+                            <div class="quote-avatar qa-2"><i></i><i></i><i></i><i></i></div>
+                            <div>
+                                <div class="quote-name">John Smith</div>
+                                <div class="quote-role">PhD Candidate · Placeholder University</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="quote-slide" data-index="2">
+                        <p class="quote-text">"Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Citations down to the exact line — game changer." <em>— placeholder quote</em></p>
+                        <div class="quote-author">
+                            <div class="quote-avatar qa-3"><i></i><i></i><i></i><i></i></div>
+                            <div>
+                                <div class="quote-name">Dr. Alex Chen</div>
+                                <div class="quote-role">Research Scientist · Placeholder Co.</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="quote-dots">
+                        <button class="quote-dot active" data-slide="0" aria-label="Quote 1"></button>
+                        <button class="quote-dot" data-slide="1" aria-label="Quote 2"></button>
+                        <button class="quote-dot" data-slide="2" aria-label="Quote 3"></button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Final CTA -->
-        <section class="final-cta">
+        <section class="final-cta" id="waitlist">
             <h2>Ready to put your research on a faster path?</h2>
             <p>Join the waitlist and we'll reach out as we open up access. No spam, no marketing blasts — just a heads-up when there's a seat for you.</p>
             <form class="cta-buttons" name="waitlist-bottom" method="POST" netlify>
@@ -1599,57 +1579,12 @@
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="footer-grid">
-            <div class="footer-brand">
-                <a href="/" class="logo-section">
-                    <img src="Tuva_Logo%20+%20Icon_Black.png" alt="Tuva" class="logo-image">
-                    <span class="logo-text">Tuva AI</span>
-                </a>
-                <p>Contextual AI for scientific research. Built by researchers, for researchers.</p>
-            </div>
-            <div class="footer-col">
-                <h4>Product</h4>
-                <ul>
-                    <li><a href="#product">Features</a></li>
-                    <li><a href="#how-it-works">How it works</a></li>
-                    <li><a href="#use-cases">Use cases</a></li>
-                    <li><a href="https://tuva-ai.notion.site/" target="_blank" rel="noopener noreferrer">Get started</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Company</h4>
-                <ul>
-                    <li><a href="#">Blog <em>(soon)</em></a></li>
-                    <li><a href="#">Careers <em>(soon)</em></a></li>
-                    <li><a href="mailto:hello@tuva.ai">Contact</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Resources</h4>
-                <ul>
-                    <li><a href="#faq">FAQ</a></li>
-                    <li><a href="#">Docs <em>(soon)</em></a></li>
-                    <li><a href="#">Changelog <em>(soon)</em></a></li>
-                    <li><a href="#">Research <em>(soon)</em></a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Connect</h4>
-                <ul>
-                    <li><a href="https://twitter.com/TuvaAI" target="_blank" rel="noopener noreferrer">Twitter / X</a></li>
-                    <li><a href="#">LinkedIn <em>(soon)</em></a></li>
-                    <li><a href="#">GitHub <em>(soon)</em></a></li>
-                    <li><a href="mailto:hello@tuva.ai">hello@tuva.ai</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <span>© 2026 Tuva AI, Inc. All rights reserved.</span>
-            <div class="footer-bottom-links">
-                <a href="#">Privacy</a>
-                <a href="#">Terms</a>
-                <a href="#">Security</a>
-            </div>
+        <div class="footer-row">
+            <span class="footer-label">Connect</span>
+            <a href="https://twitter.com/TuvaAI" target="_blank" rel="noopener noreferrer">Twitter</a>
+            <a href="#">LinkedIn</a>
+            <a href="#">GitHub</a>
+            <a href="mailto:hello@tuva.ai">hello@tuva.ai</a>
         </div>
     </footer>
 
@@ -2249,6 +2184,7 @@
             initContextMap();
             initRobot();
             initAmpersand();
+            initButtonLissajous('headerBtnCanvas');
             initButtonLissajous('heroBtnCanvas');
             initButtonLissajous('ctaBtnCanvas');
             initQuoteRotator();
