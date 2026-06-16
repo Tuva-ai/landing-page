@@ -38,6 +38,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 
+    <!-- Typeform embed (popup overlay) -->
+    <link rel="stylesheet" href="https://embed.typeform.com/next/css/popup.css" />
+    <script src="https://embed.typeform.com/next/embed.js" defer></script>
+
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -1194,10 +1198,15 @@
                     </svg>
                 </button>
             </div>
-            <a href="#waitlist" class="btn btn-primary has-canvas">
+            <button type="button"
+                    class="btn btn-primary has-canvas"
+                    data-tf-popup="nOrRdz2U"
+                    data-tf-hidden="utm_source=tuva-website,utm_medium=landing-page,utm_campaign=waitlist,utm_content=header"
+                    data-tf-iframe-props="title=Tuva Waitlist"
+                    data-tf-medium="snippet">
                 <canvas id="headerBtnCanvas" class="btn-canvas"></canvas>
                 <span class="btn-text">Join Waitlist</span>
-            </a>
+            </button>
         </div>
     </header>
 
@@ -1209,19 +1218,17 @@
                 <div class="hero-content">
                     <h1 class="hero-title">AI that understands your research.</h1>
                     <p class="hero-subtitle">A computational research interface that learns your project with you, automating the tedious parts of science so that you can focus on the fun stuff.</p>
-                    <form class="cta-buttons" name="waitlist" method="POST" netlify>
-                        <input
-                            type="email"
-                            name="email"
-                            class="email-input-waitlist"
-                            placeholder="Your email"
-                            required
-                        >
-                        <button type="submit" class="btn btn-primary has-canvas">
+                    <div class="cta-buttons">
+                        <button type="button"
+                                class="btn btn-primary has-canvas"
+                                data-tf-popup="nOrRdz2U"
+                                data-tf-hidden="utm_source=tuva-website,utm_medium=landing-page,utm_campaign=waitlist,utm_content=hero"
+                                data-tf-iframe-props="title=Tuva Waitlist"
+                                data-tf-medium="snippet">
                             <canvas id="heroBtnCanvas" class="btn-canvas"></canvas>
                             <span class="btn-text">Join Waitlist</span>
                         </button>
-                    </form>
+                    </div>
                 </div>
                 <div class="hero-visual">
                     <canvas id="lissajousCanvas" class="lissajous-canvas"></canvas>
@@ -1561,19 +1568,17 @@
         <section class="final-cta" id="waitlist">
             <h2>Ready to put your research on a faster path?</h2>
             <p>Join the waitlist and we'll reach out as we open up access. No spam, no marketing blasts — just a heads-up when there's a seat for you.</p>
-            <form class="cta-buttons" name="waitlist-bottom" method="POST" netlify>
-                <input
-                    type="email"
-                    name="email"
-                    class="email-input-waitlist"
-                    placeholder="Your email"
-                    required
-                >
-                <button type="submit" class="btn btn-primary has-canvas">
+            <div class="cta-buttons">
+                <button type="button"
+                        class="btn btn-primary has-canvas"
+                        data-tf-popup="nOrRdz2U"
+                        data-tf-hidden="utm_source=tuva-website,utm_medium=landing-page,utm_campaign=waitlist,utm_content=cta_final"
+                        data-tf-iframe-props="title=Tuva Waitlist"
+                        data-tf-medium="snippet">
                     <canvas id="ctaBtnCanvas" class="btn-canvas"></canvas>
                     <span class="btn-text">Join Waitlist</span>
                 </button>
-            </form>
+            </div>
         </section>
     </main>
 
