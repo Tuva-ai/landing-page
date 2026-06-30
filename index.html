@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- SEO Meta Tags -->
-    <title>Tuva - Contextual AI for Scientific Research</title>
-    <meta name="description" content="Tuva helps researchers ideate, review literature, and analyze data faster by learning your project details and providing bespoke research agents.">
+    <title>Rao by Tuva - Contextual AI for Scientific Research</title>
+    <meta name="description" content="Rao helps researchers ideate, review literature, and analyze data faster by learning your project details and providing bespoke research agents.">
     <meta name="keywords" content="research AI, scientific computing, research assistants, computational research, R&D automation">
     <meta name="author" content="Tuva">
     <meta name="robots" content="index, follow">
@@ -15,7 +15,7 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://tuva.ai">
-    <meta property="og:title" content="Tuva - Contextual AI for Scientific Research">
+    <meta property="og:title" content="Rao by Tuva - Contextual AI for Scientific Research">
     <meta property="og:description" content="Break down knowledge silos. Speed up R&D. Build with AI that understands your work.">
     <meta property="og:image" content="https://tuva.ai/og-image.jpg">
     <meta property="og:site_name" content="Tuva">
@@ -23,7 +23,7 @@
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://tuva.ai">
-    <meta property="twitter:title" content="Tuva - Contextual AI for Scientific Research">
+    <meta property="twitter:title" content="Rao by Tuva - Contextual AI for Scientific Research">
     <meta property="twitter:description" content="Break down knowledge silos. Speed up R&D. Build with AI that understands your work.">
     <meta property="twitter:creator" content="@tuvaai">
 
@@ -148,6 +148,20 @@
         }
 
         .header-nav a:hover { color: var(--text-tertiary); }
+
+        /* Unify header control heights to 40px */
+        .header-nav a {
+            display: inline-flex;
+            align-items: center;
+            height: 40px;
+        }
+        .header .btn.has-canvas {
+            height: 40px;
+            padding: 0 1.1rem 0 0.4rem;
+            gap: 0.4rem;
+        }
+        .header .btn.has-canvas .btn-text { font-size: 0.85rem; }
+        .header .btn-canvas { width: 28px; height: 28px; }
 
         /* Main */
         .main-content {
@@ -299,6 +313,13 @@
             flex-shrink: 0;
         }
 
+        /* Brand mark inside dark buttons — invert the black logo to white */
+        .btn-mark {
+            object-fit: contain;
+            display: block;
+            filter: brightness(0) invert(1);
+        }
+
         .btn-text { line-height: 1; }
 
         .cta-buttons {
@@ -368,22 +389,33 @@
             margin: 0 auto;
         }
 
-        .logo-pill {
-            padding: 0;
-            border: none;
-            background: transparent;
-            font-size: 0.95rem;
-            font-weight: 600;
-            color: var(--text-tertiary);
-            letter-spacing: -0.01em;
-            opacity: 0.55;
+        .logo-mark {
+            height: 26px;
+            width: auto;
+            max-width: 150px;
+            object-fit: contain;
+            opacity: 0.6;
             filter: grayscale(100%);
             transition: opacity 0.15s ease;
         }
 
-        body.dark-mode .logo-pill { background: transparent; }
+        /* Dark mode: flip dark monochrome wordmarks to light */
+        body.dark-mode .logo-mark {
+            filter: grayscale(100%) brightness(0) invert(1);
+            opacity: 0.65;
+        }
 
-        .logo-pill:hover { opacity: 1; }
+        .logo-mark:hover { opacity: 1; }
+
+        .logo-strip-more {
+            margin-top: 0.85rem;
+            text-align: center;
+            font-size: 0.72rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+            color: var(--text-tertiary);
+        }
 
         /* Rotating quote section (testimonials, lifted above the video) */
         .quote-section {
@@ -648,6 +680,92 @@
         .chip.chip-accent { background: var(--pale-green); }
         body.dark-mode .chip.chip-accent { background: var(--pale-green); color: var(--text); }
 
+        /* Use cases — fields (broad) flow into tasks (the common suite) */
+        .uc-fields { max-width: 920px; margin: 0 auto; text-align: center; }
+
+        .uc-band-label {
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.16em;
+            color: var(--text-tertiary);
+            margin-bottom: 1.1rem;
+        }
+
+        .uc-fields .chip-grid { justify-content: center; }
+
+        .uc-bridge {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.35rem;
+            margin: 2.25rem auto 2.5rem;
+            color: var(--text-tertiary);
+        }
+
+        .uc-bridge-text { font-size: 0.9rem; font-weight: 500; }
+        .uc-bridge-text b { color: var(--text); font-weight: 700; }
+        .uc-bridge-arrow { font-size: 1.15rem; line-height: 1; }
+
+        .task-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.25rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .task-card {
+            padding: 1.5rem;
+            background: var(--bg-card);
+            border: 2px solid var(--text);
+            border-radius: 4px;
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
+        }
+
+        body.dark-mode .task-card { background: var(--bg-card); }
+
+        .task-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 6px 6px 0 var(--text);
+        }
+
+        .task-card-head {
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+            margin-bottom: 0.55rem;
+        }
+
+        .task-icon {
+            width: 34px;
+            height: 34px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid var(--text);
+            border-radius: 4px;
+            color: #fff;
+            font-size: 1rem;
+            font-weight: 700;
+        }
+
+        .task-icon.c-1 { background: var(--c-blue); }
+        .task-icon.c-2 { background: var(--c-orange); }
+        .task-icon.c-3 { background: var(--c-purple); }
+        .task-icon.c-4 { background: var(--c-green); }
+        .task-icon.c-5 { background: var(--c-red); }
+        .task-icon.c-6 { background: var(--c-blue); }
+
+        .task-card h3 { font-size: 1rem; font-weight: 600; color: var(--text); }
+
+        .task-card p {
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
         /* Features (existing 3 items, with right-left-right) */
         .features-section {
             padding: 5rem 2rem;
@@ -667,12 +785,12 @@
         .feature-item:last-of-type { margin-bottom: 0; }
 
         .feature-item-visual {
-            flex: 0 0 280px;
+            flex: 0 0 380px;
         }
 
         .context-canvas, .robot-canvas, .ampersand-canvas {
-            width: 280px;
-            height: 280px;
+            width: 380px;
+            height: 380px;
             border: 2px solid var(--text);
             border-radius: 4px;
             background: var(--bg-card);
@@ -792,6 +910,7 @@
         .step-number.s-1 { background: var(--c-blue); }
         .step-number.s-2 { background: var(--c-green); }
         .step-number.s-3 { background: var(--c-orange); }
+        .step-number.s-4 { background: var(--c-purple); }
 
         .step-card h3 {
             font-size: 1.2rem;
@@ -1063,6 +1182,14 @@
 
         .footer-row a:hover { color: var(--text); }
 
+        .footer-copyright {
+            max-width: 1200px;
+            margin: 2rem auto 0;
+            text-align: center;
+            color: var(--text-tertiary);
+            font-size: 0.82rem;
+        }
+
         .footer-bottom {
             max-width: 1200px;
             margin: 0 auto;
@@ -1101,7 +1228,8 @@
         }
 
         .theme-option {
-            padding: 0.5rem 0.75rem;
+            height: 36px;
+            padding: 0 0.75rem;
             cursor: pointer;
             transition: all 0.2s ease;
             border: none;
@@ -1133,6 +1261,7 @@
 
         @media (max-width: 900px) {
             .vision-grid { grid-template-columns: 1fr; padding: 2rem; gap: 2rem; }
+            .task-grid { grid-template-columns: repeat(2, 1fr); }
         }
 
         @media (max-width: 768px) {
@@ -1150,8 +1279,9 @@
                 gap: 1.5rem;
                 margin-bottom: 2rem;
             }
-            .feature-item-visual { flex: none; width: 100%; max-width: 280px; margin: 0 auto; }
-            .problem-grid, .steps-grid, .use-case-row {
+            .feature-item-visual { flex: none; width: 100%; max-width: 380px; margin: 0 auto; }
+            .context-canvas, .robot-canvas, .ampersand-canvas { max-width: 100%; }
+            .problem-grid, .steps-grid, .use-case-row, .task-grid {
                 grid-template-columns: 1fr;
             }
             .header { padding: 1rem 1.5rem; }
@@ -1175,36 +1305,18 @@
         <div class="header-right">
             <nav class="header-nav">
                 <a href="#product">Product</a>
-                <a href="#use-cases">Use cases</a>
-                <a href="#how-it-works">Getting started</a>
+                <a href="#use-cases">Use Cases</a>
+                <a href="#how-it-works">Getting Started</a>
                 <a href="#faq">FAQ</a>
                 <a href="https://tuva-ai.notion.site/" target="_blank" rel="noopener noreferrer">Careers</a>
             </nav>
-            <div class="theme-toggle">
-                <button class="theme-option active" data-theme="light" title="Light mode">
-                    <svg class="theme-icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1zM5.99 4.58c-.39-.39-1.03-.39-1.41 0-.39.39-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41L5.99 4.58zm12.37 12.37c-.39-.39-1.03-.39-1.41 0-.39.39-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0 .39-.39.39-1.03 0-1.41l-1.06-1.06zm1.06-10.96c.39-.39.39-1.03 0-1.41-.39-.39-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41.39.39 1.03.39 1.41 0l1.06-1.06zM7.05 18.36c.39-.39.39-1.03 0-1.41-.39-.39-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41.39.39 1.03.39 1.41 0l1.06-1.06z"/>
-                    </svg>
-                </button>
-                <button class="theme-option" data-theme="system" title="System preference">
-                    <svg class="theme-icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V6h16v12z"/>
-                        <path d="M6.5 8.5h11v7h-11z"/>
-                    </svg>
-                </button>
-                <button class="theme-option" data-theme="dark" title="Dark mode">
-                    <svg class="theme-icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M12.34 2.02C6.59 1.82 2 6.42 2 12c0 5.52 4.48 10 10 10 3.71 0 6.93-2.02 8.66-5.02-7.51-.88-13.12-7.51-14.32-14.96z"/>
-                    </svg>
-                </button>
-            </div>
             <button type="button"
                     class="btn btn-primary has-canvas"
                     data-tf-popup="nOrRdz2U"
                     data-tf-hidden="utm_source=tuva-website,utm_medium=landing-page,utm_campaign=waitlist,utm_content=header"
                     data-tf-iframe-props="title=Tuva Waitlist"
                     data-tf-medium="snippet">
-                <canvas id="headerBtnCanvas" class="btn-canvas"></canvas>
+                <img src="Tuva_Logo%20+%20Icon_Black.png" alt="" class="btn-canvas btn-mark">
                 <span class="btn-text">Join Waitlist</span>
             </button>
         </div>
@@ -1216,8 +1328,8 @@
         <section class="hero section">
             <div class="section-container">
                 <div class="hero-content">
-                    <h1 class="hero-title">AI that understands your research.</h1>
-                    <p class="hero-subtitle">A computational research interface that learns your project with you, automating the tedious parts of science so that you can focus on the fun stuff.</p>
+                    <h1 class="hero-title">AI that really gets your research.</h1>
+                    <p class="hero-subtitle">Meet Rao: an always-on, proactive scientific collaborator that lives across the surfaces where you work, powered by research memory that learns new project knowledge as you do.</p>
                     <div class="cta-buttons">
                         <button type="button"
                                 class="btn btn-primary has-canvas"
@@ -1225,7 +1337,7 @@
                                 data-tf-hidden="utm_source=tuva-website,utm_medium=landing-page,utm_campaign=waitlist,utm_content=hero"
                                 data-tf-iframe-props="title=Tuva Waitlist"
                                 data-tf-medium="snippet">
-                            <canvas id="heroBtnCanvas" class="btn-canvas"></canvas>
+                            <img src="Tuva_Logo%20+%20Icon_Black.png" alt="" class="btn-canvas btn-mark">
                             <span class="btn-text">Join Waitlist</span>
                         </button>
                     </div>
@@ -1238,18 +1350,31 @@
 
         <!-- Logo Strip (moved above video) -->
         <section class="logo-strip">
-            <div class="logo-strip-label">Trusted by researchers from</div>
+            <div class="logo-strip-label">Used every day by researchers at top institutions</div>
             <div class="logo-row">
-                <span class="logo-pill">Stanford</span>
-                <span class="logo-pill">MIT</span>
-                <span class="logo-pill">Harvard</span>
-                <span class="logo-pill">Caltech</span>
-                <span class="logo-pill">Oxford</span>
-                <span class="logo-pill">ETH Zürich</span>
+                <img class="logo-mark" alt="Harvard" loading="lazy"
+                     src="https://commons.wikimedia.org/wiki/Special:FilePath/Harvard_University_logo.svg"
+                     onerror="this.onerror=null;this.src='logos/harvard.svg';">
+                <img class="logo-mark" alt="Northwestern" loading="lazy"
+                     src="https://commons.wikimedia.org/wiki/Special:FilePath/Northwestern_University_wordmark.svg"
+                     onerror="this.onerror=null;this.src='logos/northwestern.svg';">
+                <img class="logo-mark" alt="MIT" loading="lazy"
+                     src="https://commons.wikimedia.org/wiki/Special:FilePath/MIT_Logo_and_Wordmark.svg"
+                     onerror="this.onerror=null;this.src='logos/mit.svg';">
+                <img class="logo-mark" alt="EPFL" loading="lazy"
+                     src="https://commons.wikimedia.org/wiki/Special:FilePath/Logo_EPFL_2019.svg"
+                     onerror="this.onerror=null;this.src='logos/epfl.svg';">
+                <img class="logo-mark" alt="NYU" loading="lazy"
+                     src="https://commons.wikimedia.org/wiki/Special:FilePath/Nyu_long_black.svg"
+                     onerror="this.onerror=null;this.src='logos/nyu.svg';">
+                <img class="logo-mark" alt="UC Berkeley" loading="lazy"
+                     src="https://commons.wikimedia.org/wiki/Special:FilePath/University%20of%20California,%20Berkeley%20logo.svg"
+                     onerror="this.onerror=null;this.src='logos/berkeley.svg';">
             </div>
         </section>
 
-        <!-- Video -->
+        <!-- Video — hidden until we have the real product video -->
+        <!--
         <section class="video-section">
             <div class="section-container">
                 <div class="video-placeholder">
@@ -1260,6 +1385,7 @@
                 </div>
             </div>
         </section>
+        -->
 
         <!-- Problem section — commented out per design decision -->
         <!--
@@ -1298,56 +1424,53 @@
                 <div style="text-align:center;">
                     <span class="section-eyebrow">The Product</span>
                 </div>
-                <h2 class="section-title">An interface that learns alongside you.</h2>
-                <p class="section-subtitle">Tuva indexes your project end-to-end, then puts that context to work — surfacing, connecting, and automating across the tools you already use.</p>
+                <h2 class="section-title">A collaborator built on context.</h2>
+                <p class="section-subtitle">Rao keeps a living memory of your research, runs scientific agents on top of it, and improves the tools you already use, without you needing to change your workflow.</p>
 
-                <!-- Feature 1: Knowledge → graphic RIGHT, text LEFT -->
+                <!-- Feature 1: Everywhere → graphic RIGHT, text LEFT -->
                 <div class="feature-item reverse">
-                    <div class="feature-item-visual">
-                        <canvas id="contextCanvas" class="context-canvas"></canvas>
-                    </div>
-                    <div class="feature-item-text">
-                        <span class="feature-tag">01 · Knowledge</span>
-                        <h3 class="feature-item-title">Continuous Context Mapping</h3>
-                        <p class="feature-item-description">Tuva builds a rich knowledge graph of your research as it evolves. Different pieces of context — across papers, experiments, datasets — light up as they relate to your current work. Discover connections you'd miss in a spreadsheet.</p>
-                        <ul class="feature-bullets">
-                            <li>Continuous re-indexing of source files and PDFs</li>
-                            <li>Citations down to the line, page, or notebook cell</li>
-                            <li>Surfaces relationships across papers, experiments, and datasets</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Feature 2: Interoperability → graphic LEFT, text RIGHT (default) -->
-                <div class="feature-item">
                     <div class="feature-item-visual">
                         <canvas id="ampersandCanvas" class="ampersand-canvas"></canvas>
                     </div>
                     <div class="feature-item-text">
-                        <span class="feature-tag">02 · Interoperability</span>
-                        <h3 class="feature-item-title">Interoperability</h3>
-                        <p class="feature-item-description">Connect to the tools your team already loves. Tuva integrates with your existing research stack — so context flows between them instead of stalling at every boundary.</p>
+                        <h3 class="feature-item-title">The same agent everywhere you already work</h3>
+                        <p class="feature-item-description">Rao connects to where your project already lives and shows up in the tools you already use.</p>
                         <ul class="feature-bullets">
-                            <li>Native integrations with GitHub, Notion, Slack, and Jupyter</li>
-                            <li>Local-first by default — your data stays where it lives</li>
-                            <li>No vendor lock-in: take your knowledge graph with you</li>
+                            <li>Access Rao by chat in VS Code and the command line. Coming soon: browser extension, desktop app</li>
+                            <li>Connect to context across your local files, Notion, and Google Drive</li>
+                            <li>Share context with Claude, Codex, and Cursor via MCP improving the performance of agentic tools you already use</li>
                         </ul>
                     </div>
                 </div>
 
-                <!-- Feature 3: Automation → graphic RIGHT, text LEFT -->
+                <!-- Feature 2: Living knowledge base → graphic LEFT, text RIGHT (default) -->
+                <div class="feature-item">
+                    <div class="feature-item-visual">
+                        <canvas id="contextCanvas" class="context-canvas"></canvas>
+                    </div>
+                    <div class="feature-item-text">
+                        <h3 class="feature-item-title">A living scientific knowledge base</h3>
+                        <p class="feature-item-description">Rao's agents are powered by a map of your project context that evolves as you do research, keeping track of how everything fits together. This means Rao can:</p>
+                        <ul class="feature-bullets">
+                            <li>Connect disparate ideas across your whole project when ideating with you</li>
+                            <li>Finds the exact line you need and figure to reference across hundreds of papers, scripts, and notes</li>
+                            <li>Stay up to date on its own as your work changes</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Feature 3: Proactive agents → graphic RIGHT, text LEFT -->
                 <div class="feature-item reverse">
                     <div class="feature-item-visual">
                         <canvas id="robotCanvas" class="robot-canvas"></canvas>
                     </div>
                     <div class="feature-item-text">
-                        <span class="feature-tag">03 · Automation</span>
-                        <h3 class="feature-item-title">Skill-Building</h3>
-                        <p class="feature-item-description">Design repeatable actions and codify them as skills. Let Tuva automate the workflows you build — figure regeneration, lit-review summaries, parameter sweeps — into repeatable skills your whole team can call on.</p>
+                        <h3 class="feature-item-title">Proactive agents tailored to your research</h3>
+                        <p class="feature-item-description">Because Rao already understands your work, it can augment your research work proactively. This looks like:</p>
                         <ul class="feature-bullets">
-                            <li>Turn ad-hoc prompts into versioned, shareable skills</li>
-                            <li>Compose skills into multi-step research pipelines</li>
-                            <li>Run on-demand or schedule against new data</li>
+                            <li>A writing assistant that allows you to generate and surgically revise papers drawing from your results and notes</li>
+                            <li>Proactive literature search, surfacing work relevant to what you're thinking about at the moment</li>
+                            <li>Never have to read scientific package documentation again with our skill builder, which teaches Rao how to use packages specifically in the context of your work</li>
                         </ul>
                     </div>
                 </div>
@@ -1360,44 +1483,71 @@
                 <div style="text-align:center;">
                     <span class="section-eyebrow">Use cases</span>
                 </div>
-                <h2 class="section-title">Built for every research domain — and every research task.</h2>
-                <p class="section-subtitle">Tuva is domain-agnostic by design. It learns your project, whatever field you're in and whatever you're trying to do with it.</p>
+                <h2 class="section-title">Use Rao to explore, experiment, and iterate.</h2>
+                <p class="section-subtitle">Rao can help with all of the science you can do in your computer, across different fields</p>
 
-                <div class="use-case-row">
-                    <div class="use-case-block">
-                        <div class="use-case-block-header">
-                            <span class="use-case-block-tag t-blue">By field</span>
-                            <h3>Across every research domain</h3>
+                <div class="task-grid">
+                    <div class="task-card">
+                        <div class="task-card-head">
+                            <span class="task-icon c-1">&#10022;</span>
+                            <h3>Ideate</h3>
                         </div>
-                        <div class="chip-grid">
-                            <span class="chip">Molecular Dynamics</span>
-                            <span class="chip">Omics &amp; Genomics</span>
-                            <span class="chip">Physics &amp; Astronomy</span>
-                            <span class="chip">Chemistry &amp; Materials</span>
-                            <span class="chip">ML &amp; AI Research</span>
-                            <span class="chip">Neuroscience</span>
-                            <span class="chip">Theoretical Modeling</span>
-                            <span class="chip">Engineering &amp; Applied</span>
-                            <span class="chip chip-accent">+ many more</span>
-                        </div>
+                        <p>Pressure-test ideas and surface connections across everything in your project.</p>
                     </div>
+                    <div class="task-card">
+                        <div class="task-card-head">
+                            <span class="task-icon c-2">&#8981;</span>
+                            <h3>Search literature</h3>
+                        </div>
+                        <p>Find the relevant papers — and the exact result or figure — right when you need them.</p>
+                    </div>
+                    <div class="task-card">
+                        <div class="task-card-head">
+                            <span class="task-icon c-3">&#9998;</span>
+                            <h3>Write &amp; revise</h3>
+                        </div>
+                        <p>Draft and surgically edit papers drawing on your own results and notes.</p>
+                    </div>
+                    <div class="task-card">
+                        <div class="task-card-head">
+                            <span class="task-icon c-4">&#9638;</span>
+                            <h3>Analyze data</h3>
+                        </div>
+                        <p>Explore your data in Python, R, and Jupyter — and never lose the script behind a figure again.</p>
+                    </div>
+                    <div class="task-card">
+                        <div class="task-card-head">
+                            <span class="task-icon c-5">&#10095;</span>
+                            <h3>Write scripts</h3>
+                        </div>
+                        <p>Generate analysis and simulation scripts with the scientific accuracy your work demands — locally or on HPC.</p>
+                    </div>
+                    <div class="task-card">
+                        <div class="task-card-head">
+                            <span class="task-icon c-6">&#8721;</span>
+                            <h3>Do the math</h3>
+                        </div>
+                        <p>Derivations, calculations, and sanity checks you can actually trust.</p>
+                    </div>
+                </div>
 
-                    <div class="use-case-block">
-                        <div class="use-case-block-header">
-                            <span class="use-case-block-tag t-orange">By task</span>
-                            <h3>Across every research task</h3>
-                        </div>
-                        <div class="chip-grid">
-                            <span class="chip">Ideate &amp; explore</span>
-                            <span class="chip">Write code (Python / R / Jupyter)</span>
-                            <span class="chip">Analyze data in notebooks</span>
-                            <span class="chip">Read &amp; search literature</span>
-                            <span class="chip">Draft papers &amp; figures</span>
-                            <span class="chip">Reproduce experiments</span>
-                            <span class="chip">Plan studies</span>
-                            <span class="chip">Brainstorm hypotheses</span>
-                            <span class="chip chip-accent">+ many more</span>
-                        </div>
+                <div class="uc-bridge">
+                    <span class="uc-bridge-text">…for researchers <b>across every field</b></span>
+                    <span class="uc-bridge-arrow">&#8595;</span>
+                </div>
+
+                <div class="uc-fields">
+                    <div class="uc-band-label">In fields like</div>
+                    <div class="chip-grid">
+                        <span class="chip">Computational Biology / Omics</span>
+                        <span class="chip">Computational Chemistry / MD</span>
+                        <span class="chip">High Energy Physics</span>
+                        <span class="chip">Astrophysics &amp; Cosmology</span>
+                        <span class="chip">ML, CS &amp; Data Science</span>
+                        <span class="chip">Engineering</span>
+                        <span class="chip">Materials Science</span>
+                        <span class="chip">Climate &amp; Earth Science</span>
+                        <span class="chip chip-accent">+ your field</span>
                     </div>
                 </div>
             </div>
@@ -1409,25 +1559,37 @@
                 <div style="text-align:center;">
                     <span class="section-eyebrow">Getting started</span>
                 </div>
-                <h2 class="section-title">Get up and running in three steps.</h2>
-                <p class="section-subtitle">Tuva does the heavy lifting in the background while you keep working the way you already do.</p>
+                <h2 class="section-title">Get started in 30 seconds.</h2>
+                <p class="section-subtitle">Point Rao at your project and keep working. It does the rest in the background, ready to collaborate when you are.</p>
 
                 <div class="steps-grid">
                     <div class="step-card">
                         <div class="step-number s-1">01</div>
-                        <h3>Point it at your project</h3>
-                        <p>Connect a folder, a repo, a Notion workspace. Tuva indexes everything in place — no migration, no copy-paste.</p>
+                        <h3>Index your project</h3>
+                        <p>Open Rao and point it at a project folder. It builds a knowledge graph of how your files relate, both scientifically and structurally.</p>
                     </div>
                     <div class="step-card">
                         <div class="step-number s-2">02</div>
-                        <h3>Ask in context</h3>
-                        <p>Chat against your full project. Answers cite back to the exact file, page, or cell — not a hallucinated paraphrase.</p>
+                        <h3>Collaborate with context-aware tools</h3>
+                        <p>Talk to Rao while you do your work, augment your work with scientific agents, and plug in Rao's context to other agentic tools by MCP.</p>
                     </div>
                     <div class="step-card">
                         <div class="step-number s-3">03</div>
-                        <h3>Automate the tedious parts</h3>
-                        <p>Save the workflows you repeat as skills. Run them on demand or trigger them as new data lands. <em>(To be expanded.)</em></p>
+                        <h3>Build research memory as you go</h3>
+                        <p>Keep working the way you always do. Rao learns new results and connections in the background.</p>
                     </div>
+                </div>
+
+                <div class="cta-buttons" style="margin-top: 2.75rem;">
+                    <button type="button"
+                            class="btn btn-primary has-canvas"
+                            data-tf-popup="nOrRdz2U"
+                            data-tf-hidden="utm_source=tuva-website,utm_medium=landing-page,utm_campaign=waitlist,utm_content=getting_started"
+                            data-tf-iframe-props="title=Tuva Waitlist"
+                            data-tf-medium="snippet">
+                        <img src="Tuva_Logo%20+%20Icon_Black.png" alt="" class="btn-canvas btn-mark">
+                        <span class="btn-text">Join Waitlist</span>
+                    </button>
                 </div>
             </div>
         </section>
@@ -1447,7 +1609,7 @@
                         <div class="vision-block">
                             <span class="label">Today</span>
                             <h3>Faster, smarter research.</h3>
-                            <p>Tuva helps you ideate, review literature, and analyze data at a pace that's hard to imagine without it. The tedious parts collapse. The interesting parts get more of your time.</p>
+                            <p>Rao helps you ideate, review literature, and analyze data at a pace that's hard to imagine without it. The tedious parts collapse. The interesting parts get more of your time.</p>
                         </div>
                         <div class="vision-block">
                             <span class="label">Tomorrow</span>
@@ -1471,14 +1633,14 @@
 
                 <div class="faq-item">
                     <button class="faq-question">
-                        <span>I already use AI tools for coding, literature reviews, paper analysis, and writing. What does Tuva do that these together do not?</span>
+                        <span>I already use AI tools for coding, literature reviews, paper analysis, and writing. What does Rao do that these together do not?</span>
                         <div class="faq-toggle">
                             <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <polyline points="6 9 12 15 18 9"></polyline>
                             </svg>
                         </div>
                     </button>
-                    <div class="faq-answer">At Tuva, we are not attempting to automate away the scientific process. Instead, we are building an intelligent workspace for your research. It is a workspace that understands the context and direction of your project from start to finish; that will connect you to specialized tools while maintaining consistency between them; and that will allow you to collaborate with a tool that already understands your research plan and workflows. Tuva indexes your whole project context – code, notebooks, PDFs, meeting notes, planning documents – into one intelligent and dynamic knowledge base, and pulls the right information in at the right time. It is built so that you can keep using the same stack of tools you do now, but with more consistency in results. Jumping between open tools means you are the integration layer. Tuva closes that gap.</div>
+                    <div class="faq-answer">Rao builds a shared knowledge base for your research. It understands the context and direction of your project - scripts, data, notebooks, PDFs, meeting notes, planning documents - from start to finish, improving the consistency, accuracy, and insights of our own custom science agents, as well as those you already use.</div>
                 </div>
 
                 <div class="faq-item">
@@ -1490,43 +1652,44 @@
                             </svg>
                         </div>
                     </button>
-                    <div class="faq-answer">The only data that leaves your machine is the metadata around your tool usage - i.e. whether and how much you are using Tuva - and the information necessary for user authentication. None of the contents of your research, nor of your interactions with Tuva, are shared with us or the developers of the models on which Tuva runs. That being said, researchers working in regulated environments (HIPAA, ITAR, IRB-restricted data, industry NDAs) should consult with their PIs and management before using Tuva to ensure compliance.</div>
+                    <div class="faq-answer">By default, the only information transmitted to us is basic usage metadata and the data required to authenticate your account. The contents of your research and your interactions with Rao remain private and local to your machine unless you expressly share them with us.<br><br>Separately, because Rao runs on external providers' models, your chat interactions pass through their APIs and are governed by their commercial data retention policies. Reach out to hello@tuva.ai for more details. If you work in a regulated environment — HIPAA, ITAR, IRB-restricted data, or under an industry NDA — check with your PI or management before using Rao to confirm compliance.</div>
                 </div>
 
                 <div class="faq-item">
                     <button class="faq-question">
-                        <span>What file types does Tuva index?</span>
+                        <span>How do I onboard with Rao?</span>
                         <div class="faq-toggle">
                             <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <polyline points="6 9 12 15 18 9"></polyline>
                             </svg>
                         </div>
                     </button>
-                    <div class="faq-answer">Tuva currently works particularly well for source code, Jupyter notebooks, markdown notes, PDFs, and data README-style files. If a specific format is load-bearing for your workflow, ask before you download. We would rather tell you "not yet" than have you find out after install.</div>
+                    <div class="faq-answer">Join our waitlist and we'll reach out to arrange an onboarding call when space is available. On the call, we'll walk you through download, installation, and indexing your first project.</div>
                 </div>
 
                 <div class="faq-item">
                     <button class="faq-question">
-                        <span>What happens when my papers or code change after I've indexed them?</span>
+                        <span>How can Rao help me discover new ideas?</span>
                         <div class="faq-toggle">
                             <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <polyline points="6 9 12 15 18 9"></polyline>
                             </svg>
                         </div>
                     </button>
-                    <div class="faq-answer">Tuva automatically re-indexes as files change. You can always review the current state of the knowledge base, and sources can be added or removed explicitly. Answers will cite into the exact location, matching the up-to-date state: page 3 of the paper, line 86 of model.py, a function name, a notebook cell. When you edit a database, Tuva will point to the new line numbers. When you drop a new PDF into the folder, it joins the corpus without a manual rebuild.</div>
+                    <div class="faq-answer">Interact with Rao as you would a research collaborator. It can suggest research directions, review your work, and explain the provenance and evolution of your files and ideas. It handles both open-ended exploration and specific questions about your project's details, and can build reusable skills for your frequently-used research practices.</div>
                 </div>
             </div>
         </section>
 
-        <!-- By researchers, for researchers — attestations + rotating quotes -->
+        <!-- By researchers, for researchers. Hidden until we have real testimonials. -->
+        <!--
         <section class="about-section" id="attestations">
             <div class="section-container">
                 <h2 class="section-title" style="margin-bottom: 2.75rem;">By researchers, for researchers.</h2>
 
                 <div class="quote-rotator" id="quoteRotator">
                     <div class="quote-slide active" data-index="0">
-                        <p class="quote-text">"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tuva changed how my lab tracks experiments across months of work." <em>— placeholder quote</em></p>
+                        <p class="quote-text">"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Rao changed how my lab tracks experiments across months of work." <em>— placeholder quote</em></p>
                         <div class="quote-author">
                             <div class="quote-avatar qa-1"><i></i><i></i><i></i><i></i></div>
                             <div>
@@ -1563,11 +1726,12 @@
                 </div>
             </div>
         </section>
+        -->
 
         <!-- Final CTA -->
         <section class="final-cta" id="waitlist">
-            <h2>Ready to put your research on a faster path?</h2>
-            <p>Join the waitlist and we'll reach out as we open up access. No spam, no marketing blasts — just a heads-up when there's a seat for you.</p>
+            <h2>Want to try it out?</h2>
+            <p>Join the waitlist and we'll reach out as we open up access.</p>
             <div class="cta-buttons">
                 <button type="button"
                         class="btn btn-primary has-canvas"
@@ -1575,7 +1739,7 @@
                         data-tf-hidden="utm_source=tuva-website,utm_medium=landing-page,utm_campaign=waitlist,utm_content=cta_final"
                         data-tf-iframe-props="title=Tuva Waitlist"
                         data-tf-medium="snippet">
-                    <canvas id="ctaBtnCanvas" class="btn-canvas"></canvas>
+                    <img src="Tuva_Logo%20+%20Icon_Black.png" alt="" class="btn-canvas btn-mark">
                     <span class="btn-text">Join Waitlist</span>
                 </button>
             </div>
@@ -1587,63 +1751,19 @@
         <div class="footer-row">
             <span class="footer-label">Connect</span>
             <a href="https://twitter.com/TuvaAI" target="_blank" rel="noopener noreferrer">Twitter</a>
-            <a href="#">LinkedIn</a>
-            <a href="#">GitHub</a>
+            <a href="https://www.linkedin.com/company/tuva-ai/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
             <a href="mailto:hello@tuva.ai">hello@tuva.ai</a>
         </div>
+        <div class="footer-copyright">© 2026 Tuva AI, Inc. All rights reserved.</div>
     </footer>
 
     <script>
-        // Theme management
-        const THEME_KEY = 'tuva-theme-preference';
-        let currentTheme = localStorage.getItem(THEME_KEY) || 'system';
+        // Light mode only
+        document.body.classList.remove('dark-mode');
 
-        function getSystemDarkMode() {
-            return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-        }
-
-        function applyTheme(theme) {
-            const body = document.body;
-            let isDark = false;
-            if (theme === 'system') isDark = getSystemDarkMode();
-            else isDark = theme === 'dark';
-
-            if (isDark) body.classList.add('dark-mode');
-            else body.classList.remove('dark-mode');
-
-            updateLogo(isDark);
-            updateActiveOption();
-        }
-
-        function updateLogo(isDark) {
-            const logoImage = document.getElementById('logoImage');
-            if (logoImage) {
-                logoImage.src = isDark ? 'Tuva_Icon_White.png' : 'Tuva_Logo%20+%20Icon_Black.png';
-            }
-        }
-
-        function updateActiveOption() {
-            document.querySelectorAll('.theme-option').forEach(option => {
-                option.classList.remove('active');
-                if (option.dataset.theme === currentTheme) option.classList.add('active');
-            });
-        }
-
-        applyTheme(currentTheme);
-
-        if (window.matchMedia) {
-            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
-                if (currentTheme === 'system') applyTheme('system');
-            });
-        }
-
-        document.querySelectorAll('.theme-option').forEach(option => {
-            option.addEventListener('click', () => {
-                currentTheme = option.dataset.theme;
-                localStorage.setItem(THEME_KEY, currentTheme);
-                applyTheme(currentTheme);
-            });
-        });
+        // Shared brand mark (Lissajous logo) used inside the product figures
+        const tuvaMark = new Image();
+        tuvaMark.src = 'Tuva_Logo%20+%20Icon_Black.png';
 
         // FAQ
         document.querySelectorAll('.faq-question').forEach(question => {
@@ -1722,7 +1842,7 @@
                 const centerX = width / 2;
                 const centerY = height / 2;
                 const scale = Math.min(width, height) / 4.5;
-                const rotationAngle = time * 0.75;
+                const rotationAngle = 0.6;
                 const perspectiveDistance = 500;
 
                 ctx.clearRect(0, 0, width, height);
@@ -1837,8 +1957,7 @@
             }
 
             function animate() {
-                animationTime += 0.008;
-                drawLissajous(animationTime);
+                drawLissajous(0.6);
                 requestAnimationFrame(animate);
             }
             resizeCanvas();
@@ -1856,7 +1975,6 @@
             const colors = { blue: '#3b82f6', red: '#ef4444', green: '#10b981', purple: '#a855f7', orange: '#f97316' };
             const colorNames = Object.keys(colors);
             const bricks = [];
-            const brickSize = 30;
             const gap = 2;
 
             function getBackgroundColor() { return document.body.classList.contains('dark-mode') ? '#505057' : '#ffffff'; }
@@ -1873,6 +1991,7 @@
                 bricks.length = 0;
                 const width = canvas.width / window.devicePixelRatio;
                 const height = canvas.height / window.devicePixelRatio;
+                const brickSize = Math.round(30 * Math.min(width, height) / 280);
                 const cols = Math.floor((width - 20) / (brickSize + gap));
                 const rows = Math.floor((height - 20) / (brickSize + gap));
                 const maxBricks = Math.ceil((cols * rows) / 2.2);
@@ -1894,19 +2013,11 @@
             function drawBricks(activeColor) {
                 const bgColor = getBackgroundColor();
                 const borderColor = getBorderColor();
-                const textColor = document.body.classList.contains('dark-mode') ? '#FAFAF8' : '#1a1a1a';
                 const width = canvas.width / window.devicePixelRatio;
                 const height = canvas.height / window.devicePixelRatio;
 
                 ctx.fillStyle = bgColor;
                 ctx.fillRect(0, 0, width, height);
-
-                ctx.fillStyle = textColor;
-                ctx.font = 'bold 16px "JetBrains Mono"';
-                ctx.textAlign = 'center';
-                ctx.textBaseline = 'top';
-                ctx.fillText('Intelligent', width / 2, 12);
-                ctx.fillText('Knowledge Base', width / 2, 32);
 
                 bricks.forEach(brick => {
                     let opacity = 0.25;
@@ -1964,33 +2075,32 @@
                 ctx.fillStyle = bgColor;
                 ctx.fillRect(0, 0, width, height);
 
-                ctx.fillStyle = lineColor;
-                ctx.font = 'bold 14px "JetBrains Mono"';
-                ctx.textAlign = 'center';
-                ctx.textBaseline = 'top';
-                ctx.fillText('Skill-building', width / 2, 12);
+                // scale & center the machine to fill the box (content spans ~170x50 around 130,135)
+                const mScale = (Math.min(width, height) * 0.82) / 170;
+                ctx.save();
+                ctx.translate(width / 2, height / 2);
+                ctx.scale(mScale, mScale);
+                ctx.translate(-130, -135);
 
                 const machineX = 45;
                 const machineY = 110;
                 const machineWidth = 50;
                 const machineHeight = 50;
 
+                ctx.fillStyle = '#d4e8d4';
+                ctx.fillRect(machineX, machineY, machineWidth, machineHeight);
                 ctx.strokeStyle = lineColor;
                 ctx.lineWidth = 2;
                 ctx.strokeRect(machineX, machineY, machineWidth, machineHeight);
 
-                const lissScale = 12;
-                ctx.lineWidth = 1.5;
-                ctx.beginPath();
-                for (let t = 0; t <= Math.PI * 2; t += Math.PI / 40) {
-                    const x = Math.sin(5 * t) * lissScale;
-                    const y = Math.sin(3 * t) * lissScale;
-                    const px = machineX + machineWidth / 2 + x;
-                    const py = machineY + machineHeight / 2 + y;
-                    if (t === 0) ctx.moveTo(px, py);
-                    else ctx.lineTo(px, py);
+                if (tuvaMark.complete && tuvaMark.naturalWidth) {
+                    const mw = machineWidth * 0.78;
+                    const mh = mw * (tuvaMark.naturalHeight / tuvaMark.naturalWidth);
+                    ctx.drawImage(tuvaMark,
+                        machineX + machineWidth / 2 - mw / 2,
+                        machineY + machineHeight / 2 - mh / 2,
+                        mw, mh);
                 }
-                ctx.stroke();
 
                 const beltStartX = machineX + machineWidth;
                 const beltY = machineY + machineHeight / 2;
@@ -2046,6 +2156,8 @@
                         }
                     }
                 }
+
+                ctx.restore();
             }
 
             function animate() {
@@ -2080,96 +2192,134 @@
                 const width = canvas.width / window.devicePixelRatio;
                 const height = canvas.height / window.devicePixelRatio;
                 const centerX = width / 2;
-                const centerY = height / 2 + 20;
+                const centerY = height / 2;
                 const bgColor = getBackgroundColor();
                 const lineColor = getLineColor();
 
                 ctx.fillStyle = bgColor;
                 ctx.fillRect(0, 0, width, height);
 
-                ctx.fillStyle = lineColor;
-                ctx.font = 'bold 14px "JetBrains Mono"';
-                ctx.textAlign = 'center';
-                ctx.textBaseline = 'top';
-                ctx.fillText('Connect to', width / 2, 12);
-                ctx.fillText('Tools', width / 2, 30);
+                // scale & center the graph to fill the box
+                const gScale = Math.min(width, height) / 200;
+                ctx.save();
+                ctx.translate(centerX, centerY);
+                ctx.scale(gScale, gScale);
 
-                const mainCircleRadius = 50;
-                const toolShapeRadius = 12;
+                // Dynamically constructed knowledge graph
+                const cx = 0;
+                const cy = 0;
+                const nodes = [
+                    { x: cx,      y: cy,      hub: true,                       t: 0.0 },
+                    { x: cx,      y: cy - 72, shape: 'circle',   c: '#3b82f6', t: 0.5 },
+                    { x: cx + 70, y: cy - 30, shape: 'square',   c: '#ef4444', t: 1.0 },
+                    { x: cx + 62, y: cy + 48, shape: 'triangle', c: '#a855f7', t: 1.8 },
+                    { x: cx - 8,  y: cy + 76, shape: 'circle',   c: '#f97316', t: 2.4 },
+                    { x: cx - 66, y: cy + 40, shape: 'square',   c: '#10b981', t: 1.4 },
+                    { x: cx - 72, y: cy - 34, shape: 'triangle', c: '#3b82f6', t: 2.0 }
+                ];
+                const edges = [
+                    [0, 1], [0, 2], [1, 2], [0, 5], [0, 6], [5, 6],
+                    [2, 3], [0, 3], [3, 4], [0, 4], [4, 5], [6, 1]
+                ];
 
-                ctx.fillStyle = '#d4e8d4';
-                ctx.beginPath();
-                ctx.arc(centerX, centerY, mainCircleRadius, 0, Math.PI * 2);
-                ctx.fill();
+                const nodeR = 10;
+                const hubR = 24;
+                const popDur = 0.45;
+                const edgeDur = 0.5;
+                const edgeDelay = 0.25;
+                const buildEnd = 3.4;
+                const holdDur = 1.3;
+                const fadeDur = 0.7;
+                const cycle = buildEnd + holdDur + fadeDur;
+                const phase = time % cycle;
 
+                let alpha = 1;
+                if (phase > buildEnd + holdDur) {
+                    alpha = 1 - (phase - buildEnd - holdDur) / fadeDur;
+                }
+
+                const easeOut = p => 1 - Math.pow(1 - p, 3);
+                const easeBack = p => {
+                    const c1 = 1.70158, c3 = c1 + 1;
+                    return 1 + c3 * Math.pow(p - 1, 3) + c1 * Math.pow(p - 1, 2);
+                };
+                const clamp01 = p => Math.max(0, Math.min(1, p));
+                const nodeScale = i => {
+                    const p = clamp01((phase - nodes[i].t) / popDur);
+                    return p <= 0 ? 0 : easeBack(p);
+                };
+
+                ctx.globalAlpha = alpha;
+
+                // Edges grow from source toward target once both nodes exist
                 ctx.strokeStyle = lineColor;
-                ctx.lineWidth = 2;
-                ctx.beginPath();
-                ctx.arc(centerX, centerY, mainCircleRadius, 0, Math.PI * 2);
-                ctx.stroke();
+                ctx.lineCap = 'round';
+                for (const [a, b] of edges) {
+                    const appear = Math.max(nodes[a].t, nodes[b].t) + edgeDelay;
+                    const ep = clamp01((phase - appear) / edgeDur);
+                    if (ep <= 0) continue;
+                    const grow = easeOut(ep);
+                    const ax = nodes[a].x, ay = nodes[a].y;
+                    const bx = nodes[b].x, by = nodes[b].y;
+                    ctx.lineWidth = 1.5;
+                    ctx.beginPath();
+                    ctx.moveTo(ax, ay);
+                    ctx.lineTo(ax + (bx - ax) * grow, ay + (by - ay) * grow);
+                    ctx.stroke();
+                }
 
-                const toolColors = ['#3b82f6', '#ef4444', '#10b981', '#a855f7', '#f97316'];
-                const toolShapes = ['circle', 'triangle', 'square', 'circle', 'triangle'];
-                const numTools = 5;
-
-                for (let i = 0; i < numTools; i++) {
-                    const angle = (i / numTools) * Math.PI * 2 - Math.PI / 2;
-                    const toolX = centerX + Math.cos(angle) * (mainCircleRadius + 25);
-                    const toolY = centerY + Math.sin(angle) * (mainCircleRadius + 25);
-                    const toolColor = toolColors[i];
-                    const toolShape = toolShapes[i];
-
-                    if (toolShape === 'circle') {
-                        ctx.fillStyle = toolColor;
+                // Nodes pop in
+                for (let i = 0; i < nodes.length; i++) {
+                    const s = nodeScale(i);
+                    if (s <= 0) continue;
+                    const n = nodes[i];
+                    if (n.hub) {
+                        const r = hubR * s;
+                        ctx.fillStyle = '#d4e8d4';
                         ctx.beginPath();
-                        ctx.arc(toolX, toolY, toolShapeRadius, 0, Math.PI * 2);
+                        ctx.arc(n.x, n.y, r, 0, Math.PI * 2);
                         ctx.fill();
-                    } else if (toolShape === 'triangle') {
-                        ctx.fillStyle = toolColor;
+                        ctx.strokeStyle = lineColor;
+                        ctx.lineWidth = 2;
                         ctx.beginPath();
-                        ctx.moveTo(toolX, toolY - toolShapeRadius);
-                        ctx.lineTo(toolX + toolShapeRadius, toolY + toolShapeRadius);
-                        ctx.lineTo(toolX - toolShapeRadius, toolY + toolShapeRadius);
+                        ctx.arc(n.x, n.y, r, 0, Math.PI * 2);
+                        ctx.stroke();
+
+                        // Brand mark inside the hub
+                        if (tuvaMark.complete && tuvaMark.naturalWidth) {
+                            const iw = r * 1.5;
+                            const ih = iw * (tuvaMark.naturalHeight / tuvaMark.naturalWidth);
+                            ctx.drawImage(tuvaMark, n.x - iw / 2, n.y - ih / 2, iw, ih);
+                        }
+                        continue;
+                    }
+                    const r = nodeR * s;
+                    ctx.fillStyle = n.c;
+                    ctx.strokeStyle = lineColor;
+                    ctx.lineWidth = 1.5;
+                    if (n.shape === 'circle') {
+                        ctx.beginPath();
+                        ctx.arc(n.x, n.y, r, 0, Math.PI * 2);
+                        ctx.fill();
+                        ctx.stroke();
+                    } else if (n.shape === 'square') {
+                        ctx.beginPath();
+                        ctx.rect(n.x - r, n.y - r, r * 2, r * 2);
+                        ctx.fill();
+                        ctx.stroke();
+                    } else {
+                        ctx.beginPath();
+                        ctx.moveTo(n.x, n.y - r);
+                        ctx.lineTo(n.x + r, n.y + r);
+                        ctx.lineTo(n.x - r, n.y + r);
                         ctx.closePath();
                         ctx.fill();
-                    } else if (toolShape === 'square') {
-                        ctx.fillStyle = toolColor;
-                        ctx.fillRect(toolX - toolShapeRadius, toolY - toolShapeRadius, toolShapeRadius * 2, toolShapeRadius * 2);
+                        ctx.stroke();
                     }
                 }
 
-                const lissScale = mainCircleRadius * 0.6;
-                const rotationAngle = time * 0.5;
-                const perspectiveDistance = 500;
-                const points = [];
-                for (let t = 0; t <= Math.PI * 2; t += Math.PI / 60) {
-                    let x = Math.sin(5 * t) * lissScale;
-                    let y = Math.sin(3 * t) * lissScale;
-                    let z = 0;
-                    const cos = Math.cos(rotationAngle);
-                    const sin = Math.sin(rotationAngle);
-                    const x3d = x * cos + z * sin;
-                    const z3d = -x * sin + z * cos;
-                    const perspective = perspectiveDistance / (perspectiveDistance + z3d);
-                    points.push({ x: centerX + x3d * perspective, y: centerY + y * perspective, depth: perspective });
-                }
-
-                ctx.strokeStyle = lineColor;
-                ctx.lineWidth = 1.5;
-                ctx.lineCap = 'round';
-                ctx.lineJoin = 'round';
-                for (let i = 0; i < points.length - 1; i++) {
-                    const p1 = points[i];
-                    const p2 = points[i + 1];
-                    const avgDepth = (p1.depth + p2.depth) / 2;
-                    ctx.lineWidth = 1 + avgDepth * 1.2;
-                    ctx.globalAlpha = 0.7 + avgDepth * 0.3;
-                    ctx.beginPath();
-                    ctx.moveTo(p1.x, p1.y);
-                    ctx.lineTo(p2.x, p2.y);
-                    ctx.stroke();
-                }
                 ctx.globalAlpha = 1;
+                ctx.restore();
             }
 
             function animate() {
@@ -2185,13 +2335,9 @@
 
         // Init all
         function initAll() {
-            initLissajous();
             initContextMap();
             initRobot();
             initAmpersand();
-            initButtonLissajous('headerBtnCanvas');
-            initButtonLissajous('heroBtnCanvas');
-            initButtonLissajous('ctaBtnCanvas');
             initQuoteRotator();
         }
 
