@@ -68,17 +68,198 @@
         <article class="legal">
             <span class="legal-eyebrow">Legal</span>
             <h1 class="legal-title">Privacy Policy</h1>
-            <p class="legal-meta">Last updated: <!-- DATE -->[date]</p>
+            <p class="legal-meta">Effective Date: July 13, 2026</p>
 
-            <!-- ========================================================= -->
-            <!-- DROP DOCUMENT CONTENT BELOW. Plain HTML: <h2>, <h3>, <p>, -->
-            <!-- <ul>/<ol>, <table>, <blockquote>, <hr>, <a>, <strong>.    -->
-            <!-- All of it is already styled by legal.css.                 -->
-            <!-- ========================================================= -->
             <div class="legal-body">
-                <p>Privacy policy content goes here.</p>
+                <p>This Privacy Policy applies to our websites, applications, services, and other offerings that link to this policy (collectively, the “<strong>Services</strong>”). It explains how Tuva AI, Inc. (“<strong>Tuva</strong>,” “<strong>we</strong>,” “<strong>our</strong>,” or “<strong>us</strong>”) collects, uses, and protects your personal data. In this Privacy Policy, “<strong>Personal Data</strong>” means information that identifies or reasonably can be linked to a particular individual. By using our Services, you accept the practices described in this Privacy Policy. If you access the Services through an organization (such as a university or employer) that has a separate agreement with us, that organization’s privacy policy governs its use of your data, and we process data on that organization’s behalf under the terms of our agreement with them. This Privacy Policy does not cover the practices of companies we don’t own or control.</p>
+
+                <h2>How We Handle Your Data</h2>
+                <p>Tuva is built on a local-first architecture. Your research data, files, datasets, and knowledge bases are stored on your device. When you use Tuva’s AI features, the content of your messages is not logged or retained on Tuva’s infrastructure. Tuva maintains only a lightweight routing layer that forwards your messages to a third-party LLM provider and returns the response; your messages pass through our systems only for the time required to do so (see “Third-Party LLM Providers” below).</p>
+
+                <h2>Personal Data We Collect</h2>
+                <p>We do not store your research data, file contents, knowledge bases, or datasets. The Personal Data we collect is limited to what is necessary to operate the Services:</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Category of Personal Data</th>
+                            <th>Examples of Personal Data We Collect</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Account Information</td>
+                            <td>Name, email address (.edu or other), organization</td>
+                        </tr>
+                        <tr>
+                            <td>Authentication Data</td>
+                            <td>Login credentials, session tokens</td>
+                        </tr>
+                        <tr>
+                            <td>Billing Data</td>
+                            <td>Payment method, transaction history</td>
+                        </tr>
+                        <tr>
+                            <td>Usage Metadata</td>
+                            <td>Session timestamps, feature usage, error logs</td>
+                        </tr>
+                        <tr>
+                            <td>Device Information</td>
+                            <td>Operating system, IDE and extension version, IP address</td>
+                        </tr>
+                        <tr>
+                            <td>Cookies</td>
+                            <td>Cookies and similar technologies, if and when used on our website (tuva.ai) for analytics and session management</td>
+                        </tr>
+                        <tr>
+                            <td>AI Input Data</td>
+                            <td>Content you include in prompts when using AI features, routed transiently through our infrastructure to a third-party LLM provider; not logged or retained by Tuva after a response is returned</td>
+                        </tr>
+                        <tr>
+                            <td>Customer Support Data</td>
+                            <td>Support inquiries and communications</td>
+                        </tr>
+                        <tr>
+                            <td>Feedback Data</td>
+                            <td>Product feedback you choose to submit and, only with your explicit consent, content from the specific interaction your feedback concerns</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h2>Where We Get Your Data</h2>
+                <p>We collect Personal Data directly from you (when you create an account, subscribe, or contact us) and automatically through your use of the Services (including usage metadata collected by the extension and any cookies used on our website).</p>
+
+                <h2>How We Use Your Data</h2>
+                <p>We use your Personal Data to:</p>
+                <ul>
+                    <li>Provide and improve the Services, including managing your account, processing billing, and providing support</li>
+                    <li>Communicate with you about the Services, including product updates and service announcements</li>
+                    <li>Respond to your inquiries</li>
+                    <li>Prevent fraud and protect the security of our systems and Services</li>
+                    <li>Fulfill legal obligations, protect the rights and safety of you and others, enforce our agreements, and resolve disputes</li>
+                </ul>
+                <p>We will not use your Personal Data for materially different or unrelated purposes without providing you notice.</p>
+
+                <h2>How We Share Your Personal Data</h2>
+                <p>We share your Personal Data with the following categories of recipients:</p>
+                <ul>
+                    <li>Service providers that help us operate the Services, including hosting, payment processing, and customer service vendors</li>
+                    <li>LLM API providers — see “Third-Party LLM Providers” below for details on how data flows to these providers</li>
+                    <li>Analytics partners that help us understand how users interact with our website and, if you opt in, the Services (see “Product Analytics and Session Replays” below)</li>
+                    <li>Third parties you authorize through the Services</li>
+                    <li>Government authorities or law enforcement in response to valid legal process</li>
+                    <li>Acquirers or successors in connection with a merger, acquisition, bankruptcy, or similar transaction</li>
+                </ul>
+                <p>We do not sell your Personal Data. We may de-identify or aggregate Personal Data so it no longer identifies you and use or share it for any lawful business purpose.</p>
+
+                <h2>Cookies and Tracking</h2>
+                <p>Our website (tuva.ai) does not currently use cookies or similar tracking technologies. If we introduce them (for example, in connection with a web-hosted version of the Services), we will use them for analytics and session management, update this Privacy Policy, and provide any notice or consent mechanism required by applicable law. The Tuva extension itself does not use cookies.</p>
+                <p>You can opt out of marketing emails by clicking the “unsubscribe” link in any marketing email or by contacting us at <a href="mailto:privacy@tuva.ai">privacy@tuva.ai</a>. We may still send you transactional messages about your account.</p>
+
+                <h2>Product Analytics and Session Replays</h2>
+                <p>With your explicit consent, we collect product analytics through a third-party analytics provider to understand how users interact with the Services. When enabled, we collect feature interaction events (such as creating a project, sending a chat message, or submitting feedback), session length, and platform error events. These events are recorded at the interaction level, are associated with your account, and do not include the content of your messages, files, or research data.</p>
+                <p>With the same consent, we may also record session replays that show how you navigate the Services. Session replays are configured to mask input fields, passwords, and on-screen text content.</p>
+                <p>Analytics events and session replays are retained as described in the retention schedule below. You may withdraw your consent at any time in your settings. If you withdraw consent, we will stop all further collection and will delete the analytics events and session replays previously collected from you within 30 days, except for copies retained in backup systems pending scheduled deletion. Withdrawal does not affect aggregated, de-identified data that no longer identifies you.</p>
+
+                <h2>AI and Your Data</h2>
+
+                <h3>Third-Party LLM Providers</h3>
+                <p>Tuva’s AI features are powered by third-party large language model (LLM) APIs. When you use these features, prompts and context from your session are transmitted to the LLM provider through the Services to generate a response. Tuva currently uses third-party providers including Anthropic and OpenAI, and may route requests through a third-party routing service. We may add or change providers over time and maintain a current list of our sub-processors on our website.</p>
+                <p>Each provider’s handling of data transmitted through its API is governed by that provider’s privacy policy and terms of use. We select providers whose terms prohibit using API inputs to train their models. We encourage you to review the applicable provider’s policies.</p>
+
+                <h3>No Training on Your Data</h3>
+                <p>We do not use your content — including your queries, responses, or knowledge bases — to train AI models. We may use aggregated, de-identified usage data (such as feature adoption and error rates) to improve the Services. If we introduce any program that uses identifiable user content for product improvement, we will update this Privacy Policy and obtain your consent before any such use begins.</p>
+
+                <h3>Feedback</h3>
+                <p>If you submit feedback through the Services, we collect the content of your feedback. Content from a specific interaction is included with your feedback only if you expressly opt in at the time of submission, and by opting in you consent to our storing and using that content to operate and improve the Services. We will not use Feedback Data to train AI models without your explicit consent.</p>
+
+                <h3>Bring Your Own Key</h3>
+                <p>If you use your own API key to connect to an LLM provider, data processing for those requests is governed by your direct agreement with that provider, not this Privacy Policy. Tuva does not retain or log the content of requests made using your own API key.</p>
+
+                <h3>Health Data</h3>
+                <p>The Services are not designed to process protected health information (PHI), are not HIPAA-compliant, and are not intended for use with identifiable patient data.</p>
+
+                <h2>Data Retention and Deletion</h2>
+                <p>We retain Personal Data only for as long as necessary to fulfill the purposes for which it was collected, provide our Services, comply with legal obligations, resolve disputes, and enforce our agreements.</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Data Category</th>
+                            <th>Retention Period</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Active Account and Profile Data</td>
+                            <td>Duration of account + 30 days after closure</td>
+                        </tr>
+                        <tr>
+                            <td>Billing and Subscription Data</td>
+                            <td>7 years after transaction (tax and accounting requirements)</td>
+                        </tr>
+                        <tr>
+                            <td>Payment Information</td>
+                            <td>Duration of account or as required by payment processor</td>
+                        </tr>
+                        <tr>
+                            <td>Usage Metadata</td>
+                            <td>1 year</td>
+                        </tr>
+                        <tr>
+                            <td>Feedback Data</td>
+                            <td>2 years after submission, or upon earlier deletion request</td>
+                        </tr>
+                        <tr>
+                            <td>Product Analytics and Session Replay Data</td>
+                            <td>90 days, or upon earlier withdrawal of consent</td>
+                        </tr>
+                        <tr>
+                            <td>Customer Service Records</td>
+                            <td>2 years after resolution</td>
+                        </tr>
+                        <tr>
+                            <td>Consent Records</td>
+                            <td>3 years after consent given or withdrawn</td>
+                        </tr>
+                        <tr>
+                            <td>Security Logs</td>
+                            <td>1 year</td>
+                        </tr>
+                        <tr>
+                            <td>Communication Preferences</td>
+                            <td>Until you opt out or close your account</td>
+                        </tr>
+                        <tr>
+                            <td>Aggregated/De-identified Data</td>
+                            <td>Indefinitely</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p>You can delete your account and request deletion of your Personal Data at any time through your account settings or by contacting <a href="mailto:privacy@tuva.ai">privacy@tuva.ai</a>. We will process deletion requests in accordance with applicable law, except where retention is required (such as for tax or accounting purposes).</p>
+                <p>If your account is inactive for 12 months, we may automatically close it. After you close your account (whether voluntarily or due to inactivity), we delete your data as described in this section, except for data we retain for legal, safety, or legitimate business purposes, including limited data to investigate harmful conduct and prevent banned users from creating new accounts.</p>
+
+                <h2>Data Security</h2>
+                <p>We use commercially reasonable technical and organizational measures to protect your Personal Data, including encryption of data in transit and at rest, access controls, and network security measures. We require our service providers who handle your data to maintain appropriate security measures.</p>
+                <p>In the event of a data breach affecting your Personal Data, we will notify you as required by applicable law. For security incidents or to report vulnerabilities, contact us at <a href="mailto:privacy@tuva.ai">privacy@tuva.ai</a>.</p>
+                <p>You can help protect your data by:</p>
+                <ul>
+                    <li>Choosing strong, unique passwords and enabling MFA when available</li>
+                    <li>Keeping your account credentials confidential</li>
+                    <li>Logging out after using shared devices</li>
+                    <li>Promptly reporting any suspected unauthorized access to <a href="mailto:privacy@tuva.ai">privacy@tuva.ai</a></li>
+                </ul>
+
+                <h2>Children’s Privacy</h2>
+                <p>Our Services are not intended for children under 13 years of age. We do not knowingly collect Personal Data from children under 13. If you are a parent or guardian and believe your child has provided us with Personal Data, please contact us at <a href="mailto:privacy@tuva.ai">privacy@tuva.ai</a> so we can delete that information. If we learn that we have collected Personal Data from a child under 13, we will take steps to delete that information promptly.</p>
+
+                <h2>Your Privacy Rights</h2>
+                <p>If you have questions about your Personal Data or would like to request access, correction, or deletion, contact us at <a href="mailto:privacy@tuva.ai">privacy@tuva.ai</a>.</p>
+
+                <h2>Changes to This Policy</h2>
+                <p>We may update this Privacy Policy from time to time and will notify you of material changes by posting a notice on tuva.ai or sending you an email. Your continued use of the Services after changes are posted means you accept the updated Privacy Policy.</p>
+
+                <h2>Contact Us</h2>
+                <p>If you have any questions about this Privacy Policy or how we handle your data, contact us at <a href="mailto:privacy@tuva.ai">privacy@tuva.ai</a>.</p>
             </div>
-            <!-- ============ END DOCUMENT CONTENT ======================= -->
         </article>
     </main>
 
