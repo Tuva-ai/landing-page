@@ -22,7 +22,9 @@
         security_storage: 'granted'
       });
       gtag('set', 'ads_data_redaction', true);
-      gtag('set', 'url_passthrough', true);
+      // url_passthrough would append a _gl linker param to internal links; we stay cookieless
+      // and single-domain, so we take clean URLs over cross-page session stitching.
+      gtag('set', 'url_passthrough', false);
 
       gtag('config', 'G-1SGTJKG3T7');
     </script>
