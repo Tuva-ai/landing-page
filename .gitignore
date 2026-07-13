@@ -1,0 +1,5 @@
+# macOS
+.DS_Store
+
+# Raw/uncompressed video sources — keep the web-optimized rao-demo.mp4 instead
+*.mov

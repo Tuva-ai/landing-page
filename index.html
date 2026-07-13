@@ -544,6 +544,176 @@
             color: #a8aab0;
         }
 
+        /* Product demo video (click-to-play with poster) */
+        .demo-video-section {
+            padding: 3.5rem 2rem 4rem;
+            border-bottom: 2px solid var(--border);
+        }
+
+        .demo-video-frame {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+            line-height: 0;
+            aspect-ratio: 16 / 10;
+            border: 2px solid var(--text);
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 8px 8px 0 var(--pale-green);
+        }
+
+        .demo-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .demo-video-overlay {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 1.1rem;
+            cursor: pointer;
+            color: var(--text-secondary);
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .demo-video-play {
+            width: 72px;
+            height: 72px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid var(--text);
+            border-radius: 50%;
+            background: var(--bg-card);
+            font-size: 1.4rem;
+            color: var(--text);
+            padding-left: 5px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .demo-video-overlay:hover .demo-video-play {
+            transform: scale(1.08);
+            box-shadow: 4px 4px 0 var(--pale-green);
+        }
+
+        .demo-video-overlay p { font-size: 0.9rem; font-weight: 500; }
+
+        /* Use-case product screenshots */
+        .uc-shots {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.25rem;
+            max-width: 1100px;
+            margin: 0 auto 3.5rem;
+        }
+
+        .uc-shot { margin: 0; }
+
+        .uc-shot-frame {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 10;
+            border: 2px solid var(--text);
+            border-radius: 4px;
+            overflow: hidden;
+            background: var(--bg-soft);
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font: inherit;
+            color: inherit;
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
+        }
+
+        .uc-shot-frame:hover {
+            transform: translateY(-2px);
+            box-shadow: 6px 6px 0 var(--text);
+        }
+
+        .uc-shot-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top left;
+            display: block;
+        }
+
+        .uc-shot-ph {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text-tertiary);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .uc-shot figcaption {
+            margin-top: 0.7rem;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            text-align: center;
+            line-height: 1.5;
+        }
+
+        /* Lightbox for enlarged screenshots */
+        .lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 1000;
+            background: rgba(20, 24, 20, 0.82);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            padding: 3rem 2rem;
+            align-items: center;
+            justify-content: center;
+            cursor: zoom-out;
+        }
+
+        .lightbox.open { display: flex; }
+
+        .lightbox img {
+            max-width: min(1200px, 96vw);
+            max-height: 90vh;
+            width: auto;
+            height: auto;
+            border: 2px solid #FAFAF8;
+            border-radius: 4px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            cursor: default;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 1.25rem;
+            right: 1.5rem;
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid #FAFAF8;
+            border-radius: 4px;
+            background: transparent;
+            color: #FAFAF8;
+            font-size: 1.4rem;
+            line-height: 1;
+            cursor: pointer;
+            transition: background 0.2s ease, color 0.2s ease;
+        }
+
+        .lightbox-close:hover { background: #FAFAF8; color: #1a1a1a; }
+
         /* Problem */
         .problem-section {
             padding: 5rem 2rem;
@@ -1262,6 +1432,7 @@
         @media (max-width: 900px) {
             .vision-grid { grid-template-columns: 1fr; padding: 2rem; gap: 2rem; }
             .task-grid { grid-template-columns: repeat(2, 1fr); }
+            .uc-shots { grid-template-columns: repeat(2, 1fr); }
         }
 
         @media (max-width: 768px) {
@@ -1281,7 +1452,7 @@
             }
             .feature-item-visual { flex: none; width: 100%; max-width: 380px; margin: 0 auto; }
             .context-canvas, .robot-canvas, .ampersand-canvas { max-width: 100%; }
-            .problem-grid, .steps-grid, .use-case-row, .task-grid {
+            .problem-grid, .steps-grid, .use-case-row, .task-grid, .uc-shots {
                 grid-template-columns: 1fr;
             }
             .header { padding: 1rem 1.5rem; }
@@ -1348,9 +1519,25 @@
             </div>
         </section>
 
+        <!-- Product demo video -->
+        <section class="demo-video-section" id="demo">
+            <div class="section-container">
+                <div class="demo-video-frame">
+                    <video class="demo-video" controls muted playsinline preload="metadata" poster="rao-demo-poster.jpg">
+                        <source src="rao-demo.mp4" type="video/mp4">
+                        Your browser doesn't support embedded video.
+                    </video>
+                    <div class="demo-video-overlay">
+                        <div class="demo-video-play">&#9654;</div>
+                        <p>Watch Rao in action</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Logo Strip (moved above video) -->
         <section class="logo-strip">
-            <div class="logo-strip-label">Used every day by researchers at top institutions</div>
+            <div class="logo-strip-label">Helping research at leading institutions discover more, faster</div>
             <div class="logo-row">
                 <img class="logo-mark" alt="Harvard" loading="lazy"
                      src="https://commons.wikimedia.org/wiki/Special:FilePath/Harvard_University_logo.svg"
@@ -1427,7 +1614,23 @@
                 <h2 class="section-title">A collaborator built on context.</h2>
                 <p class="section-subtitle">Rao keeps a living memory of your research, runs scientific agents on top of it, and improves the tools you already use, without you needing to change your workflow.</p>
 
-                <!-- Feature 1: Everywhere → graphic RIGHT, text LEFT -->
+                <!-- Feature 1: Living knowledge base → graphic LEFT, text RIGHT (default) -->
+                <div class="feature-item">
+                    <div class="feature-item-visual">
+                        <canvas id="contextCanvas" class="context-canvas"></canvas>
+                    </div>
+                    <div class="feature-item-text">
+                        <h3 class="feature-item-title">A living scientific knowledge base</h3>
+                        <p class="feature-item-description">Rao's agents are powered by a map of your project context that evolves as you do research, keeping track of how everything fits together. This means Rao can:</p>
+                        <ul class="feature-bullets">
+                            <li>Connect disparate ideas across your whole project when ideating with you</li>
+                            <li>Find the exact line or figure you need to reference across hundreds of papers, scripts, and notes</li>
+                            <li>Stay up to date on its own as your project evolves</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Feature 2: Everywhere → graphic RIGHT, text LEFT -->
                 <div class="feature-item reverse">
                     <div class="feature-item-visual">
                         <canvas id="ampersandCanvas" class="ampersand-canvas"></canvas>
@@ -1438,39 +1641,24 @@
                         <ul class="feature-bullets">
                             <li>Access Rao by chat in VS Code and the command line. Coming soon: browser extension, desktop app</li>
                             <li>Connect to context across your local files, Notion, and Google Drive</li>
-                            <li>Share context with Claude, Codex, and Cursor via MCP, so that they don't have to figure out how files are related to each other from scratch—saving tokens and increasing iteration speed </li>
+                            <li>Share context with agents like Claude, Codex, and Cursor via MCP, so they understand your project without burning tokens rediscovering things you know</li>
                         </ul>
                     </div>
                 </div>
 
-                <!-- Feature 2: Living knowledge base → graphic LEFT, text RIGHT (default) -->
+                <!-- Feature 3: Proactive agents → graphic LEFT, text RIGHT (default) -->
                 <div class="feature-item">
-                    <div class="feature-item-visual">
-                        <canvas id="contextCanvas" class="context-canvas"></canvas>
-                    </div>
-                    <div class="feature-item-text">
-                        <h3 class="feature-item-title">A living scientific knowledge base</h3>
-                        <p class="feature-item-description">Rao's agents are powered by a map of your project context that evolves as you do research, keeping track of how everything fits together. This means Rao can:</p>
-                        <ul class="feature-bullets">
-                            <li>Connect disparate ideas across your whole project when ideating with you</li>
-                            <li>Finds the exact line you need and figure to reference across hundreds of papers, scripts, and notes</li>
-                            <li>Stay up to date on its own as your work changes</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Feature 3: Proactive agents → graphic RIGHT, text LEFT -->
-                <div class="feature-item reverse">
                     <div class="feature-item-visual">
                         <canvas id="robotCanvas" class="robot-canvas"></canvas>
                     </div>
                     <div class="feature-item-text">
                         <h3 class="feature-item-title">Proactive agents tailored to your research</h3>
-                        <p class="feature-item-description">Because Rao already understands your work, it can augment your research work proactively. This looks like:</p>
+                        <p class="feature-item-description">Because Rao understands your work, it can augment your research proactively. This looks like:</p>
                         <ul class="feature-bullets">
-                            <li>A writing assistant that allows you to generate and surgically revise papers drawing from your results and notes</li>
-                            <li>Proactive literature search, surfacing work relevant to what you're thinking about at the moment</li>
-                            <li>Never have to read scientific package documentation again with our skill builder, which teaches Rao how to use packages specifically in the context of your work</li>
+                            <li>A writing assistant that edits in your scientific voice, drawing from your results and notes</li>
+                            <li>Script generation and math you can trust — analysis and simulation code, derivations, and sanity checks grounded in your project</li>
+                            <li>Proactive literature search, surfacing research relevant to what you're thinking about at the moment</li>
+                            <li>A skill builder that teaches Rao to use scientific packages the way your project needs — saving you hours of digging through documentation</li>
                         </ul>
                     </div>
                 </div>
@@ -1484,7 +1672,29 @@
                     <span class="section-eyebrow">Use cases</span>
                 </div>
                 <h2 class="section-title">Use Rao to explore, experiment, and iterate.</h2>
-                <p class="section-subtitle">Rao can help with all of the science you can do in your computer, across different fields</p>
+                <p class="section-subtitle">Rao can help with many of the research tasks you can do on your computer</p>
+
+                <!-- Product screenshots — click any frame to open the full capture -->
+                <div class="uc-shots">
+                    <figure class="uc-shot">
+                        <button class="uc-shot-frame" type="button" aria-label="Enlarge: Rao chat in VS Code">
+                            <img src="code.png" alt="Rao chat editing a Jupyter analysis cell inside VS Code" loading="lazy">
+                        </button>
+                        <figcaption>Ideate, do math, and write code contextually, right inside your editor</figcaption>
+                    </figure>
+                    <figure class="uc-shot">
+                        <button class="uc-shot-frame" type="button" aria-label="Enlarge: project memory knowledge graph">
+                            <img src="knowledge_graph.png" alt="Rao's project-memory knowledge graph linking files, papers, and results" loading="lazy">
+                        </button>
+                        <figcaption>Capture how files, results, and ideas connect</figcaption>
+                    </figure>
+                    <figure class="uc-shot">
+                        <button class="uc-shot-frame" type="button" aria-label="Enlarge: drafting and revising a paper">
+                            <img src="writing.png" alt="Rao drafting and revising a LaTeX derivation grounded in the project" loading="lazy">
+                        </button>
+                        <figcaption>Write papers and grants accurately and surgically, in your own voice</figcaption>
+                    </figure>
+                </div>
 
                 <div class="task-grid">
                     <div class="task-card">
@@ -1496,10 +1706,10 @@
                     </div>
                     <div class="task-card">
                         <div class="task-card-head">
-                            <span class="task-icon c-2">&#8981;</span>
-                            <h3>Search literature</h3>
+                            <span class="task-icon c-2">&#8721;</span>
+                            <h3>Do the math</h3>
                         </div>
-                        <p>Find the relevant papers — and the exact result or figure — right when you need them.</p>
+                        <p>Derivations, calculations, and sanity checks you can actually trust.</p>
                     </div>
                     <div class="task-card">
                         <div class="task-card-head">
@@ -1520,14 +1730,14 @@
                             <span class="task-icon c-5">&#10095;</span>
                             <h3>Write scripts</h3>
                         </div>
-                        <p>Generate analysis and simulation scripts with the scientific accuracy your work demands — locally or on HPC.</p>
+                        <p>Generate scientifically accurate analysis and simulation scripts, locally or on HPC.</p>
                     </div>
                     <div class="task-card">
                         <div class="task-card-head">
-                            <span class="task-icon c-6">&#8721;</span>
-                            <h3>Do the math</h3>
+                            <span class="task-icon c-6">&#8981;</span>
+                            <h3>Search literature</h3>
                         </div>
-                        <p>Derivations, calculations, and sanity checks you can actually trust.</p>
+                        <p>Find the relevant papers — and the exact result or figure — right when you need them.</p>
                     </div>
                 </div>
 
@@ -1537,7 +1747,7 @@
                 </div>
 
                 <div class="uc-fields">
-                    <div class="uc-band-label">In fields like</div>
+                    <div class="uc-band-label">Across fields including</div>
                     <div class="chip-grid">
                         <span class="chip">Computational Biology / Omics</span>
                         <span class="chip">Computational Chemistry / MD</span>
@@ -1565,18 +1775,18 @@
                 <div class="steps-grid">
                     <div class="step-card">
                         <div class="step-number s-1">01</div>
-                        <h3>Index your project</h3>
-                        <p>Open Rao and point it at a project folder. It builds a knowledge graph of how your files relate, both scientifically and structurally.</p>
+                        <h3>Index your project in minutes</h3>
+                        <p>Open Rao and point it at a project folder. It automatically builds a knowledge graph of how your files relate, both scientifically and structurally.</p>
                     </div>
                     <div class="step-card">
                         <div class="step-number s-2">02</div>
                         <h3>Collaborate with context-aware tools</h3>
-                        <p>Talk to Rao while you do your work, augment your work with scientific agents, and plug in Rao's context to other agentic tools by MCP.</p>
+                        <p>Talk to Rao as you would a close collaborator, and plug Rao's context into other agentic tools via MCP.</p>
                     </div>
                     <div class="step-card">
                         <div class="step-number s-3">03</div>
                         <h3>Build research memory as you go</h3>
-                        <p>Keep working the way you always do. Rao learns new results and connections in the background.</p>
+                        <p>Rao learns new results and connections automatically, helping you discover more, faster.</p>
                     </div>
                 </div>
 
@@ -1640,7 +1850,7 @@
                             </svg>
                         </div>
                     </button>
-                    <div class="faq-answer">Rao builds a shared knowledge base for your research. It understands the context and direction of your project - scripts, data, notebooks, PDFs, meeting notes, planning documents - from start to finish, improving the consistency, accuracy, and insights of our own custom science agents, as well as those you already use.</div>
+                    <div class="faq-answer">Rao builds a persistent knowledge base for your research. It understands the context and direction of your project - scripts, data, notebooks, PDFs, meeting notes, planning documents - from start to finish, improving the consistency, accuracy, and insights of AI agents. Rao comes with several agents specifically geared towards scientific research (e.g. chat agent, writing assistant, skill builder). You can also improve other agentic tools you're already using by plugging in Rao's research memory via MCP.  </div>
                 </div>
 
                 <div class="faq-item">
@@ -1676,7 +1886,7 @@
                             </svg>
                         </div>
                     </button>
-                    <div class="faq-answer">Interact with Rao as you would a research collaborator. It can suggest research directions, review your work, and explain the provenance and evolution of your files and ideas. It handles both open-ended exploration and specific questions about your project's details, and can build reusable skills for your frequently-used research practices.</div>
+                    <div class="faq-answer">Interact with Rao as you would a research collaborator. Rao can both do tasks (write code, do math, search, write), but also suggest research directions, review your work, and explain the provenance and evolution of your files and ideas. It handles both open-ended exploration and specific questions about your project's details, and can build reusable skills for your frequently-used research practices, all grounded in your project knowledge and history.</div>
                 </div>
             </div>
         </section>
@@ -1756,6 +1966,12 @@
         </div>
         <div class="footer-copyright">© 2026 Tuva AI, Inc. All rights reserved.</div>
     </footer>
+
+    <!-- Screenshot lightbox -->
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Enlarged screenshot">
+        <button class="lightbox-close" type="button" aria-label="Close">&times;</button>
+        <img id="lightboxImg" src="" alt="">
+    </div>
 
     <script>
         // Light mode only
@@ -2333,12 +2549,62 @@
             animate();
         }
 
+        // Product demo video — click-to-play, hide the poster overlay once it starts
+        function initDemoVideo() {
+            const overlay = document.querySelector('.demo-video-overlay');
+            const video = document.querySelector('.demo-video');
+            if (!overlay || !video) return;
+            overlay.addEventListener('click', () => {
+                if (video.querySelector('source')) {
+                    video.play();
+                } // else: no source yet, overlay stays as a placeholder
+            });
+            video.addEventListener('play', () => { overlay.style.display = 'none'; });
+        }
+
+        // Screenshot lightbox — click a use-case frame to view it full size
+        function initLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightboxImg');
+            if (!lightbox || !lightboxImg) return;
+            const closeBtn = lightbox.querySelector('.lightbox-close');
+
+            function open(src, alt) {
+                lightboxImg.src = src;
+                lightboxImg.alt = alt || '';
+                lightbox.classList.add('open');
+                document.body.style.overflow = 'hidden';
+            }
+            function close() {
+                lightbox.classList.remove('open');
+                lightboxImg.src = '';
+                document.body.style.overflow = '';
+            }
+
+            document.querySelectorAll('.uc-shot-frame').forEach(frame => {
+                frame.addEventListener('click', () => {
+                    const img = frame.querySelector('img');
+                    if (img) open(img.src, img.alt);
+                });
+            });
+
+            closeBtn.addEventListener('click', close);
+            lightbox.addEventListener('click', e => {
+                if (e.target === lightbox) close();
+            });
+            document.addEventListener('keydown', e => {
+                if (e.key === 'Escape' && lightbox.classList.contains('open')) close();
+            });
+        }
+
         // Init all
         function initAll() {
             initContextMap();
             initRobot();
             initAmpersand();
             initQuoteRotator();
+            initDemoVideo();
+            initLightbox();
         }
 
         if (document.readyState === 'loading') {
