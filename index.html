@@ -1503,6 +1503,7 @@
                     class="btn btn-primary has-canvas"
                     data-tf-popup="nOrRdz2U"
                     data-tf-hidden="utm_source=tuva-website,utm_medium=landing-page,utm_campaign=waitlist,utm_content=header"
+                    data-ga="waitlist_header"
                     data-tf-iframe-props="title=Tuva Waitlist"
                     data-tf-medium="snippet">
                 <img src="Tuva_Logo%20+%20Icon_Black.png" alt="" class="btn-canvas btn-mark">
@@ -1524,6 +1525,7 @@
                                 class="btn btn-primary has-canvas"
                                 data-tf-popup="nOrRdz2U"
                                 data-tf-hidden="utm_source=tuva-website,utm_medium=landing-page,utm_campaign=waitlist,utm_content=hero"
+                                data-ga="waitlist_hero"
                                 data-tf-iframe-props="title=Tuva Waitlist"
                                 data-tf-medium="snippet">
                             <img src="Tuva_Logo%20+%20Icon_Black.png" alt="" class="btn-canvas btn-mark">
@@ -1809,6 +1811,7 @@
                             class="btn btn-primary has-canvas"
                             data-tf-popup="nOrRdz2U"
                             data-tf-hidden="utm_source=tuva-website,utm_medium=landing-page,utm_campaign=waitlist,utm_content=getting_started"
+                            data-ga="waitlist_getting_started"
                             data-tf-iframe-props="title=Tuva Waitlist"
                             data-tf-medium="snippet">
                         <img src="Tuva_Logo%20+%20Icon_Black.png" alt="" class="btn-canvas btn-mark">
@@ -1853,7 +1856,7 @@
                     <span class="section-eyebrow">FAQ</span>
                 </div>
                 <h2 class="section-title">Frequently asked questions.</h2>
-                <p class="section-subtitle">Don't see yours? <a href="mailto:hello@tuva.ai" style="color: var(--text); text-decoration: underline;">Drop us a line</a>.</p>
+                <p class="section-subtitle">Don't see yours? <a href="mailto:hello@tuva.ai" style="color: var(--text); text-decoration: underline;" data-ga="email_click_faq">Drop us a line</a>.</p>
 
                 <div class="faq-item">
                     <button class="faq-question">
@@ -1961,6 +1964,7 @@
                         class="btn btn-primary has-canvas"
                         data-tf-popup="nOrRdz2U"
                         data-tf-hidden="utm_source=tuva-website,utm_medium=landing-page,utm_campaign=waitlist,utm_content=cta_final"
+                        data-ga="waitlist_final"
                         data-tf-iframe-props="title=Tuva Waitlist"
                         data-tf-medium="snippet">
                     <img src="Tuva_Logo%20+%20Icon_Black.png" alt="" class="btn-canvas btn-mark">
@@ -1976,7 +1980,7 @@
             <span class="footer-label">Connect</span>
             <a href="https://twitter.com/TuvaAI" target="_blank" rel="noopener noreferrer">Twitter</a>
             <a href="https://www.linkedin.com/company/tuva-ai/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-            <a href="mailto:hello@tuva.ai">hello@tuva.ai</a>
+            <a href="mailto:hello@tuva.ai" data-ga="email_click_footer">hello@tuva.ai</a>
         </div>
         <div class="footer-copyright">© 2026 Tuva AI, Inc. All rights reserved.</div>
     </footer>
@@ -2594,6 +2598,24 @@
             });
         }
 
+        // GA4 click tracking — any element with a [data-ga] fires that event name
+        function initEventTracking() {
+            document.querySelectorAll('[data-ga]').forEach(el => {
+                el.addEventListener('click', () => {
+                    if (typeof gtag !== 'function') return;
+                    const name = el.getAttribute('data-ga');
+                    const params = {};
+                    if (name.startsWith('waitlist_')) {
+                        params.location = name.replace('waitlist_', '');
+                    } else if (name.startsWith('email_')) {
+                        params.location = name.replace('email_click_', '');
+                        params.email = 'hello@tuva.ai';
+                    }
+                    gtag('event', name, params);
+                });
+            });
+        }
+
         // Screenshot lightbox — click a use-case frame to view it full size
         function initLightbox() {
             const lightbox = document.getElementById('lightbox');
@@ -2637,6 +2659,7 @@
             initQuoteRotator();
             initDemoVideo();
             initLightbox();
+            initEventTracking();
         }
 
         if (document.readyState === 'loading') {
