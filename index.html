@@ -4,6 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1SGTJKG3T7"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-1SGTJKG3T7');
+    </script>
+
     <!-- SEO Meta Tags -->
     <title>Rao by Tuva - Contextual AI for Scientific Research</title>
     <meta name="description" content="Rao helps researchers ideate, review literature, and analyze data faster by learning your project details and providing bespoke research agents.">
@@ -880,14 +889,11 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 0.35rem;
-            margin: 2.25rem auto 2.5rem;
+            margin: 1.75rem auto;
             color: var(--text-tertiary);
         }
 
-        .uc-bridge-text { font-size: 0.9rem; font-weight: 500; }
-        .uc-bridge-text b { color: var(--text); font-weight: 700; }
-        .uc-bridge-arrow { font-size: 1.15rem; line-height: 1; }
+        .uc-bridge-arrow { font-size: 1.35rem; line-height: 1; }
 
         .task-grid {
             display: grid;
@@ -1531,20 +1537,7 @@
             </div>
         </section>
 
-        <!-- Product demo video -->
-        <section class="demo-video-section" id="demo">
-            <div class="section-container">
-                <div class="demo-video-frame" data-loom="https://www.loom.com/embed/40012b5c1f834a1f999be7efa7eeb560?autoplay=1&hide_owner=true&hide_share=true&hide_title=true&hideEmbedTopBar=true">
-                    <img class="demo-video" src="rao-demo-poster.jpg" alt="Rao product demo">
-                    <div class="demo-video-overlay">
-                        <div class="demo-video-play">&#9654;</div>
-                        <p>Watch Rao in action</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Logo Strip (moved above video) -->
+        <!-- Logo Strip (above the demo video) -->
         <section class="logo-strip">
             <div class="logo-strip-label">Helping researchers at leading institutions discover more, faster</div>
             <div class="logo-row">
@@ -1566,6 +1559,19 @@
                 <img class="logo-mark" alt="UC Berkeley" loading="lazy"
                      src="https://commons.wikimedia.org/wiki/Special:FilePath/University%20of%20California,%20Berkeley%20logo.svg"
                      onerror="this.onerror=null;this.src='logos/berkeley.svg';">
+            </div>
+        </section>
+
+        <!-- Product demo video -->
+        <section class="demo-video-section" id="demo">
+            <div class="section-container">
+                <div class="demo-video-frame" data-loom="https://www.loom.com/embed/40012b5c1f834a1f999be7efa7eeb560?autoplay=1&hide_owner=true&hide_share=true&hide_title=true&hideEmbedTopBar=true">
+                    <img class="demo-video" src="rao-demo-poster.jpg" alt="Rao product demo">
+                    <div class="demo-video-overlay">
+                        <div class="demo-video-play">&#9654;</div>
+                        <p>Watch Rao in action</p>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -1751,7 +1757,6 @@
                 </div>
 
                 <div class="uc-bridge">
-                    <span class="uc-bridge-text">…for researchers <b>across fields</b></span>
                     <span class="uc-bridge-arrow">&#8595;</span>
                 </div>
 
@@ -2567,6 +2572,15 @@
             if (!loomUrl) return;
 
             overlay.addEventListener('click', () => {
+                // Track the view in GA4 (the play only fires on an intentional click)
+                if (typeof gtag === 'function') {
+                    gtag('event', 'demo_video_play', {
+                        video_provider: 'loom',
+                        video_id: '40012b5c1f834a1f999be7efa7eeb560',
+                        video_title: 'Rao product demo'
+                    });
+                }
+
                 const iframe = document.createElement('iframe');
                 iframe.className = 'demo-loom-iframe';
                 iframe.src = loomUrl;
