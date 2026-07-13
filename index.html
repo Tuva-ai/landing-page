@@ -345,6 +345,16 @@
             filter: brightness(0) invert(1);
         }
 
+        /* Animated brand mark — the logo-draw video renders on a pure-black
+           background, so screen-blending drops the black against the dark
+           button (and its hover state) leaving only the glowing mark. */
+        .btn-mark-video {
+            object-fit: contain;
+            display: block;
+            mix-blend-mode: screen;
+            pointer-events: none;
+        }
+
         .btn-text { line-height: 1; }
 
         .cta-buttons {
@@ -1522,7 +1532,9 @@
                     data-ga="waitlist_header"
                     data-tf-iframe-props="title=Tuva Waitlist"
                     data-tf-medium="snippet">
-                <img src="Tuva_Logo%20+%20Icon_Black.png" alt="" class="btn-canvas btn-mark">
+                <video class="btn-canvas btn-mark-video" autoplay muted loop playsinline aria-hidden="true">
+                    <source src="Tuva_Logo_Animation.mp4" type="video/mp4">
+                </video>
                 <span class="btn-text">Join Waitlist</span>
             </button>
         </div>
@@ -1544,7 +1556,9 @@
                                 data-ga="waitlist_hero"
                                 data-tf-iframe-props="title=Tuva Waitlist"
                                 data-tf-medium="snippet">
-                            <img src="Tuva_Logo%20+%20Icon_Black.png" alt="" class="btn-canvas btn-mark">
+                            <video class="btn-canvas btn-mark-video" autoplay muted loop playsinline aria-hidden="true">
+                    <source src="Tuva_Logo_Animation.mp4" type="video/mp4">
+                </video>
                             <span class="btn-text">Join Waitlist</span>
                         </button>
                     </div>
@@ -1818,7 +1832,9 @@
                             data-ga="waitlist_getting_started"
                             data-tf-iframe-props="title=Tuva Waitlist"
                             data-tf-medium="snippet">
-                        <img src="Tuva_Logo%20+%20Icon_Black.png" alt="" class="btn-canvas btn-mark">
+                        <video class="btn-canvas btn-mark-video" autoplay muted loop playsinline aria-hidden="true">
+                    <source src="Tuva_Logo_Animation.mp4" type="video/mp4">
+                </video>
                         <span class="btn-text">Join Waitlist</span>
                     </button>
                 </div>
@@ -1971,7 +1987,9 @@
                         data-ga="waitlist_final"
                         data-tf-iframe-props="title=Tuva Waitlist"
                         data-tf-medium="snippet">
-                    <img src="Tuva_Logo%20+%20Icon_Black.png" alt="" class="btn-canvas btn-mark">
+                    <video class="btn-canvas btn-mark-video" autoplay muted loop playsinline aria-hidden="true">
+                    <source src="Tuva_Logo_Animation.mp4" type="video/mp4">
+                </video>
                     <span class="btn-text">Join Waitlist</span>
                 </button>
             </div>

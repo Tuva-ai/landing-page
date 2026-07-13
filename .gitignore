@@ -4,3 +4,5 @@
 # Video sources — the demo is served via a Loom embed, not committed to the repo
 *.mov
 *.mp4
+# Exception: the looping brand-mark animation is embedded directly in the buttons
+!Tuva_Logo_Animation.mp4
