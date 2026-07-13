@@ -569,6 +569,18 @@
             display: block;
         }
 
+        /* Loom video is the raw recording (3456x2234) with a 74px black menu-bar
+           strip on top. The frame is 16:10; we scale the native-aspect iframe up
+           ~3.43% and shift it up so the strip is clipped, matching the poster. */
+        .demo-loom-iframe {
+            position: absolute;
+            top: -3.43%;
+            left: 0;
+            width: 100%;
+            height: 103.43%;
+            border: 0;
+        }
+
         .demo-video-overlay {
             position: absolute;
             inset: 0;
@@ -1522,11 +1534,8 @@
         <!-- Product demo video -->
         <section class="demo-video-section" id="demo">
             <div class="section-container">
-                <div class="demo-video-frame">
-                    <video class="demo-video" controls muted playsinline preload="metadata" poster="rao-demo-poster.jpg">
-                        <source src="rao-demo.mp4" type="video/mp4">
-                        Your browser doesn't support embedded video.
-                    </video>
+                <div class="demo-video-frame" data-loom="https://www.loom.com/embed/40012b5c1f834a1f999be7efa7eeb560?autoplay=1&hide_owner=true&hide_share=true&hide_title=true&hideEmbedTopBar=true">
+                    <img class="demo-video" src="rao-demo-poster.jpg" alt="Rao product demo">
                     <div class="demo-video-overlay">
                         <div class="demo-video-play">&#9654;</div>
                         <p>Watch Rao in action</p>
@@ -2549,17 +2558,26 @@
             animate();
         }
 
-        // Product demo video — click-to-play, hide the poster overlay once it starts
+        // Product demo — poster facade; load the Loom embed only on click
         function initDemoVideo() {
+            const frame = document.querySelector('.demo-video-frame');
             const overlay = document.querySelector('.demo-video-overlay');
-            const video = document.querySelector('.demo-video');
-            if (!overlay || !video) return;
+            if (!frame || !overlay) return;
+            const loomUrl = frame.getAttribute('data-loom');
+            if (!loomUrl) return;
+
             overlay.addEventListener('click', () => {
-                if (video.querySelector('source')) {
-                    video.play();
-                } // else: no source yet, overlay stays as a placeholder
+                const iframe = document.createElement('iframe');
+                iframe.className = 'demo-loom-iframe';
+                iframe.src = loomUrl;
+                iframe.setAttribute('allow', 'autoplay; fullscreen; picture-in-picture');
+                iframe.setAttribute('allowfullscreen', '');
+                iframe.setAttribute('title', 'Rao product demo');
+                const poster = frame.querySelector('.demo-video');
+                if (poster) poster.remove();
+                overlay.remove();
+                frame.appendChild(iframe);
             });
-            video.addEventListener('play', () => { overlay.style.display = 'none'; });
         }
 
         // Screenshot lightbox — click a use-case frame to view it full size

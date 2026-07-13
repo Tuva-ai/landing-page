@@ -1,5 +1,6 @@
 # macOS
 .DS_Store
 
-# Raw/uncompressed video sources — keep the web-optimized rao-demo.mp4 instead
+# Video sources — the demo is served via a Loom embed, not committed to the repo
 *.mov
+*.mp4
