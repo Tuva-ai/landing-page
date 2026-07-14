@@ -134,6 +134,7 @@
             border-bottom: 2px solid var(--border);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
+            transition: background-color 0.3s ease;
         }
 
         body.dark-mode .header {
@@ -1528,7 +1529,7 @@
                 <a href="#use-cases">Use Cases</a>
                 <a href="#how-it-works">Getting Started</a>
                 <a href="#faq">FAQ</a>
-                <a href="https://tuva-ai.notion.site/" target="_blank" rel="noopener noreferrer">Careers</a>
+                <a href="/careers">Careers</a>
             </nav>
             <button type="button"
                     class="btn btn-primary has-canvas"
@@ -2709,6 +2710,34 @@
             });
         }
 
+        // Header shading — tint the header to match the section scrolled under it
+        function initHeaderShade() {
+            const header = document.querySelector('.header');
+            if (!header) return;
+            const sections = Array.from(document.querySelectorAll('.main-content > section'));
+            if (!sections.length) return;
+            const bodyBg = getComputedStyle(document.body).backgroundColor;
+            let raf = null;
+            function apply() {
+                raf = null;
+                const probe = header.getBoundingClientRect().bottom + 1;
+                let bg = bodyBg;
+                for (const s of sections) {
+                    const r = s.getBoundingClientRect();
+                    if (r.top <= probe && r.bottom > probe) {
+                        const c = getComputedStyle(s).backgroundColor;
+                        bg = (c && c !== 'rgba(0, 0, 0, 0)' && c !== 'transparent') ? c : bodyBg;
+                        break;
+                    }
+                }
+                header.style.backgroundColor = bg;
+            }
+            const onScroll = () => { if (!raf) raf = requestAnimationFrame(apply); };
+            apply();
+            window.addEventListener('scroll', onScroll, { passive: true });
+            window.addEventListener('resize', onScroll);
+        }
+
         // Init all
         function initAll() {
             initContextMap();
@@ -2718,6 +2747,7 @@
             initDemoVideo();
             initLightbox();
             initEventTracking();
+            initHeaderShade();
         }
 
         if (document.readyState === 'loading') {
