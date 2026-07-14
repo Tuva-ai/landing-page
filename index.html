@@ -1590,7 +1590,7 @@
         <!-- Product demo video -->
         <section class="demo-video-section" id="demo">
             <div class="section-container">
-                <div class="demo-video-frame" data-embed="https://www.youtube-nocookie.com/embed/WRNcE6u9tX0?autoplay=1&rel=0&modestbranding=1&playsinline=1">
+                <div class="demo-video-frame" data-embed="https://www.youtube-nocookie.com/embed/WRNcE6u9tX0?autoplay=1&rel=0&modestbranding=1&playsinline=1&enablejsapi=1">
                     <img class="demo-video" src="rao-demo-poster.jpg" alt="Rao product demo">
                     <div class="demo-video-overlay">
                         <div class="demo-video-play">&#9654;</div>
@@ -2642,7 +2642,9 @@
 
                 const iframe = document.createElement('iframe');
                 iframe.className = 'demo-embed-iframe';
-                iframe.src = embedUrl;
+                // Pass the page origin so the YouTube JS API (enablejsapi=1) works,
+                // which lets GA4 Enhanced Measurement log video_start/progress/complete.
+                iframe.src = embedUrl + '&origin=' + encodeURIComponent(location.origin);
                 iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen');
                 iframe.setAttribute('allowfullscreen', '');
                 iframe.setAttribute('title', 'Rao product demo');
@@ -2662,9 +2664,10 @@
                     const params = {};
                     if (name.startsWith('waitlist_')) {
                         params.location = name.replace('waitlist_', '');
-                    } else if (name.startsWith('email_')) {
-                        params.location = name.replace('email_click_', '');
-                        params.email = 'hello@tuva.ai';
+                    } else if (name.includes('_click_')) {
+                        // e.g. email_click_faq, terms_click_footer -> location is the suffix
+                        params.location = name.slice(name.lastIndexOf('_click_') + '_click_'.length);
+                        if (name.startsWith('email_')) params.email = 'hello@tuva.ai';
                     }
                     gtag('event', name, params);
                 });
