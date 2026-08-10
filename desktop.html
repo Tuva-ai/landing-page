@@ -23,15 +23,15 @@
       gtag('config', 'G-1SGTJKG3T7');
     </script>
 
-    <title>Careers - Tuva AI</title>
-    <meta name="description" content="Join Tuva. We love science, we love scientists, and we're in it for the long haul. See our open roles.">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://tuva.ai/careers">
+    <title>Desktop App - Tuva AI</title>
+    <meta name="description" content="Download the Tuva desktop app.">
+    <meta name="robots" content="noindex, follow">
+    <link rel="canonical" href="https://tuva.ai/desktop">
 
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://tuva.ai/careers">
-    <meta property="og:title" content="Careers - Tuva AI">
-    <meta property="og:description" content="We love science, we love scientists, and we're in it for the long haul. See open roles at Tuva.">
+    <meta property="og:url" content="https://tuva.ai/desktop">
+    <meta property="og:title" content="Desktop App - Tuva AI">
+    <meta property="og:description" content="Download the Tuva desktop app.">
     <meta property="og:image" content="https://tuva.ai/og-image.jpg">
     <meta property="og:site_name" content="Tuva">
     <meta property="twitter:card" content="summary_large_image">
@@ -104,67 +104,45 @@
         .header .btn.has-canvas .btn-text { font-size: 0.85rem; }
         .header .btn-canvas { width: 28px; height: 28px; }
 
-        /* Careers layout — single screen, cards left, video right */
+        /* Desktop download layout — single centered column, one screen */
         .main-content { flex: 1; padding: 0; display: flex; }
-        .careers-main { flex: 1; display: flex; align-items: center; padding: 2.5rem 2rem; }
-        .careers-inner { max-width: 1240px; width: 100%; margin: 0 auto; }
+        .desktop-main { flex: 1; display: flex; align-items: center; padding: 4rem 2rem; }
+        .desktop-inner { max-width: 640px; width: 100%; margin: 0 auto; text-align: center; }
 
-        /* Full-width headline over both columns */
-        .careers-title {
-            text-align: center;
-            font-size: 2.2rem; font-weight: 600; line-height: 1.14;
-            letter-spacing: -0.02em; margin-bottom: 2rem;
-        }
-
-        /* Cards left, video right — equal height so the button aligns to the video bottom */
-        .careers-row {
-            display: grid; grid-template-columns: 0.82fr 1.18fr; gap: 3.25rem;
-            align-items: stretch;
-        }
-        .careers-left { display: flex; flex-direction: column; }
-        .careers-left .eyebrow {
+        .desktop-inner .eyebrow {
             display: inline-block; font-size: 0.75rem; font-weight: 600; text-transform: uppercase;
             letter-spacing: 0.15em; color: var(--text-tertiary); margin-bottom: 0.9rem;
         }
-        /* push the button to the bottom of the column so it lines up with the video */
-        .careers-left .btn { margin-top: auto; align-self: flex-start; }
+        .desktop-title {
+            font-size: 2.2rem; font-weight: 600; line-height: 1.14;
+            letter-spacing: -0.02em; margin-bottom: 1.25rem;
+        }
+        .desktop-copy {
+            font-size: 1rem; color: var(--text-secondary); line-height: 1.7;
+            margin: 0 auto 2rem;
+        }
 
-        .care-list { display: flex; flex-direction: column; gap: 0.85rem; margin-bottom: 1.5rem; }
-        .care-card {
-            display: flex; align-items: flex-start; gap: 0.9rem;
-            padding: 0.95rem 1.1rem; background: var(--bg-card);
-            border: 2px solid var(--text); border-radius: 4px;
-            transition: transform 0.15s ease, box-shadow 0.15s ease;
+        /* Inline Typeform trigger styled as a link inside body copy */
+        .link-inline {
+            background: none; border: 0; padding: 0; margin: 0;
+            font: inherit; color: var(--text); font-weight: 500;
+            text-decoration: underline; text-underline-offset: 2px;
+            cursor: pointer; transition: color 0.2s ease;
         }
-        .care-card:hover { transform: translateY(-2px); box-shadow: 5px 5px 0 var(--text); }
-        .care-icon {
-            width: 34px; height: 34px; flex-shrink: 0; display: flex; align-items: center; justify-content: center;
-            border: 2px solid var(--text); border-radius: 4px; font-size: 1.05rem; color: #fff;
-        }
-        .c-blue { background: #3b82f6; } .c-green { background: #10b981; } .c-purple { background: #a855f7; }
-        .care-card h3 { font-size: 0.98rem; font-weight: 600; margin-bottom: 0.15rem; }
-        .care-card p { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; }
-
-        .careers-video {
-            position: relative; aspect-ratio: 16 / 9; width: 100%;
-            border: 2px solid var(--text); border-radius: 6px; overflow: hidden;
-            box-shadow: 10px 10px 0 var(--pale-green); background: #000;
-        }
-        .careers-video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+        .link-inline:hover { color: var(--text-tertiary); }
 
         /* Slim footer so the whole page stays above the fold */
         .footer { padding: 1.6rem 2rem 1.4rem; }
         .footer-copyright { margin-top: 1rem; }
 
         @media (max-width: 900px) {
-            .careers-main { padding: 2.5rem 1.5rem; }
-            .careers-row { grid-template-columns: 1fr; gap: 1.75rem; }
-            .careers-video { order: -1; }
-            .careers-left .btn { margin-top: 0.25rem; }
+            .desktop-main { padding: 3rem 1.5rem; }
         }
         @media (max-width: 768px) {
             .header-nav { display: none; }
-            .careers-title { font-size: 1.8rem; }
+            .desktop-title { font-size: 1.8rem; }
+            .desktop-copy { font-size: 0.95rem; }
+            .desktop-inner .btn { width: 100%; white-space: normal; }
         }
     </style>
 </head>
@@ -187,7 +165,7 @@
             <button type="button"
                     class="btn btn-primary has-canvas"
                     data-tf-popup="nOrRdz2U"
-                    data-tf-hidden="utm_source=tuva-website,utm_medium=careers-page,utm_campaign=waitlist,utm_content=header"
+                    data-tf-hidden="utm_source=tuva-website,utm_medium=desktop-page,utm_campaign=waitlist,utm_content=header"
                     data-ga="waitlist_header"
                     data-tf-iframe-props="title=Tuva Waitlist"
                     data-tf-medium="snippet">
@@ -200,49 +178,24 @@
     </header>
 
     <main class="main-content">
-        <section class="careers-main">
-            <div class="careers-inner">
-                <h1 class="careers-title">Join us to build the future of research.</h1>
-                <div class="careers-row">
-                <!-- Left: what we care about + CTA -->
-                <div class="careers-left">
-                    <span class="eyebrow">What we care about</span>
-                    <div class="care-list">
-                        <div class="care-card">
-                            <div class="care-icon c-blue">&#9883;</div>
-                            <div>
-                                <h3>We love science</h3>
-                                <p>We dogfood our own tools on our own research. The best part of our job is learning about all the cool things our users work on!</p>
-                            </div>
-                        </div>
-                        <div class="care-card">
-                            <div class="care-icon c-green">&#9829;</div>
-                            <div>
-                                <h3>We love scientists</h3>
-                                <p>Research is a painstaking, thankless job. We sweat the small stuff so that our users can discover more and have more fun doing it.</p>
-                            </div>
-                        </div>
-                        <div class="care-card">
-                            <div class="care-icon c-purple">&#8734;</div>
-                            <div>
-                                <h3>We're in it for the long haul</h3>
-                                <p>Building a great company, like making a scientific discovery, doesn't happen overnight. We work hard, sustainably, and invest in each other to ensure we have a lasting impact.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <a href="https://tuva-ai.notion.site/" target="_blank" rel="noopener noreferrer" class="btn btn-primary" data-ga="careers_open_notion">See open roles&nbsp;&rarr;</a>
-                </div>
-
-                <!-- Right: recruiting video -->
-                <div class="careers-video">
-                    <iframe
-                        src="https://www.youtube-nocookie.com/embed/SnhgYd-rP08?rel=0&modestbranding=1&playsinline=1"
-                        title="Careers at Tuva"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        allowfullscreen
-                        loading="lazy"></iframe>
-                </div>
-                </div>
+        <section class="desktop-main">
+            <div class="desktop-inner">
+                <span class="eyebrow">Desktop app</span>
+                <h1 class="desktop-title">Download Tuva for Mac</h1>
+                <p class="desktop-copy">
+                    If you've chatted with our team, feel free to download the desktop app!
+                    If you haven't met the team yet please
+                    <button type="button"
+                            class="link-inline"
+                            data-tf-popup="nOrRdz2U"
+                            data-tf-hidden="utm_source=tuva-website,utm_medium=desktop-page,utm_campaign=waitlist,utm_content=body"
+                            data-ga="waitlist_desktop_body"
+                            data-tf-iframe-props="title=Tuva Waitlist"
+                            data-tf-medium="snippet">Join Waitlist</button>
+                    and we'll walk you through exactly how to do so.
+                </p>
+                <!-- TODO: replace href with the real .dmg URL (hosted release or site root) -->
+                <a href="/Tuva.dmg" download class="btn btn-primary" data-ga="desktop_click_download">Download for macOS&nbsp;&darr;</a>
             </div>
         </section>
     </main>
@@ -253,12 +206,12 @@
             <span class="footer-label">Connect</span>
             <a href="https://twitter.com/TuvaAI" target="_blank" rel="noopener noreferrer">Twitter</a>
             <a href="https://www.linkedin.com/company/tuva-ai/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-            <a href="mailto:hello@tuva.ai">hello@tuva.ai</a>
+            <a href="mailto:hello@tuva.ai" data-ga="email_click_footer">hello@tuva.ai</a>
         </div>
         <div class="footer-row footer-row-legal">
-            <a href="/terms">Terms</a>
-            <a href="/privacy">Privacy Policy</a>
-            <a href="/desktop">Desktop App</a>
+            <a href="/terms" data-ga="terms_click_footer">Terms</a>
+            <a href="/privacy" data-ga="privacy_click_footer">Privacy Policy</a>
+            <a href="/desktop" data-ga="desktop_click_footer">Desktop App</a>
         </div>
         <div class="footer-copyright">© 2026 Tuva AI, Inc. All rights reserved.</div>
     </footer>
@@ -308,14 +261,19 @@
             window.addEventListener('resize', onScroll);
         })();
 
-        // GA4 click tracking
+        // GA4 click tracking — any element with a [data-ga] fires that event name
         document.querySelectorAll('[data-ga]').forEach(el => {
             el.addEventListener('click', () => {
                 if (typeof gtag !== 'function') return;
                 const name = el.getAttribute('data-ga');
-                const params = name.startsWith('waitlist_')
-                    ? { location: name.replace('waitlist_', '') }
-                    : { location: 'careers' };
+                const params = {};
+                if (name.startsWith('waitlist_')) {
+                    params.location = name.replace('waitlist_', '');
+                } else if (name.includes('_click_')) {
+                    // e.g. terms_click_footer, desktop_click_download -> location is the suffix
+                    params.location = name.slice(name.lastIndexOf('_click_') + '_click_'.length);
+                    if (name.startsWith('email_')) params.email = 'hello@tuva.ai';
+                }
                 gtag('event', name, params);
             });
         });

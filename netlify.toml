@@ -37,6 +37,11 @@
   [headers.values]
     Cache-Control = "public, max-age=31536000"
 
+[[headers]]
+  for = "/*.dmg"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000"
+
 # Redirect www to non-www (optional - uncomment if using www)
 # [[redirects]]
 #   from = "https://www.tuva.ai/*"
