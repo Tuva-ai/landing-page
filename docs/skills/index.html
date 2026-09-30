@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Google tag (gtag.js) — cookieless via Consent Mode v2 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1SGTJKG3T7"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('consent', 'default', {
+        ad_storage: 'denied',
+        ad_user_data: 'denied',
+        ad_personalization: 'denied',
+        analytics_storage: 'denied',
+        functionality_storage: 'granted',
+        security_storage: 'granted'
+      });
+      gtag('set', 'ads_data_redaction', true);
+      gtag('set', 'url_passthrough', false);
+      gtag('config', 'G-1SGTJKG3T7');
+    </script>
+
+    <title>Skills - Tuva AI</title>
+    <meta name="description" content="Instructions your coding agent can follow to install and set up Tuva.">
+    <meta name="robots" content="noindex, follow">
+    <link rel="canonical" href="https://tuva.ai/docs/skills">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://tuva.ai/docs/skills">
+    <meta property="og:title" content="Skills - Tuva AI">
+    <meta property="og:description" content="Instructions your coding agent can follow to install and set up Tuva.">
+    <meta property="og:image" content="https://tuva.ai/og-image.jpg">
+    <meta property="og:site_name" content="Tuva">
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:image" content="https://tuva.ai/og-image.jpg">
+
+    <link rel="icon" type="image/png" href="/Tuva_Logo%20+%20Icon_Black.png" media="(prefers-color-scheme: light)">
+    <link rel="icon" type="image/png" href="/Tuva_Icon_White.png" media="(prefers-color-scheme: dark)">
+    <link rel="apple-touch-icon" type="image/png" href="/Tuva_Logo%20+%20Icon_Black.png">
+
+    <meta name="theme-color" content="#f5faf5">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Typeform embed (popup overlay) — matches the home-page waitlist button -->
+    <link rel="stylesheet" href="https://embed.typeform.com/next/css/popup.css" />
+    <script src="https://embed.typeform.com/next/embed.js" defer></script>
+
+    <!-- Markdown renderer for the "Read the skill" panel -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/15.0.7/marked.min.js" defer></script>
+
+    <!-- Shared base (tokens, header, footer) -->
+    <link rel="stylesheet" href="/legal.css">
+
+    <style>
+        .header-right { display: flex; align-items: center; gap: 1.5rem; }
+        .header-nav a { font-family: 'JetBrains Mono', monospace; }
+        .btn {
+            padding: 0.875rem 2rem; border-radius: 4px; border: 2px solid;
+            font-family: 'JetBrains Mono', monospace; font-size: 0.95rem; font-weight: 500;
+            cursor: pointer; transition: all 0.2s ease; text-decoration: none;
+            display: inline-block; white-space: nowrap;
+        }
+        .btn-primary { background: var(--accent); border-color: var(--accent); color: var(--accent-fg); }
+        .btn-primary:hover { background: #4a4a4a; border-color: #4a4a4a; color: var(--accent-fg); transform: scale(1.05); }
+        .btn.has-canvas {
+            display: inline-flex; align-items: center; justify-content: center;
+            gap: 0.55rem; padding: 0.45rem 1.3rem 0.45rem 0.55rem; height: 56px;
+        }
+        .btn-canvas { width: 44px; height: 44px; flex-shrink: 0; }
+        .btn-mark-video { object-fit: contain; display: block; mix-blend-mode: screen; pointer-events: none; }
+        .btn-text { line-height: 1; }
+        .header .btn.has-canvas { height: 40px; padding: 0 1.1rem 0 0.4rem; gap: 0.4rem; }
+        .header .btn.has-canvas .btn-text { font-size: 0.85rem; }
+        .header .btn-canvas { width: 28px; height: 28px; }
+
+        /* Docs shell */
+        .main-content { flex: 1; padding: 0; }
+        .docs-shell { display: grid; grid-template-columns: 250px minmax(0, 1fr); width: 100%; max-width: 1320px; margin: 0 auto; min-height: 100%; }
+        .docs-sidebar { border-right: 2px solid var(--border); }
+        .docs-sidebar nav {
+            position: sticky; top: 90px; max-height: calc(100vh - 90px); overflow-y: auto;
+            padding: 2.25rem 1.25rem 2rem 2rem; display: flex; flex-direction: column; gap: 1.75rem; font-size: 0.88rem;
+        }
+        .side-group { display: flex; flex-direction: column; gap: 0.2rem; }
+        .side-link { display: block; padding: 0.45rem 0.75rem; margin: 0 -0.75rem; border-radius: 4px; color: var(--text-secondary); text-decoration: none; transition: background 0.2s ease; }
+        .side-link:hover { background: var(--bg-soft); color: var(--text); }
+        .side-link[aria-current="page"] { background: var(--pale-green); color: var(--text); font-weight: 600; }
+        .side-help { padding-top: 1.5rem; border-top: 2px solid var(--border); font-size: 0.8rem; color: var(--text-tertiary); line-height: 1.6; }
+        .side-help a { display: block; color: var(--text); font-weight: 500; text-underline-offset: 3px; }
+        .docs-main { min-width: 0; padding: 4rem 3.5rem 6rem; }
+
+        .docs-menu { display: none; border: 2px solid var(--border); border-radius: 4px; background: var(--bg-card); margin-bottom: 2rem; }
+        .docs-menu summary { list-style: none; cursor: pointer; padding: 0.8rem 1rem; font-size: 0.85rem; font-weight: 600; display: flex; justify-content: space-between; }
+        .docs-menu summary::-webkit-details-marker { display: none; }
+        .docs-menu summary::after { content: "+"; }
+        .docs-menu[open] summary::after { content: "\2212"; }
+        .docs-menu nav { display: flex; flex-direction: column; padding: 0 1rem 1rem; border-top: 2px solid var(--border); font-size: 0.9rem; }
+        .docs-menu a { padding: 0.6rem 0; color: var(--text-secondary); text-decoration: none; }
+        .docs-menu a[aria-current="page"] { color: var(--text); font-weight: 600; }
+
+        .eyebrow {
+            display: inline-block; font-size: 0.75rem; font-weight: 600; text-transform: uppercase;
+            letter-spacing: 0.15em; color: var(--text-tertiary); margin-bottom: 0.9rem;
+        }
+        .docs-title { font-size: 2.7rem; font-weight: 600; line-height: 1.1; letter-spacing: -0.03em; margin-bottom: 1.25rem; text-wrap: balance; }
+        .docs-copy { font-size: 1rem; color: var(--text-secondary); line-height: 1.75; text-wrap: pretty; }
+        .docs-copy a { color: var(--text); font-weight: 500; text-decoration: underline; text-underline-offset: 3px; }
+        .docs-copy a:hover { color: var(--text-tertiary); }
+
+        .paste-box { border: 2px solid var(--border-strong); border-radius: 4px; background: var(--bg-card); overflow: hidden; }
+        .paste-label {
+            display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.25rem 1rem;
+            padding: 0.55rem 1.1rem; border-bottom: 2px solid var(--border-strong); background: var(--pale-green);
+            font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.15em;
+        }
+        .paste-label { align-items: center; }
+        .paste {
+            display: block; margin: 0;
+            padding: 1.25rem 1.1rem; font-family: 'JetBrains Mono', monospace; font-size: 0.95rem; line-height: 1.7;
+            white-space: pre-wrap; overflow-wrap: anywhere; word-break: break-word; color: var(--text); background: var(--bg-card);
+        }
+        .paste code { font-family: inherit; font-size: inherit; }
+        .copy-btn {
+            display: inline-flex; align-items: center; gap: 0.4rem; height: 28px; padding: 0 0.7rem;
+            border: 2px solid var(--border-strong); border-radius: 4px; background: var(--bg-card); color: var(--text);
+            font-family: inherit; font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.15em;
+            cursor: pointer; transition: all 0.2s ease;
+        }
+        .copy-btn:hover, .copy-btn.is-copied { background: var(--accent); border-color: var(--accent); color: var(--accent-fg); }
+        .copy-btn svg { width: 14px; height: 14px; }
+
+        html { scroll-behavior: smooth; }
+        [id] { scroll-margin-top: 110px; }
+        .docs-main.has-toc { display: grid; grid-template-columns: minmax(0, 720px) 190px; gap: 4rem; justify-content: center; align-items: start; padding-top: 3.5rem; }
+        .crumbs { display: flex; gap: 0.6rem; }
+        .crumbs a { color: var(--text-tertiary); text-decoration: none; }
+        .crumbs a:hover, .crumbs [aria-current] { color: var(--text); }
+        .docs-lede { font-size: 1.05rem; }
+        .docs-section { margin-top: 3rem; padding-top: 2rem; border-top: 2px solid var(--border); }
+        .docs-h2 { font-size: 1.3rem; font-weight: 600; letter-spacing: -0.01em; margin-bottom: 0.75rem; }
+        .docs-lead { margin-bottom: 1rem; }
+        .docs-section .paste-box { margin-bottom: 1.25rem; }
+        .needs { list-style: none; padding: 0; margin: 0.25rem 0 0; display: flex; flex-direction: column; gap: 0.6rem; color: var(--text-secondary); font-size: 1rem; line-height: 1.7; }
+        .needs li { display: grid; grid-template-columns: 1.5rem minmax(0, 1fr); }
+        .needs li::before { content: "\2013"; color: var(--text); }
+        .skill-file { border: 2px solid var(--border-strong); border-radius: 4px; background: var(--bg-card); overflow: hidden; }
+        .skill-file summary {
+            list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+            padding: 0.85rem 1.1rem; font-size: 0.9rem; font-weight: 600; transition: background 0.2s ease;
+        }
+        .skill-file summary::-webkit-details-marker { display: none; }
+        .skill-file summary:hover { background: var(--bg-soft); }
+        .skill-name { display: flex; gap: 0.75rem; min-width: 0; overflow-wrap: anywhere; }
+        .skill-name::before { content: "\25B8"; font-size: 0.75rem; transition: transform 0.2s ease; }
+        .skill-file[open] .skill-name::before { transform: rotate(90deg); }
+        .skill-toggle { font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.15em; color: var(--text-tertiary); white-space: nowrap; }
+        .skill-toggle::after { content: "Show"; }
+        .skill-file[open] .skill-toggle::after { content: "Hide"; }
+        .skill-body { border-top: 2px solid var(--border-strong); }
+        .skill-body .paste-label { align-items: center; }
+        .skill-body .paste-label a { color: var(--text); text-underline-offset: 3px; }
+        .skill-doc {
+            margin: 0; padding: 1.5rem 1.4rem 1.75rem; max-height: 40rem; overflow: auto;
+            font-size: 0.9rem; color: var(--text-secondary);
+        }
+        .skill-doc > :first-child { margin-top: 0; }
+        .skill-doc h1 { font-size: 1.35rem; font-weight: 600; color: var(--text); letter-spacing: -0.02em; margin: 0 0 1rem; }
+        .skill-doc h2 { margin-top: 2.25rem; }
+        .skill-doc pre {
+            margin: 0 0 1.15rem; padding: 0.9rem 1rem; overflow: auto;
+            background: var(--bg-soft); border: 1px solid var(--border); border-radius: 4px;
+            font-size: 0.85rem; line-height: 1.6; white-space: pre-wrap; overflow-wrap: anywhere;
+        }
+        .skill-doc pre code { background: none; border: 0; padding: 0; font-size: inherit; }
+        .skill-doc.is-raw { font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; line-height: 1.7; white-space: pre-wrap; overflow-wrap: anywhere; color: var(--text); }
+        .toc { position: sticky; top: 110px; display: flex; flex-direction: column; gap: 0.2rem; font-size: 0.82rem; border-left: 2px solid var(--border); padding-left: 1rem; }
+        .toc-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 0.5rem; }
+        .toc a { padding: 0.3rem 0; color: var(--text-secondary); text-decoration: none; }
+        .toc a:hover { color: var(--text); }
+        @media (max-width: 1100px) { .docs-main.has-toc { grid-template-columns: minmax(0, 720px); } .toc { display: none; } }
+        @media (max-width: 768px) { .docs-main.has-toc { padding-top: 1.5rem; } }
+
+        .footer { padding: 1.6rem 2rem 1.4rem; }
+        .footer-copyright { margin-top: 1rem; }
+        @media (max-width: 900px) { .docs-main { padding: 3rem 2rem 4rem; } }
+        @media (max-width: 768px) {
+            .header-nav { display: none; }
+            .docs-shell { grid-template-columns: minmax(0, 1fr); }
+            .docs-sidebar { display: none; }
+            .docs-menu { display: block; }
+            .docs-main { padding: 1.5rem 1.5rem 3.5rem; }
+            .docs-title { font-size: 2rem; }
+            .docs-copy { font-size: 0.95rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header (identical to home page) -->
+    <header class="header">
+        <a href="/" class="logo-section">
+            <img src="/Tuva_Logo%20+%20Icon_Black.png" alt="Tuva" class="logo-image" id="logoImage">
+            <span class="logo-text">Tuva AI</span>
+        </a>
+        <div class="header-right">
+            <nav class="header-nav">
+                <a href="/">Home</a>
+                <a href="/#product">Product</a>
+                <a href="/#use-cases">Use Cases</a>
+                <a href="/#how-it-works">Getting Started</a>
+                <a href="/#faq">FAQ</a>
+                <a href="/careers">Careers</a>
+            </nav>
+            <button type="button"
+                    class="btn btn-primary has-canvas"
+                    data-tf-popup="nOrRdz2U"
+                    data-tf-hidden="utm_source=tuva-website,utm_medium=skills-page,utm_campaign=waitlist,utm_content=header"
+                    data-ga="waitlist_header"
+                    data-tf-iframe-props="title=Tuva Waitlist"
+                    data-tf-medium="snippet">
+                <video class="btn-canvas btn-mark-video" autoplay muted loop playsinline preload="auto" poster="/Tuva_Logo_Mark_Still.png" aria-hidden="true">
+                    <source src="/Tuva_Logo_Animation.mp4" type="video/mp4">
+                </video>
+                <span class="btn-text">Join Waitlist</span>
+            </button>
+        </div>
+    </header>
+
+    <main class="main-content">
+      <div class="docs-shell">
+        <aside class="docs-sidebar">
+            <nav aria-label="Docs">
+                <a href="/docs" class="side-link">Overview</a>
+                <div class="side-group">
+                    <span class="side-label">Skills</span>
+                    <a href="/docs/skills" class="side-link" aria-current="page">Install Tuva</a>
+                </div>
+                <div class="side-help">
+                    <span>Can't find something?</span>
+                    <a href="mailto:hello@tuva.ai" data-ga="email_click_docs_sidebar">hello@tuva.ai</a>
+                </div>
+            </nav>
+        </aside>
+        <div class="docs-main has-toc">
+          <article>
+            <details class="docs-menu">
+                <summary>Docs menu</summary>
+                <nav aria-label="Docs">
+                    <a href="/docs">Overview</a>
+                    <a href="/docs/skills" aria-current="page">Skill: Install Tuva</a>
+                </nav>
+            </details>
+            <nav class="eyebrow crumbs" aria-label="Breadcrumb">
+                <a href="/docs">Docs</a><span aria-hidden="true">/</span><span>Skills</span><span aria-hidden="true">/</span><span aria-current="page">Install Tuva</span>
+            </nav>
+            <h1 class="docs-title">Install Tuva with your coding agent</h1>
+            <p class="docs-copy docs-lede">A skill is a set of instructions a coding agent can follow. This one tells your agent how to install the Tuva CLI.</p>
+
+            <section class="docs-section" id="how-to-use-it">
+                <h2 class="docs-h2">How to use it</h2>
+                <p class="docs-copy docs-lead">Open Claude Code, Codex, or Cursor in the folder you work in most and paste this:</p>
+                <div class="paste-box">
+                    <div class="paste-label">
+                        <span>Paste into your coding agent</span>
+                        <button type="button" class="copy-btn" data-copy="quickstartCmd" data-ga="skills_click_copy_quickstart" aria-label="Copy to clipboard">
+                            <svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="5.5" y="5.5" width="8" height="8" rx="1.5"></rect><path d="M10.5 5.5V3.5A1.5 1.5 0 0 0 9 2H3.5A1.5 1.5 0 0 0 2 3.5V9a1.5 1.5 0 0 0 1.5 1.5h2"></path></svg>
+                            <span>Copy</span>
+                        </button>
+                    </div>
+                    <pre class="paste"><code id="quickstartCmd">Install Tuva by following the instructions at https://tuva.ai/docs/skills/tuva-install/SKILL.md</code></pre>
+                </div>
+                <p class="docs-copy">Your agent will ask for your email, which project folders to include, and which agents to connect.</p>
+            </section>
+
+            <section class="docs-section" id="what-it-needs">
+                <h2 class="docs-h2">What it needs</h2>
+                <ul class="needs">
+                    <li>macOS or Linux, or a cluster login node where you can install software</li>
+                    <li>Internet access on that machine</li>
+                    <li>An email address that's on the Tuva access list</li>
+                </ul>
+            </section>
+
+            <section class="docs-section" id="read-the-skill">
+                <h2 class="docs-h2">Read the skill</h2>
+                <p class="docs-copy docs-lead">The exact instructions your agent follows.</p>
+                <details class="skill-file" id="skillFile">
+                    <summary><span class="skill-name">tuva-install/SKILL.md</span><span class="skill-toggle"></span></summary>
+                    <div class="skill-body">
+                        <div class="paste-label"><span>Preview</span><a href="/docs/skills/tuva-install/SKILL.md" data-ga="skill_click_raw">Open raw file &#8599;</a></div>
+                        <div class="skill-doc legal-body" id="skillSrc">Loading&hellip;</div>
+                    </div>
+                </details>
+            </section>
+          </article>
+
+          <nav class="toc" aria-label="On this page">
+              <span class="toc-label">On this page</span>
+              <a href="#how-to-use-it">How to use it</a>
+              <a href="#what-it-needs">What it needs</a>
+              <a href="#read-the-skill">Read the skill</a>
+          </nav>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-row">
+            <span class="footer-label">Connect</span>
+            <a href="https://twitter.com/TuvaAI" target="_blank" rel="noopener noreferrer">Twitter</a>
+            <a href="https://www.linkedin.com/company/tuva-ai/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <a href="mailto:hello@tuva.ai" data-ga="email_click_footer">hello@tuva.ai</a>
+        </div>
+        <div class="footer-row footer-row-legal">
+            <a href="/terms" data-ga="terms_click_footer">Terms</a>
+            <a href="/privacy" data-ga="privacy_click_footer">Privacy Policy</a>
+        </div>
+        <div class="footer-copyright">&copy; 2026 Tuva AI, Inc. All rights reserved.</div>
+    </footer>
+
+    <script>
+        // Animated brand mark in the waitlist button — play once visible (autoplay heuristics)
+        (function () {
+            const marks = document.querySelectorAll('.btn-mark-video');
+            if (!marks.length) return;
+            const play = (v) => { v.muted = true; const p = v.play(); if (p) p.catch(() => {}); };
+            if ('IntersectionObserver' in window) {
+                const io = new IntersectionObserver((entries) => {
+                    entries.forEach((e) => { if (e.isIntersecting) play(e.target); });
+                }, { threshold: 0.1 });
+                marks.forEach((v) => io.observe(v));
+            } else { marks.forEach(play); }
+            const kick = () => marks.forEach(play);
+            window.addEventListener('touchstart', kick, { once: true, passive: true });
+            window.addEventListener('click', kick, { once: true });
+        })();
+
+        // "Read the skill" — load SKILL.md the first time the panel is opened and render
+        // it, so the raw file stays the single source of truth for what agents read.
+        (function () {
+            const details = document.getElementById('skillFile');
+            const box = document.getElementById('skillSrc');
+            if (!details || !box) return;
+            let loaded = false;
+            const stripFrontMatter = (text) => text.replace(/^---\r?\n[\s\S]*?\r?\n---\r?\n/, '');
+            details.addEventListener('toggle', () => {
+                if (!details.open || loaded) return;
+                loaded = true;
+                fetch('/docs/skills/tuva-install/SKILL.md', { cache: 'no-cache' })
+                    .then((r) => { if (!r.ok) throw new Error(r.status); return r.text(); })
+                    .then((text) => {
+                        const body = stripFrontMatter(text);
+                        if (window.marked && typeof window.marked.parse === 'function') {
+                            box.innerHTML = window.marked.parse(body);
+                        } else {
+                            box.classList.add('is-raw');
+                            box.textContent = body;
+                        }
+                    })
+                    .catch(() => {
+                        box.textContent = '';
+                        const a = document.createElement('a');
+                        a.href = '/docs/skills/tuva-install/SKILL.md';
+                        a.textContent = 'Open the raw file';
+                        box.append("Couldn't load the file here. ", a, '.');
+                    });
+            });
+        })();
+
+        // Copy buttons — copy the paste line, flip the label to "Copied" for a moment
+        document.querySelectorAll('[data-copy]').forEach((btn) => {
+            const target = document.getElementById(btn.getAttribute('data-copy'));
+            const label = btn.querySelector('span');
+            if (!target || !label) return;
+            btn.addEventListener('click', async () => {
+                const text = target.textContent.trim();
+                try {
+                    await navigator.clipboard.writeText(text);
+                } catch (e) {
+                    const range = document.createRange();
+                    range.selectNodeContents(target);
+                    const sel = window.getSelection();
+                    sel.removeAllRanges(); sel.addRange(range);
+                    document.execCommand('copy');
+                    sel.removeAllRanges();
+                }
+                btn.classList.add('is-copied');
+                label.textContent = 'Copied';
+                setTimeout(() => { btn.classList.remove('is-copied'); label.textContent = 'Copy'; }, 2000);
+            });
+        });
+
+        // GA4 click tracking — any element with a [data-ga] fires that event name
+        document.querySelectorAll('[data-ga]').forEach(el => {
+            el.addEventListener('click', () => {
+                if (typeof gtag !== 'function') return;
+                const name = el.getAttribute('data-ga');
+                const params = {};
+                if (name.startsWith('waitlist_')) {
+                    params.location = name.replace('waitlist_', '');
+                } else if (name.includes('_click_')) {
+                    params.location = name.slice(name.lastIndexOf('_click_') + '_click_'.length);
+                    if (name.startsWith('email_')) params.email = 'hello@tuva.ai';
+                }
+                gtag('event', name, params);
+            });
+        });
+    </script>
+</body>
+</html>
