@@ -42,9 +42,21 @@ Anything older than 0.1.11 is upgraded before continuing.
 
 ## Before you start
 
-Settle one thing: is Tuva going onto the machine you are running on, or onto a remote
-host the user reaches over SSH (typically an HPC login node)? If the user names a
-cluster or says "on my HPC", read "Remote target mode" at the end of this file first.
+**Ask which of these four you are doing. Do not assume.** The only exception is when the
+user's message already says it plainly ("install Tuva on my laptop", "set up Tuva on the
+cluster"). Being on a laptop does not mean the install is for the laptop; many users run
+their agent locally and want Tuva on their HPC.
+
+1. First install on this machine.
+2. First install on a cluster or other remote host (reached over SSH, or the user runs
+   their agent on the cluster itself).
+3. Repair or upgrade an existing install on this machine.
+4. Repair or upgrade an existing install on a cluster.
+
+Ask it as one short question listing the four options, and wait for the answer. If the
+answer names a cluster, ask whether you are running on it now or reaching it over SSH,
+and read "Remote target mode" at the end of this file before doing anything else. If
+the answer is a repair, say what you are about to do before upgrading anything.
 
 ## Phase 1: Detect the environment
 
@@ -74,8 +86,10 @@ If the user says their cluster forbids pip installs or requires containers, and 
 is no module, there is no supported install today. Do not try to work around it. Go
 straight to "When you are stuck" and tell the user which cluster it is.
 
-**If `tuva` is already installed, this is a repair.** Upgrade first and say so, then
-continue through every phase; each one is safe to re-run:
+**If `tuva` is already installed on the target, this is a repair.** If the user said
+"first install" and you find one anyway, say so and confirm before continuing; they may
+be on the wrong machine. For a repair, upgrade first and say so, then continue through
+every phase; each one is safe to re-run:
 
 ```bash
 uv tool upgrade tuva && tuva --version
@@ -244,8 +258,22 @@ Tuva's memory is per project, and it only knows which agent sessions belong to w
 project once the project is initialised. Skipping this is why users have seen "0
 sessions found".
 
-Propose the current directory as the first project and ask, in one line, whether there
-are other folders they work in with their agent. Then, for each:
+**Route B (newer than 0.1.11):** ask Tuva which folders on this machine already have
+agent sessions, and propose those:
+
+```bash
+tuva memory agent-sessions --list-projects --json
+```
+
+Show the user the list (folder, session count, last activity) and ask which to include,
+defaulting to all of them that look like real projects. Entries with `"ready": false`
+have no `.entropy/` yet, which is exactly why past sessions there were never counted;
+`tuva init` below fixes that.
+
+**Route A (0.1.11):** propose the current directory as the first project and ask, in
+one line, whether there are other folders they work in with their agent.
+
+Then, for each project:
 
 ```bash
 cd /path/to/project && tuva init
