@@ -127,6 +127,13 @@
             letter-spacing: 0.05em; margin-top: 0.9rem;
         }
 
+        .desktop-downloads { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; }
+        .desktop-note {
+            font-size: 0.82rem; color: var(--text-tertiary); line-height: 1.6;
+            max-width: 480px; margin: 1.5rem auto 0;
+        }
+        .desktop-note strong { color: var(--text-secondary); font-weight: 600; }
+
         /* Inline Typeform trigger styled as a link inside body copy */
         .link-inline {
             background: none; border: 0; padding: 0; margin: 0;
@@ -148,6 +155,8 @@
             .desktop-title { font-size: 1.8rem; }
             .desktop-copy { font-size: 0.95rem; }
             .desktop-inner .btn { width: 100%; white-space: normal; }
+            .desktop-downloads { flex-direction: column; gap: 1.25rem; }
+            .desktop-download { width: 100%; }
         }
     </style>
 </head>
@@ -186,7 +195,7 @@
         <section class="desktop-main">
             <div class="desktop-inner">
                 <span class="eyebrow">Desktop app</span>
-                <h1 class="desktop-title">Download Tuva for Mac</h1>
+                <h1 class="desktop-title">Download Tuva</h1>
                 <p class="desktop-copy">
                     If you've chatted with our team, feel free to download the desktop app!
                     If you haven't met the team yet please
@@ -199,8 +208,21 @@
                             data-tf-medium="snippet">Join Waitlist</button>
                     and we'll walk you through exactly how to do so.
                 </p>
-                <a href="https://waygpstzrwwyvhhzjokw.supabase.co/storage/v1/object/public/downloads/desktop/Tuva-0.1.13-universal.dmg?download=Tuva-0.1.13-universal.dmg" class="btn btn-primary" data-ga="desktop_click_download">Download for macOS&nbsp;&darr;</a>
-                <p class="desktop-meta">macOS &middot; Universal &middot; 178&nbsp;MB &middot; v0.1.13</p>
+                <div class="desktop-downloads">
+                    <div class="desktop-download">
+                        <a href="https://waygpstzrwwyvhhzjokw.supabase.co/storage/v1/object/public/downloads/desktop/Tuva-0.1.13-universal.dmg?download=Tuva-0.1.13-universal.dmg" class="btn btn-primary" data-ga="desktop_click_download">Download for macOS&nbsp;&darr;</a>
+                        <p class="desktop-meta">macOS &middot; Universal &middot; 178&nbsp;MB &middot; v0.1.13</p>
+                    </div>
+                    <div class="desktop-download">
+                        <a href="https://waygpstzrwwyvhhzjokw.supabase.co/storage/v1/object/public/downloads/desktop/windows-preview/Tuva-Setup-0.1.13-postmerge.5.exe?download=Tuva-Setup-0.1.13-postmerge.5.exe" class="btn btn-primary" data-ga="desktop_click_download_windows">Download for Windows&nbsp;&darr;</a>
+                        <p class="desktop-meta">Windows &middot; x64 &middot; 80&nbsp;MB &middot; v0.1.13 preview</p>
+                    </div>
+                </div>
+                <p class="desktop-note">
+                    The Windows build isn't signed yet, so your browser and Windows will warn you.
+                    In your browser, choose <strong>Keep</strong>. When Windows says it protected your PC,
+                    click <strong>More info &rarr; Run anyway</strong>.
+                </p>
             </div>
         </section>
     </main>
