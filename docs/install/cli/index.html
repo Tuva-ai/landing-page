@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Google tag (gtag.js) — cookieless via Consent Mode v2 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1SGTJKG3T7"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('consent', 'default', {
+        ad_storage: 'denied',
+        ad_user_data: 'denied',
+        ad_personalization: 'denied',
+        analytics_storage: 'denied',
+        functionality_storage: 'granted',
+        security_storage: 'granted'
+      });
+      gtag('set', 'ads_data_redaction', true);
+      gtag('set', 'url_passthrough', false);
+      gtag('config', 'G-1SGTJKG3T7');
+    </script>
+
+    <title>Install the CLI - Tuva AI</title>
+    <meta name="description" content="Install the Tuva CLI on a laptop, a server, or an HPC cluster, and connect your coding agents.">
+    <meta name="robots" content="noindex, follow">
+    <link rel="canonical" href="https://tuva.ai/docs/install/cli">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://tuva.ai/docs/install/cli">
+    <meta property="og:title" content="Install the CLI - Tuva AI">
+    <meta property="og:description" content="Install the Tuva CLI on a laptop, a server, or an HPC cluster, and connect your coding agents.">
+    <meta property="og:image" content="https://tuva.ai/og-image.jpg">
+    <meta property="og:site_name" content="Tuva">
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:image" content="https://tuva.ai/og-image.jpg">
+
+    <link rel="icon" type="image/png" href="/Tuva_Logo%20+%20Icon_Black.png" media="(prefers-color-scheme: light)">
+    <link rel="icon" type="image/png" href="/Tuva_Icon_White.png" media="(prefers-color-scheme: dark)">
+    <link rel="apple-touch-icon" type="image/png" href="/Tuva_Logo%20+%20Icon_Black.png">
+
+    <meta name="theme-color" content="#f5faf5">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Typeform embed (popup overlay) — matches the home-page waitlist button -->
+    <link rel="stylesheet" href="https://embed.typeform.com/next/css/popup.css" />
+    <script src="https://embed.typeform.com/next/embed.js" defer></script>
+
+    <!-- Shared base (tokens, header, footer) + docs shell -->
+    <link rel="stylesheet" href="/legal.css">
+    <link rel="stylesheet" href="/docs/docs.css?v=8">
+</head>
+<body>
+    <!-- Header (identical to home page) -->
+    <header class="header">
+        <a href="/" class="logo-section">
+            <img src="/Tuva_Logo%20+%20Icon_Black.png" alt="Tuva" class="logo-image" id="logoImage">
+            <span class="logo-text">Tuva AI</span>
+        </a>
+        <div class="header-right">
+            <nav class="header-nav">
+                <a href="/">Home</a>
+                <a href="/#product">Product</a>
+                <a href="/#use-cases">Use Cases</a>
+                <a href="/#how-it-works">Getting Started</a>
+                <a href="/#faq">FAQ</a>
+                <a href="/careers">Careers</a>
+            </nav>
+            <button type="button"
+                    class="btn btn-primary has-canvas"
+                    data-tf-popup="nOrRdz2U"
+                    data-tf-hidden="utm_source=tuva-website,utm_medium=docs-install-cli,utm_campaign=waitlist,utm_content=header"
+                    data-ga="waitlist_header"
+                    data-tf-iframe-props="title=Tuva Waitlist"
+                    data-tf-medium="snippet">
+                <video class="btn-canvas btn-mark-video" autoplay muted loop playsinline preload="auto" poster="/Tuva_Logo_Mark_Still.png" aria-hidden="true">
+                    <source src="/Tuva_Logo_Animation.mp4" type="video/mp4">
+                </video>
+                <span class="btn-text">Join Waitlist</span>
+            </button>
+        </div>
+    </header>
+
+    <main class="main-content">
+      <div class="docs-shell">
+        <aside class="docs-sidebar">
+            <nav aria-label="Docs">
+                    <a href="/docs" class="side-link">Overview</a>
+                    <div class="side-group">
+                        <a href="/docs/getting-started" class="side-link">Getting started</a>
+                        <a href="/docs/install/desktop" class="side-link side-link-sub">Desktop app</a>
+                        <a href="/docs/install/cli" class="side-link side-link-sub" aria-current="page">Tuva CLI</a>
+                        <a href="/docs/install/vscode" class="side-link side-link-sub">VS Code extension</a>
+                    </div>
+                <div class="side-group">
+                    <span class="side-label">Skills</span>
+                    <a href="/docs/skills" class="side-link">Install Tuva</a>
+                </div>
+                <div class="side-help">
+                    <span>Can't find something?</span>
+                    <a href="mailto:hello@tuva.ai" data-ga="email_click_docs_sidebar">hello@tuva.ai</a>
+                </div>
+            </nav>
+        </aside>
+        <div class="docs-main has-toc">
+          <article>
+            <details class="docs-menu">
+                <summary>Docs menu</summary>
+                <nav aria-label="Docs">
+                    <a href="/docs">Overview</a>
+                    <a href="/docs/getting-started">Getting started</a>
+                    <a href="/docs/install/desktop" class="menu-sub">Desktop app</a>
+                    <a href="/docs/install/cli" aria-current="page" class="menu-sub">Tuva CLI</a>
+                    <a href="/docs/install/vscode" class="menu-sub">VS Code extension</a>
+                    <a href="/docs/skills">Skills: Install Tuva</a>
+                </nav>
+            </details>
+            <nav class="eyebrow crumbs" aria-label="Breadcrumb">
+                <a href="/docs">Docs</a><span aria-hidden="true">/</span><span>Install</span><span aria-hidden="true">/</span><span aria-current="page">Tuva CLI</span>
+            </nav>
+            <h1 class="docs-title">Installing the Tuva CLI</h1>
+            <p class="docs-copy docs-lede">The <code>tuva</code> command runs Tuva's daemon from a terminal and connects it to Claude Code, Codex, and Cursor. Let your coding agent install it, or do it by hand in four steps.</p>
+
+            <section class="docs-section" id="what-you-need">
+                <h2 class="docs-h2">What you need</h2>
+                <div class="docs-prose">
+
+<ul class="needs">
+    <li>macOS, Linux, or Windows. On a cluster, a login node where you can install software.</li>
+    <li>Python 3.10 or newer. We recommend 3.12. Check with <code>python3 --version</code>.</li>
+    <li>Internet access on that machine. The first start downloads Tuva's backend.</li>
+    <li>An email address on the Tuva access list.</li>
+</ul>
+
+                </div>
+            </section>
+            <section class="docs-section" id="with-your-coding-agent">
+                <details class="docs-fold">
+                    <summary><h2 class="docs-h2">Option 1: let your coding agent install it</h2><span class="docs-fold-toggle" aria-hidden="true"></span></summary>
+                    <div class="docs-prose">
+
+<p>The fastest route. Open Claude Code, Codex, or Cursor in the folder you work in most and paste this:</p>
+<div class="paste-box">
+                    <div class="paste-label">
+                        <span>Paste into your coding agent</span>
+                        <button type="button" class="copy-btn" data-copy="agentCmd" data-ga="cli_click_copy_agent" aria-label="Copy to clipboard">
+                            <svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="5.5" y="5.5" width="8" height="8" rx="1.5"></rect><path d="M10.5 5.5V3.5A1.5 1.5 0 0 0 9 2H3.5A1.5 1.5 0 0 0 2 3.5V9a1.5 1.5 0 0 0 1.5 1.5h2"></path></svg>
+                            <span>Copy</span>
+                        </button>
+                    </div>
+                    <pre class="paste"><code id="agentCmd">Install Tuva by following the instructions at https://tuva.ai/docs/skills/tuva-install/SKILL.md</code></pre>
+                </div>
+<p>Your agent runs every step for you and asks only for what it cannot detect: your email, which project folders to include, and which agents to connect. It works for a laptop and for a remote cluster reached over SSH. <a href="/docs/skills">Read the skill</a> to see exactly what it does.</p>
+
+                    </div>
+                </details>
+            </section>
+            <section class="docs-section" id="by-hand">
+                <details class="docs-fold">
+                    <summary><h2 class="docs-h2">Option 2: install by hand</h2><span class="docs-fold-toggle" aria-hidden="true"></span></summary>
+                    <div class="docs-prose">
+
+<ol class="steps">
+    <li><strong>Install Python 3.12 if you do not have it.</strong><p>Check with <code>python3 --version</code>. If it is missing or older than 3.10, install Python 3.12 from <a href="https://www.python.org/downloads/" target="_blank" rel="noopener noreferrer">python.org</a>, or with your package manager. On a cluster, <code>module load python/3.12</code>.</p></li>
+    <li><strong>Install the CLI.</strong>
+<div class="paste-box">
+                    <div class="paste-label">
+                        <span>Terminal</span>
+                        <button type="button" class="copy-btn" data-copy="installCmd" data-ga="cli_click_copy_install" aria-label="Copy to clipboard">
+                            <svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="5.5" y="5.5" width="8" height="8" rx="1.5"></rect><path d="M10.5 5.5V3.5A1.5 1.5 0 0 0 9 2H3.5A1.5 1.5 0 0 0 2 3.5V9a1.5 1.5 0 0 0 1.5 1.5h2"></path></svg>
+                            <span>Copy</span>
+                        </button>
+                    </div>
+                    <pre class="paste"><code id="installCmd">python3 -m pip install tuva
+python3 -m tuva --version</code></pre>
+                </div>
+    <p>From here on, these docs write commands as <code>tuva</code>. If that says command not found, open a new terminal; <code>python3 -m tuva</code> always works in the meantime. On Windows, use <code>python</code> in place of <code>python3</code>.</p>
+    </li>
+    <li><strong>Run the guided setup.</strong><p>Change into a project folder and run <code>tuva</code> with no arguments.</p>
+<div class="paste-box">
+                    <div class="paste-label">
+                        <span>Terminal</span>
+                        <button type="button" class="copy-btn" data-copy="onboardCmd" data-ga="cli_click_copy_onboard" aria-label="Copy to clipboard">
+                            <svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="5.5" y="5.5" width="8" height="8" rx="1.5"></rect><path d="M10.5 5.5V3.5A1.5 1.5 0 0 0 9 2H3.5A1.5 1.5 0 0 0 2 3.5V9a1.5 1.5 0 0 0 1.5 1.5h2"></path></svg>
+                            <span>Copy</span>
+                        </button>
+                    </div>
+                    <pre class="paste"><code id="onboardCmd">cd ~/my-project
+tuva</code></pre>
+                </div>
+    <p>The checklist checks your environment, starts the daemon, signs you in, sets up and indexes this project, offers to learn from your Claude Code and Codex sessions, connects your coding agents, and links external connectors. Each optional step asks first. Finished steps are skipped, so it is safe to re-run.</p>
+    <p>The first start provisions a private environment for the backend. On a laptop this takes about a minute. Do not interrupt it.</p>
+    </li>
+    <li><strong>Restart your coding agent.</strong><p>The guided setup connected Claude Code, Codex, or Cursor to Tuva, but an agent that was already running when that happened does not see the new tools. Quit it and start it again from your project folder, for example <code>cd ~/my-project &amp;&amp; claude</code>. The Tuva tools then show up in that session and the agent can use your project's memory. If you skipped connecting agents during setup, see <a href="#connect-agents">Connecting coding agents</a> below.</p></li>
+</ol>
+
+                    </div>
+                </details>
+            </section>
+            <section class="docs-section" id="on-a-cluster">
+                <details class="docs-fold">
+                    <summary><h2 class="docs-h2">On an HPC cluster</h2><span class="docs-fold-toggle" aria-hidden="true"></span></summary>
+                    <div class="docs-prose">
+
+<p>Tuva runs on login nodes and compute nodes. On a Slurm cluster, run setup inside an allocation on a compute node (for example <code>srun --pty bash</code>), not on the login node.</p>
+<ul>
+</ul>
+<p>The guided setup checks your environment and stops on anything that must be fixed. One thing it does not flag: on many clusters the home folder lives on shared network storage. Tuva can run there, but it is slower and less reliable for the small database it keeps, so we recommend keeping Tuva's working files on the node's local scratch disk instead. To see where yours would go, run <code>tuva doctor</code> and look at the <code>fs:state</code> line; a type such as <code>nfs</code>, <code>lustre</code>, or <code>gpfs</code> means network storage. Ask your cluster's documentation what the scratch path is, then:</p>
+<div class="paste-box">
+                    <div class="paste-label">
+                        <span>Terminal</span>
+                        <button type="button" class="copy-btn" data-copy="scratchCmd" data-ga="cli_click_copy_scratch" aria-label="Copy to clipboard">
+                            <svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="5.5" y="5.5" width="8" height="8" rx="1.5"></rect><path d="M10.5 5.5V3.5A1.5 1.5 0 0 0 9 2H3.5A1.5 1.5 0 0 0 2 3.5V9a1.5 1.5 0 0 0 1.5 1.5h2"></path></svg>
+                            <span>Copy</span>
+                        </button>
+                    </div>
+                    <pre class="paste"><code id="scratchCmd">export XDG_STATE_HOME=/scratch/$USER/tuva-state   # use your cluster's scratch path
+tuva restart</code></pre>
+                </div>
+<p>Add that first line to your shell profile (<code>~/.bashrc</code> or <code>~/.zshrc</code>) so it applies every time you log in.</p>
+<p>The <a href="/docs/skills">install skill</a> handles all of this over SSH if you would rather let your agent do it.</p>
+
+                    </div>
+                </details>
+            </section>
+            <section class="docs-section" id="sign-in">
+                <h2 class="docs-h2">Signing in</h2>
+                <div class="docs-prose">
+
+<p>Setup signs you in. To do it separately, or on a machine without a browser:</p>
+<div class="paste-box">
+                    <div class="paste-label">
+                        <span>Terminal</span>
+                        <button type="button" class="copy-btn" data-copy="authCmd" data-ga="cli_click_copy_auth" aria-label="Copy to clipboard">
+                            <svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="5.5" y="5.5" width="8" height="8" rx="1.5"></rect><path d="M10.5 5.5V3.5A1.5 1.5 0 0 0 9 2H3.5A1.5 1.5 0 0 0 2 3.5V9a1.5 1.5 0 0 0 1.5 1.5h2"></path></svg>
+                            <span>Copy</span>
+                        </button>
+                    </div>
+                    <pre class="paste"><code id="authCmd">tuva auth login
+tuva auth whoami</code></pre>
+                </div>
+<p>Tuva emails you a one-time code. Type it at the prompt. The code is single-use and expires in a few minutes. If it does not arrive, check spam, wait ten minutes before requesting another, and make sure the address is on the access list.</p>
+
+                </div>
+            </section>
+            <section class="docs-section" id="connect-agents">
+                <h2 class="docs-h2">Connecting coding agents</h2>
+                <div class="docs-prose">
+
+<p><code>tuva mcp</code> lists the coding agents found on this machine and lets you toggle Tuva for each one. To do it non-interactively:</p>
+<div class="paste-box">
+                    <div class="paste-label">
+                        <span>Terminal</span>
+                        <button type="button" class="copy-btn" data-copy="mcpCmd" data-ga="cli_click_copy_mcp" aria-label="Copy to clipboard">
+                            <svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="5.5" y="5.5" width="8" height="8" rx="1.5"></rect><path d="M10.5 5.5V3.5A1.5 1.5 0 0 0 9 2H3.5A1.5 1.5 0 0 0 2 3.5V9a1.5 1.5 0 0 0 1.5 1.5h2"></path></svg>
+                            <span>Copy</span>
+                        </button>
+                    </div>
+                    <pre class="paste"><code id="mcpCmd">tuva mcp configure claude     # or codex, cursor, claude-desktop
+tuva mcp status</code></pre>
+                </div>
+<p>This writes a <code>tuva-context</code> entry into the agent's own config file and leaves everything else there untouched. Run it on the machine where that agent runs. Then start a new agent session.</p>
+
+                </div>
+            </section>
+            <section class="docs-section" id="everyday-commands">
+                <details class="docs-fold">
+                    <summary><h2 class="docs-h2">Everyday commands</h2><span class="docs-fold-toggle" aria-hidden="true"></span></summary>
+                    <div class="docs-prose">
+
+<table>
+    <tr><th>Command</th><th>What it does</th></tr>
+    <tr><td><code>tuva</code></td><td>Status once set up; guided setup before that.</td></tr>
+    <tr><td><code>tuva start</code> / <code>stop</code> / <code>restart</code></td><td>Control the daemon. Idempotent.</td></tr>
+    <tr><td><code>tuva status</code></td><td>Daemon health, ports, and agent wiring. <code>--json</code> for scripts.</td></tr>
+    <tr><td><code>tuva logs -f</code></td><td>Tail the daemon log.</td></tr>
+    <tr><td><code>tuva init</code></td><td>Set up the current folder as a project.</td></tr>
+    <tr><td><code>tuva index .</code></td><td>Build or refresh the knowledge index for this project.</td></tr>
+    <tr><td><code>tuva chat</code></td><td>Chat about the current project.</td></tr>
+    <tr><td><code>tuva memory graph</code></td><td>Open the project's memory graph.</td></tr>
+    <tr><td><code>tuva memory agent-sessions --enable</code></td><td>Learn from Claude Code and Codex sessions in this project.</td></tr>
+    <tr><td><code>tuva connectors</code></td><td>List and link Notion, Google Drive, and other sources.</td></tr>
+    <tr><td><code>tuva doctor</code></td><td>Environment check.</td></tr>
+    <tr><td><code>tuva feedback -m "..."</code></td><td>Send feedback to the team.</td></tr>
+</table>
+
+                    </div>
+                </details>
+            </section>
+            <section class="docs-section" id="troubleshooting">
+                <details class="docs-fold">
+                    <summary><h2 class="docs-h2">Troubleshooting</h2><span class="docs-fold-toggle" aria-hidden="true"></span></summary>
+                    <div class="docs-prose">
+
+<ul>
+    <li><strong><code>tuva: command not found</code> right after installing.</strong> pip put it in a folder that is not on your PATH yet, usually <code>~/.local/bin</code>. Open a new terminal. Until then, <code>python3 -m tuva</code> runs the same thing.</li>
+    <li><strong>Python is missing or too old.</strong> Tuva needs Python 3.10 or newer. Install 3.12 from python.org or your package manager, or on a cluster <code>module load python/3.12</code>, then install again.</li>
+    <li><strong>The first <code>tuva start</code> seems stuck.</strong> It is downloading the backend. Run <code>tuva logs -n 50</code> in another window to watch progress. Do not start a second one.</li>
+    <li><strong>Sign-in code never arrives.</strong> Check spam. Wait ten minutes before requesting another; requesting several at once gets rate-limited. If the address is not on the access list, email <a href="mailto:hello@tuva.ai">hello@tuva.ai</a>.</li>
+    <li><strong>My agent does not see Tuva.</strong> Run <code>tuva mcp status</code>. If the agent is listed as wired, start a new agent session; existing sessions do not reload their tools.</li>
+    <li><strong>Upgrading.</strong> <code>python3 -m pip install --upgrade tuva</code>, then <code>tuva restart</code>.</li>
+</ul>
+<p>Still stuck? Send <code>tuva --version</code>, <code>tuva doctor --json</code>, <code>tuva status --json</code>, and <code>tuva logs -n 200</code> to <a href="mailto:hello@tuva.ai">hello@tuva.ai</a> with one line about what you were doing.</p>
+
+                    </div>
+                </details>
+            </section>
+
+          </article>
+
+          <nav class="toc" aria-label="On this page">
+              <span class="toc-label">On this page</span>
+              <a href="#what-you-need">What you need</a>
+              <a href="#with-your-coding-agent">Option 1: let your coding agent install it</a>
+              <a href="#by-hand">Option 2: install by hand</a>
+              <a href="#on-a-cluster">On an HPC cluster</a>
+              <a href="#sign-in">Signing in</a>
+              <a href="#connect-agents">Connecting coding agents</a>
+              <a href="#everyday-commands">Everyday commands</a>
+              <a href="#troubleshooting">Troubleshooting</a>
+          </nav>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-row">
+            <span class="footer-label">Connect</span>
+            <a href="https://twitter.com/TuvaAI" target="_blank" rel="noopener noreferrer">Twitter</a>
+            <a href="https://www.linkedin.com/company/tuva-ai/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <a href="mailto:hello@tuva.ai" data-ga="email_click_footer">hello@tuva.ai</a>
+        </div>
+        <div class="footer-row footer-row-legal">
+            <a href="/terms" data-ga="terms_click_footer">Terms</a>
+            <a href="/privacy" data-ga="privacy_click_footer">Privacy Policy</a>
+        </div>
+        <div class="footer-copyright">&copy; 2026 Tuva AI, Inc. All rights reserved.</div>
+    </footer>
+
+    <script>
+        // Animated brand mark in the waitlist button — play once visible (autoplay heuristics)
+        (function () {
+            const marks = document.querySelectorAll('.btn-mark-video');
+            if (!marks.length) return;
+            const play = (v) => { v.muted = true; const p = v.play(); if (p) p.catch(() => {}); };
+            if ('IntersectionObserver' in window) {
+                const io = new IntersectionObserver((entries) => {
+                    entries.forEach((e) => { if (e.isIntersecting) play(e.target); });
+                }, { threshold: 0.1 });
+                marks.forEach((v) => io.observe(v));
+            } else { marks.forEach(play); }
+            const kick = () => marks.forEach(play);
+            window.addEventListener('touchstart', kick, { once: true, passive: true });
+            window.addEventListener('click', kick, { once: true });
+        })();
+
+        // Collapsible sections: open the fold when a link points at it (table of contents, shared URLs)
+        (function () {
+            const openFor = () => {
+                const id = location.hash.slice(1);
+                if (!id) return;
+                const target = document.getElementById(id);
+                const fold = target && target.querySelector('details.docs-fold');
+                if (fold) fold.open = true;
+            };
+            openFor();
+            window.addEventListener('hashchange', openFor);
+        })();
+
+        // Copy buttons — copy the box contents, flip the label to "Copied" for a moment
+        document.querySelectorAll('[data-copy]').forEach((btn) => {
+            const target = document.getElementById(btn.getAttribute('data-copy'));
+            const label = btn.querySelector('span');
+            if (!target || !label) return;
+            btn.addEventListener('click', async () => {
+                const text = target.textContent.trim();
+                try {
+                    await navigator.clipboard.writeText(text);
+                } catch (e) {
+                    const range = document.createRange();
+                    range.selectNodeContents(target);
+                    const sel = window.getSelection();
+                    sel.removeAllRanges(); sel.addRange(range);
+                    document.execCommand('copy');
+                    sel.removeAllRanges();
+                }
+                btn.classList.add('is-copied');
+                label.textContent = 'Copied';
+                setTimeout(() => { btn.classList.remove('is-copied'); label.textContent = 'Copy'; }, 2000);
+            });
+        });
+
+        // GA4 click tracking — any element with a [data-ga] fires that event name
+        document.querySelectorAll('[data-ga]').forEach(el => {
+            el.addEventListener('click', () => {
+                if (typeof gtag !== 'function') return;
+                const name = el.getAttribute('data-ga');
+                const params = {};
+                if (name.startsWith('waitlist_')) {
+                    params.location = name.replace('waitlist_', '');
+                } else if (name.includes('_click_')) {
+                    params.location = name.slice(name.lastIndexOf('_click_') + '_click_'.length);
+                    if (name.startsWith('email_')) params.email = 'hello@tuva.ai';
+                }
+                gtag('event', name, params);
+            });
+        });
+    </script>
+</body>
+</html>

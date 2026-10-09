@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Google tag (gtag.js) — cookieless via Consent Mode v2 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1SGTJKG3T7"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('consent', 'default', {
+        ad_storage: 'denied',
+        ad_user_data: 'denied',
+        ad_personalization: 'denied',
+        analytics_storage: 'denied',
+        functionality_storage: 'granted',
+        security_storage: 'granted'
+      });
+      gtag('set', 'ads_data_redaction', true);
+      gtag('set', 'url_passthrough', false);
+      gtag('config', 'G-1SGTJKG3T7');
+    </script>
+
+    <title>Getting started - Tuva AI</title>
+    <meta name="description" content="Meet Rao, pick a surface to install it on, and index your first project.">
+    <meta name="robots" content="noindex, follow">
+    <link rel="canonical" href="https://tuva.ai/docs/getting-started">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://tuva.ai/docs/getting-started">
+    <meta property="og:title" content="Getting started - Tuva AI">
+    <meta property="og:description" content="What Tuva is, which surface to install, and what to do in your first ten minutes.">
+    <meta property="og:image" content="https://tuva.ai/og-image.jpg">
+    <meta property="og:site_name" content="Tuva">
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:image" content="https://tuva.ai/og-image.jpg">
+
+    <link rel="icon" type="image/png" href="/Tuva_Logo%20+%20Icon_Black.png" media="(prefers-color-scheme: light)">
+    <link rel="icon" type="image/png" href="/Tuva_Icon_White.png" media="(prefers-color-scheme: dark)">
+    <link rel="apple-touch-icon" type="image/png" href="/Tuva_Logo%20+%20Icon_Black.png">
+
+    <meta name="theme-color" content="#f5faf5">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Typeform embed (popup overlay) — matches the home-page waitlist button -->
+    <link rel="stylesheet" href="https://embed.typeform.com/next/css/popup.css" />
+    <script src="https://embed.typeform.com/next/embed.js" defer></script>
+
+    <!-- Shared base (tokens, header, footer) + docs shell -->
+    <link rel="stylesheet" href="/legal.css">
+    <link rel="stylesheet" href="/docs/docs.css?v=8">
+</head>
+<body>
+    <!-- Header (identical to home page) -->
+    <header class="header">
+        <a href="/" class="logo-section">
+            <img src="/Tuva_Logo%20+%20Icon_Black.png" alt="Tuva" class="logo-image" id="logoImage">
+            <span class="logo-text">Tuva AI</span>
+        </a>
+        <div class="header-right">
+            <nav class="header-nav">
+                <a href="/">Home</a>
+                <a href="/#product">Product</a>
+                <a href="/#use-cases">Use Cases</a>
+                <a href="/#how-it-works">Getting Started</a>
+                <a href="/#faq">FAQ</a>
+                <a href="/careers">Careers</a>
+            </nav>
+            <button type="button"
+                    class="btn btn-primary has-canvas"
+                    data-tf-popup="nOrRdz2U"
+                    data-tf-hidden="utm_source=tuva-website,utm_medium=docs-getting-started,utm_campaign=waitlist,utm_content=header"
+                    data-ga="waitlist_header"
+                    data-tf-iframe-props="title=Tuva Waitlist"
+                    data-tf-medium="snippet">
+                <video class="btn-canvas btn-mark-video" autoplay muted loop playsinline preload="auto" poster="/Tuva_Logo_Mark_Still.png" aria-hidden="true">
+                    <source src="/Tuva_Logo_Animation.mp4" type="video/mp4">
+                </video>
+                <span class="btn-text">Join Waitlist</span>
+            </button>
+        </div>
+    </header>
+
+    <main class="main-content">
+      <div class="docs-shell">
+        <aside class="docs-sidebar">
+            <nav aria-label="Docs">
+                    <a href="/docs" class="side-link">Overview</a>
+                    <div class="side-group">
+                        <a href="/docs/getting-started" class="side-link" aria-current="page">Getting started</a>
+                        <a href="/docs/install/desktop" class="side-link side-link-sub">Desktop app</a>
+                        <a href="/docs/install/cli" class="side-link side-link-sub">Tuva CLI</a>
+                        <a href="/docs/install/vscode" class="side-link side-link-sub">VS Code extension</a>
+                    </div>
+                <div class="side-group">
+                    <span class="side-label">Skills</span>
+                    <a href="/docs/skills" class="side-link">Install Tuva</a>
+                </div>
+                <div class="side-help">
+                    <span>Can't find something?</span>
+                    <a href="mailto:hello@tuva.ai" data-ga="email_click_docs_sidebar">hello@tuva.ai</a>
+                </div>
+            </nav>
+        </aside>
+        <div class="docs-main has-toc">
+          <article>
+            <details class="docs-menu">
+                <summary>Docs menu</summary>
+                <nav aria-label="Docs">
+                    <a href="/docs">Overview</a>
+                    <a href="/docs/getting-started" aria-current="page">Getting started</a>
+                    <a href="/docs/install/desktop" class="menu-sub">Desktop app</a>
+                    <a href="/docs/install/cli" class="menu-sub">Tuva CLI</a>
+                    <a href="/docs/install/vscode" class="menu-sub">VS Code extension</a>
+                    <a href="/docs/skills">Skills: Install Tuva</a>
+                </nav>
+            </details>
+            <nav class="eyebrow crumbs" aria-label="Breadcrumb">
+                <a href="/docs">Docs</a><span aria-hidden="true">/</span><span aria-current="page">Getting started</span>
+            </nav>
+            <h1 class="docs-title">Getting started with Tuva</h1>
+            <p class="docs-copy docs-lede">Rao is an always-on, proactive scientific collaborator that lives across the surfaces where you work, powered by research memory that learns new project knowledge as you do. This page explains what Rao does, which surface to install it on, and how to get set up.</p>
+
+            <section class="docs-section" id="what-rao-is">
+                <h2 class="docs-h2">What Rao is</h2>
+                <div class="docs-prose">
+<p>Rao is a research collaborator built on context. It keeps a living memory of your work, runs scientific agents on top of that memory, and makes the tools you already use smarter.</p>
+<p>Point Rao at a project and it builds a knowledge base from your scripts, data, notebooks, PDFs, and notes. That knowledge base evolves as you work, which is how Rao can connect ideas across files and pull up the exact line or figure you need.</p>
+<p>The same memory powers everything else Rao does: a chat agent, proactive literature search, and a skill builder. Through MCP, it also plugs into Claude, Codex, and Cursor, so those agents start every session already knowing your project.</p>
+<p>All of this runs on your machine. Your research and conversations stay local unless you choose to share them (see the <a href="/#faq">FAQ</a>).</p>
+<p>You can reach that memory from three places:</p>
+<ul>
+    <li><strong>The desktop app:</strong> chats, projects, the knowledge base, memory, and a daily paper digest.</li>
+    <li><strong>The command line:</strong> from a terminal, a server, or an HPC cluster.</li>
+    <li><strong>The VS Code extension:</strong> Rao right next to your notebooks.</li>
+</ul>
+                </div>
+            </section>
+            <section class="docs-section" id="pick-a-surface">
+                <h2 class="docs-h2">Pick a surface and install it</h2>
+                <div class="docs-prose">
+
+<p>Most people start with the desktop app. Install the CLI if you work in a terminal or on a cluster, and the extension if you live in VS Code. You can install more than one; they share the same research memory.</p>
+<ul class="surface-grid">
+    <li><a href="/docs/install/desktop" class="surface-card" data-kind="Desktop" data-ga="getting_started_click_desktop">
+        <span class="surface-title">Desktop app</span>
+        <span class="surface-desc">macOS and Windows. The full Tuva experience in one window.</span>
+        <span class="surface-more">Install &rarr;</span></a></li>
+    <li><a href="/docs/install/cli" class="surface-card" data-kind="Terminal" data-ga="getting_started_click_cli">
+        <span class="surface-title">Tuva CLI</span>
+        <span class="surface-desc">macOS, Windows, and HPC clusters.</span>
+        <span class="surface-more">Install &rarr;</span></a></li>
+    <li><a href="/docs/install/vscode" class="surface-card" data-kind="Editor" data-ga="getting_started_click_vscode">
+        <span class="surface-title">VS Code extension</span>
+        <span class="surface-desc">VS Code. Built for notebooks, papers, and data.</span>
+        <span class="surface-more">Install &rarr;</span></a></li>
+</ul>
+<div class="note"><p>Rao is in early access. Sign-in works for email addresses on the access list. If you have not met the team yet, <button type="button"
+                    class="link-inline"
+                    data-tf-popup="nOrRdz2U"
+                    data-tf-hidden="utm_source=tuva-website,utm_medium=docs-getting-started,utm_campaign=waitlist,utm_content=body"
+                    data-ga="waitlist_getting_started_body"
+                    data-tf-iframe-props="title=Tuva Waitlist"
+                    data-tf-medium="snippet">join the waitlist</button> and we will reach out to arrange an onboarding call. On the call, we walk you through download, installation, and indexing your first project.</p></div>
+
+                </div>
+            </section>
+            <section class="docs-section" id="first-ten-minutes">
+                <h2 class="docs-h2">Your first ten minutes</h2>
+                <div class="docs-prose">
+<p>Point Rao at your project and keep working. It does the rest in the background, ready to collaborate when you are.</p>
+
+<ol class="steps">
+    <li><strong>Sign in.</strong><p>Enter your email and type the one-time code Tuva sends you.</p></li>
+    <li><strong>Point Rao at a project.</strong><p>A project is a folder on your machine: the one where your notebooks, scripts, data, and papers live. Open it in Rao.</p></li>
+    <li><strong>Index it.</strong><p>Rao automatically builds a knowledge graph of how your files relate, both scientifically and structurally. On a typical project this takes a few minutes.</p></li>
+    <li><strong>Plug in your other tools.</strong><p>Turn on Claude Code, Codex, or Cursor. They get Rao's context over MCP. Start a new agent session afterwards so it picks up the tools.</p></li>
+    <li><strong>Collaborate.</strong><p>Talk to Rao as you would a close collaborator. Ask it to pressure-test an idea, do the math, write a script, or find a paper. Rao learns new results and connections automatically as you go.</p></li>
+</ol>
+
+                </div>
+            </section>
+            <section class="docs-section" id="desktop-app">
+                <details class="docs-fold">
+                    <summary><h2 class="docs-h2">The desktop app</h2><span class="docs-fold-toggle" aria-hidden="true"></span></summary>
+                    <div class="docs-prose">
+
+<p>The desktop app lives in your menu bar (macOS) or system tray (Windows). Closing the window hides it; Rao keeps working in the background.</p>
+<ul>
+    <li><strong>Projects.</strong> Open, create, or switch between projects.</li>
+    <li><strong>Chats.</strong> Conversations with Tuva scoped to the open project, with citations to your own files.</li>
+    <li><strong>Knowledge base.</strong> The sources Tuva has read for this project: local files, papers, and anything synced from connected apps.</li>
+    <li><strong>Research memory.</strong> A daily record of what happened in the project, built from your chats, your agent sessions, and changes to your files. Browse it by day, or as a graph of connected episodes.</li>
+    <li><strong>Agent sessions.</strong> The Claude Code and Codex sessions that ran in this project.</li>
+    <li><strong>Digest.</strong> New papers that match what you are working on, found by a background run and summarised against your project.</li>
+    <li><strong>Connected apps.</strong> Turn Tuva on for Claude Code, Codex, Cursor, and Claude Desktop. Link Notion and Google Drive so their pages become sources.</li>
+    <li><strong>Updates.</strong> The app updates itself. A banner appears when a new version is ready.</li>
+</ul>
+<p><a href="/docs/install/desktop">Install the desktop app &rarr;</a></p>
+
+                    </div>
+                </details>
+            </section>
+            <section class="docs-section" id="cli">
+                <details class="docs-fold">
+                    <summary><h2 class="docs-h2">The CLI</h2><span class="docs-fold-toggle" aria-hidden="true"></span></summary>
+                    <div class="docs-prose">
+
+<p>The <code>tuva</code> command gives you Rao from the command line. It is the right choice on a server, when you work out of your terminal, or on a cluster login or compute node.</p>
+<table>
+    <tr><th>Command</th><th>What it does</th></tr>
+    <tr><td><code>tuva</code></td><td>Guided setup the first time. Once set up, shows status.</td></tr>
+    <tr><td><code>tuva start</code> / <code>tuva stop</code></td><td>Bring the daemon up or down. Safe to re-run.</td></tr>
+    <tr><td><code>tuva status</code></td><td>Daemon health and which coding agents are wired.</td></tr>
+    <tr><td><code>tuva init</code> / <code>tuva index</code></td><td>Set up the current folder as a project and build its knowledge index.</td></tr>
+    <tr><td><code>tuva chat</code></td><td>Chat with Tuva about the current project from the terminal.</td></tr>
+    <tr><td><code>tuva memory</code></td><td>Inspect the project's memory: state, daily digests, and the episode graph.</td></tr>
+    <tr><td><code>tuva mcp</code></td><td>Turn Tuva on or off for Claude Code, Codex, Cursor, and Claude Desktop.</td></tr>
+    <tr><td><code>tuva launch</code></td><td>Start a coding agent session already wired to this project's context.</td></tr>
+    <tr><td><code>tuva connectors</code></td><td>Link Notion, Google Drive, and other external sources.</td></tr>
+    <tr><td><code>tuva doctor</code></td><td>Check whether this machine or cluster can run Tuva, and what to fix.</td></tr>
+    <tr><td><code>tuva feedback</code></td><td>Send a note or a bug report to the Tuva team.</td></tr>
+</table>
+<p><a href="/docs/install/cli">Install the CLI &rarr;</a></p>
+
+                    </div>
+                </details>
+            </section>
+            <section class="docs-section" id="vscode-extension">
+                <details class="docs-fold">
+                    <summary><h2 class="docs-h2">The VS Code extension</h2><span class="docs-fold-toggle" aria-hidden="true"></span></summary>
+                    <div class="docs-prose">
+
+<p>The extension puts Rao in a sidebar next to your notebooks, papers, and data. It is listed on the Marketplace as <strong>Rao: LLM Research Collaborator</strong>.</p>
+<ul>
+    <li><strong>Chat with your project.</strong> Ask questions grounded in your notebooks, code, and the PDFs in your workspace. Citations link to the exact cell or page.</li>
+    <li><strong>Work in notebooks.</strong> From any cell: Add to Chat, Debug Error, Analyze Figure, or Tag Cell so Tuva keeps it in context.</li>
+    <li><strong>Read papers faster.</strong> Index a folder of PDFs and ask across them by name.</li>
+    <li><strong>Agent integrations.</strong> Rao wires Claude Code and Codex to the same knowledge base.</li>
+</ul>
+<p><a href="/docs/install/vscode">Install the extension &rarr;</a></p>
+
+                    </div>
+                </details>
+            </section>
+            <section class="docs-section" id="coding-agents">
+                <h2 class="docs-h2">Coding agents and MCP</h2>
+                <div class="docs-prose">
+
+<p>Rao shares its research memory with agents like Claude Code, Codex, and Cursor via MCP, so they understand your project without burning tokens rediscovering things you know. Once connected, an agent can search the project, read paper sections, recall what happened in earlier sessions, and get the project's current state.</p>
+<p>Allow an agent to access the MCP from <strong>Connected apps</strong> in the desktop app, from <strong>Agent Integrations (MCP)</strong> in the extension, or with <code>tuva mcp</code> in a terminal. Then start a new agent session; an existing session will not pick up the tools.</p>
+                </div>
+            </section>
+            <section class="docs-section" id="getting-help">
+                <h2 class="docs-h2">Getting help</h2>
+                <div class="docs-prose">
+
+<p>Email <a href="mailto:hello@tuva.ai">hello@tuva.ai</a>. From the desktop app, use the feedback button in the account menu. From a terminal, run <code>tuva feedback -m "..."</code>.</p>
+<p>If something is not working, <code>tuva doctor</code> checks your environment and says what to fix. When you write in, include the output of <code>tuva --version</code>, <code>tuva status</code>, and <code>tuva doctor</code>.</p>
+
+                </div>
+            </section>
+
+          </article>
+
+          <nav class="toc" aria-label="On this page">
+              <span class="toc-label">On this page</span>
+              <a href="#what-rao-is">What Rao is</a>
+              <a href="#pick-a-surface">Pick a surface and install it</a>
+              <a href="#first-ten-minutes">Your first ten minutes</a>
+              <a href="#desktop-app">The desktop app</a>
+              <a href="#cli">The CLI</a>
+              <a href="#vscode-extension">The VS Code extension</a>
+              <a href="#coding-agents">Coding agents and MCP</a>
+              <a href="#getting-help">Getting help</a>
+          </nav>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-row">
+            <span class="footer-label">Connect</span>
+            <a href="https://twitter.com/TuvaAI" target="_blank" rel="noopener noreferrer">Twitter</a>
+            <a href="https://www.linkedin.com/company/tuva-ai/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <a href="mailto:hello@tuva.ai" data-ga="email_click_footer">hello@tuva.ai</a>
+        </div>
+        <div class="footer-row footer-row-legal">
+            <a href="/terms" data-ga="terms_click_footer">Terms</a>
+            <a href="/privacy" data-ga="privacy_click_footer">Privacy Policy</a>
+        </div>
+        <div class="footer-copyright">&copy; 2026 Tuva AI, Inc. All rights reserved.</div>
+    </footer>
+
+    <script>
+        // Animated brand mark in the waitlist button — play once visible (autoplay heuristics)
+        (function () {
+            const marks = document.querySelectorAll('.btn-mark-video');
+            if (!marks.length) return;
+            const play = (v) => { v.muted = true; const p = v.play(); if (p) p.catch(() => {}); };
+            if ('IntersectionObserver' in window) {
+                const io = new IntersectionObserver((entries) => {
+                    entries.forEach((e) => { if (e.isIntersecting) play(e.target); });
+                }, { threshold: 0.1 });
+                marks.forEach((v) => io.observe(v));
+            } else { marks.forEach(play); }
+            const kick = () => marks.forEach(play);
+            window.addEventListener('touchstart', kick, { once: true, passive: true });
+            window.addEventListener('click', kick, { once: true });
+        })();
+
+        // Collapsible sections: open the fold when a link points at it (table of contents, shared URLs)
+        (function () {
+            const openFor = () => {
+                const id = location.hash.slice(1);
+                if (!id) return;
+                const target = document.getElementById(id);
+                const fold = target && target.querySelector('details.docs-fold');
+                if (fold) fold.open = true;
+            };
+            openFor();
+            window.addEventListener('hashchange', openFor);
+        })();
+
+        // Copy buttons — copy the box contents, flip the label to "Copied" for a moment
+        document.querySelectorAll('[data-copy]').forEach((btn) => {
+            const target = document.getElementById(btn.getAttribute('data-copy'));
+            const label = btn.querySelector('span');
+            if (!target || !label) return;
+            btn.addEventListener('click', async () => {
+                const text = target.textContent.trim();
+                try {
+                    await navigator.clipboard.writeText(text);
+                } catch (e) {
+                    const range = document.createRange();
+                    range.selectNodeContents(target);
+                    const sel = window.getSelection();
+                    sel.removeAllRanges(); sel.addRange(range);
+                    document.execCommand('copy');
+                    sel.removeAllRanges();
+                }
+                btn.classList.add('is-copied');
+                label.textContent = 'Copied';
+                setTimeout(() => { btn.classList.remove('is-copied'); label.textContent = 'Copy'; }, 2000);
+            });
+        });
+
+        // GA4 click tracking — any element with a [data-ga] fires that event name
+        document.querySelectorAll('[data-ga]').forEach(el => {
+            el.addEventListener('click', () => {
+                if (typeof gtag !== 'function') return;
+                const name = el.getAttribute('data-ga');
+                const params = {};
+                if (name.startsWith('waitlist_')) {
+                    params.location = name.replace('waitlist_', '');
+                } else if (name.includes('_click_')) {
+                    params.location = name.slice(name.lastIndexOf('_click_') + '_click_'.length);
+                    if (name.startsWith('email_')) params.email = 'hello@tuva.ai';
+                }
+                gtag('event', name, params);
+            });
+        });
+    </script>
+</body>
+</html>
