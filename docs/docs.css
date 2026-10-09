@@ -37,6 +37,8 @@
 .side-link { display: block; padding: 0.45rem 0.75rem; margin: 0 -0.75rem; border-radius: 4px; color: var(--text-secondary); text-decoration: none; transition: background 0.2s ease; }
 .side-link:hover { background: var(--bg-soft); color: var(--text); }
 .side-link[aria-current="page"] { background: var(--pale-green); color: var(--text); font-weight: 600; }
+.side-link-sub { padding-left: 1.9rem; font-size: 0.84rem; }
+.docs-menu a.menu-sub { padding-left: 1.25rem; }
 .side-help { padding-top: 1.5rem; border-top: 2px solid var(--border); font-size: 0.8rem; color: var(--text-tertiary); line-height: 1.6; }
 .side-help a { display: block; color: var(--text); font-weight: 500; text-underline-offset: 3px; }
 .docs-main { min-width: 0; padding: 4rem 3.5rem 6rem; }

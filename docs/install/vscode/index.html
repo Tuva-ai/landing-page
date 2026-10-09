@@ -53,7 +53,7 @@
 
     <!-- Shared base (tokens, header, footer) + docs shell -->
     <link rel="stylesheet" href="/legal.css">
-    <link rel="stylesheet" href="/docs/docs.css?v=6">
+    <link rel="stylesheet" href="/docs/docs.css?v=7">
 </head>
 <body>
     <!-- Header (identical to home page) -->
@@ -91,13 +91,12 @@
         <aside class="docs-sidebar">
             <nav aria-label="Docs">
                     <a href="/docs" class="side-link">Overview</a>
-                    <a href="/docs/getting-started" class="side-link">Getting started</a>
-                <div class="side-group">
-                    <span class="side-label">Install</span>
-                    <a href="/docs/install/cli" class="side-link">Tuva CLI</a>
-                    <a href="/docs/install/desktop" class="side-link">Desktop app</a>
-                    <a href="/docs/install/vscode" class="side-link" aria-current="page">VS Code extension</a>
-                </div>
+                    <div class="side-group">
+                        <a href="/docs/getting-started" class="side-link">Getting started</a>
+                        <a href="/docs/install/cli" class="side-link side-link-sub">Tuva CLI</a>
+                        <a href="/docs/install/desktop" class="side-link side-link-sub">Desktop app</a>
+                        <a href="/docs/install/vscode" class="side-link side-link-sub" aria-current="page">VS Code extension</a>
+                    </div>
                 <div class="side-group">
                     <span class="side-label">Skills</span>
                     <a href="/docs/skills" class="side-link">Install Tuva</a>
@@ -115,9 +114,9 @@
                 <nav aria-label="Docs">
                     <a href="/docs">Overview</a>
                     <a href="/docs/getting-started">Getting started</a>
-                    <a href="/docs/install/cli">Install: Tuva CLI</a>
-                    <a href="/docs/install/desktop">Install: Desktop app</a>
-                    <a href="/docs/install/vscode" aria-current="page">Install: VS Code extension</a>
+                    <a href="/docs/install/cli" class="menu-sub">Tuva CLI</a>
+                    <a href="/docs/install/desktop" class="menu-sub">Desktop app</a>
+                    <a href="/docs/install/vscode" aria-current="page" class="menu-sub">VS Code extension</a>
                     <a href="/docs/skills">Skills: Install Tuva</a>
                 </nav>
             </details>
