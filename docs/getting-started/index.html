@@ -24,7 +24,7 @@
     </script>
 
     <title>Getting started - Tuva AI</title>
-    <meta name="description" content="What Tuva is, which surface to install, and what to do in your first ten minutes.">
+    <meta name="description" content="Meet Rao, pick a surface to install it on, and index your first project.">
     <meta name="robots" content="noindex, follow">
     <link rel="canonical" href="https://tuva.ai/docs/getting-started">
 
@@ -125,28 +125,28 @@
                 <a href="/docs">Docs</a><span aria-hidden="true">/</span><span aria-current="page">Getting started</span>
             </nav>
             <h1 class="docs-title">Getting started with Tuva</h1>
-            <p class="docs-copy docs-lede">Tuva gives your research a memory and puts an agent that knows your project in the tools you already use. This page explains what it is, which surface to install, and what to do first.</p>
+            <p class="docs-copy docs-lede">Rao is an always-on, proactive scientific collaborator that lives across the surfaces where you work, powered by research memory that learns new project knowledge as you do. This page explains what Rao does, which surface to install it on, and what to do first.</p>
 
-            <section class="docs-section" id="what-tuva-is">
-                <h2 class="docs-h2">What Tuva is</h2>
+            <section class="docs-section" id="what-rao-is">
+                <h2 class="docs-h2">What Rao is</h2>
                 <div class="docs-prose">
-
-<p>Tuva is a research assistant that keeps a persistent memory of each of your projects. It reads the files, papers, and notebooks in a project folder, records what you and your coding agents do there, and uses that memory to answer questions, find things, and help you write.</p>
-<p>Under the hood, Tuva is a small daemon that runs on your own machine. Everything it learns stays in your project folder. Three surfaces talk to that one daemon, so you can use whichever fits the moment and they all share the same memory:</p>
+<p>Rao is a collaborator built on context. It keeps a living memory of your research, runs scientific agents on top of it, and improves the tools you already use, without you needing to change your workflow.</p>
+<p>Point Rao at a project and it builds a persistent knowledge base of how everything fits together: scripts, data, notebooks, PDFs, meeting notes, planning documents. That knowledge base evolves as you do research. It means Rao can connect disparate ideas across your whole project, find the exact line or figure you need across hundreds of papers, scripts, and notes, and stay up to date on its own as your project evolves.</p>
+<p>Rao comes with agents geared towards scientific research: a chat agent, a writing assistant that edits in your scientific voice, proactive literature search, and a skill builder that teaches Rao to use scientific packages the way your project needs. You can also plug Rao's research memory into agents like Claude, Codex, and Cursor via MCP, so they understand your project without burning tokens rediscovering things you know.</p>
+<p>Rao runs on your machine. The contents of your research and your interactions with Rao stay private and local unless you expressly share them. See the <a href="/#faq">FAQ</a> for what leaves your machine and when.</p>
+<p>Rao is the same agent everywhere you already work. Three surfaces share one research memory:</p>
 <ul>
     <li><strong>The desktop app.</strong> Chat, projects, your knowledge base, research memory, and a daily paper digest.</li>
-    <li><strong>The CLI.</strong> The same daemon from a terminal, a server, or an HPC cluster. It also wires Tuva into Claude Code, Codex, and Cursor.</li>
-    <li><strong>The VS Code extension.</strong> Tuva inside VS Code or Cursor, next to your notebooks.</li>
+    <li><strong>The command line.</strong> Rao from a terminal, a server, or an HPC cluster. It also connects Claude Code, Codex, and Cursor to your research memory.</li>
+    <li><strong>The VS Code extension.</strong> Rao inside VS Code or Cursor, next to your notebooks.</li>
 </ul>
-<p>Coding agents such as Claude Code, Codex, and Cursor connect to Tuva over MCP. Once connected, they can search your project, read your papers, and recall what happened in earlier sessions without you re-explaining it.</p>
-
                 </div>
             </section>
             <section class="docs-section" id="pick-a-surface">
                 <h2 class="docs-h2">Pick a surface and install it</h2>
                 <div class="docs-prose">
 
-<p>Most people start with the desktop app. Install the CLI if you work in a terminal or on a cluster, or if you mainly want Tuva for your coding agents. Install the extension if you live in VS Code. You can install more than one; they share the daemon.</p>
+<p>Most people start with the desktop app. Install the command line if you work in a terminal or on a cluster, or if you mainly want Rao's research memory in your coding agents. Install the extension if you live in VS Code. You can install more than one; they share the same research memory.</p>
 <ul class="surface-grid">
     <li><a href="/docs/install/desktop" class="surface-card" data-kind="Desktop" data-ga="getting_started_click_desktop">
         <span class="surface-title">Desktop app</span>
@@ -161,20 +161,21 @@
         <span class="surface-desc">VS Code and Cursor. Built for notebooks, papers, and data.</span>
         <span class="surface-more">Install &rarr;</span></a></li>
 </ul>
-<div class="note"><p>Tuva is in early access. Sign-in works for email addresses on the access list. If you have not met the team yet, <a href="/#faq">join the waitlist</a> or email <a href="mailto:hello@tuva.ai">hello@tuva.ai</a>.</p></div>
+<div class="note"><p>Rao is in early access. Sign-in works for email addresses on the access list. If you have not met the team yet, join the waitlist and we will reach out to arrange an onboarding call. On the call, we walk you through download, installation, and indexing your first project.</p></div>
 
                 </div>
             </section>
             <section class="docs-section" id="first-ten-minutes">
                 <h2 class="docs-h2">Your first ten minutes</h2>
                 <div class="docs-prose">
+<p>Point Rao at your project and keep working. It does the rest in the background, ready to collaborate when you are.</p>
 
 <ol class="steps">
     <li><strong>Sign in.</strong><p>Enter your email and type the one-time code Tuva sends you. There is no password.</p></li>
-    <li><strong>Open a project.</strong><p>A project is a folder on your machine. Point Tuva at the folder where your notebooks, scripts, and papers live. Tuva writes its memory into a <code>.entropy</code> folder inside it and never changes your files.</p></li>
-    <li><strong>Let it index.</strong><p>Tuva reads the project and builds a knowledge base: notebooks, code, PDFs, and notes. On a typical project this takes a minute or two.</p></li>
-    <li><strong>Connect your coding agents.</strong><p>Turn on Claude Code, Codex, or Cursor in Connected apps (desktop) or with <code>tuva mcp</code> (CLI). Start a new agent session afterwards so it picks up the Tuva tools.</p></li>
-    <li><strong>Ask something.</strong><p>Open a chat and ask about your project. Tuva answers with citations back to the exact cell, file, or page.</p></li>
+    <li><strong>Point Rao at a project.</strong><p>A project is a folder on your machine: the one where your notebooks, scripts, data, and papers live. Open it in Rao, or create a new one.</p></li>
+    <li><strong>Index it.</strong><p>Rao automatically builds a knowledge graph of how your files relate, both scientifically and structurally. On a typical project this takes a few minutes.</p></li>
+    <li><strong>Plug in your other tools.</strong><p>Turn on Claude Code, Codex, or Cursor in Connected apps (desktop) or with <code>tuva mcp</code> (command line). They get Rao's context over MCP. Start a new agent session afterwards so it picks up the tools.</p></li>
+    <li><strong>Collaborate.</strong><p>Talk to Rao as you would a close collaborator. Ask it to pressure-test an idea, do the math, write a script, or find the paper you half remember. Answers cite the exact cell, file, or page. Rao learns new results and connections automatically as you go.</p></li>
 </ol>
 
                 </div>
@@ -183,7 +184,7 @@
                 <h2 class="docs-h2">The desktop app</h2>
                 <div class="docs-prose">
 
-<p>The desktop app lives in your menu bar (macOS) or system tray (Windows). Closing the window hides it; Tuva keeps working in the background.</p>
+<p>The desktop app lives in your menu bar (macOS) or system tray (Windows). Closing the window hides it; Rao keeps working in the background.</p>
 <ul>
     <li><strong>Projects.</strong> All your projects in one place. Open one, create a new one, or switch between them.</li>
     <li><strong>Project home.</strong> An overview of the open project: what Tuva has read, what it has learned, and what it is working on.</li>
@@ -203,7 +204,7 @@
                 <h2 class="docs-h2">The CLI</h2>
                 <div class="docs-prose">
 
-<p>The <code>tuva</code> command is a terminal interface to the same daemon. It is the right choice on a server, in tmux, or on a cluster login or compute node. It is also how the desktop app and the extension connect coding agents under the hood.</p>
+<p>The <code>tuva</code> command gives you Rao from the command line. It is the right choice on a server, in tmux, or on a cluster login or compute node, and it is how Rao's research memory gets plugged into Claude Code, Codex, and Cursor.</p>
 <table>
     <tr><th>Command</th><th>What it does</th></tr>
     <tr><td><code>tuva</code></td><td>Guided setup the first time. Once set up, shows status.</td></tr>
@@ -226,7 +227,7 @@
                 <h2 class="docs-h2">The VS Code extension</h2>
                 <div class="docs-prose">
 
-<p>The extension puts Tuva in a sidebar next to your notebooks. It is listed on the Marketplace as <strong>Rao</strong>, the name of Tuva's research agent, and works in VS Code and Cursor.</p>
+<p>The extension puts Rao in a sidebar next to your notebooks, papers, and data. It is listed on the Marketplace as <strong>Rao: LLM Research Collaborator</strong> and works in VS Code and Cursor.</p>
 <ul>
     <li><strong>Chat with your project.</strong> Ask questions grounded in your notebooks, code, and the PDFs in your workspace. Citations link to the exact cell or page.</li>
     <li><strong>Work in notebooks.</strong> From any cell: Add to Chat, Debug Error, Analyze Figure, or Tag Cell so Tuva keeps it in context.</li>
@@ -243,9 +244,9 @@
                 <h2 class="docs-h2">Coding agents and MCP</h2>
                 <div class="docs-prose">
 
-<p>Tuva exposes its memory to coding agents through an MCP server called <code>tuva-context</code>. Once an agent is connected it gains tools to search the project, read paper sections, recall past episodes, and get the project's current state. This is how Claude Code can answer "what did we decide about the normalisation step last week" without re-reading everything.</p>
+<p>Rao shares its research memory with agents like Claude Code, Codex, and Cursor via MCP, so they understand your project without burning tokens rediscovering things you know. The MCP server is called <code>tuva-context</code>. Once connected, an agent can search the project, read paper sections, recall what happened in earlier sessions, and get the project's current state.</p>
 <p>Turn an agent on from <strong>Connected apps</strong> in the desktop app, from <strong>Agent Integrations (MCP)</strong> in the extension, or with <code>tuva mcp</code> in a terminal. Then start a new agent session; an existing session will not pick up the tools.</p>
-<p>Tuva can also learn from your agent sessions. When you turn that on, past Claude Code and Codex transcripts for a project become part of its memory.</p>
+<p>Rao can also learn from your agent sessions. When you turn that on, past Claude Code and Codex transcripts for a project become part of its research memory.</p>
 
                 </div>
             </section>
@@ -263,7 +264,7 @@
 
           <nav class="toc" aria-label="On this page">
               <span class="toc-label">On this page</span>
-              <a href="#what-tuva-is">What Tuva is</a>
+              <a href="#what-rao-is">What Rao is</a>
               <a href="#pick-a-surface">Pick a surface and install it</a>
               <a href="#first-ten-minutes">Your first ten minutes</a>
               <a href="#desktop-app">The desktop app</a>
