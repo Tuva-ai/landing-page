@@ -53,7 +53,7 @@
 
     <!-- Shared base (tokens, header, footer) + docs shell -->
     <link rel="stylesheet" href="/legal.css">
-    <link rel="stylesheet" href="/docs/docs.css?v=3">
+    <link rel="stylesheet" href="/docs/docs.css?v=4">
 </head>
 <body>
     <!-- Header (identical to home page) -->
@@ -177,40 +177,42 @@
 <p>Point Rao at your project and keep working. It does the rest in the background, ready to collaborate when you are.</p>
 
 <ol class="steps">
-    <li><strong>Sign in.</strong><p>Enter your email and type the one-time code Tuva sends you. There is no password.</p></li>
-    <li><strong>Point Rao at a project.</strong><p>A project is a folder on your machine: the one where your notebooks, scripts, data, and papers live. Open it in Rao, or create a new one.</p></li>
+    <li><strong>Sign in.</strong><p>Enter your email and type the one-time code Tuva sends you.</p></li>
+    <li><strong>Point Rao at a project.</strong><p>A project is a folder on your machine: the one where your notebooks, scripts, data, and papers live. Open it in Rao.</p></li>
     <li><strong>Index it.</strong><p>Rao automatically builds a knowledge graph of how your files relate, both scientifically and structurally. On a typical project this takes a few minutes.</p></li>
-    <li><strong>Plug in your other tools.</strong><p>Turn on Claude Code, Codex, or Cursor in Connected apps (desktop) or with <code>tuva mcp</code> (command line). They get Rao's context over MCP. Start a new agent session afterwards so it picks up the tools.</p></li>
-    <li><strong>Collaborate.</strong><p>Talk to Rao as you would a close collaborator. Ask it to pressure-test an idea, do the math, write a script, or find the paper you half remember. Answers cite the exact cell, file, or page. Rao learns new results and connections automatically as you go.</p></li>
+    <li><strong>Plug in your other tools.</strong><p>Turn on Claude Code, Codex, or Cursor. They get Rao's context over MCP. Start a new agent session afterwards so it picks up the tools.</p></li>
+    <li><strong>Collaborate.</strong><p>Talk to Rao as you would a close collaborator. Ask it to pressure-test an idea, do the math, write a script, or find a paper. Rao learns new results and connections automatically as you go.</p></li>
 </ol>
 
                 </div>
             </section>
             <section class="docs-section" id="desktop-app">
-                <h2 class="docs-h2">The desktop app</h2>
-                <div class="docs-prose">
+                <details class="docs-fold">
+                    <summary><h2 class="docs-h2">The desktop app</h2><span class="docs-fold-toggle" aria-hidden="true"></span></summary>
+                    <div class="docs-prose">
 
 <p>The desktop app lives in your menu bar (macOS) or system tray (Windows). Closing the window hides it; Rao keeps working in the background.</p>
 <ul>
-    <li><strong>Projects.</strong> All your projects in one place. Open one, create a new one, or switch between them.</li>
-    <li><strong>Project home.</strong> An overview of the open project: what Tuva has read, what it has learned, and what it is working on.</li>
+    <li><strong>Projects.</strong> Open, create, or switch between projects.</li>
     <li><strong>Chats.</strong> Conversations with Tuva scoped to the open project, with citations to your own files.</li>
     <li><strong>Knowledge base.</strong> The sources Tuva has read for this project: local files, papers, and anything synced from connected apps.</li>
     <li><strong>Research memory.</strong> A daily record of what happened in the project, built from your chats, your agent sessions, and changes to your files. Browse it by day, or as a graph of connected episodes.</li>
-    <li><strong>Agent sessions.</strong> The Claude Code and Codex sessions that ran in this project, so Tuva can learn from them.</li>
+    <li><strong>Agent sessions.</strong> The Claude Code and Codex sessions that ran in this project.</li>
     <li><strong>Digest.</strong> New papers that match what you are working on, found by a background run and summarised against your project.</li>
     <li><strong>Connected apps.</strong> Turn Tuva on for Claude Code, Codex, Cursor, and Claude Desktop. Link Notion and Google Drive so their pages become sources.</li>
     <li><strong>Updates.</strong> The app updates itself. A banner appears when a new version is ready.</li>
 </ul>
 <p><a href="/docs/install/desktop">Install the desktop app &rarr;</a></p>
 
-                </div>
+                    </div>
+                </details>
             </section>
             <section class="docs-section" id="cli">
-                <h2 class="docs-h2">The CLI</h2>
-                <div class="docs-prose">
+                <details class="docs-fold">
+                    <summary><h2 class="docs-h2">The CLI</h2><span class="docs-fold-toggle" aria-hidden="true"></span></summary>
+                    <div class="docs-prose">
 
-<p>The <code>tuva</code> command gives you Rao from the command line. It is the right choice on a server, in tmux, or on a cluster login or compute node, and it is how Rao's research memory gets plugged into Claude Code, Codex, and Cursor.</p>
+<p>The <code>tuva</code> command gives you Rao from the command line. It is the right choice on a server, when you work out of your terminal, or on a cluster login or compute node.</p>
 <table>
     <tr><th>Command</th><th>What it does</th></tr>
     <tr><td><code>tuva</code></td><td>Guided setup the first time. Once set up, shows status.</td></tr>
@@ -227,11 +229,13 @@
 </table>
 <p><a href="/docs/install/cli">Install the CLI &rarr;</a></p>
 
-                </div>
+                    </div>
+                </details>
             </section>
             <section class="docs-section" id="vscode-extension">
-                <h2 class="docs-h2">The VS Code extension</h2>
-                <div class="docs-prose">
+                <details class="docs-fold">
+                    <summary><h2 class="docs-h2">The VS Code extension</h2><span class="docs-fold-toggle" aria-hidden="true"></span></summary>
+                    <div class="docs-prose">
 
 <p>The extension puts Rao in a sidebar next to your notebooks, papers, and data. It is listed on the Marketplace as <strong>Rao: LLM Research Collaborator</strong> and works in VS Code and Cursor.</p>
 <ul>
@@ -244,7 +248,8 @@
 </ul>
 <p><a href="/docs/install/vscode">Install the extension &rarr;</a></p>
 
-                </div>
+                    </div>
+                </details>
             </section>
             <section class="docs-section" id="coding-agents">
                 <h2 class="docs-h2">Coding agents and MCP</h2>
@@ -313,6 +318,19 @@
             const kick = () => marks.forEach(play);
             window.addEventListener('touchstart', kick, { once: true, passive: true });
             window.addEventListener('click', kick, { once: true });
+        })();
+
+        // Collapsible sections: open the fold when a link points at it (table of contents, shared URLs)
+        (function () {
+            const openFor = () => {
+                const id = location.hash.slice(1);
+                if (!id) return;
+                const target = document.getElementById(id);
+                const fold = target && target.querySelector('details.docs-fold');
+                if (fold) fold.open = true;
+            };
+            openFor();
+            window.addEventListener('hashchange', openFor);
         })();
 
         // Copy buttons — copy the box contents, flip the label to "Copied" for a moment

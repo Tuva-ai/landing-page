@@ -130,6 +130,16 @@ html { scroll-behavior: smooth; }
 }
 .link-inline:hover { color: var(--text-tertiary); }
 
+/* Collapsible sections */
+.docs-fold summary { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+.docs-fold summary::-webkit-details-marker { display: none; }
+.docs-fold summary .docs-h2 { margin-bottom: 0; }
+.docs-fold summary:hover .docs-h2 { color: var(--text-tertiary); }
+.docs-fold-toggle { font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.15em; color: var(--text-tertiary); white-space: nowrap; }
+.docs-fold-toggle::after { content: "Show"; }
+.docs-fold[open] .docs-fold-toggle::after { content: "Hide"; }
+.docs-fold[open] summary { margin-bottom: 0.75rem; }
+
 /* Steps: numbered list with a bold first line */
 .steps { list-style: none; padding: 0; margin: 0.25rem 0 1.25rem; counter-reset: step; }
 .steps > li { position: relative; padding-left: 2.6rem; margin-bottom: 1.25rem; counter-increment: step; }
