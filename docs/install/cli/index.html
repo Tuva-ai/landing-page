@@ -128,8 +128,9 @@
             <p class="docs-copy docs-lede">The <code>tuva</code> command runs Tuva's daemon from a terminal and connects it to Claude Code, Codex, and Cursor. Let your coding agent install it, or do it by hand in four steps.</p>
 
             <section class="docs-section" id="what-you-need">
-                <h2 class="docs-h2">What you need</h2>
-                <div class="docs-prose">
+                <details class="docs-fold">
+                    <summary><h2 class="docs-h2">What you need</h2><span class="docs-fold-toggle" aria-hidden="true"></span></summary>
+                    <div class="docs-prose">
 
 <ul class="needs">
     <li>macOS, Linux, or Windows. On a cluster, a login node where you can install software.</li>
@@ -138,11 +139,13 @@
     <li>An email address on the Tuva access list.</li>
 </ul>
 
-                </div>
+                    </div>
+                </details>
             </section>
             <section class="docs-section" id="with-your-coding-agent">
-                <h2 class="docs-h2">Option 1: let your coding agent install it</h2>
-                <div class="docs-prose">
+                <details class="docs-fold">
+                    <summary><h2 class="docs-h2">Option 1: let your coding agent install it</h2><span class="docs-fold-toggle" aria-hidden="true"></span></summary>
+                    <div class="docs-prose">
 
 <p>The fastest route. Open Claude Code, Codex, or Cursor in the folder you work in most and paste this:</p>
 <div class="paste-box">
@@ -157,11 +160,13 @@
                 </div>
 <p>Your agent runs every step for you and asks only for what it cannot detect: your email, which project folders to include, and which agents to connect. It works for a laptop and for a remote cluster reached over SSH. <a href="/docs/skills">Read the skill</a> to see exactly what it does.</p>
 
-                </div>
+                    </div>
+                </details>
             </section>
             <section class="docs-section" id="by-hand">
-                <h2 class="docs-h2">Option 2: install by hand</h2>
-                <div class="docs-prose">
+                <details class="docs-fold">
+                    <summary><h2 class="docs-h2">Option 2: install by hand</h2><span class="docs-fold-toggle" aria-hidden="true"></span></summary>
+                    <div class="docs-prose">
 
 <ol class="steps">
     <li><strong>Install Python 3.12 if you do not have it.</strong><p>Check with <code>python3 --version</code>. If it is missing or older than 3.10, install Python 3.12 from <a href="https://www.python.org/downloads/" target="_blank" rel="noopener noreferrer">python.org</a>, or with your package manager. On a cluster, <code>module load python/3.12</code>.</p></li>
@@ -197,11 +202,13 @@ tuva</code></pre>
     <li><strong>Start a new agent session.</strong><p>Claude Code, Codex, and Cursor load Tuva's tools when they start. Open a fresh session in the project folder.</p></li>
 </ol>
 
-                </div>
+                    </div>
+                </details>
             </section>
             <section class="docs-section" id="sign-in">
-                <h2 class="docs-h2">Signing in</h2>
-                <div class="docs-prose">
+                <details class="docs-fold">
+                    <summary><h2 class="docs-h2">Signing in</h2><span class="docs-fold-toggle" aria-hidden="true"></span></summary>
+                    <div class="docs-prose">
 
 <p>Setup signs you in. To do it separately, or on a machine without a browser:</p>
 <div class="paste-box">
@@ -217,11 +224,13 @@ tuva auth whoami</code></pre>
                 </div>
 <p>Tuva emails you a one-time code. Type it at the prompt. The code is single-use and expires in a few minutes. If it does not arrive, check spam, wait ten minutes before requesting another, and make sure the address is on the access list.</p>
 
-                </div>
+                    </div>
+                </details>
             </section>
             <section class="docs-section" id="connect-agents">
-                <h2 class="docs-h2">Connecting coding agents</h2>
-                <div class="docs-prose">
+                <details class="docs-fold">
+                    <summary><h2 class="docs-h2">Connecting coding agents</h2><span class="docs-fold-toggle" aria-hidden="true"></span></summary>
+                    <div class="docs-prose">
 
 <p><code>tuva mcp</code> lists the coding agents found on this machine and lets you toggle Tuva for each one. To do it non-interactively:</p>
 <div class="paste-box">
@@ -237,11 +246,13 @@ tuva mcp status</code></pre>
                 </div>
 <p>This writes a <code>tuva-context</code> entry into the agent's own config file and leaves everything else there untouched. Run it on the machine where that agent runs. Then start a new agent session.</p>
 
-                </div>
+                    </div>
+                </details>
             </section>
             <section class="docs-section" id="on-a-cluster">
-                <h2 class="docs-h2">On an HPC cluster</h2>
-                <div class="docs-prose">
+                <details class="docs-fold">
+                    <summary><h2 class="docs-h2">On an HPC cluster</h2><span class="docs-fold-toggle" aria-hidden="true"></span></summary>
+                    <div class="docs-prose">
 
 <p>Tuva runs on login nodes and compute nodes. Two things differ from a laptop:</p>
 <ul>
@@ -251,11 +262,13 @@ tuva mcp status</code></pre>
 <p>Run <code>tuva doctor</code> first. It checks scheduler placement, whether your home directory can hold Tuva's database, credential persistence, and network egress, and tells you what to change. The most common fix is pointing state at local scratch when home is on a network filesystem.</p>
 <p>The <a href="/docs/skills">install skill</a> handles all of this over SSH if you would rather let your agent do it.</p>
 
-                </div>
+                    </div>
+                </details>
             </section>
             <section class="docs-section" id="everyday-commands">
-                <h2 class="docs-h2">Everyday commands</h2>
-                <div class="docs-prose">
+                <details class="docs-fold">
+                    <summary><h2 class="docs-h2">Everyday commands</h2><span class="docs-fold-toggle" aria-hidden="true"></span></summary>
+                    <div class="docs-prose">
 
 <table>
     <tr><th>Command</th><th>What it does</th></tr>
@@ -273,11 +286,13 @@ tuva mcp status</code></pre>
     <tr><td><code>tuva feedback -m "..."</code></td><td>Send feedback to the team.</td></tr>
 </table>
 
-                </div>
+                    </div>
+                </details>
             </section>
             <section class="docs-section" id="troubleshooting">
-                <h2 class="docs-h2">Troubleshooting</h2>
-                <div class="docs-prose">
+                <details class="docs-fold">
+                    <summary><h2 class="docs-h2">Troubleshooting</h2><span class="docs-fold-toggle" aria-hidden="true"></span></summary>
+                    <div class="docs-prose">
 
 <ul>
     <li><strong><code>tuva: command not found</code> right after installing.</strong> Your PATH does not include <code>~/.local/bin</code> yet. Run <code>export PATH="$HOME/.local/bin:$PATH"</code> and add that line to your shell profile.</li>
@@ -289,7 +304,8 @@ tuva mcp status</code></pre>
 </ul>
 <p>Still stuck? Send <code>tuva --version</code>, <code>tuva doctor --json</code>, <code>tuva status --json</code>, and <code>tuva logs -n 200</code> to <a href="mailto:hello@tuva.ai">hello@tuva.ai</a> with one line about what you were doing.</p>
 
-                </div>
+                    </div>
+                </details>
             </section>
 
           </article>
@@ -339,6 +355,19 @@ tuva mcp status</code></pre>
             const kick = () => marks.forEach(play);
             window.addEventListener('touchstart', kick, { once: true, passive: true });
             window.addEventListener('click', kick, { once: true });
+        })();
+
+        // Collapsible sections: open the fold when a link points at it (table of contents, shared URLs)
+        (function () {
+            const openFor = () => {
+                const id = location.hash.slice(1);
+                if (!id) return;
+                const target = document.getElementById(id);
+                const fold = target && target.querySelector('details.docs-fold');
+                if (fold) fold.open = true;
+            };
+            openFor();
+            window.addEventListener('hashchange', openFor);
         })();
 
         // Copy buttons — copy the box contents, flip the label to "Copied" for a moment
