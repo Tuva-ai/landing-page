@@ -23,15 +23,15 @@
       gtag('config', 'G-1SGTJKG3T7');
     </script>
 
-    <title>Skills - Tuva AI</title>
-    <meta name="description" content="Instructions your coding agent can follow to install and set up Tuva.">
+    <title>Install the desktop app - Tuva AI</title>
+    <meta name="description" content="Download and install the Tuva desktop app on macOS or Windows.">
     <meta name="robots" content="noindex, follow">
-    <link rel="canonical" href="https://tuva.ai/docs/skills">
+    <link rel="canonical" href="https://tuva.ai/docs/install/desktop">
 
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://tuva.ai/docs/skills">
-    <meta property="og:title" content="Skills - Tuva AI">
-    <meta property="og:description" content="Instructions your coding agent can follow to install and set up Tuva.">
+    <meta property="og:url" content="https://tuva.ai/docs/install/desktop">
+    <meta property="og:title" content="Install the desktop app - Tuva AI">
+    <meta property="og:description" content="Download and install the Tuva desktop app on macOS or Windows.">
     <meta property="og:image" content="https://tuva.ai/og-image.jpg">
     <meta property="og:site_name" content="Tuva">
     <meta property="twitter:card" content="summary_large_image">
@@ -51,45 +51,9 @@
     <link rel="stylesheet" href="https://embed.typeform.com/next/css/popup.css" />
     <script src="https://embed.typeform.com/next/embed.js" defer></script>
 
-    <!-- Markdown renderer for the "Read the skill" panel -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/15.0.7/marked.min.js" defer></script>
-
     <!-- Shared base (tokens, header, footer) + docs shell -->
     <link rel="stylesheet" href="/legal.css">
     <link rel="stylesheet" href="/docs/docs.css?v=1">
-
-    <style>
-        .skill-file { border: 2px solid var(--border-strong); border-radius: 4px; background: var(--bg-card); overflow: hidden; }
-        .skill-file summary {
-            list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 1rem;
-            padding: 0.85rem 1.1rem; font-size: 0.9rem; font-weight: 600; transition: background 0.2s ease;
-        }
-        .skill-file summary::-webkit-details-marker { display: none; }
-        .skill-file summary:hover { background: var(--bg-soft); }
-        .skill-name { display: flex; gap: 0.75rem; min-width: 0; overflow-wrap: anywhere; }
-        .skill-name::before { content: "\25B8"; font-size: 0.75rem; transition: transform 0.2s ease; }
-        .skill-file[open] .skill-name::before { transform: rotate(90deg); }
-        .skill-toggle { font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.15em; color: var(--text-tertiary); white-space: nowrap; }
-        .skill-toggle::after { content: "Show"; }
-        .skill-file[open] .skill-toggle::after { content: "Hide"; }
-        .skill-body { border-top: 2px solid var(--border-strong); }
-        .skill-body .paste-label { align-items: center; }
-        .skill-body .paste-label a { color: var(--text); text-underline-offset: 3px; }
-        .skill-doc {
-            margin: 0; padding: 1.5rem 1.4rem 1.75rem; max-height: 40rem; overflow: auto;
-            font-size: 0.9rem; color: var(--text-secondary);
-        }
-        .skill-doc > :first-child { margin-top: 0; }
-        .skill-doc h1 { font-size: 1.35rem; font-weight: 600; color: var(--text); letter-spacing: -0.02em; margin: 0 0 1rem; }
-        .skill-doc h2 { margin-top: 2.25rem; }
-        .skill-doc pre {
-            margin: 0 0 1.15rem; padding: 0.9rem 1rem; overflow: auto;
-            background: var(--bg-soft); border: 1px solid var(--border); border-radius: 4px;
-            font-size: 0.85rem; line-height: 1.6; white-space: pre-wrap; overflow-wrap: anywhere;
-        }
-        .skill-doc pre code { background: none; border: 0; padding: 0; font-size: inherit; }
-        .skill-doc.is-raw { font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; line-height: 1.7; white-space: pre-wrap; overflow-wrap: anywhere; color: var(--text); }
-    </style>
 </head>
 <body>
     <!-- Header (identical to home page) -->
@@ -110,7 +74,7 @@
             <button type="button"
                     class="btn btn-primary has-canvas"
                     data-tf-popup="nOrRdz2U"
-                    data-tf-hidden="utm_source=tuva-website,utm_medium=skills-page,utm_campaign=waitlist,utm_content=header"
+                    data-tf-hidden="utm_source=tuva-website,utm_medium=docs-install-desktop,utm_campaign=waitlist,utm_content=header"
                     data-ga="waitlist_header"
                     data-tf-iframe-props="title=Tuva Waitlist"
                     data-tf-medium="snippet">
@@ -126,17 +90,17 @@
       <div class="docs-shell">
         <aside class="docs-sidebar">
             <nav aria-label="Docs">
-                <a href="/docs" class="side-link">Overview</a>
-                <a href="/docs/getting-started" class="side-link">Getting started</a>
+                    <a href="/docs" class="side-link">Overview</a>
+                    <a href="/docs/getting-started" class="side-link">Getting started</a>
                 <div class="side-group">
                     <span class="side-label">Install</span>
                     <a href="/docs/install/cli" class="side-link">Tuva CLI</a>
-                    <a href="/docs/install/desktop" class="side-link">Desktop app</a>
+                    <a href="/docs/install/desktop" class="side-link" aria-current="page">Desktop app</a>
                     <a href="/docs/install/vscode" class="side-link">VS Code extension</a>
                 </div>
                 <div class="side-group">
                     <span class="side-label">Skills</span>
-                    <a href="/docs/skills" class="side-link" aria-current="page">Install Tuva</a>
+                    <a href="/docs/skills" class="side-link">Install Tuva</a>
                 </div>
                 <div class="side-help">
                     <span>Can't find something?</span>
@@ -152,60 +116,122 @@
                     <a href="/docs">Overview</a>
                     <a href="/docs/getting-started">Getting started</a>
                     <a href="/docs/install/cli">Install: Tuva CLI</a>
-                    <a href="/docs/install/desktop">Install: Desktop app</a>
+                    <a href="/docs/install/desktop" aria-current="page">Install: Desktop app</a>
                     <a href="/docs/install/vscode">Install: VS Code extension</a>
-                    <a href="/docs/skills" aria-current="page">Skills: Install Tuva</a>
+                    <a href="/docs/skills">Skills: Install Tuva</a>
                 </nav>
             </details>
             <nav class="eyebrow crumbs" aria-label="Breadcrumb">
-                <a href="/docs">Docs</a><span aria-hidden="true">/</span><span>Skills</span><span aria-hidden="true">/</span><span aria-current="page">Install Tuva</span>
+                <a href="/docs">Docs</a><span aria-hidden="true">/</span><span>Install</span><span aria-hidden="true">/</span><span aria-current="page">Desktop app</span>
             </nav>
-            <h1 class="docs-title">Install Tuva with your coding agent</h1>
-            <p class="docs-copy docs-lede">A skill is a set of instructions a coding agent can follow. This one tells your agent how to install the Tuva CLI.</p>
+            <h1 class="docs-title">Installing the desktop app</h1>
+            <p class="docs-copy docs-lede">The desktop app is the full Tuva experience in one window: projects, chats, your knowledge base, research memory, and a daily paper digest. It runs on macOS and Windows.</p>
 
-            <section class="docs-section" id="how-to-use-it">
-                <h2 class="docs-h2">How to use it</h2>
-                <p class="docs-copy docs-lead">Open Claude Code, Codex, or Cursor in the folder you work in most and paste this:</p>
-                <div class="paste-box">
-                    <div class="paste-label">
-                        <span>Paste into your coding agent</span>
-                        <button type="button" class="copy-btn" data-copy="quickstartCmd" data-ga="skills_click_copy_quickstart" aria-label="Copy to clipboard">
-                            <svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="5.5" y="5.5" width="8" height="8" rx="1.5"></rect><path d="M10.5 5.5V3.5A1.5 1.5 0 0 0 9 2H3.5A1.5 1.5 0 0 0 2 3.5V9a1.5 1.5 0 0 0 1.5 1.5h2"></path></svg>
-                            <span>Copy</span>
-                        </button>
-                    </div>
-                    <pre class="paste"><code id="quickstartCmd">Install Tuva by following the instructions at https://tuva.ai/docs/skills/tuva-install/SKILL.md</code></pre>
+            <section class="docs-section" id="what-you-need">
+                <h2 class="docs-h2">What you need</h2>
+                <div class="docs-prose">
+
+<ul class="needs">
+    <li>macOS (Apple silicon or Intel) or Windows 10 or later (64-bit).</li>
+    <li>Internet access. The first launch downloads Tuva's backend, and chat runs through Tuva's cloud.</li>
+    <li>An email address on the Tuva access list.</li>
+</ul>
+<p>Nothing else to install. The app brings its own Python and keeps it separate from anything on your machine.</p>
+
                 </div>
-                <p class="docs-copy">Your agent will ask for your email, which project folders to include, and which agents to connect.</p>
+            </section>
+            <section class="docs-section" id="download">
+                <h2 class="docs-h2">Download</h2>
+                <div class="docs-prose">
+
+<p>Get the latest build from the download page. Both installers are signed.</p>
+<div class="next-links">
+    <a href="/desktop" class="btn btn-primary" data-ga="desktop_docs_click_download">Download Tuva &rarr;</a>
+</div>
+
+                </div>
+            </section>
+            <section class="docs-section" id="install-on-macos">
+                <h2 class="docs-h2">Install on macOS</h2>
+                <div class="docs-prose">
+
+<ol class="steps">
+    <li><strong>Open the <code>.dmg</code>.</strong><p>Drag Tuva into your Applications folder.</p></li>
+    <li><strong>Open Tuva from Applications.</strong><p>The app is notarized by Apple, so it opens without a security override. Tuva adds an icon to your menu bar. That icon is the app's home: closing the window hides it, and clicking the icon brings it back.</p></li>
+    <li><strong>Wait for the first start.</strong><p>Tuva sets up its backend the first time it runs. This takes about a minute on a normal connection.</p></li>
+</ol>
+
+                </div>
+            </section>
+            <section class="docs-section" id="install-on-windows">
+                <h2 class="docs-h2">Install on Windows</h2>
+                <div class="docs-prose">
+
+<ol class="steps">
+    <li><strong>Run <code>Tuva-Setup</code>.</strong><p>The installer is signed. If Windows SmartScreen shows a prompt, choose Run anyway.</p></li>
+    <li><strong>Open Tuva.</strong><p>It appears in the system tray. Closing the window hides it; click the tray icon to bring it back.</p></li>
+    <li><strong>Wait for the first start.</strong><p>Tuva downloads and sets up its backend. Leave the window open until it finishes.</p></li>
+</ol>
+
+                </div>
+            </section>
+            <section class="docs-section" id="first-launch">
+                <h2 class="docs-h2">First launch</h2>
+                <div class="docs-prose">
+
+<ol class="steps">
+    <li><strong>Sign in.</strong><p>Enter your email and type the one-time code Tuva sends you. There is no password.</p></li>
+    <li><strong>Agree to the terms.</strong><p>One screen, once.</p></li>
+    <li><strong>Take the tour.</strong><p>A short walkthrough of where everything lives. You can replay it any time from the account menu.</p></li>
+    <li><strong>Open a project.</strong><p>Choose a folder where your notebooks, scripts, and papers live, or create a new one. Tuva indexes it and starts building memory from there.</p></li>
+</ol>
+<p>From here, open <strong>Connected apps</strong> to turn on Claude Code, Codex, or Cursor and to link Notion or Google Drive. Start a new agent session afterwards so it picks up the Tuva tools.</p>
+
+                </div>
+            </section>
+            <section class="docs-section" id="updates">
+                <h2 class="docs-h2">Updates</h2>
+                <div class="docs-prose">
+
+<p>The app checks for updates on its own. When one is ready, a banner appears at the top of the window and the update is applied the next time you restart Tuva. You never need to download a new installer.</p>
+
+                </div>
+            </section>
+            <section class="docs-section" id="with-the-cli-and-extension">
+                <h2 class="docs-h2">Using it with the CLI and the extension</h2>
+                <div class="docs-prose">
+
+<p>The desktop app, the <a href="/docs/install/cli">CLI</a>, and the <a href="/docs/install/vscode">VS Code extension</a> share one daemon and one memory per project. Install any combination. If you already use the CLI, the app finds the running daemon and attaches to it.</p>
+
+                </div>
+            </section>
+            <section class="docs-section" id="troubleshooting">
+                <h2 class="docs-h2">Troubleshooting</h2>
+                <div class="docs-prose">
+
+<ul>
+    <li><strong>The app stays on the loading screen.</strong> The first launch needs internet to fetch the backend. Check your connection, and if you are on a VPN or a corporate proxy, try without it.</li>
+    <li><strong>The sign-in code never arrives.</strong> Check spam. Wait ten minutes before requesting another. If your address is not on the access list, email <a href="mailto:hello@tuva.ai">hello@tuva.ai</a>.</li>
+    <li><strong>I closed the window and the app is gone.</strong> It is in the menu bar (macOS) or the system tray (Windows). Click the Tuva icon.</li>
+    <li><strong>My coding agent does not see Tuva.</strong> Check the agent's card in Connected apps, then start a new agent session.</li>
+</ul>
+<p>To report a problem, use the feedback button in the account menu. It sends the app's diagnostics along with your note.</p>
+
+                </div>
             </section>
 
-            <section class="docs-section" id="what-it-needs">
-                <h2 class="docs-h2">What it needs</h2>
-                <ul class="needs">
-                    <li>macOS or Linux, or a cluster login node where you can install software</li>
-                    <li>Internet access on that machine</li>
-                    <li>An email address that's on the Tuva access list</li>
-                </ul>
-            </section>
-
-            <section class="docs-section" id="read-the-skill">
-                <h2 class="docs-h2">Read the skill</h2>
-                <p class="docs-copy docs-lead">The exact instructions your agent follows.</p>
-                <details class="skill-file" id="skillFile">
-                    <summary><span class="skill-name">tuva-install/SKILL.md</span><span class="skill-toggle"></span></summary>
-                    <div class="skill-body">
-                        <div class="paste-label"><span>Preview</span><a href="/docs/skills/tuva-install/SKILL.md" data-ga="skill_click_raw">Open raw file &#8599;</a></div>
-                        <div class="skill-doc legal-body" id="skillSrc">Loading&hellip;</div>
-                    </div>
-                </details>
-            </section>
           </article>
 
           <nav class="toc" aria-label="On this page">
               <span class="toc-label">On this page</span>
-              <a href="#how-to-use-it">How to use it</a>
-              <a href="#what-it-needs">What it needs</a>
-              <a href="#read-the-skill">Read the skill</a>
+              <a href="#what-you-need">What you need</a>
+              <a href="#download">Download</a>
+              <a href="#install-on-macos">Install on macOS</a>
+              <a href="#install-on-windows">Install on Windows</a>
+              <a href="#first-launch">First launch</a>
+              <a href="#updates">Updates</a>
+              <a href="#with-the-cli-and-extension">Using it with the CLI and the extension</a>
+              <a href="#troubleshooting">Troubleshooting</a>
           </nav>
         </div>
       </div>
@@ -243,39 +269,7 @@
             window.addEventListener('click', kick, { once: true });
         })();
 
-        // "Read the skill" — load SKILL.md the first time the panel is opened and render
-        // it, so the raw file stays the single source of truth for what agents read.
-        (function () {
-            const details = document.getElementById('skillFile');
-            const box = document.getElementById('skillSrc');
-            if (!details || !box) return;
-            let loaded = false;
-            const stripFrontMatter = (text) => text.replace(/^---\r?\n[\s\S]*?\r?\n---\r?\n/, '');
-            details.addEventListener('toggle', () => {
-                if (!details.open || loaded) return;
-                loaded = true;
-                fetch('/docs/skills/tuva-install/SKILL.md', { cache: 'no-cache' })
-                    .then((r) => { if (!r.ok) throw new Error(r.status); return r.text(); })
-                    .then((text) => {
-                        const body = stripFrontMatter(text);
-                        if (window.marked && typeof window.marked.parse === 'function') {
-                            box.innerHTML = window.marked.parse(body);
-                        } else {
-                            box.classList.add('is-raw');
-                            box.textContent = body;
-                        }
-                    })
-                    .catch(() => {
-                        box.textContent = '';
-                        const a = document.createElement('a');
-                        a.href = '/docs/skills/tuva-install/SKILL.md';
-                        a.textContent = 'Open the raw file';
-                        box.append("Couldn't load the file here. ", a, '.');
-                    });
-            });
-        })();
-
-        // Copy buttons — copy the paste line, flip the label to "Copied" for a moment
+        // Copy buttons — copy the box contents, flip the label to "Copied" for a moment
         document.querySelectorAll('[data-copy]').forEach((btn) => {
             const target = document.getElementById(btn.getAttribute('data-copy'));
             const label = btn.querySelector('span');

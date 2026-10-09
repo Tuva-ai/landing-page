@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Google tag (gtag.js) — cookieless via Consent Mode v2 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1SGTJKG3T7"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('consent', 'default', {
+        ad_storage: 'denied',
+        ad_user_data: 'denied',
+        ad_personalization: 'denied',
+        analytics_storage: 'denied',
+        functionality_storage: 'granted',
+        security_storage: 'granted'
+      });
+      gtag('set', 'ads_data_redaction', true);
+      gtag('set', 'url_passthrough', false);
+      gtag('config', 'G-1SGTJKG3T7');
+    </script>
+
+    <title>Install the VS Code extension - Tuva AI</title>
+    <meta name="description" content="Install the Tuva extension in VS Code or Cursor and set up your first project.">
+    <meta name="robots" content="noindex, follow">
+    <link rel="canonical" href="https://tuva.ai/docs/install/vscode">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://tuva.ai/docs/install/vscode">
+    <meta property="og:title" content="Install the VS Code extension - Tuva AI">
+    <meta property="og:description" content="Install the Tuva extension in VS Code or Cursor and set up your first project.">
+    <meta property="og:image" content="https://tuva.ai/og-image.jpg">
+    <meta property="og:site_name" content="Tuva">
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:image" content="https://tuva.ai/og-image.jpg">
+
+    <link rel="icon" type="image/png" href="/Tuva_Logo%20+%20Icon_Black.png" media="(prefers-color-scheme: light)">
+    <link rel="icon" type="image/png" href="/Tuva_Icon_White.png" media="(prefers-color-scheme: dark)">
+    <link rel="apple-touch-icon" type="image/png" href="/Tuva_Logo%20+%20Icon_Black.png">
+
+    <meta name="theme-color" content="#f5faf5">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Typeform embed (popup overlay) — matches the home-page waitlist button -->
+    <link rel="stylesheet" href="https://embed.typeform.com/next/css/popup.css" />
+    <script src="https://embed.typeform.com/next/embed.js" defer></script>
+
+    <!-- Shared base (tokens, header, footer) + docs shell -->
+    <link rel="stylesheet" href="/legal.css">
+    <link rel="stylesheet" href="/docs/docs.css?v=1">
+</head>
+<body>
+    <!-- Header (identical to home page) -->
+    <header class="header">
+        <a href="/" class="logo-section">
+            <img src="/Tuva_Logo%20+%20Icon_Black.png" alt="Tuva" class="logo-image" id="logoImage">
+            <span class="logo-text">Tuva AI</span>
+        </a>
+        <div class="header-right">
+            <nav class="header-nav">
+                <a href="/">Home</a>
+                <a href="/#product">Product</a>
+                <a href="/#use-cases">Use Cases</a>
+                <a href="/#how-it-works">Getting Started</a>
+                <a href="/#faq">FAQ</a>
+                <a href="/careers">Careers</a>
+            </nav>
+            <button type="button"
+                    class="btn btn-primary has-canvas"
+                    data-tf-popup="nOrRdz2U"
+                    data-tf-hidden="utm_source=tuva-website,utm_medium=docs-install-vscode,utm_campaign=waitlist,utm_content=header"
+                    data-ga="waitlist_header"
+                    data-tf-iframe-props="title=Tuva Waitlist"
+                    data-tf-medium="snippet">
+                <video class="btn-canvas btn-mark-video" autoplay muted loop playsinline preload="auto" poster="/Tuva_Logo_Mark_Still.png" aria-hidden="true">
+                    <source src="/Tuva_Logo_Animation.mp4" type="video/mp4">
+                </video>
+                <span class="btn-text">Join Waitlist</span>
+            </button>
+        </div>
+    </header>
+
+    <main class="main-content">
+      <div class="docs-shell">
+        <aside class="docs-sidebar">
+            <nav aria-label="Docs">
+                    <a href="/docs" class="side-link">Overview</a>
+                    <a href="/docs/getting-started" class="side-link">Getting started</a>
+                <div class="side-group">
+                    <span class="side-label">Install</span>
+                    <a href="/docs/install/cli" class="side-link">Tuva CLI</a>
+                    <a href="/docs/install/desktop" class="side-link">Desktop app</a>
+                    <a href="/docs/install/vscode" class="side-link" aria-current="page">VS Code extension</a>
+                </div>
+                <div class="side-group">
+                    <span class="side-label">Skills</span>
+                    <a href="/docs/skills" class="side-link">Install Tuva</a>
+                </div>
+                <div class="side-help">
+                    <span>Can't find something?</span>
+                    <a href="mailto:hello@tuva.ai" data-ga="email_click_docs_sidebar">hello@tuva.ai</a>
+                </div>
+            </nav>
+        </aside>
+        <div class="docs-main has-toc">
+          <article>
+            <details class="docs-menu">
+                <summary>Docs menu</summary>
+                <nav aria-label="Docs">
+                    <a href="/docs">Overview</a>
+                    <a href="/docs/getting-started">Getting started</a>
+                    <a href="/docs/install/cli">Install: Tuva CLI</a>
+                    <a href="/docs/install/desktop">Install: Desktop app</a>
+                    <a href="/docs/install/vscode" aria-current="page">Install: VS Code extension</a>
+                    <a href="/docs/skills">Skills: Install Tuva</a>
+                </nav>
+            </details>
+            <nav class="eyebrow crumbs" aria-label="Breadcrumb">
+                <a href="/docs">Docs</a><span aria-hidden="true">/</span><span>Install</span><span aria-hidden="true">/</span><span aria-current="page">VS Code extension</span>
+            </nav>
+            <h1 class="docs-title">Installing the VS Code extension</h1>
+            <p class="docs-copy docs-lede">The extension puts Tuva in a sidebar next to your notebooks, with chat grounded in your code and papers, cell-level actions, and a writing assistant. It works in VS Code and Cursor.</p>
+
+            <section class="docs-section" id="what-you-need">
+                <h2 class="docs-h2">What you need</h2>
+                <div class="docs-prose">
+
+<ul class="needs">
+    <li>VS Code 1.85 or later, or Cursor.</li>
+    <li>Internet access. The first start downloads Tuva's backend, and chat runs through Tuva's cloud.</li>
+    <li>An email address on the Tuva access list.</li>
+</ul>
+
+                </div>
+            </section>
+            <section class="docs-section" id="install">
+                <h2 class="docs-h2">Install from the Marketplace</h2>
+                <div class="docs-prose">
+
+<p>The extension is published as <strong>Rao: LLM Research Collaborator</strong> by Tuva AI. Rao is the name of Tuva's research agent.</p>
+<ol class="steps">
+    <li><strong>Open the Extensions view.</strong><p>Press <code>Cmd+Shift+X</code> (macOS) or <code>Ctrl+Shift+X</code> (Windows, Linux).</p></li>
+    <li><strong>Search for <code>Tuva</code>.</strong><p>Pick <strong>Rao: LLM Research Collaborator</strong> from publisher Tuva AI and click Install.</p></li>
+</ol>
+<p>Or install from a terminal:</p>
+<div class="paste-box">
+                    <div class="paste-label">
+                        <span>Terminal</span>
+                        <button type="button" class="copy-btn" data-copy="installExt" data-ga="vscode_click_copy_install" aria-label="Copy to clipboard">
+                            <svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="5.5" y="5.5" width="8" height="8" rx="1.5"></rect><path d="M10.5 5.5V3.5A1.5 1.5 0 0 0 9 2H3.5A1.5 1.5 0 0 0 2 3.5V9a1.5 1.5 0 0 0 1.5 1.5h2"></path></svg>
+                            <span>Copy</span>
+                        </button>
+                    </div>
+                    <pre class="paste"><code id="installExt">code --install-extension tuva.tuva-rao</code></pre>
+                </div>
+<p><a href="https://marketplace.visualstudio.com/items?itemName=tuva.tuva-rao" target="_blank" rel="noopener noreferrer">Open the Marketplace listing &#8599;</a></p>
+<div class="note"><p><strong>Cursor.</strong> If the extension does not appear in Cursor's search, install it from the <code>.vsix</code> file instead: open the Command Palette, run <strong>Extensions: Install from VSIX...</strong>, and choose the file. Email <a href="mailto:hello@tuva.ai">hello@tuva.ai</a> for the latest build.</p></div>
+
+                </div>
+            </section>
+            <section class="docs-section" id="open-tuva">
+                <h2 class="docs-h2">Open Tuva</h2>
+                <div class="docs-prose">
+
+<p>Click the Tuva icon in the activity bar, or press <code>Cmd+Shift+T</code> (macOS) or <code>Ctrl+Shift+T</code> (Windows, Linux). The panel opens in the sidebar. Use <strong>Move Tuva to Right Panel</strong> from the Command Palette if you would rather have it beside your editor.</p>
+<p>The first time the panel opens, the extension starts Tuva's backend. This takes about a minute and only happens once. If you already use the CLI or the desktop app, the extension attaches to the daemon that is already running.</p>
+
+                </div>
+            </section>
+            <section class="docs-section" id="sign-in">
+                <h2 class="docs-h2">Sign in</h2>
+                <div class="docs-prose">
+
+<p>The panel asks you to sign in. Enter your email and type the one-time code Tuva sends you. There is no password. You can also run <strong>Sign In</strong> from the Command Palette at any time.</p>
+<p>Tuva's cloud handles the model calls, so you do not need an API key.</p>
+
+                </div>
+            </section>
+            <section class="docs-section" id="set-up-a-project">
+                <h2 class="docs-h2">Set up a project</h2>
+                <div class="docs-prose">
+
+<ol class="steps">
+    <li><strong>Open a folder.</strong><p>A Tuva project is a folder. Open the one where your notebooks, scripts, and papers live.</p></li>
+    <li><strong>Initialize it.</strong><p>Run <strong>Initialize TUVA Project Here</strong> from the Command Palette, or <strong>New TUVA Project...</strong> to create a fresh folder. This writes a small project file and a <code>.entropy</code> folder for Tuva's memory. Your own files are never changed.</p></li>
+    <li><strong>Index it.</strong><p>Run <strong>Index Workspace</strong>. Tuva reads your notebooks, code, and PDFs and builds the knowledge base the chat draws on. Re-run it after adding a lot of new files.</p></li>
+</ol>
+
+                </div>
+            </section>
+            <section class="docs-section" id="working-in-notebooks">
+                <h2 class="docs-h2">Working in notebooks</h2>
+                <div class="docs-prose">
+
+<p>Every notebook cell gets Tuva actions in its toolbar:</p>
+<ul>
+    <li><strong>Add to Chat.</strong> Send the cell, or its output, to the conversation.</li>
+    <li><strong>Debug Error.</strong> Send a failing cell's traceback and ask what went wrong.</li>
+    <li><strong>Analyze Figure.</strong> Send a plot and ask about it.</li>
+    <li><strong>Tag Cell.</strong> Keep a cell in context for the whole conversation. Tagged cells show in the panel.</li>
+</ul>
+<p>Tuva also reads variables from a running Jupyter kernel, so it can answer about the data you have loaded, not just the code that loaded it.</p>
+
+                </div>
+            </section>
+            <section class="docs-section" id="connect-agents">
+                <h2 class="docs-h2">Connect your coding agents</h2>
+                <div class="docs-prose">
+
+<p>Run <strong>Agent Integrations (MCP)</strong> from the Command Palette. It wires Claude Code and Codex to Tuva's <code>tuva-context</code> MCP server so they can search your project and recall past work. Restart the agent, or open a new session, so it reloads its config.</p>
+
+                </div>
+            </section>
+            <section class="docs-section" id="settings">
+                <h2 class="docs-h2">Settings worth knowing</h2>
+                <div class="docs-prose">
+
+<table>
+    <tr><th>Setting</th><th>What it does</th></tr>
+    <tr><td><code>entropy.mode</code></td><td><code>cloud</code> (default) signs in through Tuva. <code>local</code> uses your own API key from a <code>.env</code> file.</td></tr>
+    <tr><td><code>entropy.libraryResolverUrl</code></td><td>Your library's OpenURL resolver, so paywalled papers open through your institution.</td></tr>
+    <tr><td><code>entropy.analyticsEnabled</code></td><td>Anonymous usage events. No chat content is ever sent.</td></tr>
+</table>
+
+                </div>
+            </section>
+            <section class="docs-section" id="troubleshooting">
+                <h2 class="docs-h2">Troubleshooting</h2>
+                <div class="docs-prose">
+
+<ul>
+    <li><strong>The panel is blank.</strong> Run <strong>Developer: Reload Window</strong> from the Command Palette.</li>
+    <li><strong>The panel spins and never loads.</strong> Run <strong>Toggle Mode (Local / Cloud)</strong> and make sure <code>cloud</code> is selected.</li>
+    <li><strong>Requests stall or fail after a while.</strong> Your session may have expired. Run <strong>Sign Out</strong>, then sign in again, or reload the window.</li>
+    <li><strong>Something is wrong with the backend.</strong> <strong>Show Shared Backend Status</strong> reports what is running. <strong>Open Shared Backend Log</strong> shows the log. <strong>Restart Backend (Fresh)</strong> starts over.</li>
+    <li><strong>New files are not found.</strong> Run <strong>Index Workspace</strong> again.</li>
+</ul>
+<p>To report a problem, use the feedback button in the panel or email <a href="mailto:hello@tuva.ai">hello@tuva.ai</a>.</p>
+
+                </div>
+            </section>
+
+          </article>
+
+          <nav class="toc" aria-label="On this page">
+              <span class="toc-label">On this page</span>
+              <a href="#what-you-need">What you need</a>
+              <a href="#install">Install from the Marketplace</a>
+              <a href="#open-tuva">Open Tuva</a>
+              <a href="#sign-in">Sign in</a>
+              <a href="#set-up-a-project">Set up a project</a>
+              <a href="#working-in-notebooks">Working in notebooks</a>
+              <a href="#connect-agents">Connect your coding agents</a>
+              <a href="#settings">Settings worth knowing</a>
+              <a href="#troubleshooting">Troubleshooting</a>
+          </nav>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-row">
+            <span class="footer-label">Connect</span>
+            <a href="https://twitter.com/TuvaAI" target="_blank" rel="noopener noreferrer">Twitter</a>
+            <a href="https://www.linkedin.com/company/tuva-ai/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <a href="mailto:hello@tuva.ai" data-ga="email_click_footer">hello@tuva.ai</a>
+        </div>
+        <div class="footer-row footer-row-legal">
+            <a href="/terms" data-ga="terms_click_footer">Terms</a>
+            <a href="/privacy" data-ga="privacy_click_footer">Privacy Policy</a>
+        </div>
+        <div class="footer-copyright">&copy; 2026 Tuva AI, Inc. All rights reserved.</div>
+    </footer>
+
+    <script>
+        // Animated brand mark in the waitlist button — play once visible (autoplay heuristics)
+        (function () {
+            const marks = document.querySelectorAll('.btn-mark-video');
+            if (!marks.length) return;
+            const play = (v) => { v.muted = true; const p = v.play(); if (p) p.catch(() => {}); };
+            if ('IntersectionObserver' in window) {
+                const io = new IntersectionObserver((entries) => {
+                    entries.forEach((e) => { if (e.isIntersecting) play(e.target); });
+                }, { threshold: 0.1 });
+                marks.forEach((v) => io.observe(v));
+            } else { marks.forEach(play); }
+            const kick = () => marks.forEach(play);
+            window.addEventListener('touchstart', kick, { once: true, passive: true });
+            window.addEventListener('click', kick, { once: true });
+        })();
+
+        // Copy buttons — copy the box contents, flip the label to "Copied" for a moment
+        document.querySelectorAll('[data-copy]').forEach((btn) => {
+            const target = document.getElementById(btn.getAttribute('data-copy'));
+            const label = btn.querySelector('span');
+            if (!target || !label) return;
+            btn.addEventListener('click', async () => {
+                const text = target.textContent.trim();
+                try {
+                    await navigator.clipboard.writeText(text);
+                } catch (e) {
+                    const range = document.createRange();
+                    range.selectNodeContents(target);
+                    const sel = window.getSelection();
+                    sel.removeAllRanges(); sel.addRange(range);
+                    document.execCommand('copy');
+                    sel.removeAllRanges();
+                }
+                btn.classList.add('is-copied');
+                label.textContent = 'Copied';
+                setTimeout(() => { btn.classList.remove('is-copied'); label.textContent = 'Copy'; }, 2000);
+            });
+        });
+
+        // GA4 click tracking — any element with a [data-ga] fires that event name
+        document.querySelectorAll('[data-ga]').forEach(el => {
+            el.addEventListener('click', () => {
+                if (typeof gtag !== 'function') return;
+                const name = el.getAttribute('data-ga');
+                const params = {};
+                if (name.startsWith('waitlist_')) {
+                    params.location = name.replace('waitlist_', '');
+                } else if (name.includes('_click_')) {
+                    params.location = name.slice(name.lastIndexOf('_click_') + '_click_'.length);
+                    if (name.startsWith('email_')) params.email = 'hello@tuva.ai';
+                }
+                gtag('event', name, params);
+            });
+        });
+    </script>
+</body>
+</html>
