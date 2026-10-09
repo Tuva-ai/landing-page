@@ -208,12 +208,23 @@ tuva</code></pre>
                     <summary><h2 class="docs-h2">On an HPC cluster</h2><span class="docs-fold-toggle" aria-hidden="true"></span></summary>
                     <div class="docs-prose">
 
-<p>Tuva runs on login nodes and compute nodes. Two things differ from a laptop:</p>
+<p>Tuva runs on login nodes and compute nodes. On a Slurm cluster, run setup inside an allocation on a compute node (for example <code>srun --pty bash</code>), not on the login node.</p>
 <ul>
-    <li>If your cluster provides a module, use it instead of installing: <code>module load tuva</code>. Everything else is the same.</li>
-    <li>On a Slurm cluster, run setup inside an allocation on a compute node (for example <code>srun --pty bash</code>), not on the login node. The daemon scopes its state per node and job.</li>
 </ul>
-<p>Run <code>tuva doctor</code> first. It checks scheduler placement, whether your home directory can hold Tuva's database, credential persistence, and network egress, and tells you what to change. The most common fix is pointing state at local scratch when home is on a network filesystem.</p>
+<p>Before setting up, run <code>tuva doctor</code>. Clusters are set up in many different ways, and this command checks whether the one you are on can run Tuva: whether you are on a login node or inside a job, whether your home folder is a place Tuva can keep its files, whether your sign-in will still be there next time you log in, and whether the node can reach the internet. It prints a short report with a line per check and says what to change for anything that fails.</p>
+<p>The most common problem is the home folder. On many clusters it lives on shared network storage, which is fine for your files but too slow and unreliable for the small database Tuva keeps. The fix is to tell Tuva to keep its working files on the node's local scratch disk instead. Ask your cluster's documentation what that path is, then:</p>
+<div class="paste-box">
+                    <div class="paste-label">
+                        <span>Terminal</span>
+                        <button type="button" class="copy-btn" data-copy="scratchCmd" data-ga="cli_click_copy_scratch" aria-label="Copy to clipboard">
+                            <svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="5.5" y="5.5" width="8" height="8" rx="1.5"></rect><path d="M10.5 5.5V3.5A1.5 1.5 0 0 0 9 2H3.5A1.5 1.5 0 0 0 2 3.5V9a1.5 1.5 0 0 0 1.5 1.5h2"></path></svg>
+                            <span>Copy</span>
+                        </button>
+                    </div>
+                    <pre class="paste"><code id="scratchCmd">export XDG_STATE_HOME=/scratch/$USER/tuva-state   # use your cluster's scratch path
+tuva restart</code></pre>
+                </div>
+<p>Add that first line to your shell profile (<code>~/.bashrc</code> or <code>~/.zshrc</code>) so it applies every time you log in.</p>
 <p>The <a href="/docs/skills">install skill</a> handles all of this over SSH if you would rather let your agent do it.</p>
 
                     </div>
