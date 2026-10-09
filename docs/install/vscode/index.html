@@ -124,14 +124,14 @@
                 <a href="/docs">Docs</a><span aria-hidden="true">/</span><span>Install</span><span aria-hidden="true">/</span><span aria-current="page">VS Code extension</span>
             </nav>
             <h1 class="docs-title">Installing the VS Code extension</h1>
-            <p class="docs-copy docs-lede">The extension puts Tuva in a sidebar next to your notebooks, with chat grounded in your code and papers, cell-level actions, and a writing assistant. It works in VS Code and Cursor.</p>
+            <p class="docs-copy docs-lede">The extension puts Tuva in a sidebar next to your notebooks, with chat grounded in your code and papers.</p>
 
             <section class="docs-section" id="what-you-need">
                 <h2 class="docs-h2">What you need</h2>
                 <div class="docs-prose">
 
 <ul class="needs">
-    <li>VS Code 1.85 or later, or Cursor.</li>
+    <li>VS Code 1.85 or later.</li>
     <li>Internet access. The first start downloads Tuva's backend, and chat runs through Tuva's cloud.</li>
     <li>An email address on the Tuva access list.</li>
 </ul>
@@ -159,7 +159,6 @@
                     <pre class="paste"><code id="installExt">code --install-extension tuva.tuva-rao</code></pre>
                 </div>
 <p><a href="https://marketplace.visualstudio.com/items?itemName=tuva.tuva-rao" target="_blank" rel="noopener noreferrer">Open the Marketplace listing &#8599;</a></p>
-<div class="note"><p><strong>Cursor.</strong> If the extension does not appear in Cursor's search, install it from the <code>.vsix</code> file instead: open the Command Palette, run <strong>Extensions: Install from VSIX...</strong>, and choose the file. Email <a href="mailto:hello@tuva.ai">hello@tuva.ai</a> for the latest build.</p></div>
 
                 </div>
             </section>
@@ -176,8 +175,7 @@
                 <h2 class="docs-h2">Sign in</h2>
                 <div class="docs-prose">
 
-<p>The panel asks you to sign in. Enter your email and type the one-time code Tuva sends you. There is no password. You can also run <strong>Sign In</strong> from the Command Palette at any time.</p>
-<p>Tuva's cloud handles the model calls, so you do not need an API key.</p>
+<p>The panel asks you to sign in. Enter your email and type the one-time code Tuva sends you. You can also run <strong>Sign In</strong> from the Command Palette at any time.</p>
 
                 </div>
             </section>
@@ -222,7 +220,6 @@
 
 <table>
     <tr><th>Setting</th><th>What it does</th></tr>
-    <tr><td><code>entropy.mode</code></td><td><code>cloud</code> (default) signs in through Tuva. <code>local</code> uses your own API key from a <code>.env</code> file.</td></tr>
     <tr><td><code>entropy.libraryResolverUrl</code></td><td>Your library's OpenURL resolver, so paywalled papers open through your institution.</td></tr>
     <tr><td><code>entropy.analyticsEnabled</code></td><td>Anonymous usage events. No chat content is ever sent.</td></tr>
 </table>
