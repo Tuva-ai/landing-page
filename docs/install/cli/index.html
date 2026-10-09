@@ -197,7 +197,7 @@ tuva</code></pre>
     <p>The checklist checks your environment, starts the daemon, signs you in, sets up and indexes this project, offers to learn from your Claude Code and Codex sessions, connects your coding agents, and links external connectors. Each optional step asks first. Finished steps are skipped, so it is safe to re-run.</p>
     <p>The first start provisions a private environment for the backend. On a laptop this takes about a minute. Do not interrupt it.</p>
     </li>
-    <li><strong>Start a new agent session.</strong><p>Claude Code, Codex, and Cursor load Tuva's tools when they start. Open a fresh session in the project folder.</p></li>
+    <li><strong>Restart your coding agent.</strong><p>The guided setup connected Claude Code, Codex, or Cursor to Tuva, but an agent that was already running when that happened does not see the new tools. Quit it and start it again from your project folder, for example <code>cd ~/my-project &amp;&amp; claude</code>. The Tuva tools then show up in that session and the agent can use your project's memory. If you skipped connecting agents during setup, see <a href="#connect-agents">Connecting coding agents</a> below.</p></li>
 </ol>
 
                     </div>
