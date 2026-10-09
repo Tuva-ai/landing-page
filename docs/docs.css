@@ -141,9 +141,10 @@ html { scroll-behavior: smooth; }
     background: var(--bg-card); border: 2px solid var(--border); border-radius: 4px;
     color: var(--text); text-decoration: none; transition: border-color 0.2s ease;
 }
+.docs-prose a.surface-card, .docs-prose a.surface-card:hover { text-decoration: none; color: var(--text); }
 .surface-card:hover { border-color: var(--border-strong); }
 .surface-card::before { content: attr(data-kind); font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.15em; color: var(--text-tertiary); }
-.surface-title { font-size: 1.02rem; font-weight: 600; }
+.surface-title { font-size: 1.02rem; font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
 .surface-desc { flex: 1; font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6; text-wrap: pretty; }
 .surface-more { margin-top: 0.6rem; font-size: 0.85rem; font-weight: 500; }
 
