@@ -178,9 +178,9 @@
                         </button>
                     </div>
                     <pre class="paste"><code id="installCmd">python3 -m pip install tuva
-tuva --version</code></pre>
+python3 -m tuva --version</code></pre>
                 </div>
-    <p>If the shell says <code>tuva: command not found</code>, pip put it in a folder that is not on your PATH yet (usually <code>~/.local/bin</code>). Open a new terminal, or run <code>python3 -m tuva</code> instead. On Windows use <code>python -m pip install tuva</code> and <code>python -m tuva</code>.</p>
+    <p>From here on, these docs write commands as <code>tuva</code>. If that says command not found, open a new terminal; <code>python3 -m tuva</code> always works in the meantime. On Windows, use <code>python</code> in place of <code>python3</code>.</p>
     </li>
     <li><strong>Run the guided setup.</strong><p>Change into a project folder and run <code>tuva</code> with no arguments.</p>
 <div class="paste-box">
@@ -289,7 +289,7 @@ tuva mcp status</code></pre>
                     <div class="docs-prose">
 
 <ul>
-    <li><strong><code>tuva: command not found</code> right after installing.</strong> Your PATH does not include <code>~/.local/bin</code> yet. Run <code>export PATH="$HOME/.local/bin:$PATH"</code> and add that line to your shell profile.</li>
+    <li><strong><code>tuva: command not found</code> right after installing.</strong> pip put it in a folder that is not on your PATH yet, usually <code>~/.local/bin</code>. Open a new terminal. Until then, <code>python3 -m tuva</code> runs the same thing.</li>
     <li><strong>Python is missing or too old.</strong> Tuva needs Python 3.10 or newer. Install 3.12 from python.org or your package manager, or on a cluster <code>module load python/3.12</code>, then install again.</li>
     <li><strong>The first <code>tuva start</code> seems stuck.</strong> It is downloading the backend. Run <code>tuva logs -n 50</code> in another window to watch progress. Do not start a second one.</li>
     <li><strong>Sign-in code never arrives.</strong> Check spam. Wait ten minutes before requesting another; requesting several at once gets rate-limited. If the address is not on the access list, email <a href="mailto:hello@tuva.ai">hello@tuva.ai</a>.</li>
