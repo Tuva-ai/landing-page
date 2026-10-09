@@ -237,14 +237,12 @@
                     <summary><h2 class="docs-h2">The VS Code extension</h2><span class="docs-fold-toggle" aria-hidden="true"></span></summary>
                     <div class="docs-prose">
 
-<p>The extension puts Rao in a sidebar next to your notebooks, papers, and data. It is listed on the Marketplace as <strong>Rao: LLM Research Collaborator</strong> and works in VS Code and Cursor.</p>
+<p>The extension puts Rao in a sidebar next to your notebooks, papers, and data. It is listed on the Marketplace as <strong>Rao: LLM Research Collaborator</strong>.</p>
 <ul>
     <li><strong>Chat with your project.</strong> Ask questions grounded in your notebooks, code, and the PDFs in your workspace. Citations link to the exact cell or page.</li>
     <li><strong>Work in notebooks.</strong> From any cell: Add to Chat, Debug Error, Analyze Figure, or Tag Cell so Tuva keeps it in context.</li>
     <li><strong>Read papers faster.</strong> Index a folder of PDFs and ask across them by name.</li>
-    <li><strong>Writing assistant.</strong> Edits in your own voice, drawing on your results and notes, shown as diffs you step through.</li>
-    <li><strong>Skills.</strong> Teach Tuva how your project uses a scientific package, so it stops guessing.</li>
-    <li><strong>Agent integrations.</strong> One command wires Claude Code and Codex to the same knowledge base.</li>
+    <li><strong>Agent integrations.</strong> Rao wires Claude Code and Codex to the same knowledge base.</li>
 </ul>
 <p><a href="/docs/install/vscode">Install the extension &rarr;</a></p>
 
@@ -255,10 +253,8 @@
                 <h2 class="docs-h2">Coding agents and MCP</h2>
                 <div class="docs-prose">
 
-<p>Rao shares its research memory with agents like Claude Code, Codex, and Cursor via MCP, so they understand your project without burning tokens rediscovering things you know. The MCP server is called <code>tuva-context</code>. Once connected, an agent can search the project, read paper sections, recall what happened in earlier sessions, and get the project's current state.</p>
-<p>Turn an agent on from <strong>Connected apps</strong> in the desktop app, from <strong>Agent Integrations (MCP)</strong> in the extension, or with <code>tuva mcp</code> in a terminal. Then start a new agent session; an existing session will not pick up the tools.</p>
-<p>Rao can also learn from your agent sessions. When you turn that on, past Claude Code and Codex transcripts for a project become part of its research memory.</p>
-
+<p>Rao shares its research memory with agents like Claude Code, Codex, and Cursor via MCP, so they understand your project without burning tokens rediscovering things you know. Once connected, an agent can search the project, read paper sections, recall what happened in earlier sessions, and get the project's current state.</p>
+<p>Allow an agent to access the MCP from <strong>Connected apps</strong> in the desktop app, from <strong>Agent Integrations (MCP)</strong> in the extension, or with <code>tuva mcp</code> in a terminal. Then start a new agent session; an existing session will not pick up the tools.</p>
                 </div>
             </section>
             <section class="docs-section" id="getting-help">
