@@ -203,6 +203,22 @@ tuva</code></pre>
                     </div>
                 </details>
             </section>
+            <section class="docs-section" id="on-a-cluster">
+                <details class="docs-fold">
+                    <summary><h2 class="docs-h2">On an HPC cluster</h2><span class="docs-fold-toggle" aria-hidden="true"></span></summary>
+                    <div class="docs-prose">
+
+<p>Tuva runs on login nodes and compute nodes. Two things differ from a laptop:</p>
+<ul>
+    <li>If your cluster provides a module, use it instead of installing: <code>module load tuva</code>. Everything else is the same.</li>
+    <li>On a Slurm cluster, run setup inside an allocation on a compute node (for example <code>srun --pty bash</code>), not on the login node. The daemon scopes its state per node and job.</li>
+</ul>
+<p>Run <code>tuva doctor</code> first. It checks scheduler placement, whether your home directory can hold Tuva's database, credential persistence, and network egress, and tells you what to change. The most common fix is pointing state at local scratch when home is on a network filesystem.</p>
+<p>The <a href="/docs/skills">install skill</a> handles all of this over SSH if you would rather let your agent do it.</p>
+
+                    </div>
+                </details>
+            </section>
             <section class="docs-section" id="sign-in">
                 <details class="docs-fold">
                     <summary><h2 class="docs-h2">Signing in</h2><span class="docs-fold-toggle" aria-hidden="true"></span></summary>
@@ -243,22 +259,6 @@ tuva auth whoami</code></pre>
 tuva mcp status</code></pre>
                 </div>
 <p>This writes a <code>tuva-context</code> entry into the agent's own config file and leaves everything else there untouched. Run it on the machine where that agent runs. Then start a new agent session.</p>
-
-                    </div>
-                </details>
-            </section>
-            <section class="docs-section" id="on-a-cluster">
-                <details class="docs-fold">
-                    <summary><h2 class="docs-h2">On an HPC cluster</h2><span class="docs-fold-toggle" aria-hidden="true"></span></summary>
-                    <div class="docs-prose">
-
-<p>Tuva runs on login nodes and compute nodes. Two things differ from a laptop:</p>
-<ul>
-    <li>If your cluster provides a module, use it instead of installing: <code>module load tuva</code>. Everything else is the same.</li>
-    <li>On a Slurm cluster, run setup inside an allocation on a compute node (for example <code>srun --pty bash</code>), not on the login node. The daemon scopes its state per node and job.</li>
-</ul>
-<p>Run <code>tuva doctor</code> first. It checks scheduler placement, whether your home directory can hold Tuva's database, credential persistence, and network egress, and tells you what to change. The most common fix is pointing state at local scratch when home is on a network filesystem.</p>
-<p>The <a href="/docs/skills">install skill</a> handles all of this over SSH if you would rather let your agent do it.</p>
 
                     </div>
                 </details>
@@ -313,9 +313,9 @@ tuva mcp status</code></pre>
               <a href="#what-you-need">What you need</a>
               <a href="#with-your-coding-agent">Option 1: let your coding agent install it</a>
               <a href="#by-hand">Option 2: install by hand</a>
+              <a href="#on-a-cluster">On an HPC cluster</a>
               <a href="#sign-in">Signing in</a>
               <a href="#connect-agents">Connecting coding agents</a>
-              <a href="#on-a-cluster">On an HPC cluster</a>
               <a href="#everyday-commands">Everyday commands</a>
               <a href="#troubleshooting">Troubleshooting</a>
           </nav>
