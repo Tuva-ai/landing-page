@@ -2022,26 +2022,28 @@
                 <div class="rd-head">
                     <div>
                         <span class="section-eyebrow">Compared</span>
-                        <h2>The same AI, with and without Rao.</h2>
+                        <h2>Your coding agent sees the code. Rao shows it the rest.</h2>
                     </div>
-                    <p>An example from a coral reef project. The researcher uses the same AI in both cases.</p>
+                    <p>An example from a coral reef project. Claude Code or Codex can read the repo in both cases. Only one can see the rest of the project.</p>
                 </div>
 
                 <div class="rd-vs">
                     <div class="rd-vs-col without">
-                        <div class="rd-vs-head">Claude/GPT alone</div>
+                        <div class="rd-vs-head">Claude Code / Codex alone</div>
+                        <div class="rd-vs-sees"><span class="rd-label">Sees</span>Your code and its history</div>
                         <div class="rd-vs-body">
                             <span class="rd-label">You ask</span>
                             <p class="rd-q">Why is September's bleaching count higher?</p>
-                            <p>Possible causes include a warmer month, a change in your detection threshold, or a sensor issue. Can you share your data and analysis code?</p>
+                            <p>The bleaching threshold in <code>config.py</code> changed from 30.5 °C to 30.2 °C last week, which adds two events. I can't tell from the code why it changed.<span class="rd-src">git log</span></p>
                         </div>
                     </div>
                     <div class="rd-vs-col">
-                        <div class="rd-vs-head">Claude/GPT with Rao</div>
+                        <div class="rd-vs-head">Claude Code / Codex with Rao</div>
+                        <div class="rd-vs-sees"><span class="rd-label">Sees</span>Your code, plus the Rao research brain</div>
                         <div class="rd-vs-body">
                             <span class="rd-label">You ask</span>
                             <p class="rd-q">Why is September's bleaching count higher?</p>
-                            <p>Two changes. The threshold moved from 30.5 °C to 30.2 °C on Oct 4, which adds two events.<span class="rd-src">Notion · Field season plan</span> Logger T3 also read 0.4 °C high until its Oct 3 recalibration.<span class="rd-src">sensor_drift_notes.md</span></p>
+                            <p>The threshold dropped to 30.2 °C to match this season's field plan, which adds two events.<span class="rd-src">Notion · Field season plan</span> One more event is from logger T3, which read 0.4 °C high until it was recalibrated on Oct 3. That event may not be real.<span class="rd-src">Sheets · Logger log</span></p>
                             <span class="rd-label">That week</span>
                             <p>The digest flags a new paper on day–night temperature swings, with a test you could run on your logger data.<span class="rd-src">Digest</span></p>
                         </div>
