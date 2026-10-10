@@ -1691,7 +1691,7 @@
         .rd-q { background: var(--bg); border: 1px solid var(--border); border-radius: 3px; padding: 0.45rem 0.7rem; width: fit-content; }
         .rd-dim { color: var(--text-tertiary); }
 
-        .rd-digest-solo .rd-paper h4, .rd-digest-solo .rd-why { max-width: 82ch; }
+        .rd-digest-solo { max-width: 860px; }
 
         /* Part 1 diagram: Rao research brain */
         .rd-brain { margin: 0; border: 1.5px solid var(--text); background: var(--bg-card); padding: 1.4rem 1.5rem 1rem; }
@@ -1721,10 +1721,11 @@
             .rd-brain + .rd-flow { display: grid; }
         }
 
-        /* Comparison column headers: filled bars to break up the page */
-        .rd-vs .rd-vs-head { padding: 0.95rem 1.2rem; font-size: 0.9rem; letter-spacing: 0.01em; border-bottom: 1.5px solid var(--text); }
-        .rd-vs .rd-vs-col.without .rd-vs-head { background: #d9ddd9; color: var(--text); }
-        .rd-vs .rd-vs-col:not(.without) .rd-vs-head { background: var(--text); color: var(--accent-fg); }
+        /* Comparison column headers: plain, with a small marker for each side */
+        .rd-vs .rd-vs-head { justify-content: flex-start; gap: 0.55rem; }
+        .rd-vs .rd-vs-head::before { content: ""; width: 9px; height: 9px; border: 1.5px solid var(--text); border-radius: 2px; flex: none; transform: translateY(1px); }
+        .rd-vs .rd-vs-col.without .rd-vs-head::before { background: var(--bg-card); }
+        .rd-vs .rd-vs-col:not(.without) .rd-vs-head::before { background: var(--c-green); }
 
         /* Responsive */
         @media (max-width: 1024px) {
