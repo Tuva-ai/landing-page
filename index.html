@@ -1727,6 +1727,12 @@
         .rd-vs .rd-vs-col.without .rd-vs-head::before { background: var(--bg-card); }
         .rd-vs .rd-vs-col:not(.without) .rd-vs-head::before { background: var(--c-green); }
 
+        /* Digest shown in an app window, echoing the demo video frame */
+        .opt-win { max-width: 900px; margin: 0 auto; border: 2px solid var(--text); border-radius: 4px; background: var(--bg-card); box-shadow: 8px 8px 0 var(--pale-green); overflow: hidden; }
+        .opt-win .vision-bar { background: var(--bg-soft); border-bottom: 1.5px solid var(--text); color: var(--text); }
+        .opt-win .rd-digest-solo { max-width: none; }
+        .opt-win .rd-app { border: none; }
+
         /* Responsive */
         @media (max-width: 1024px) {
             .footer-grid { grid-template-columns: 1.5fr 1fr 1fr; }
@@ -2007,6 +2013,7 @@
                     <p>Rao's research brain knows exactly where your project stands: what's settled, what's still open, and what you just found. Each week, the digest uses it to find the paper that fits where you are now.</p>
                 </div>
 
+                <div class="opt-win"><div class="vision-bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="title">Rao · Digest</span></div>
                 <div class="rd-digest-solo">
                     <div class="rd-app" aria-label="Example digest">
                         <div class="rd-app-bar"><span class="on">Digest · Today</span><span class="off">Past digests</span><span class="off">What to track</span><span class="cnt">Example</span></div>
@@ -2020,6 +2027,7 @@
                             </div>
                         </div>
                     </div>
+                </div>
                 </div>
             </div>
         </section>
