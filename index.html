@@ -1743,6 +1743,13 @@
         .cv-gap { display: block; margin-top: 1.1rem; padding-top: 0.9rem; border-top: 1px solid var(--border); }
         @media (max-width: 900px) { .cv-two { grid-template-columns: 1fr; } }
 
+        /* Comparison: equal-height windows, digest as a compact chip on the Rao side */
+        .cv-two { align-items: stretch !important; }
+        .cv-win { display: flex; flex-direction: column; }
+        .cv-body { flex: 1; }
+        .cv-chip { margin-top: 0.9rem; display: flex; gap: 0.6rem; align-items: baseline; padding: 0.55rem 0.7rem; border: 1px solid var(--border); border-radius: 3px; background: var(--bg-soft); font-size: 0.74rem; line-height: 1.45; }
+        .cv-chip-k { flex: none; font-size: 0.62rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; padding: 0.1rem 0.4rem; background: var(--text); color: var(--accent-fg); border-radius: 2px; }
+
         /* Responsive */
         @media (max-width: 1024px) {
             .footer-grid { grid-template-columns: 1.5fr 1fr 1fr; }
@@ -2053,7 +2060,7 @@
 
                 <div class="cv-two">
                     <div class="cv-win dim"><div class="vision-bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="title">Claude Code</span></div><div class="cv-body"><span class="rd-label">Sees: your code and its notes</span><p class="rd-q">Why did H3K27me3 drop at GmNAC11 in the day-7 drought samples?</p><p>The DiffBind table shows K27 at GmNAC11 down about 60% at day 7, more than at day 3. Nothing in the code explains why the day-7 drop is larger.<span class="rd-src">diffbind_k27_d7_vs_ctrl.csv</span></p></div></div>
-                    <div class="cv-win"><div class="vision-bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="title">Claude Code + Rao</span></div><div class="cv-body"><span class="rd-label">Sees: your code, plus the Rao research brain</span><p class="rd-q">Why did H3K27me3 drop at GmNAC11 in the day-7 drought samples?</p><p>Partly real: the loss shows at day 3 and day 7 in every replicate run with antibody lot A.<span class="rd-src">03_k27_drought_d3_d7.ipynb</span> The extra day-7 drop is the antibody: two replicates used lot B, which the Sep 16 lab meeting flagged as about 40% weaker.<span class="rd-src">Notion · Lab meeting notes</span><span class="rd-src">Sheets · Library QC</span></p><span class="rd-label cv-gap">That week</span><p>The digest flags a new paper that tracks H3K27me3 through two drought cycles, the comparison your rewatering notebook is set up to run.<span class="rd-src">Digest</span></p></div></div>
+                    <div class="cv-win"><div class="vision-bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="title">Claude Code + Rao</span></div><div class="cv-body"><span class="rd-label">Sees: your code, plus the Rao research brain</span><p class="rd-q">Why did H3K27me3 drop at GmNAC11 in the day-7 drought samples?</p><p>Partly real: the loss shows at day 3 and day 7 in every replicate run with antibody lot A.<span class="rd-src">03_k27_drought_d3_d7.ipynb</span> The extra day-7 drop is the antibody: two replicates used lot B, which the Sep 16 lab meeting flagged as about 40% weaker.<span class="rd-src">Notion · Lab meeting notes</span><span class="rd-src">Sheets · Library QC</span></p><div class="cv-chip"><span class="cv-chip-k">Digest</span>New paper: K27 loss across two drought cycles, the test your rewatering notebook is set up to run</div></div></div>
                 </div>
             </div>
         </section>
