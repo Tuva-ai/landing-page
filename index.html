@@ -1826,7 +1826,7 @@
         <section class="demo-video-section" id="demo">
             <div class="section-container">
                 <div class="demo-video-frame">
-                    <video class="demo-video" autoplay muted loop playsinline controls preload="metadata" poster="tuva-demo-poster.jpg" aria-label="Using Rao on a coral reef research project">
+                    <video class="demo-video" autoplay muted loop playsinline controls preload="metadata" poster="tuva-demo-poster.jpg" aria-label="Using Rao on a soybean epigenetics research project">
                         <source src="tuva-demo.mp4" type="video/mp4">
                     </video>
                 </div>
@@ -2003,12 +2003,12 @@
                     <div class="rd-app" aria-label="Example digest">
                         <div class="rd-app-bar"><span class="on">Digest · Today</span><span class="off">Past digests</span><span class="off">What to track</span><span class="cnt">Example</span></div>
                         <div class="rd-paper">
-                            <span class="rd-chip">Open question: what temperature triggers bleaching on shallow reef flats?</span>
-                            <h4>Daily temperature swings shift coral bleaching thresholds on shallow reefs</h4>
-                            <div class="meta">Coral Reefs · 2026</div>
+                            <span class="rd-chip">Open question: does H3K27me3 loss at stress genes persist after rewatering?</span>
+                            <h4>Drought-induced H3K27me3 loss primes stress-memory genes in soybean roots</h4>
+                            <div class="meta">The Plant Cell · 2026</div>
                             <div class="rd-why">
                                 <span class="rd-label">Why this</span>
-                                Your 30.2 °C threshold comes from a single season. This paper finds that reefs with large day–night swings bleach at higher temperatures. Your loggers already record that swing, so you could test this on data you have.
+                                You're asking whether K27 loss at GmNAC11 persists after rewatering. This study follows the same mark through two drought cycles and finds the loss persists at a subset of NAC genes, the same comparison your rewatering notebook is set up to run.
                             </div>
                         </div>
                     </div>
@@ -2024,7 +2024,7 @@
                         <span class="section-eyebrow">Compared</span>
                         <h2>Your coding agent sees the code. Rao shows it the rest.</h2>
                     </div>
-                    <p>An example from a coral reef project. Claude Code or Codex can read the repo in both cases. Only one can see the rest of the project.</p>
+                    <p>An example from a soybean epigenetics project. Claude Code or Codex can read the repo in both cases. Only one can see the rest of the project.</p>
                 </div>
 
                 <div class="rd-vs">
@@ -2033,8 +2033,8 @@
                         <div class="rd-vs-sees"><span class="rd-label">Sees</span>Your code and its history</div>
                         <div class="rd-vs-body">
                             <span class="rd-label">You ask</span>
-                            <p class="rd-q">Why is September's bleaching count higher?</p>
-                            <p>The bleaching threshold in <code>config.py</code> changed from 30.5 °C to 30.2 °C last week, which adds two events. I can't tell from the code why it changed.<span class="rd-src">git log</span></p>
+                            <p class="rd-q">Why did H3K27me3 drop at GmNAC11 in the day-7 drought samples?</p>
+                            <p>The DiffBind table shows K27 at GmNAC11 down about 60% at day 7, more than at day 3. Nothing in the code explains why the day-7 drop is larger.<span class="rd-src">diffbind_k27_d7_vs_ctrl.csv</span></p>
                         </div>
                     </div>
                     <div class="rd-vs-col">
@@ -2042,10 +2042,10 @@
                         <div class="rd-vs-sees"><span class="rd-label">Sees</span>Your code, plus the Rao research brain</div>
                         <div class="rd-vs-body">
                             <span class="rd-label">You ask</span>
-                            <p class="rd-q">Why is September's bleaching count higher?</p>
-                            <p>The threshold dropped to 30.2 °C to match this season's field plan, which adds two events.<span class="rd-src">Notion · Field season plan</span> One more event is from logger T3, which read 0.4 °C high until it was recalibrated on Oct 3. That event may not be real.<span class="rd-src">Sheets · Logger log</span></p>
+                            <p class="rd-q">Why did H3K27me3 drop at GmNAC11 in the day-7 drought samples?</p>
+                            <p>Partly real: the loss shows at day 3 and day 7 in every replicate run with antibody lot A.<span class="rd-src">03_k27_drought_d3_d7.ipynb</span> The extra day-7 drop is the antibody: two replicates used lot B, which the Sep 16 lab meeting flagged as about 40% weaker.<span class="rd-src">Notion · Lab meeting notes</span><span class="rd-src">Sheets · Library QC</span></p>
                             <span class="rd-label">That week</span>
-                            <p>The digest flags a new paper on day–night temperature swings, with a test you could run on your logger data.<span class="rd-src">Digest</span></p>
+                            <p>The digest flags a new paper that tracks H3K27me3 through two drought cycles, the comparison your rewatering notebook is set up to run.<span class="rd-src">Digest</span></p>
                         </div>
                     </div>
                 </div>
