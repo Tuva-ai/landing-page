@@ -280,7 +280,7 @@
             font-size: 1.1rem;
             font-weight: 400;
             color: var(--text-secondary);
-            max-width: 720px;
+            max-width: 860px;
             margin: 0 auto 2rem;
             line-height: 1.7;
         }
@@ -1699,6 +1699,7 @@
         .rd-brain .hd { font-size: 11px; font-weight: 600; letter-spacing: .14em; fill: var(--text-tertiary); }
         .rd-brain .lb { font-size: 13px; fill: var(--text); }
         .rd-brain .cap { font-size: 17px; font-weight: 600; fill: var(--text); }
+        .rd-brain .rao { font-size: 22px; font-weight: 700; letter-spacing: .02em; fill: var(--text); }
         .rd-brain .sub { font-size: 12px; fill: var(--text-tertiary); }
         .rd-brain .card { fill: var(--bg-card); stroke: var(--text); stroke-width: 1.5; }
         .rd-brain .core { fill: var(--pale-green); stroke: var(--text); stroke-width: 1.5; }
@@ -1719,6 +1720,11 @@
             .rd-brain { display: none; }
             .rd-brain + .rd-flow { display: grid; }
         }
+
+        /* Comparison column headers: filled bars to break up the page */
+        .rd-vs .rd-vs-head { padding: 0.95rem 1.2rem; font-size: 0.9rem; letter-spacing: 0.01em; border-bottom: 1.5px solid var(--text); }
+        .rd-vs .rd-vs-col.without .rd-vs-head { background: #d9ddd9; color: var(--text); }
+        .rd-vs .rd-vs-col:not(.without) .rd-vs-head { background: var(--text); color: var(--accent-fg); }
 
         /* Responsive */
         @media (max-width: 1024px) {
@@ -1800,7 +1806,7 @@
             <div class="section-container">
                 <div class="hero-content">
                     <h1 class="hero-title">A research brain for your AI</h1>
-                    <p class="hero-subtitle">Rao keeps a live memory of your research, so the AI you already use understands your project, and the right papers and ideas come to you.</p>
+                    <p class="hero-subtitle">Rao keeps a live memory of your research, so your AI understands your project and the right papers and ideas come to you.</p>
                     <div class="cta-buttons">
                         <button type="button"
                                 class="btn btn-primary has-canvas"
@@ -1822,17 +1828,6 @@
             </div>
         </section>
 
-        <!-- Product video -->
-        <section class="demo-video-section" id="demo">
-            <div class="section-container">
-                <div class="demo-video-frame">
-                    <video class="demo-video" autoplay muted loop playsinline controls preload="metadata" poster="tuva-demo-poster.jpg" aria-label="Using Rao on a soybean epigenetics research project">
-                        <source src="tuva-demo.mp4" type="video/mp4">
-                    </video>
-                </div>
-            </div>
-        </section>
-
         <!-- Logo Strip -->
         <section class="logo-strip">
             <div class="logo-strip-label">Helping researchers at leading institutions discover more, faster</div>
@@ -1846,6 +1841,17 @@
             </div>
         </section>
 
+        <!-- Product video -->
+        <section class="demo-video-section" id="demo">
+            <div class="section-container">
+                <div class="demo-video-frame">
+                    <video class="demo-video" autoplay muted loop playsinline controls preload="metadata" poster="tuva-demo-poster.jpg" aria-label="Using Rao on a soybean epigenetics research project">
+                        <source src="tuva-demo.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+        </section>
+
         <!-- Product: overview of the two halves -->
         <section class="rd-sec" id="product">
             <div class="section-container">
@@ -1854,7 +1860,7 @@
                         <span class="section-eyebrow">The product</span>
                         <h2>Your AI keeps notes. Rao gives it a research brain</h2>
                     </div>
-                    <p>Tools like Claude Code keep short notes to remember a project between sessions. Rao builds a memory of your whole project from everywhere you do science: your code, notebooks, papers, shared docs, and past AI sessions. It keeps that memory current on its own.</p>
+                    <p>Tools like Claude Code keep short notes to remember a project. Rao maintains a memory of your whole project from everywhere you do science: your code, your lab's shared documents, your own notes, and past AI sessions.</p>
                 </div>
                 <div class="rd-halves">
                     <a class="rd-half" href="#memory">
@@ -1884,63 +1890,64 @@
 
                 <figure class="rd-brain">
 <svg class="rd-brain-svg" viewBox="0 0 1200 430" role="img" aria-labelledby="rdBrainTitle" xmlns="http://www.w3.org/2000/svg">
-<title id="rdBrainTitle">Rao reads your code, notebooks, papers, data files, past AI sessions, Google Docs and Sheets, GitHub, and Notion. It connects them into the Rao research brain, which is shared with Tuva chat, Claude, GPT, and Cursor.</title>
+<title id="rdBrainTitle">Rao reads your code, notebooks, papers, data files, past AI sessions, Google Docs and Sheets, GitHub, and Notion. It connects them into the Rao research brain, which is shared with Tuva chat, Claude Code, Codex, and Cursor.</title>
 <text class="hd" x="20" y="22">READS</text><text class="hd" x="600" y="22" text-anchor="middle">CONNECTS</text><text class="hd" x="1180" y="22" text-anchor="end">SHARES WITH</text>
-<path class="flow" d="M270 63 C 360 63, 400 225, 450 225"/>
-<path class="flow" d="M270 109 C 360 109, 400 225, 450 225"/>
-<path class="flow" d="M270 155 C 360 155, 400 225, 450 225"/>
-<path class="flow" d="M270 201 C 360 201, 400 225, 450 225"/>
-<path class="flow" d="M270 247 C 360 247, 400 225, 450 225"/>
-<path class="flow" d="M270 293 C 360 293, 400 225, 450 225"/>
-<path class="flow" d="M270 339 C 360 339, 400 225, 450 225"/>
-<path class="flow" d="M270 385 C 360 385, 400 225, 450 225"/>
-<path class="flow" d="M750 225 C 800 225, 840 156, 930 156"/>
-<path class="flow" d="M750 225 C 800 225, 840 202, 930 202"/>
-<path class="flow" d="M750 225 C 800 225, 840 248, 930 248"/>
-<path class="flow" d="M750 225 C 800 225, 840 294, 930 294"/>
-<circle class="core" cx="600" cy="225" r="150"/>
-<line class="edge" x1="600.0" y1="177.0" x2="645.7" y2="210.2"/>
-<line class="edge" x1="645.7" y1="210.2" x2="628.2" y2="263.8"/>
-<line class="edge" x1="628.2" y1="263.8" x2="571.8" y2="263.8"/>
-<line class="edge" x1="571.8" y1="263.8" x2="554.3" y2="210.2"/>
-<line class="edge" x1="554.3" y1="210.2" x2="600.0" y2="177.0"/>
-<line class="edge" x1="600.0" y1="177.0" x2="628.2" y2="263.8"/>
-<line class="edge" x1="645.7" y1="210.2" x2="571.8" y2="263.8"/>
-<line class="edge" x1="632.1" y1="126.1" x2="600.0" y2="177.0"/>
-<line class="edge" x1="632.1" y1="126.1" x2="684.1" y2="163.9"/>
-<line class="edge" x1="632.1" y1="126.1" x2="645.7" y2="210.2"/>
-<line class="edge" x1="684.1" y1="163.9" x2="600.0" y2="177.0"/>
-<line class="edge" x1="704.0" y1="225.0" x2="645.7" y2="210.2"/>
-<line class="edge" x1="704.0" y1="225.0" x2="684.1" y2="286.1"/>
-<line class="edge" x1="684.1" y1="286.1" x2="645.7" y2="210.2"/>
-<line class="edge" x1="684.1" y1="286.1" x2="628.2" y2="263.8"/>
-<line class="edge" x1="632.1" y1="323.9" x2="628.2" y2="263.8"/>
-<line class="edge" x1="632.1" y1="323.9" x2="567.9" y2="323.9"/>
-<line class="edge" x1="567.9" y1="323.9" x2="628.2" y2="263.8"/>
-<line class="edge" x1="515.9" y1="286.1" x2="571.8" y2="263.8"/>
-<line class="edge" x1="515.9" y1="286.1" x2="496.0" y2="225.0"/>
-<line class="edge" x1="515.9" y1="286.1" x2="554.3" y2="210.2"/>
-<line class="edge" x1="496.0" y1="225.0" x2="571.8" y2="263.8"/>
-<line class="edge" x1="515.9" y1="163.9" x2="554.3" y2="210.2"/>
-<line class="edge" x1="515.9" y1="163.9" x2="567.9" y2="126.1"/>
-<line class="edge" x1="567.9" y1="126.1" x2="554.3" y2="210.2"/>
-<line class="edge" x1="567.9" y1="126.1" x2="600.0" y2="177.0"/>
-<rect class="nd c1" x="592.0" y="169.0" width="16.0" height="16.0"/>
-<circle class="nd c4" cx="645.7" cy="210.2" r="8.0"/>
-<path class="nd c3" d="M628.2 254.2 L637.8 271.5 L618.6 271.5 Z"/>
-<circle class="nd c2" cx="571.8" cy="263.8" r="8.0"/>
-<circle class="nd c3" cx="554.3" cy="210.2" r="8.0"/>
-<rect class="nd c1" x="624.1" y="118.1" width="16.0" height="16.0"/>
-<rect class="nd c4" x="676.1" y="155.9" width="16.0" height="16.0"/>
-<path class="nd c3" d="M704.0 215.4 L713.6 232.7 L694.4 232.7 Z"/>
-<path class="nd c1" d="M684.1 276.5 L693.7 293.8 L674.5 293.8 Z"/>
-<rect class="nd c5" x="624.1" y="315.9" width="16.0" height="16.0"/>
-<circle class="nd c4" cx="567.9" cy="323.9" r="8.0"/>
-<circle class="nd c2" cx="515.9" cy="286.1" r="8.0"/>
-<path class="nd c3" d="M496.0 215.4 L505.6 232.7 L486.4 232.7 Z"/>
-<circle class="nd c3" cx="515.9" cy="163.9" r="8.0"/>
-<rect class="nd c1" x="559.9" y="118.1" width="16.0" height="16.0"/>
-<text class="cap" x="600" y="405" text-anchor="middle">Rao research brain</text>
+<path class="flow" d="M270 63 C 360 63, 400 232, 450 232"/>
+<path class="flow" d="M270 109 C 360 109, 400 232, 450 232"/>
+<path class="flow" d="M270 155 C 360 155, 400 232, 450 232"/>
+<path class="flow" d="M270 201 C 360 201, 400 232, 450 232"/>
+<path class="flow" d="M270 247 C 360 247, 400 232, 450 232"/>
+<path class="flow" d="M270 293 C 360 293, 400 232, 450 232"/>
+<path class="flow" d="M270 339 C 360 339, 400 232, 450 232"/>
+<path class="flow" d="M270 385 C 360 385, 400 232, 450 232"/>
+<path class="flow" d="M750 232 C 800 232, 840 156, 930 156"/>
+<path class="flow" d="M750 232 C 800 232, 840 202, 930 202"/>
+<path class="flow" d="M750 232 C 800 232, 840 248, 930 248"/>
+<path class="flow" d="M750 232 C 800 232, 840 294, 930 294"/>
+<circle class="core" cx="600" cy="232" r="150"/>
+<line class="edge" x1="600.0" y1="184.0" x2="645.7" y2="217.2"/>
+<line class="edge" x1="645.7" y1="217.2" x2="628.2" y2="270.8"/>
+<line class="edge" x1="628.2" y1="270.8" x2="571.8" y2="270.8"/>
+<line class="edge" x1="571.8" y1="270.8" x2="554.3" y2="217.2"/>
+<line class="edge" x1="554.3" y1="217.2" x2="600.0" y2="184.0"/>
+<line class="edge" x1="600.0" y1="184.0" x2="628.2" y2="270.8"/>
+<line class="edge" x1="645.7" y1="217.2" x2="571.8" y2="270.8"/>
+<line class="edge" x1="632.1" y1="133.1" x2="600.0" y2="184.0"/>
+<line class="edge" x1="632.1" y1="133.1" x2="684.1" y2="170.9"/>
+<line class="edge" x1="632.1" y1="133.1" x2="645.7" y2="217.2"/>
+<line class="edge" x1="684.1" y1="170.9" x2="600.0" y2="184.0"/>
+<line class="edge" x1="704.0" y1="232.0" x2="645.7" y2="217.2"/>
+<line class="edge" x1="704.0" y1="232.0" x2="684.1" y2="293.1"/>
+<line class="edge" x1="684.1" y1="293.1" x2="645.7" y2="217.2"/>
+<line class="edge" x1="684.1" y1="293.1" x2="628.2" y2="270.8"/>
+<line class="edge" x1="632.1" y1="330.9" x2="628.2" y2="270.8"/>
+<line class="edge" x1="632.1" y1="330.9" x2="567.9" y2="330.9"/>
+<line class="edge" x1="567.9" y1="330.9" x2="628.2" y2="270.8"/>
+<line class="edge" x1="515.9" y1="293.1" x2="571.8" y2="270.8"/>
+<line class="edge" x1="515.9" y1="293.1" x2="496.0" y2="232.0"/>
+<line class="edge" x1="515.9" y1="293.1" x2="554.3" y2="217.2"/>
+<line class="edge" x1="496.0" y1="232.0" x2="571.8" y2="270.8"/>
+<line class="edge" x1="515.9" y1="170.9" x2="554.3" y2="217.2"/>
+<line class="edge" x1="515.9" y1="170.9" x2="567.9" y2="133.1"/>
+<line class="edge" x1="567.9" y1="133.1" x2="554.3" y2="217.2"/>
+<line class="edge" x1="567.9" y1="133.1" x2="600.0" y2="184.0"/>
+<rect class="nd c1" x="592.0" y="176.0" width="16.0" height="16.0"/>
+<circle class="nd c4" cx="645.7" cy="217.2" r="8.0"/>
+<path class="nd c3" d="M628.2 261.2 L637.8 278.5 L618.6 278.5 Z"/>
+<circle class="nd c2" cx="571.8" cy="270.8" r="8.0"/>
+<circle class="nd c3" cx="554.3" cy="217.2" r="8.0"/>
+<rect class="nd c1" x="624.1" y="125.1" width="16.0" height="16.0"/>
+<rect class="nd c4" x="676.1" y="162.9" width="16.0" height="16.0"/>
+<path class="nd c3" d="M704.0 222.4 L713.6 239.7 L694.4 239.7 Z"/>
+<path class="nd c1" d="M684.1 283.5 L693.7 300.8 L674.5 300.8 Z"/>
+<rect class="nd c5" x="624.1" y="322.9" width="16.0" height="16.0"/>
+<circle class="nd c4" cx="567.9" cy="330.9" r="8.0"/>
+<circle class="nd c2" cx="515.9" cy="293.1" r="8.0"/>
+<path class="nd c3" d="M496.0 222.4 L505.6 239.7 L486.4 239.7 Z"/>
+<circle class="nd c3" cx="515.9" cy="170.9" r="8.0"/>
+<rect class="nd c1" x="559.9" y="125.1" width="16.0" height="16.0"/>
+<text class="rao" x="600" y="70" text-anchor="middle">Rao</text>
+<text class="cap" x="600" y="412" text-anchor="middle">Research brain</text>
 <rect class="card" x="20" y="46" width="250" height="34"/><rect class="nd c1" x="32.0" y="57.0" width="12.0" height="12.0"/><text class="lb" x="56" y="68">Code &amp; scripts</text>
 <rect class="card" x="20" y="92" width="250" height="34"/><circle class="nd c4" cx="38.0" cy="109.0" r="6.0"/><text class="lb" x="56" y="114">Notebooks</text>
 <rect class="card" x="20" y="138" width="250" height="34"/><path class="nd c3" d="M38.0 147.8 L45.2 160.8 L30.8 160.8 Z"/><text class="lb" x="56" y="160">Papers &amp; PDFs</text>
@@ -1950,8 +1957,8 @@
 <rect class="card" x="20" y="322" width="250" height="34"/><rect class="nd c5" x="32.0" y="333.0" width="12.0" height="12.0"/><text class="lb" x="56" y="344">GitHub</text>
 <rect class="card" x="20" y="368" width="250" height="34"/><circle class="nd c3" cx="38.0" cy="385.0" r="6.0"/><text class="lb" x="56" y="390">Notion</text>
 <rect class="card" x="930" y="139" width="250" height="34"/><text class="lb" x="946" y="161">Tuva chat</text>
-<rect class="card" x="930" y="185" width="250" height="34"/><text class="lb" x="946" y="207">Claude</text>
-<rect class="card" x="930" y="231" width="250" height="34"/><text class="lb" x="946" y="253">GPT</text>
+<rect class="card" x="930" y="185" width="250" height="34"/><text class="lb" x="946" y="207">Claude Code</text>
+<rect class="card" x="930" y="231" width="250" height="34"/><text class="lb" x="946" y="253">Codex</text>
 <rect class="card" x="930" y="277" width="250" height="34"/><text class="lb" x="946" y="299">Cursor</text>
 </svg>
                 </figure>
@@ -1979,8 +1986,8 @@
                         <span class="rd-label">Shares with</span>
                         <ul>
                             <li>Tuva chat</li>
-                            <li>Claude</li>
-                            <li>GPT</li>
+                            <li>Claude Code</li>
+                            <li>Codex</li>
                             <li>Cursor</li>
                         </ul>
                     </div>
@@ -2028,7 +2035,7 @@
                 <div class="rd-vs">
                     <div class="rd-vs-col without">
                         <div class="rd-vs-head">Claude Code / Codex alone</div>
-                        <div class="rd-vs-sees"><span class="rd-label">Sees</span>Your code and its history</div>
+                        <div class="rd-vs-sees"><span class="rd-label">Sees</span>Your code and its notes</div>
                         <div class="rd-vs-body">
                             <span class="rd-label">You ask</span>
                             <p class="rd-q">Why did H3K27me3 drop at GmNAC11 in the day-7 drought samples?</p>
@@ -2057,7 +2064,7 @@
                     <span class="section-eyebrow">Getting started</span>
                 </div>
                 <h2 class="section-title">Three steps to get started</h2>
-                <p class="section-subtitle">We'll guide you through setup on an onboarding call.</p>
+                <p class="section-subtitle">Join the waitlist and we'll set up an onboarding call to do the following.</p>
 
                 <div class="steps-grid">
                     <div class="step-card">
@@ -2073,7 +2080,7 @@
                     <div class="step-card">
                         <div class="step-number s-3">03</div>
                         <h3>Keep working</h3>
-                        <p>Chat with Tuva, connect the AI tools you already use, and read your digest each week. The memory updates as you go.</p>
+                        <p>Chat with Rao, connect the AI tools you already use, and read your digest each week. The memory updates as you go.</p>
                     </div>
                 </div>
 
