@@ -1691,6 +1691,8 @@
         .rd-q { background: var(--bg); border: 1px solid var(--border); border-radius: 3px; padding: 0.45rem 0.7rem; width: fit-content; }
         .rd-dim { color: var(--text-tertiary); }
 
+        .rd-digest-solo .rd-paper h4, .rd-digest-solo .rd-why { max-width: 82ch; }
+
         /* Responsive */
         @media (max-width: 1024px) {
             .footer-grid { grid-template-columns: 1.5fr 1fr 1fr; }
@@ -1896,7 +1898,7 @@
                     <p>Rao's research brain knows exactly where your project stands: what's settled, what's still open, and what you just found. Each week, the digest checks your research memory to find the paper that fits exactly where your project is.</p>
                 </div>
 
-                <div class="rd-digest-layout">
+                <div class="rd-digest-solo">
                     <div class="rd-app" aria-label="Example digest">
                         <div class="rd-app-bar"><span class="on">Digest · Today</span><span class="off">Past digests</span><span class="off">What to track</span><span class="cnt">Example</span></div>
                         <div class="rd-paper">
@@ -1909,14 +1911,6 @@
                             </div>
                         </div>
                     </div>
-
-                    <table class="rd-table">
-                        <tr><th>Knows where you are</th><td>Works from your open questions and latest results, not keywords</td></tr>
-                        <tr><th>Sparks ideas</th><td>Points to a method to borrow, an assumption to recheck, or a test to run</td></tr>
-                        <tr><th>Selective</th><td>Usually one paper a week, and none if nothing qualifies</td></tr>
-                        <tr><th>You steer it</th><td>Follow the authors, journals, and fields you choose</td></tr>
-                        <tr><th>Runs anywhere</th><td>On your Mac, or on your HPC cluster next to your data</td></tr>
-                    </table>
                 </div>
             </div>
         </section>
