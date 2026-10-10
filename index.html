@@ -1620,6 +1620,72 @@
             .rd-table th { white-space: normal; }
         }
 
+        /* Product overview: two halves */
+        .rd-halves { display: grid; grid-template-columns: 1fr 1fr; border: 1.5px solid var(--text); background: var(--bg-card); }
+        .rd-half { padding: 1.4rem 1.5rem 1.5rem; color: inherit; text-decoration: none; transition: background 0.15s ease; }
+        .rd-half + .rd-half { border-left: 1.5px solid var(--text); }
+        .rd-half:hover { background: var(--pale-green); }
+        .rd-half h3 { font-size: 1.15rem; font-weight: 600; margin: 0.5rem 0 0.4rem; }
+        .rd-half p { font-size: 0.86rem; color: var(--text-secondary); line-height: 1.65; }
+
+        /* Flow: sources → memory → consumers */
+        .rd-flow { display: grid; grid-template-columns: 1fr auto 1.5fr auto 1fr; border: 1.5px solid var(--text); background: var(--bg-card); margin-bottom: 2.5rem; }
+        .rd-flow-col { padding: 1.2rem 1.3rem 1.3rem; }
+        .rd-flow-col.core { background: var(--pale-green); border-left: 1.5px solid var(--text); border-right: 1.5px solid var(--text); }
+        .rd-flow-col ul { list-style: none; margin-top: 0.8rem; }
+        .rd-flow-col li { font-size: 0.82rem; padding: 0.4rem 0; border-top: 1px solid var(--border); line-height: 1.5; }
+        .rd-flow-col.core li { border-top-color: rgba(26,26,26,0.18); color: var(--text-secondary); padding: 0.6rem 0; }
+        .rd-flow-col li b { display: block; color: var(--text); font-weight: 600; }
+        .rd-flow-col li em { font-style: normal; color: var(--text-tertiary); font-size: 0.74rem; }
+        .rd-flow-arrow { display: flex; align-items: center; padding: 0 0.6rem; font-size: 1.1rem; color: var(--text-tertiary); }
+
+        /* Chat mock + copy */
+        .rd-chat-layout, .rd-digest-layout { display: grid; grid-template-columns: 1.1fr 1fr; gap: 2.5rem; align-items: start; }
+        .rd-chat { background: var(--bg-card); border: 1.5px solid var(--text); font-size: 0.82rem; }
+        .rd-chat-body { padding: 1.2rem 1.2rem 1.3rem; }
+        .rd-msg-user { margin-left: auto; width: fit-content; max-width: 85%; background: var(--bg-soft); border: 1px solid var(--border); border-radius: 3px; padding: 0.5rem 0.75rem; margin-bottom: 0.9rem; }
+        .rd-msg-meta { font-size: 0.7rem; color: var(--text-tertiary); margin-bottom: 0.6rem; }
+        .rd-msg p { line-height: 1.65; margin-bottom: 0.6rem; }
+        .rd-msg p:last-child { margin-bottom: 0; }
+        .rd-src { display: inline-block; font-size: 0.64rem; border: 1px solid var(--text); border-radius: 2px; padding: 0 0.35rem; margin-left: 0.35rem; white-space: nowrap; vertical-align: 1px; }
+        .rd-sub { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.35rem; }
+        .rd-copy { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.3rem; }
+        .rd-copy:last-child { margin-bottom: 0; }
+
+        /* Where it runs */
+        .rd-env { display: grid; grid-template-columns: 1fr 1fr 1fr; border: 1.5px solid var(--text); background: var(--bg-card); margin-top: 2.5rem; }
+        .rd-env > div { padding: 1.2rem 1.3rem; }
+        .rd-env > div + div { border-left: 1px solid var(--border); }
+        .rd-env-head p { font-size: 0.86rem; margin-top: 0.5rem; line-height: 1.6; }
+        .rd-env h4 { font-size: 0.9rem; font-weight: 600; margin-bottom: 0.35rem; }
+        .rd-env-col p { font-size: 0.8rem; color: var(--text-secondary); line-height: 1.6; }
+
+        /* Comparison table */
+        .rd-compare { width: 100%; border-collapse: collapse; font-size: 0.84rem; border: 1.5px solid var(--text); background: var(--bg-card); }
+        .rd-compare thead th { text-align: left; font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; padding: 0.85rem 1rem; border-bottom: 1.5px solid var(--text); }
+        .rd-compare thead th:last-child { background: var(--pale-green); }
+        .rd-compare tbody th { text-align: left; font-weight: 600; width: 24%; }
+        .rd-compare tbody th, .rd-compare tbody td { padding: 0.75rem 1rem; border-top: 1px solid var(--border); vertical-align: top; line-height: 1.55; }
+        .rd-compare tbody td { color: var(--text-secondary); width: 38%; }
+        .rd-compare tbody td:last-child { color: var(--text); background: rgba(212, 232, 212, 0.35); }
+        .rd-compare tr.grp td { background: var(--bg-soft) !important; color: var(--text-tertiary) !important; font-size: 0.68rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; border-top: 1.5px solid var(--text); }
+        .rd-compare td.eg { font-size: 0.78rem; }
+
+        @media (max-width: 900px) {
+            .rd-halves, .rd-chat-layout, .rd-digest-layout, .rd-env { grid-template-columns: 1fr; }
+            .rd-half + .rd-half { border-left: none; border-top: 1.5px solid var(--text); }
+            .rd-env > div + div { border-left: none; border-top: 1px solid var(--border); }
+            .rd-flow { grid-template-columns: 1fr; }
+            .rd-flow-arrow { display: none; }
+            .rd-flow-col.core { border: none; border-top: 1.5px solid var(--text); border-bottom: 1.5px solid var(--text); }
+            .rd-compare thead { display: none; }
+            .rd-compare, .rd-compare tbody, .rd-compare tr, .rd-compare th, .rd-compare td { display: block; width: 100% !important; }
+            .rd-compare tbody td::before { display: block; font-size: 0.64rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-tertiary); margin-bottom: 0.2rem; }
+            .rd-compare tbody td:nth-child(2)::before { content: "Alone"; }
+            .rd-compare tbody td:nth-child(3)::before { content: "With Rao"; }
+            .rd-compare tr.grp td::before { content: none; }
+        }
+
         /* Responsive */
         @media (max-width: 1024px) {
             .footer-grid { grid-template-columns: 1.5fr 1fr 1fr; }
@@ -1673,8 +1739,7 @@
             <nav class="header-nav">
                 <a href="#" class="nav-home">Home</a>
                 <a href="#product">Product</a>
-                <a href="#use-cases">Use Cases</a>
-                <a href="#different">Why Rao</a>
+                <a href="#compare">Compare</a>
                 <a href="#how-it-works">Getting Started</a>
                 <a href="#faq">FAQ</a>
                 <a href="/careers">Careers</a>
@@ -1701,7 +1766,7 @@
             <div class="section-container">
                 <div class="hero-content">
                     <h1 class="hero-title">Give your AI the whole project.</h1>
-                    <p class="hero-subtitle">Rao builds a research memory from your code, notebooks, papers, docs, and past agent sessions, then gives Claude and your other agents the context they need for each task.</p>
+                    <p class="hero-subtitle">Rao keeps a live memory of your research, so the AI you already use understands your project. It also finds new papers and ideas for you without being asked.</p>
                     <div class="cta-buttons">
                         <button type="button"
                                 class="btn btn-primary has-canvas"
@@ -1716,10 +1781,20 @@
                             <span class="btn-text">Join Waitlist</span>
                         </button>
                     </div>
-                    <p class="hero-works-with">Works on top of <strong>Claude Code</strong> · <strong>Claude</strong> · <strong>Codex</strong> · <strong>Cursor</strong></p>
                 </div>
                 <div class="hero-visual">
                     <canvas id="lissajousCanvas" class="lissajous-canvas"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- Product video -->
+        <section class="demo-video-section" id="demo">
+            <div class="section-container">
+                <div class="demo-video-frame">
+                    <video class="demo-video" autoplay muted loop playsinline controls preload="metadata" poster="tuva-demo-poster.jpg" aria-label="Using Rao on a coral reef research project">
+                        <source src="tuva-demo.mp4" type="video/mp4">
+                    </video>
                 </div>
             </div>
         </section>
@@ -1737,225 +1812,185 @@
             </div>
         </section>
 
-        <!-- The gap -->
-        <section class="rd-sec">
-            <div class="section-container">
-                <div class="rd-head">
-                    <div>
-                        <span class="section-eyebrow">The problem</span>
-                        <h2>Your AI only knows what you hand it.</h2>
-                    </div>
-                    <p>That means the chat and the repo. Most of the decisions behind a research project are made somewhere else, so the agent never sees them.</p>
-                </div>
-                <div class="rd-gap-grid">
-                    <div class="rd-gap-col dim">
-                        <span class="rd-label">What your agent sees</span>
-                        <ul class="rd-gap-list">
-                            <li>The chat<span>Whatever you remembered to paste</span></li>
-                            <li>The repo<span>The code, but not the reasons behind it</span></li>
-                        </ul>
-                    </div>
-                    <div class="rd-gap-col">
-                        <span class="rd-label">Where the decisions are</span>
-                        <ul class="rd-gap-list wide">
-                            <li>Notebooks<span>Which run worked, and which didn't</span></li>
-                            <li>Papers<span>The method you're following</span></li>
-                            <li>Past agent sessions<span>What you settled on last week</span></li>
-                            <li>Shared docs<span>The plan everyone agreed to</span></li>
-                            <li>Spreadsheets<span>Sample logs, parameters</span></li>
-                            <li>Other repos<span>The lab's shared tooling</span></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Knowledge base -->
+        <!-- Product: overview of the two halves -->
         <section class="rd-sec" id="product">
             <div class="section-container">
                 <div class="rd-head">
                     <div>
-                        <span class="section-eyebrow">Research memory</span>
-                        <h2>One knowledge base for the whole project.</h2>
+                        <span class="section-eyebrow">The product</span>
+                        <h2>An AI model only knows what you tell it in the moment.</h2>
                     </div>
-                    <p>Each source feeds one research graph that keeps updating. That gives Rao a specific understanding of your project, and it gives your agents exactly the information they need.</p>
+                    <p>Your project lives across code, notebooks, papers, shared docs, and months of decisions. Rao does two things with all of that.</p>
                 </div>
-
-                <div class="rd-kb-layout">
-                    <table class="rd-table">
-                        <caption class="rd-label">In your project</caption>
-                        <tr><th>Code</th><td>Python, R, TypeScript, SQL, and shell scripts, including how files depend on each other</td></tr>
-                        <tr><th>Notebooks</th><td>Cells and outputs, chunked by cell</td></tr>
-                        <tr><th>Papers &amp; documents</th><td>PDFs, LaTeX, Markdown, and Word files, searchable down to the section</td></tr>
-                        <tr><th>Datasets</th><td>Schemas for CSV, Parquet, and Excel files. Raw data stays on your machine.</td></tr>
-                        <tr><th>Agent sessions</th><td>Decisions and results from your Claude Code, Codex, and Rao sessions</td></tr>
-                    </table>
-                    <table class="rd-table">
-                        <caption class="rd-label">External sources</caption>
-                        <tr><th>Google Docs</th><td>Protocols, plans, and drafts</td></tr>
-                        <tr><th>Google Sheets</th><td>Sample logs, run parameters, and results tables</td></tr>
-                        <tr><th>GitHub</th><td>Repositories, issues, and pull requests</td></tr>
-                        <tr><th>Notion</th><td>Pages you choose, synced into the project and searched with everything else</td></tr>
-                    </table>
-                </div>
-
-                <div class="rd-kb-foot">
-                    <div><b>Episodes</b>Each session is condensed into a record of what was explored, decided, or found.</div>
-                    <div><b>Entities</b>Each record links to the files, cells, variables, and papers it touched.</div>
-                    <div><b>Daily log</b>Every day, Rao adds a summary of the project and an updated state of the work.</div>
-                    <div><b>Always current</b>Changed files are re-indexed in the background while you work.</div>
+                <div class="rd-halves">
+                    <a class="rd-half" href="#memory">
+                        <span class="rd-label">Part 1</span>
+                        <h3>A live research memory</h3>
+                        <p>Rao reads your project, keeps it up to date, and gives that context to every AI you use.</p>
+                    </a>
+                    <a class="rd-half" href="#agents">
+                        <span class="rd-label">Part 2</span>
+                        <h3>Proactive agents</h3>
+                        <p>Agents use that memory to bring you papers and ideas you didn't know to look for.</p>
+                    </a>
                 </div>
             </div>
         </section>
 
-        <!-- Digest -->
-        <section class="rd-sec soft" id="digest">
+        <!-- Part 1: research memory -->
+        <section class="rd-sec" id="memory">
             <div class="section-container">
                 <div class="rd-head">
                     <div>
-                        <span class="section-eyebrow">Proactive agents</span>
-                        <h2>Papers chosen for the questions you're working on.</h2>
+                        <span class="section-eyebrow">Part 1 · Research memory</span>
+                        <h2>A research brain that updates itself, everywhere you do science.</h2>
                     </div>
-                    <p>The digest agent reads the open questions in your research memory, searches for new papers on each one, and suggests only those that clearly matter to your work. Each suggestion explains why.</p>
+                    <p>Rao reads everything in your project and connects it: which script made which figure, what was decided, and which paper a method came from. As you work, the memory keeps up.</p>
+                </div>
+
+                <div class="rd-flow" aria-label="How information flows through Rao">
+                    <div class="rd-flow-col">
+                        <span class="rd-label">1 · What Rao reads</span>
+                        <ul>
+                            <li>Code &amp; scripts</li>
+                            <li>Jupyter notebooks</li>
+                            <li>Papers &amp; PDFs</li>
+                            <li>Data files <em>(column layout only)</em></li>
+                            <li>Past AI sessions</li>
+                            <li>Google Docs &amp; Sheets</li>
+                            <li>GitHub</li>
+                            <li>Notion</li>
+                        </ul>
+                    </div>
+                    <div class="rd-flow-arrow">&rarr;</div>
+                    <div class="rd-flow-col core">
+                        <span class="rd-label">2 · What it keeps</span>
+                        <ul>
+                            <li><b>Knowledge base</b>Every file, searchable down to a notebook cell or a paper section</li>
+                            <li><b>Research memory</b>A running record of what you tried, decided, and found, and which files each step touched</li>
+                            <li><b>Daily log</b>A summary each day of where the project stands</li>
+                        </ul>
+                    </div>
+                    <div class="rd-flow-arrow">&rarr;</div>
+                    <div class="rd-flow-col">
+                        <span class="rd-label">3 · Who uses it</span>
+                        <ul>
+                            <li>Tuva chat</li>
+                            <li>Claude Code</li>
+                            <li>Codex</li>
+                            <li>Cursor</li>
+                            <li>Claude Desktop</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="rd-chat-layout">
+                    <div class="rd-chat" aria-label="Example Tuva chat">
+                        <div class="rd-app-bar"><span class="on">reef-thermal</span><span class="off">Tuva chat</span><span class="cnt">Example</span></div>
+                        <div class="rd-chat-body">
+                            <div class="rd-msg-user">What changed in the thermal sensor data since last week?</div>
+                            <div class="rd-msg-meta">Searched knowledge base and research memory</div>
+                            <div class="rd-msg">
+                                <p>Two things changed.</p>
+                                <p>Logger T3 was recalibrated on Oct 3. Its earlier readings run about 0.4 °C high, and <code>clean_loggers.py</code> now corrects for that.<span class="rd-src">sensor_drift_notes.md</span></p>
+                                <p>The bleaching threshold also moved from 30.5 °C to 30.2 °C, following the field-season plan. Under the new threshold, <code>bleaching_events.ipynb</code> picks up two more events in September.<span class="rd-src">Notion · Field season plan</span><span class="rd-src">Research memory · Oct 4</span></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="rd-sub">The chat already knows your project</h3>
+                        <p class="rd-copy">Ask Tuva a question and it searches your project first. Every answer points back to the file, notebook, or note it came from, so you can check it.</p>
+                        <h3 class="rd-sub">Your other AI tools share the same memory</h3>
+                        <p class="rd-copy">Connect Claude Code, Codex, Cursor, or Claude Desktop once. Each one can look things up in the same research memory, so you stop re-explaining your project, and a decision made in one tool is known in the others.</p>
+                        <h3 class="rd-sub">It works where you do</h3>
+                        <p class="rd-copy">Use Rao from the desktop app, inside VS Code, or from the terminal. The memory is the same everywhere.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Part 2: proactive agents -->
+        <section class="rd-sec soft" id="agents">
+            <div class="section-container">
+                <div class="rd-head">
+                    <div>
+                        <span class="section-eyebrow">Part 2 · Proactive agents</span>
+                        <h2>Ideas that come to you.</h2>
+                    </div>
+                    <p>Most AI tools wait for you to ask. Rao's agents work from your research memory in the background. They follow the questions your project is still trying to answer and tell you when something new bears on them.</p>
                 </div>
 
                 <div class="rd-digest-layout">
                     <div class="rd-app" aria-label="Example digest">
-                        <div class="rd-app-bar"><span class="on">Today</span><span class="off">Past digests</span><span class="off">What to track</span><span class="cnt">1 unread</span></div>
+                        <div class="rd-app-bar"><span class="on">Digest · Today</span><span class="off">Past digests</span><span class="off">What to track</span><span class="cnt">Example</span></div>
                         <div class="rd-paper">
-                            <span class="rd-chip">Thread: GP priors as a replacement for spatial smoothing</span>
-                            <h4>Hierarchical Gaussian-process priors for population receptive field estimation</h4>
-                            <div class="meta">Lin, Okafor &amp; Brandt · NeuroImage · 2026</div>
+                            <span class="rd-chip">Open question: what temperature triggers bleaching on shallow reef flats?</span>
+                            <h4>Daily temperature swings shift coral bleaching thresholds on shallow reefs</h4>
+                            <div class="meta">Coral Reefs · 2026</div>
                             <div class="rd-why">
                                 <span class="rd-label">Why this</span>
-                                You're testing whether a GP prior on unsmoothed BOLD can match a classical fit on smoothed data. This paper runs that comparison on 7T data and reports where the prior helps and where it over-regularizes pRF size.
+                                You set your 30.2 °C threshold from a single season. This paper finds that reefs with large day–night temperature swings bleach at higher temperatures. Your loggers already record that swing, so you could test this on data you have.
                             </div>
                             <div class="acts"><span>This was useful</span><span>This wasn't useful</span></div>
                         </div>
-                        <div class="rd-paper muted">
-                            <span class="rd-chip">Thread: Decoding numerosity from FDR-selected voxels</span>
-                            <h4>Last week · Posterior decoding of magnitude from parietal maps</h4>
-                            <div class="meta">Past digest · Read</div>
-                        </div>
                     </div>
 
-                    <table class="rd-table">
-                        <tr><th><span class="n">01</span>Reads</th><td>The open questions in your research memory. A new project starts from topics in its files.</td></tr>
-                        <tr><th><span class="n">02</span>Searches</th><td>New papers from Crossref, OpenAlex, and the web, skipping anything you've already seen</td></tr>
-                        <tr><th><span class="n">03</span>Filters</th><td>Applies a strict relevance bar. Usually one paper a week, and none if nothing qualifies.</td></tr>
-                        <tr><th><span class="n">04</span>Tracks</th><td>The authors, journals, preprint servers, and fields you choose to follow</td></tr>
-                        <tr><th><span class="n">05</span>Feedback</th><td>Mark each suggestion as useful or not</td></tr>
-                        <tr><th><span class="n">06</span>Delivers</th><td>In the app, as a desktop notification, or as an optional weekly email</td></tr>
-                    </table>
+                    <div>
+                        <h3 class="rd-sub">The digest</h3>
+                        <p class="rd-copy">Once a week, the digest agent searches new literature for each open question in your project. It suggests a paper only when the paper clearly matters to your work, which usually means one a week and some weeks none.</p>
+                        <h3 class="rd-sub">Built to spark ideas</h3>
+                        <p class="rd-copy">Each suggestion explains how the paper connects to your work. That connection is often where a new idea starts: a method you could borrow, a result that challenges an assumption, or a test you could run on data you already have.</p>
+                        <h3 class="rd-sub">You decide what it follows</h3>
+                        <p class="rd-copy">Choose authors, journals, preprint servers, and fields to follow. Read suggestions in the app, get a desktop notification, or turn on a weekly email.</p>
+                    </div>
+                </div>
+
+                <div class="rd-env">
+                    <div class="rd-env-head">
+                        <span class="rd-label">Where Rao runs</span>
+                        <p>Rao runs where your research does: on your laptop, or on your institution's computing cluster.</p>
+                    </div>
+                    <div class="rd-env-col">
+                        <h4>On your computer</h4>
+                        <p>A desktop app for Mac, plus VS Code and the terminal. Your files and research memory stay on your machine.</p>
+                    </div>
+                    <div class="rd-env-col">
+                        <h4>On the cluster (HPC)</h4>
+                        <p>Runs as a single self-contained image under Slurm, with nothing to compile. Connect from your laptop over SSH, so the memory sits next to the data and jobs it describes.</p>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Use Cases -->
-        <section class="rd-sec" id="use-cases">
+        <!-- Comparison -->
+        <section class="rd-sec" id="compare">
             <div class="section-container">
                 <div class="rd-head">
                     <div>
-                        <span class="section-eyebrow">Use cases</span>
-                        <h2>One project context, shared by every agent.</h2>
+                        <span class="section-eyebrow">Compared</span>
+                        <h2>Claude or ChatGPT on its own, and with Rao.</h2>
                     </div>
-                    <p>Start agents from Rao, pick them up in any tool, and give each one the same picture of your project.</p>
+                    <p>Rao doesn't replace the AI you use. It's a layer that gives that AI your project's context and adds agents that work for you in the background.</p>
                 </div>
 
-                <div class="rd-uc-grid">
-                    <div class="rd-uc">
-                        <div class="n"><span>01</span><span>Agent sessions</span></div>
-                        <h3>Start agents with context already loaded</h3>
-                        <p>Start Claude Code or Codex from Rao with the project context attached. Every session is listed in one place.</p>
-                        <div class="eg">Resume in Terminal, VS Code, the CLI, or the desktop app</div>
-                    </div>
-                    <div class="rd-uc">
-                        <div class="n"><span>02</span><span>Shared context</span></div>
-                        <h3>Switch tools without starting over</h3>
-                        <p>Claude Code, Codex, Cursor, and Claude Desktop all connect to the same research memory through one MCP server.</p>
-                        <div class="eg">What one agent decides, the next agent knows</div>
-                    </div>
-                    <div class="rd-uc">
-                        <div class="n"><span>03</span><span>Onboarding</span></div>
-                        <h3>Bring a new lab member up to speed</h3>
-                        <p>Anyone new can ask why the project is set up the way it is and get answers that point back to the session, notebook, or paper.</p>
-                        <div class="eg">"Why did we stop using the smoothed pipeline?"</div>
-                    </div>
-                    <div class="rd-uc">
-                        <div class="n"><span>04</span><span>Literature</span></div>
-                        <h3>Read papers in light of your own work</h3>
-                        <p>Compare a paper with your methods and results, and cite the exact section.</p>
-                        <div class="eg">"Does this prior conflict with our bayes regime?"</div>
-                    </div>
-                </div>
-
-                <div class="uc-fields" style="margin-top: 2.5rem;">
-                    <div class="uc-band-label">Across fields including</div>
-                    <div class="chip-grid">
-                        <span class="chip">Computational Biology / Omics</span>
-                        <span class="chip">Computational Chemistry / MD</span>
-                        <span class="chip">High Energy Physics</span>
-                        <span class="chip">Astrophysics &amp; Cosmology</span>
-                        <span class="chip">ML, CS &amp; Data Science</span>
-                        <span class="chip">Neuroscience</span>
-                        <span class="chip">Materials Science</span>
-                        <span class="chip">Climate &amp; Earth Science</span>
-                        <span class="chip chip-accent">+ your field</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- With / without -->
-        <section class="rd-sec" id="different">
-            <div class="section-container">
-                <div class="rd-head">
-                    <div>
-                        <span class="section-eyebrow">How it's different</span>
-                        <h2>The same agent, with and without Rao.</h2>
-                    </div>
-                    <p>An illustration: Claude Code gets the same prompt in the same repo, with and without access to Rao. The model doesn't change. What changes is what it can look up.</p>
-                </div>
-
-                <p class="rd-prompt"><b>Prompt:</b> Regenerate figure 3 for the revision.</p>
-
-                <div class="rd-vs">
-                    <div class="rd-vs-col without">
-                        <div class="rd-vs-head">Claude Code <em>alone</em></div>
-                        <div class="rd-vs-sees"><span class="rd-label">Can see</span>The repo and the prompt</div>
-                        <div class="rd-vs-body">
-                            <p class="tool">grep "fig3" · read 14 files · read decode_fit.py</p>
-                            <p>Reran <code>plot_fig3.ipynb</code> with the default config: smoothed pipeline, all 12 subjects. Figure 3 now shows group-mean decoding accuracy.</p>
-                        </div>
-                    </div>
-                    <div class="rd-vs-col">
-                        <div class="rd-vs-head">Claude Code <em>with Rao</em></div>
-                        <div class="rd-vs-sees"><span class="rd-label">Can see</span>The repo and the prompt, plus research memory, indexed notebooks and papers, and Notion</div>
-                        <div class="rd-vs-body">
-                            <p class="tool">recent_decisions · project_state · get_paper_sections · read decode_fit.py</p>
-                            <p>Reran <code>decode_fit.py</code> on the unsmoothed pipeline, which gave higher cvR²<sup>1</sup>. Sub-07 is excluded for motion, as decided in an earlier session<sup>2</sup>. The FDR threshold follows the methods paper<sup>3</sup>. A per-subject panel was added, per the revision plan<sup>4</sup>.</p>
-                        </div>
-                        <ol class="rd-vs-notes">
-                            <li>1 · Result, gp_prior_results.ipynb</li>
-                            <li>2 · Decision, Codex session, Oct 2</li>
-                            <li>3 · Paper, §2.4</li>
-                            <li>4 · Notion, "Revision plan"</li>
-                        </ol>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Product demo video -->
-        <section class="demo-video-section" id="demo">
-            <div class="section-container">
-                <div class="demo-video-frame" data-embed="https://www.youtube-nocookie.com/embed/WRNcE6u9tX0?autoplay=1&rel=0&modestbranding=1&playsinline=1&enablejsapi=1">
-                    <img class="demo-video" src="rao-demo-poster.jpg" alt="Rao product demo">
-                    <div class="demo-video-overlay">
-                        <div class="demo-video-play">&#9654;</div>
-                        <p>Watch Rao in action</p>
-                    </div>
-                </div>
+                <table class="rd-compare">
+                    <thead>
+                        <tr><th></th><th>Claude or ChatGPT alone</th><th>With Rao</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr class="grp"><td colspan="3">Part 1 · Live memory across your tools</td></tr>
+                        <tr><th>What it knows about your project</th><td>What you paste or upload into this conversation</td><td>Your code, notebooks, papers, docs, and past sessions, kept up to date</td></tr>
+                        <tr><th>The next conversation</th><td>Starts from scratch</td><td>Picks up from your research memory</td></tr>
+                        <tr><th>Switching tools</th><td>Explain the project again in each one</td><td>Claude Code, Codex, Cursor, and Tuva chat all share one memory</td></tr>
+                        <tr><th>Checking its answers</th><td>General answers that are hard to trace</td><td>Points to the file, notebook cell, or paper section it used</td></tr>
+                        <tr><th>Example</th><td class="eg">"Why is September's bleaching count higher?" gets a list of possible causes.</td><td class="eg">The same question gets the threshold change and the logger recalibration, with the date and source of each.</td></tr>
+                        <tr class="grp"><td colspan="3">Part 2 · Proactive agents</td></tr>
+                        <tr><th>When it does something</th><td>Only when you ask</td><td>Also on its own, in the background</td></tr>
+                        <tr><th>New literature</th><td>You search when you remember to</td><td>Checked every week against your open questions</td></tr>
+                        <tr><th>Why it matters</th><td>You work it out yourself</td><td>Each suggestion explains how it relates to your work</td></tr>
+                        <tr><th>Example</th><td class="eg">You find the temperature-swing paper months later, or never.</td><td class="eg">It shows up the week it's published, along with a test you could run on data you have.</td></tr>
+                    </tbody>
+                </table>
             </div>
         </section>
 
@@ -1965,24 +2000,24 @@
                 <div style="text-align:center;">
                     <span class="section-eyebrow">Getting started</span>
                 </div>
-                <h2 class="section-title">Get started.</h2>
-                <p class="section-subtitle">Connect your sources, then connect your agent to Rao.</p>
+                <h2 class="section-title">Three steps to get started.</h2>
+                <p class="section-subtitle">We'll guide you through setup on an onboarding call.</p>
 
                 <div class="steps-grid">
                     <div class="step-card">
                         <div class="step-number s-1">01</div>
-                        <h3>Add your project</h3>
-                        <p>Point Rao at a project folder and connect Google Docs, Sheets, GitHub, or Notion. Rao builds a graph of how everything relates.</p>
+                        <h3>Install Rao</h3>
+                        <p>Use the desktop app on your Mac, or run Rao on your institution's cluster.</p>
                     </div>
                     <div class="step-card">
                         <div class="step-number s-2">02</div>
-                        <h3>Plug Rao into your agent</h3>
-                        <p>One connection gives Claude Code, Claude, Codex, or Cursor the full project context.</p>
+                        <h3>Add your project</h3>
+                        <p>Point Rao at a project folder and connect Google Docs, Sheets, GitHub, or Notion. It builds your research memory from there.</p>
                     </div>
                     <div class="step-card">
                         <div class="step-number s-3">03</div>
-                        <h3>Keep doing research</h3>
-                        <p>New sessions, runs, and papers keep updating the graph, so every agent works from current context.</p>
+                        <h3>Keep working</h3>
+                        <p>Chat with Tuva, connect the AI tools you already use, and read your digest each week. The memory updates as you go.</p>
                     </div>
                 </div>
 
