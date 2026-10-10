@@ -1686,6 +1686,11 @@
             .rd-compare tr.grp td::before { content: none; }
         }
 
+        .rd-vs-body .rd-label { display: block; margin: 0.2rem 0 0.35rem; }
+        .rd-vs-body .rd-label ~ .rd-label { margin-top: 1.1rem; padding-top: 0.9rem; border-top: 1px solid var(--border); }
+        .rd-q { background: var(--bg); border: 1px solid var(--border); border-radius: 3px; padding: 0.45rem 0.7rem; width: fit-content; }
+        .rd-dim { color: var(--text-tertiary); }
+
         /* Responsive */
         @media (max-width: 1024px) {
             .footer-grid { grid-template-columns: 1.5fr 1fr 1fr; }
@@ -1818,20 +1823,20 @@
                 <div class="rd-head">
                     <div>
                         <span class="section-eyebrow">The product</span>
-                        <h2>An AI model only knows what you tell it in the moment.</h2>
+                        <h2>Your AI can read your files. It doesn't remember your project.</h2>
                     </div>
-                    <p>Your project lives across code, notebooks, papers, shared docs, and months of decisions. Rao does two things with all of that.</p>
+                    <p>Claude Code sees the folder it's opened in, and connectors let it search Notion or Drive. But each session starts over, and nothing links a decision made in one place to the code in another.</p>
                 </div>
                 <div class="rd-halves">
                     <a class="rd-half" href="#memory">
                         <span class="rd-label">Part 1</span>
                         <h3>A live research memory</h3>
-                        <p>Rao reads your project, keeps it up to date, and gives that context to every AI you use.</p>
+                        <p>It keeps your whole project connected and current, and shares it with every AI you use.</p>
                     </a>
                     <a class="rd-half" href="#agents">
                         <span class="rd-label">Part 2</span>
                         <h3>Proactive agents</h3>
-                        <p>Agents use that memory to bring you papers and ideas you didn't know to look for.</p>
+                        <p>They use that memory to bring you papers and ideas you didn't ask for.</p>
                     </a>
                 </div>
             </div>
@@ -1843,67 +1848,38 @@
                 <div class="rd-head">
                     <div>
                         <span class="section-eyebrow">Part 1 · Research memory</span>
-                        <h2>A research brain that updates itself, everywhere you do science.</h2>
+                        <h2>A research brain that updates itself.</h2>
                     </div>
-                    <p>Rao reads everything in your project and connects it: which script made which figure, what was decided, and which paper a method came from. As you work, the memory keeps up.</p>
+                    <p>Rao connects your files, results, and decisions, and keeps them current as you work. The same memory is available in the desktop app, VS Code, and the terminal.</p>
                 </div>
 
                 <div class="rd-flow" aria-label="How information flows through Rao">
                     <div class="rd-flow-col">
-                        <span class="rd-label">1 · What Rao reads</span>
+                        <span class="rd-label">Reads</span>
                         <ul>
-                            <li>Code &amp; scripts</li>
-                            <li>Jupyter notebooks</li>
+                            <li>Code, notebooks &amp; data files</li>
                             <li>Papers &amp; PDFs</li>
-                            <li>Data files <em>(column layout only)</em></li>
                             <li>Past AI sessions</li>
-                            <li>Google Docs &amp; Sheets</li>
-                            <li>GitHub</li>
-                            <li>Notion</li>
+                            <li>Google Docs, Sheets, GitHub, Notion</li>
                         </ul>
                     </div>
                     <div class="rd-flow-arrow">&rarr;</div>
                     <div class="rd-flow-col core">
-                        <span class="rd-label">2 · What it keeps</span>
+                        <span class="rd-label">Keeps</span>
                         <ul>
-                            <li><b>Knowledge base</b>Every file, searchable down to a notebook cell or a paper section</li>
-                            <li><b>Research memory</b>A running record of what you tried, decided, and found, and which files each step touched</li>
-                            <li><b>Daily log</b>A summary each day of where the project stands</li>
+                            <li><b>Knowledge base</b>Every file, searchable down to a cell or paper section</li>
+                            <li><b>Research memory</b>What you tried, decided, and found, and where</li>
                         </ul>
                     </div>
                     <div class="rd-flow-arrow">&rarr;</div>
                     <div class="rd-flow-col">
-                        <span class="rd-label">3 · Who uses it</span>
+                        <span class="rd-label">Shares with</span>
                         <ul>
                             <li>Tuva chat</li>
-                            <li>Claude Code</li>
+                            <li>Claude Code &amp; Claude Desktop</li>
                             <li>Codex</li>
                             <li>Cursor</li>
-                            <li>Claude Desktop</li>
                         </ul>
-                    </div>
-                </div>
-
-                <div class="rd-chat-layout">
-                    <div class="rd-chat" aria-label="Example Tuva chat">
-                        <div class="rd-app-bar"><span class="on">reef-thermal</span><span class="off">Tuva chat</span><span class="cnt">Example</span></div>
-                        <div class="rd-chat-body">
-                            <div class="rd-msg-user">What changed in the thermal sensor data since last week?</div>
-                            <div class="rd-msg-meta">Searched knowledge base and research memory</div>
-                            <div class="rd-msg">
-                                <p>Two things changed.</p>
-                                <p>Logger T3 was recalibrated on Oct 3. Its earlier readings run about 0.4 °C high, and <code>clean_loggers.py</code> now corrects for that.<span class="rd-src">sensor_drift_notes.md</span></p>
-                                <p>The bleaching threshold also moved from 30.5 °C to 30.2 °C, following the field-season plan. Under the new threshold, <code>bleaching_events.ipynb</code> picks up two more events in September.<span class="rd-src">Notion · Field season plan</span><span class="rd-src">Research memory · Oct 4</span></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <h3 class="rd-sub">The chat already knows your project</h3>
-                        <p class="rd-copy">Ask Tuva a question and it searches your project first. Every answer points back to the file, notebook, or note it came from, so you can check it.</p>
-                        <h3 class="rd-sub">Your other AI tools share the same memory</h3>
-                        <p class="rd-copy">Connect Claude Code, Codex, Cursor, or Claude Desktop once. Each one can look things up in the same research memory, so you stop re-explaining your project, and a decision made in one tool is known in the others.</p>
-                        <h3 class="rd-sub">It works where you do</h3>
-                        <p class="rd-copy">Use Rao from the desktop app, inside VS Code, or from the terminal. The memory is the same everywhere.</p>
                     </div>
                 </div>
             </div>
@@ -1917,7 +1893,7 @@
                         <span class="section-eyebrow">Part 2 · Proactive agents</span>
                         <h2>Ideas that come to you.</h2>
                     </div>
-                    <p>Most AI tools wait for you to ask. Rao's agents work from your research memory in the background. They follow the questions your project is still trying to answer and tell you when something new bears on them.</p>
+                    <p>Each week, the digest agent checks new literature against the open questions in your research memory. It suggests a paper only when it clearly matters, and explains how it connects to your work.</p>
                 </div>
 
                 <div class="rd-digest-layout">
@@ -1929,68 +1905,54 @@
                             <div class="meta">Coral Reefs · 2026</div>
                             <div class="rd-why">
                                 <span class="rd-label">Why this</span>
-                                You set your 30.2 °C threshold from a single season. This paper finds that reefs with large day–night temperature swings bleach at higher temperatures. Your loggers already record that swing, so you could test this on data you have.
+                                Your 30.2 °C threshold comes from a single season. This paper finds that reefs with large day–night swings bleach at higher temperatures. Your loggers already record that swing, so you could test this on data you have.
                             </div>
-                            <div class="acts"><span>This was useful</span><span>This wasn't useful</span></div>
                         </div>
                     </div>
 
-                    <div>
-                        <h3 class="rd-sub">The digest</h3>
-                        <p class="rd-copy">Once a week, the digest agent searches new literature for each open question in your project. It suggests a paper only when the paper clearly matters to your work, which usually means one a week and some weeks none.</p>
-                        <h3 class="rd-sub">Built to spark ideas</h3>
-                        <p class="rd-copy">Each suggestion explains how the paper connects to your work. That connection is often where a new idea starts: a method you could borrow, a result that challenges an assumption, or a test you could run on data you already have.</p>
-                        <h3 class="rd-sub">You decide what it follows</h3>
-                        <p class="rd-copy">Choose authors, journals, preprint servers, and fields to follow. Read suggestions in the app, get a desktop notification, or turn on a weekly email.</p>
-                    </div>
-                </div>
-
-                <div class="rd-env">
-                    <div class="rd-env-head">
-                        <span class="rd-label">Where Rao runs</span>
-                        <p>Rao runs where your research does: on your laptop, or on your institution's computing cluster.</p>
-                    </div>
-                    <div class="rd-env-col">
-                        <h4>On your computer</h4>
-                        <p>A desktop app for Mac, plus VS Code and the terminal. Your files and research memory stay on your machine.</p>
-                    </div>
-                    <div class="rd-env-col">
-                        <h4>On the cluster (HPC)</h4>
-                        <p>Runs as a single self-contained image under Slurm, with nothing to compile. Connect from your laptop over SSH, so the memory sits next to the data and jobs it describes.</p>
-                    </div>
+                    <table class="rd-table">
+                        <tr><th>Sparks ideas</th><td>Points to a method to borrow, an assumption to recheck, or a test to run</td></tr>
+                        <tr><th>Selective</th><td>Usually one paper a week, and none if nothing qualifies</td></tr>
+                        <tr><th>You steer it</th><td>Follow the authors, journals, and fields you choose</td></tr>
+                        <tr><th>Runs anywhere</th><td>On your Mac, or on your HPC cluster next to your data</td></tr>
+                    </table>
                 </div>
             </div>
         </section>
 
-        <!-- Comparison -->
+        <!-- Comparison: one side-by-side example -->
         <section class="rd-sec" id="compare">
             <div class="section-container">
                 <div class="rd-head">
                     <div>
                         <span class="section-eyebrow">Compared</span>
-                        <h2>Claude or ChatGPT on its own, and with Rao.</h2>
+                        <h2>The same AI, with and without Rao.</h2>
                     </div>
-                    <p>Rao doesn't replace the AI you use. It's a layer that gives that AI your project's context and adds agents that work for you in the background.</p>
+                    <p>An example from a coral reef project. The researcher uses the same AI in both cases.</p>
                 </div>
 
-                <table class="rd-compare">
-                    <thead>
-                        <tr><th></th><th>Claude or ChatGPT alone</th><th>With Rao</th></tr>
-                    </thead>
-                    <tbody>
-                        <tr class="grp"><td colspan="3">Part 1 · Live memory across your tools</td></tr>
-                        <tr><th>What it knows about your project</th><td>What you paste or upload into this conversation</td><td>Your code, notebooks, papers, docs, and past sessions, kept up to date</td></tr>
-                        <tr><th>The next conversation</th><td>Starts from scratch</td><td>Picks up from your research memory</td></tr>
-                        <tr><th>Switching tools</th><td>Explain the project again in each one</td><td>Claude Code, Codex, Cursor, and Tuva chat all share one memory</td></tr>
-                        <tr><th>Checking its answers</th><td>General answers that are hard to trace</td><td>Points to the file, notebook cell, or paper section it used</td></tr>
-                        <tr><th>Example</th><td class="eg">"Why is September's bleaching count higher?" gets a list of possible causes.</td><td class="eg">The same question gets the threshold change and the logger recalibration, with the date and source of each.</td></tr>
-                        <tr class="grp"><td colspan="3">Part 2 · Proactive agents</td></tr>
-                        <tr><th>When it does something</th><td>Only when you ask</td><td>Also on its own, in the background</td></tr>
-                        <tr><th>New literature</th><td>You search when you remember to</td><td>Checked every week against your open questions</td></tr>
-                        <tr><th>Why it matters</th><td>You work it out yourself</td><td>Each suggestion explains how it relates to your work</td></tr>
-                        <tr><th>Example</th><td class="eg">You find the temperature-swing paper months later, or never.</td><td class="eg">It shows up the week it's published, along with a test you could run on data you have.</td></tr>
-                    </tbody>
-                </table>
+                <div class="rd-vs">
+                    <div class="rd-vs-col without">
+                        <div class="rd-vs-head">Claude alone</div>
+                        <div class="rd-vs-body">
+                            <span class="rd-label">You ask</span>
+                            <p class="rd-q">Why is September's bleaching count higher?</p>
+                            <p>Possible causes include a warmer month, a change in your detection threshold, or a sensor issue. Can you share your data and analysis code?</p>
+                            <span class="rd-label">That week</span>
+                            <p class="rd-dim">Nothing. You find the new paper months later, or never.</p>
+                        </div>
+                    </div>
+                    <div class="rd-vs-col">
+                        <div class="rd-vs-head">Claude with Rao</div>
+                        <div class="rd-vs-body">
+                            <span class="rd-label">You ask</span>
+                            <p class="rd-q">Why is September's bleaching count higher?</p>
+                            <p>Two changes. The threshold moved from 30.5 °C to 30.2 °C on Oct 4, which adds two events.<span class="rd-src">Notion · Field season plan</span> Logger T3 also read 0.4 °C high until its Oct 3 recalibration.<span class="rd-src">sensor_drift_notes.md</span></p>
+                            <span class="rd-label">That week</span>
+                            <p>The digest flags a new paper on day–night temperature swings, with a test you could run on your logger data.<span class="rd-src">Digest</span></p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
