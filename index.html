@@ -1750,6 +1750,12 @@
         .cv-chip { margin-top: 0.9rem; display: flex; gap: 0.6rem; align-items: baseline; padding: 0.55rem 0.7rem; border: 1px solid var(--border); border-radius: 3px; background: var(--bg-soft); font-size: 0.74rem; line-height: 1.45; }
         .cv-chip-k { flex: none; font-size: 0.62rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; padding: 0.1rem 0.4rem; background: var(--text); color: var(--accent-fg); border-radius: 2px; }
 
+        /* Digest frame: green top edge and a "new" badge instead of window dots */
+        .opt-win { border-top: 5px solid var(--c-green); }
+        .dg-head { display: flex; align-items: center; justify-content: space-between; padding: 0.65rem 1.1rem; border-bottom: 1.5px solid var(--text); background: var(--bg-soft); font-size: 0.8rem; }
+        .dg-name { font-weight: 600; }
+        .dg-badge { font-size: 0.68rem; font-weight: 700; padding: 0.12rem 0.5rem; border-radius: 999px; background: var(--c-green); color: #fff; border: 1.5px solid var(--text); }
+
         /* Responsive */
         @media (max-width: 1024px) {
             .footer-grid { grid-template-columns: 1.5fr 1fr 1fr; }
@@ -2030,10 +2036,10 @@
                     <p>Rao's research brain knows exactly where your project stands: what's settled, what's still open, and what you just found. Each week, the digest uses it to find the paper that fits where you are now.</p>
                 </div>
 
-                <div class="opt-win"><div class="vision-bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="title">Rao · Digest</span></div>
+                <div class="opt-win"><div class="dg-head"><span class="dg-name">Rao · Digest</span><span class="dg-badge">1 new</span></div>
                 <div class="rd-digest-solo">
                     <div class="rd-app" aria-label="Example digest">
-                        <div class="rd-app-bar"><span class="on">Digest · Today</span><span class="off">Past digests</span><span class="off">What to track</span><span class="cnt">Example</span></div>
+                        <div class="rd-app-bar"><span class="on">Digest · Today</span><span class="off">Past digests</span></div>
                         <div class="rd-paper">
                             <span class="rd-chip">Open question: does H3K27me3 loss at stress genes persist after rewatering?</span>
                             <h4>Drought-induced H3K27me3 loss primes stress-memory genes in soybean roots</h4>
