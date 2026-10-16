@@ -1,0 +1,49 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><style>
+  body { margin: 0; background: #fff; font-family: -apple-system, "Helvetica Neue", Arial, sans-serif; }
+  svg text { fill: #222; }
+</style></head><body>
+<svg id="f" width="1100" height="600" viewBox="0 0 1100 600" xmlns="http://www.w3.org/2000/svg"></svg>
+<script>
+// Spike-in-normalised H3K27me3 at the promoter (control = 1), mean of 3 replicates.
+const genes = [
+  ['GmNAC11',  [1, 0.39, 0.42], 'persist'],
+  ['GmNAC29',  [1, 0.44, 0.47], 'persist'],
+  ['GmNAC81',  [1, 0.36, 0.41], 'persist'],
+  ['GmNAC6',   [1, 0.48, 0.52], 'persist'],
+  ['GmNAC17',  [1, 0.41, 0.49], 'persist'],
+  ['GmNAC42',  [1, 0.46, 0.55], 'persist'],
+  ['GmNAC3',   [1, 0.43, 0.88], 'recover'],
+  ['GmNAC109', [1, 0.50, 0.93], 'recover'],
+  ['GmNAC62',  [1, 0.47, 0.91], 'recover'],
+  ['GmDREB2A', [1, 0.38, 0.95], 'dreb'],
+  ['GmDREB1B', [1, 0.45, 0.97], 'dreb'],
+  ['GmDREB3',  [1, 0.42, 0.92], 'dreb'],
+];
+const col = { persist: '#5b4fd6', recover: '#9aa0a6', dreb: '#10b981' };
+const X = [170, 450, 730], y = (v) => 520 - v * 380;
+const s = document.getElementById('f');
+let o = '';
+o += `<text x="60" y="44" font-size="22" font-weight="700">H3K27me3 at drought-response genes</text>`;
+o += `<text x="60" y="72" font-size="15" fill="#555">Spike-in normalised promoter signal, control = 1 (mean of 3 replicates)</text>`;
+for (const t of [0, 0.25, 0.5, 0.75, 1]) {
+  o += `<line x1="110" x2="800" y1="${y(t)}" y2="${y(t)}" stroke="#e6e6e6"/>`;
+  o += `<text x="96" y="${y(t) + 5}" font-size="13" text-anchor="end" fill="#666">${t.toFixed(2)}</text>`;
+}
+['Control', 'Drought day 7', 'Rewatered day 14'].forEach((l, i) => {
+  o += `<text x="${X[i]}" y="556" font-size="15" text-anchor="middle" font-weight="600">${l}</text>`;
+});
+for (const [g, v, k] of genes) {
+  const d = v.map((val, i) => `${i ? 'L' : 'M'}${X[i]} ${y(val)}`).join(' ');
+  o += `<path d="${d}" fill="none" stroke="${col[k]}" stroke-width="${k === 'persist' ? 2.6 : 1.8}" opacity="${k === 'recover' ? 0.8 : 0.95}"/>`;
+  v.forEach((val, i) => { o += `<circle cx="${X[i]}" cy="${y(val)}" r="4.5" fill="${col[k]}"/>`; });
+}
+o += `<text x="742" y="${y(0.39) + 5}" font-size="13" fill="${col.persist}" font-weight="700">GmNAC11</text>`;
+const leg = [['persist', '6 NAC genes: K27 stays low'], ['recover', '3 NAC genes: recovers'], ['dreb', 'DREB genes: recovers']];
+leg.forEach(([k, l], i) => {
+  const ly = 150 + i * 30;
+  o += `<line x1="830" x2="856" y1="${ly}" y2="${ly}" stroke="${col[k]}" stroke-width="3"/>`;
+  o += `<text x="866" y="${ly + 5}" font-size="13" fill="#333">${l}</text>`;
+});
+s.innerHTML = o;
+</script></body></html>
