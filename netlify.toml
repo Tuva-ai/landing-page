@@ -59,3 +59,9 @@
   from = "/wp-admin/*"
   to = "/"
   status = 404
+# Redesign working files (scripts, sample data) are not part of the site
+[[redirects]]
+  from = "/redesign-tools/*"
+  to = "/"
+  status = 404
+  force = true
