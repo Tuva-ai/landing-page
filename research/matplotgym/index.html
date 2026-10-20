@@ -369,7 +369,8 @@
             </dl>
 
             <div class="bm-intro">
-                <p>Given a paper's raw data and the claim it supports, the agent has to make the figure that substantiates the claim. We count how many tasks it <b>fully solves</b> (≥ 95 on all three attempts). We also measure partial solves: each attempt is scored <b>decision by decision</b> (which data, chart and axes, error bars and fits, panels, scales, series), so a near-miss earns partial credit. Rubrics are constructed in collaboration with the original authors for several of the figures.</p>
+                <p>Researchers told us that language models can rarely one-shot quality figures given data. The issue isn't knowing how to draw a figure. The hard part is knowing <b>what to aggregate, how to represent it, and how to make it meaningful to the human researcher</b>. We built a benchmark from public repositories that measures how close agents get to the figures the papers' authors made.</p>
+                <p>Every task comes from a paper whose authors released both the data and the code that drew the figure. The reference is the <b>publication-quality figure</b> that the authors' own plotting code produces, run unmodified. Each claim is written from the data. It names the conditions compared, and withholds the chart type, the axes and the aggregation.</p>
             </div>
 
             <div class="chips">
@@ -534,7 +535,12 @@
                         </ol></li>
                     </ol></li>
                   <li><a href="#doc-6"><span>6.</span> False positives and reward hacking</a></li>
-                  <li><a href="#doc-7"><span>7.</span> Human review</a></li>
+                  <li><a href="#doc-7"><span>7.</span> Human review</a>
+                    <ol>
+                      <li><a href="#doc-7-1"><span>7.1</span> Checking the claims</a></li>
+                      <li><a href="#doc-7-2"><span>7.2</span> Weighting the components</a></li>
+                      <li><a href="#doc-7-3"><span>7.3</span> Agreement between experts</a></li>
+                    </ol></li>
                   <li><a href="#doc-8"><span>8.</span> Fairness invariants</a></li>
                   <li><a href="#doc-9"><span>9.</span> Limits</a></li>
                 </ol></nav>
@@ -713,9 +719,26 @@
 
                 <h3 id="doc-7"><span>7.</span> Human review</h3>
                 <p>The automated gates check that a task is solvable, discriminating and free of leaks. They
-                  cannot check that a claim is faithful to the paper it came from; only an author knows that. So
-                  for a selected set of about twenty tasks, we met with their authors to review
-                  each claim against the work it came from, and asked for their input on the weights of the rubric's components.</p>
+                  cannot check that a claim is faithful to the paper, or that the rubric weighs mistakes the way a
+                  scientist would. So for a selected set of about twenty tasks, we met with the papers&rsquo;
+                  authors and ran a review in three parts.</p>
+                <h4 id="doc-7-1"><span>7.1</span> Checking the claims</h4>
+                <p>Each author read the claim for every task drawn from their paper, next to the figure it
+                  describes, and checked that it accurately describes what the figure shows. For the most part, authors
+                  confirmed their claims as written; where one flagged a problem, we made small wording changes
+                  to match.</p>
+                <h4 id="doc-7-2"><span>7.2</span> Weighting the components</h4>
+                <p>We then showed each author versions of their own figure with one component changed, such as a
+                  different chart type, a missing error bar or a log axis where they used linear. For each version, they told us how much the change mattered: whether
+                  the figure was still acceptable, acceptable but not ideal, or wrong. How strongly each kind of
+                  change moved their judgment tells us how much that component should count in the score. We use these
+                  judgments to make tweaks to the rubric score distribution.</p>
+                <h4 id="doc-7-3"><span>7.3</span> Agreement between experts</h4>
+                <p>To check that these judgments reflect more than one author&rsquo;s taste, each expert also
+                  rated a shared set of figures from other tasks in the benchmark, altered the same way. Given each
+                  task&rsquo;s claim, they answered the same question: still acceptable, acceptable but not
+                  ideal, or wrong. Because every expert rated the
+                  same figures, we can measure how far they agree on which changes matter.</p>
 
                 <h3 id="doc-8"><span>8.</span> Fairness invariants</h3>
                 <p>An agent is charged only for a decision it could have made correctly from what it was
