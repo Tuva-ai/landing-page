@@ -64,11 +64,8 @@
         </a>
         <div class="header-right">
             <nav class="header-nav">
-                <a href="/">Home</a>
-                <a href="/#product">Product</a>
-                <a href="/#use-cases">Use Cases</a>
-                <a href="/#how-it-works">Getting Started</a>
-                <a href="/#faq">FAQ</a>
+                <a href="/rao">Rao</a>
+                <a href="/research">Research</a>
                 <a href="/careers">Careers</a>
             </nav>
             <button type="button"
@@ -78,10 +75,8 @@
                     data-ga="waitlist_header"
                     data-tf-iframe-props="title=Tuva Waitlist"
                     data-tf-medium="snippet">
-                <video class="btn-canvas btn-mark-video" autoplay muted loop playsinline preload="auto" poster="/Tuva_Logo_Mark_Still.png" aria-hidden="true">
-                    <source src="/Tuva_Logo_Animation.mp4" type="video/mp4">
-                </video>
-                <span class="btn-text">Join Waitlist</span>
+                <img class="btn-canvas btn-mark-video" src="/Tuva_Logo_Mark_Still.png" alt="" aria-hidden="true">
+                <span class="btn-text">Join Rao Waitlist</span>
             </button>
         </div>
     </header>
@@ -269,21 +264,6 @@
     </footer>
 
     <script>
-        // Animated brand mark in the waitlist button — play once visible (autoplay heuristics)
-        (function () {
-            const marks = document.querySelectorAll('.btn-mark-video');
-            if (!marks.length) return;
-            const play = (v) => { v.muted = true; const p = v.play(); if (p) p.catch(() => {}); };
-            if ('IntersectionObserver' in window) {
-                const io = new IntersectionObserver((entries) => {
-                    entries.forEach((e) => { if (e.isIntersecting) play(e.target); });
-                }, { threshold: 0.1 });
-                marks.forEach((v) => io.observe(v));
-            } else { marks.forEach(play); }
-            const kick = () => marks.forEach(play);
-            window.addEventListener('touchstart', kick, { once: true, passive: true });
-            window.addEventListener('click', kick, { once: true });
-        })();
 
         // Collapsible sections: open the fold when a link points at it (table of contents, shared URLs)
         (function () {

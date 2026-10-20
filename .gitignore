@@ -7,3 +7,5 @@
 # Exception: the looping brand-mark animation is embedded directly in the buttons
 !Tuva_Logo_Animation.mp4
 !Tuva_Logo_Animation_Thin.mp4
+# Exception: the Rao demo video plays on /rao
+!tuva-demo.mp4
