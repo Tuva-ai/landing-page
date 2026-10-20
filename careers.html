@@ -16,10 +16,19 @@
         ad_personalization: 'denied',
         analytics_storage: 'denied',
         functionality_storage: 'granted',
-        security_storage: 'granted'
+        security_storage: 'granted',
+        wait_for_update: 500
       });
       gtag('set', 'ads_data_redaction', true);
       gtag('set', 'url_passthrough', false);
+      try {
+        if (localStorage.getItem('tuva-consent') === 'granted') {
+          gtag('consent', 'update', {
+            ad_storage: 'granted', ad_user_data: 'granted',
+            ad_personalization: 'granted', analytics_storage: 'granted'
+          });
+        }
+      } catch (e) {}
       gtag('config', 'G-1SGTJKG3T7');
     </script>
 
@@ -46,10 +55,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-    <!-- Typeform embed (popup overlay) — matches the home-page waitlist button -->
-    <link rel="stylesheet" href="https://embed.typeform.com/next/css/popup.css" />
-    <script src="https://embed.typeform.com/next/embed.js" defer></script>
 
     <!-- Shared base (tokens, footer) -->
     <link rel="stylesheet" href="legal.css">
@@ -84,6 +89,7 @@
             transition: color 0.2s ease;
         }
         .header-nav a:hover { color: var(--text-tertiary); }
+        .header-nav a[aria-current="page"] { text-decoration: underline; text-underline-offset: 6px; text-decoration-thickness: 1.5px; }
 
         .btn {
             padding: 0.875rem 2rem; border-radius: 4px; border: 2px solid;
@@ -112,7 +118,7 @@
         /* Full-width headline over both columns */
         .careers-title {
             text-align: center;
-            font-size: 2.2rem; font-weight: 600; line-height: 1.14;
+            font-size: 2rem; font-weight: 600; line-height: 1.14;
             letter-spacing: -0.02em; margin-bottom: 2rem;
         }
 
@@ -164,7 +170,7 @@
         }
         @media (max-width: 768px) {
             .header-nav { display: none; }
-            .careers-title { font-size: 1.8rem; }
+            .careers-title { font-size: 1.5rem; }
         }
     </style>
 </head>
@@ -177,25 +183,10 @@
         </a>
         <div class="header-right">
             <nav class="header-nav">
-                <a href="/">Home</a>
-                <a href="/#product">Product</a>
-                <a href="/#use-cases">Use Cases</a>
-                <a href="/#how-it-works">Getting Started</a>
-                <a href="/#faq">FAQ</a>
-                <a href="/careers">Careers</a>
+                <a href="/rao">Rao</a>
+                <a href="/research">Research</a>
+                <a href="/careers" aria-current="page">Careers</a>
             </nav>
-            <button type="button"
-                    class="btn btn-primary has-canvas"
-                    data-tf-popup="nOrRdz2U"
-                    data-tf-hidden="utm_source=tuva-website,utm_medium=careers-page,utm_campaign=waitlist,utm_content=header"
-                    data-ga="waitlist_header"
-                    data-tf-iframe-props="title=Tuva Waitlist"
-                    data-tf-medium="snippet">
-                <video class="btn-canvas btn-mark-video" autoplay muted loop playsinline preload="auto" poster="Tuva_Logo_Mark_Still.png" aria-hidden="true">
-                    <source src="Tuva_Logo_Animation.mp4" type="video/mp4">
-                </video>
-                <span class="btn-text">Join Waitlist</span>
-            </button>
         </div>
     </header>
 
@@ -261,22 +252,42 @@
         <div class="footer-copyright">© 2026 Tuva AI, Inc. All rights reserved.</div>
     </footer>
 
+    <!-- Consent Mode v2 banner -->
+    <div class="consent-banner" id="consentBanner" role="dialog" aria-live="polite" aria-label="Cookie consent">
+        <p class="consent-text">
+            We use cookies to measure traffic and improve the site. Accept analytics cookies
+            or decline &mdash; see our <a href="/privacy">privacy policy</a>.
+        </p>
+        <div class="consent-actions">
+            <button type="button" class="consent-btn decline" id="consentDecline">Decline</button>
+            <button type="button" class="consent-btn accept" id="consentAccept">Accept</button>
+        </div>
+    </div>
+
     <script>
-        // Animated brand mark in the waitlist button — play once visible (autoplay heuristics)
+        // Consent Mode v2 banner — show until the visitor accepts or declines
         (function () {
-            const marks = document.querySelectorAll('.btn-mark-video');
-            if (!marks.length) return;
-            const play = (v) => { v.muted = true; const p = v.play(); if (p) p.catch(() => {}); };
-            if ('IntersectionObserver' in window) {
-                const io = new IntersectionObserver((entries) => {
-                    entries.forEach((e) => { if (e.isIntersecting) play(e.target); });
-                }, { threshold: 0.1 });
-                marks.forEach((v) => io.observe(v));
-            } else { marks.forEach(play); }
-            const kick = () => marks.forEach(play);
-            window.addEventListener('touchstart', kick, { once: true, passive: true });
-            window.addEventListener('click', kick, { once: true });
+            const banner = document.getElementById('consentBanner');
+            if (!banner) return;
+            let saved = null;
+            try { saved = localStorage.getItem('tuva-consent'); } catch (e) {}
+            if (saved !== 'granted' && saved !== 'denied') banner.classList.add('show');
+            function choose(value) {
+                try { localStorage.setItem('tuva-consent', value); } catch (e) {}
+                if (typeof gtag === 'function') {
+                    gtag('consent', 'update', {
+                        ad_storage: value, ad_user_data: value,
+                        ad_personalization: value, analytics_storage: value
+                    });
+                }
+                banner.classList.remove('show');
+            }
+            document.getElementById('consentAccept').addEventListener('click', function () { choose('granted'); });
+            document.getElementById('consentDecline').addEventListener('click', function () { choose('denied'); });
         })();
+    </script>
+
+    <script>
 
         // Header shading — tint the header to match the section under it
         (function () {
@@ -311,8 +322,8 @@
             el.addEventListener('click', () => {
                 if (typeof gtag !== 'function') return;
                 const name = el.getAttribute('data-ga');
-                const params = name.startsWith('waitlist_')
-                    ? { location: name.replace('waitlist_', '') }
+                const params = name.includes('_click_')
+                    ? { location: name.slice(name.lastIndexOf('_click_') + '_click_'.length), page: 'careers' }
                     : { location: 'careers' };
                 gtag('event', name, params);
             });

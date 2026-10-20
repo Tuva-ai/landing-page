@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Google tag (gtag.js) — Consent Mode v2 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1SGTJKG3T7"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('consent', 'default', {
+        ad_storage: 'denied',
+        ad_user_data: 'denied',
+        ad_personalization: 'denied',
+        analytics_storage: 'denied',
+        functionality_storage: 'granted',
+        security_storage: 'granted',
+        wait_for_update: 500
+      });
+      gtag('set', 'ads_data_redaction', true);
+      gtag('set', 'url_passthrough', false);
+      try {
+        if (localStorage.getItem('tuva-consent') === 'granted') {
+          gtag('consent', 'update', {
+            ad_storage: 'granted', ad_user_data: 'granted',
+            ad_personalization: 'granted', analytics_storage: 'granted'
+          });
+        }
+      } catch (e) {}
+      gtag('config', 'G-1SGTJKG3T7');
+    </script>
+
+    <!-- SEO Meta Tags -->
+    <title>matplotgym - Tuva AI</title>
+    <meta name="description" content="matplotgym: 171 tasks from 59 papers that test whether an AI agent can turn a paper's raw data into the figure its authors drew.">
+    <meta name="author" content="Tuva">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://tuva.ai/research/matplotgym">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://tuva.ai/research/matplotgym">
+    <meta property="og:title" content="matplotgym - Tuva AI">
+    <meta property="og:description" content="Can an AI agent turn a paper's raw data into the figure its authors drew? 171 tasks, 59 papers, 9 fields.">
+    <meta property="og:image" content="https://tuva.ai/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Tuva">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://tuva.ai/research/matplotgym">
+    <meta property="twitter:title" content="matplotgym - Tuva AI">
+    <meta property="twitter:description" content="Can an AI agent turn a paper's raw data into the figure its authors drew? 171 tasks, 59 papers, 9 fields.">
+    <meta property="twitter:image" content="https://tuva.ai/og-image.jpg">
+    <meta property="twitter:creator" content="@tuvaai">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/Tuva_Logo%20+%20Icon_Black.png" media="(prefers-color-scheme: light)">
+    <link rel="icon" type="image/png" href="/Tuva_Icon_White.png" media="(prefers-color-scheme: dark)">
+    <link rel="apple-touch-icon" type="image/png" href="/Tuva_Logo%20+%20Icon_Black.png">
+
+    <meta name="theme-color" content="#f5faf5">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Shared base (tokens, header, footer, consent banner) -->
+    <link rel="stylesheet" href="/legal.css">
+    <script src="/contact-menu.js" defer></script>
+
+    <style>
+        /* Chart tokens: one blue for data, a gray for de-emphasis */
+        :root { --bar: #2a78d6; --track: #e6ece6; --pt-muted: #8d939b; --grid: #e3e8e3; }
+
+        .header-right { display: flex; align-items: center; gap: 1.5rem; }
+        .header-nav a { font-family: 'JetBrains Mono', monospace; }
+        .header-nav a[aria-current="page"] { text-decoration: underline; text-underline-offset: 6px; text-decoration-thickness: 1.5px; }
+
+        .btn {
+            padding: 0.875rem 2rem; border-radius: 4px; border: 2px solid;
+            font-family: 'JetBrains Mono', monospace; font-size: 0.95rem; font-weight: 500;
+            cursor: pointer; transition: all 0.2s ease; text-decoration: none;
+            display: inline-block; white-space: nowrap;
+        }
+        .btn-primary { background: var(--accent); border-color: var(--accent); color: var(--accent-fg); }
+        .btn-primary:hover { background: #4a4a4a; border-color: #4a4a4a; transform: scale(1.05); }
+        .btn.has-canvas {
+            display: inline-flex; align-items: center; justify-content: center;
+            gap: 0.55rem; padding: 0.45rem 1.3rem 0.45rem 0.55rem; height: 56px;
+        }
+        .btn-canvas { width: 44px; height: 44px; flex-shrink: 0; }
+        .btn-mark-video { object-fit: contain; display: block; mix-blend-mode: screen; pointer-events: none; }
+        .btn-text { line-height: 1; }
+        .btn.has-canvas.sm { height: 40px; padding: 0 1.1rem 0 0.4rem; gap: 0.4rem; }
+        .btn.has-canvas.sm .btn-text { font-size: 0.85rem; }
+        .btn.sm .btn-canvas { width: 28px; height: 28px; }
+
+        /* Page shell */
+        .main-content { padding: 0; }
+        .bm { max-width: 1040px; margin: 0 auto; padding: 2.25rem 2rem 4.5rem; }
+        .crumb { font-size: 0.8rem; color: var(--text-tertiary); margin-bottom: 1.75rem; }
+        .crumb a { color: var(--text-secondary); text-decoration: none; }
+        .crumb a:hover { color: var(--text); text-decoration: underline; }
+        .bm-top { display: flex; justify-content: space-between; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
+        .bm-title { font-size: 2.25rem; font-weight: 600; letter-spacing: -0.02em; line-height: 1.1; }
+        .bm-stats { display: flex; flex-wrap: wrap; gap: 0.75rem 3rem; margin: 1.6rem 0; padding: 1rem 0; border-top: 1.5px solid var(--text); border-bottom: 1px solid var(--border); }
+        .bm-stats dd { font-size: 1.05rem; font-weight: 600; margin-top: 0.1rem; }
+        .rd-label { font-size: 0.64rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.14em; color: var(--text-tertiary); }
+        .bm-intro { max-width: 780px; }
+        .bm-intro p { color: var(--text-secondary); line-height: 1.75; margin-bottom: 0.8rem; font-size: 0.95rem; }
+        .bm-intro b { color: var(--text); font-weight: 600; }
+        .chips { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem; margin-top: 0.3rem; }
+        .chips .rd-label { margin-right: 0.3rem; }
+        .chip { font-size: 0.74rem; padding: 0.2rem 0.55rem; border: 1px solid var(--border); border-radius: 3px; background: var(--bg-card); color: var(--text-secondary); white-space: nowrap; }
+
+        .tabs { display: flex; gap: 0.5rem; flex-wrap: wrap; margin: 2.25rem 0 2.25rem; padding-bottom: 1rem; border-bottom: 1.5px solid var(--text); }
+        .tab {
+            font-family: inherit; font-size: 0.85rem; font-weight: 600; padding: 0.55rem 1.1rem;
+            border: 1.5px solid var(--text); border-radius: 4px; background: var(--bg-card); color: var(--text); cursor: pointer;
+        }
+        .tab:hover { background: var(--pale-green); }
+        .tab[aria-selected="true"] { background: var(--text); color: var(--accent-fg); }
+        .pane[hidden] { display: none; }
+
+        .blk { margin-bottom: 3.25rem; }
+        .blk:last-child { margin-bottom: 0; }
+        .blk-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 0.75rem 1rem; flex-wrap: wrap; margin-bottom: 1rem; }
+        .blk-head h2 { font-size: 1.2rem; font-weight: 600; letter-spacing: -0.01em; }
+        .blk-head .note { margin-top: 0.35rem; }
+        .panel { background: var(--bg-card); border: 1.5px solid var(--text); border-radius: 4px; }
+        .scrollx { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+        .note { font-size: 0.76rem; color: var(--text-tertiary); margin-top: 0.75rem; line-height: 1.6; max-width: 780px; }
+        .note b { color: var(--text-secondary); font-weight: 600; }
+
+        /* Provider marks */
+        .prov { width: 22px; height: 22px; border-radius: 5px; display: inline-flex; align-items: center; justify-content: center; flex: none; }
+        .prov svg { width: 13px; height: 13px; fill: #fff; }
+        .prov.an { background: #d97757; }
+        .prov.oa { background: #16161a; }
+        .prov.ow { background: var(--bg-card); border: 1px solid var(--border); }
+        .prov.ow svg { fill: none; stroke: var(--text-secondary); stroke-width: 2; }
+
+        /* Leaderboard */
+        .field { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.8rem; color: var(--text-secondary); }
+        .field select {
+            font-family: inherit; font-size: 0.8rem; color: var(--text); background: var(--bg-card);
+            border: 1.5px solid var(--text); border-radius: 4px; padding: 0.4rem 0.6rem; max-width: 100%;
+        }
+        table.lb { width: 100%; border-collapse: collapse; font-size: 0.85rem; min-width: 600px; }
+        .lb th { text-align: left; font-size: 0.64rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-tertiary); padding: 0.8rem 1rem; border-bottom: 1.5px solid var(--text); white-space: nowrap; }
+        .lb td { padding: 0.6rem 1rem; border-top: 1px solid var(--border); vertical-align: middle; }
+        .lb tbody tr:first-child td { border-top: none; }
+        .lb .n { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+        .who { display: flex; align-items: center; gap: 0.65rem; }
+        .who b { display: block; font-weight: 600; }
+        .who small { font-size: 0.68rem; color: var(--text-tertiary); }
+        .meanc { display: grid; grid-template-columns: minmax(80px, 1fr) 2.6rem; align-items: center; gap: 0.6rem; }
+        .track { height: 10px; background: var(--track); border-radius: 0 4px 4px 0; overflow: hidden; }
+        .track i { display: block; height: 100%; background: var(--bar); border-radius: 0 4px 4px 0; transition: width 0.4s ease; }
+        .meanc .v { font-weight: 600; text-align: right; font-variant-numeric: tabular-nums; }
+        .lb .solved-0 { color: var(--text-tertiary); }
+        .fieldnote { font-size: 0.74rem; color: #a3341f; margin-top: 0.6rem; min-height: 1em; }
+
+        /* Heatmap: score by decision */
+        table.hm { width: 100%; border-collapse: separate; border-spacing: 3px; font-size: 0.8rem; min-width: 680px; padding: 0.6rem; }
+        .hm th { font-size: 0.62rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-tertiary); padding: 0.3rem 0.25rem 0.5rem; text-align: center; vertical-align: bottom; line-height: 1.35; }
+        .hm th:first-child { text-align: left; }
+        .hm td.m { white-space: nowrap; padding: 0.4rem 0.75rem 0.4rem 0.25rem; }
+        .hm td.c { text-align: center; font-variant-numeric: tabular-nums; padding: 0.55rem 0.25rem; border-radius: 3px; }
+        .hm td.c.best { box-shadow: inset 0 0 0 2px #1a1a1a; font-weight: 700; }
+        .hm .sm { display: none; }
+        .hm-key { display: flex; align-items: center; gap: 1.25rem; flex-wrap: wrap; font-size: 0.72rem; color: var(--text-tertiary); }
+        .hm-ramp { display: inline-flex; align-items: center; gap: 0.4rem; }
+        .hm-ramp i { width: 96px; height: 10px; border-radius: 2px; background: linear-gradient(90deg, #cde2fb, #86b6ef, #3987e5, #1c5cab, #0d366b); }
+        .hm-best { display: inline-flex; align-items: center; gap: 0.4rem; }
+        .hm-best i { width: 14px; height: 14px; border-radius: 3px; box-shadow: inset 0 0 0 2px #1a1a1a; }
+
+        /* Scatter: cost vs score */
+        .sc { padding: 0.75rem 0.75rem 0.25rem; }
+        .sc svg { width: 100%; height: auto; display: block; font-family: 'JetBrains Mono', monospace; overflow: visible; }
+        .sc .grid { stroke: var(--grid); stroke-width: 1; }
+        .sc .tick { font-size: 11px; fill: var(--text-tertiary); }
+        .sc .axt { font-size: 11px; fill: var(--text-secondary); }
+        .sc .front { fill: none; stroke: var(--bar); stroke-width: 1.5; stroke-dasharray: 4 4; }
+        .sc .flab { font-size: 11px; fill: var(--bar); }
+        .sc .pt circle.dot { fill: var(--pt-muted); stroke: #fff; stroke-width: 2; }
+        .sc .pt.on circle.dot { fill: var(--bar); }
+        .sc .pt text { font-size: 12px; fill: var(--text-secondary); }
+        .sc .pt.on text { fill: var(--text); font-weight: 600; }
+        .sc .pt .hit { fill: transparent; }
+        .sc .pt:hover circle.dot, .sc .pt:focus circle.dot { stroke: #1a1a1a; }
+        .sc .better { font-size: 11px; fill: var(--text-tertiary); }
+
+        .tip {
+            position: fixed; z-index: 300; pointer-events: none; opacity: 0; transition: opacity 0.12s ease;
+            background: var(--bg-card); border: 1.5px solid var(--text); border-radius: 4px; padding: 0.45rem 0.6rem;
+            font-size: 0.74rem; line-height: 1.45; box-shadow: 4px 4px 0 var(--pale-green); white-space: nowrap;
+        }
+        .tip.show { opacity: 1; }
+        .tip b { display: block; }
+
+        /* Documentation: the benchmark write-up, its contents pinned alongside */
+        .docs { display: grid; grid-template-columns: 14rem minmax(0, 1fr); gap: 2.75rem; align-items: start; }
+        .doctoc { position: sticky; top: 6.5rem; max-height: calc(100vh - 8rem); overflow-y: auto; overscroll-behavior: contain; font-size: 0.78rem; }
+        .doctoc ol { list-style: none; border-left: 1.5px solid var(--border); }
+        .doctoc a { display: block; margin-left: -1.5px; padding: 0.32rem 0 0.32rem 0.9rem; border-left: 1.5px solid transparent; color: var(--text-secondary); text-decoration: none; line-height: 1.4; }
+        .doctoc a:hover { color: var(--text); border-left-color: var(--text); }
+        .doctoc span { color: var(--text-tertiary); }
+        .doctoc ol ol { border-left: none; margin-bottom: 0.3rem; }
+        .doctoc ol ol a { padding: 0.18rem 0 0.18rem 1.75rem; font-size: 0.72rem; }
+        .doctoc ol ol ol a { padding-left: 2.6rem; }
+        .docbody { max-width: 780px; font-size: 0.86rem; line-height: 1.75; color: var(--text-secondary); }
+        .docbody h3, .docbody h4, .docbody h5 { scroll-margin-top: 6.5rem; }
+        .docbody h3 { font-size: 1.2rem; font-weight: 600; letter-spacing: -0.01em; line-height: 1.3; color: var(--text); margin: 3rem 0 1rem; }
+        .docbody > h3:first-child { margin-top: 0; }
+        .docbody h4 { font-size: 0.92rem; font-weight: 600; line-height: 1.4; color: var(--text); margin: 1.75rem 0 0.45rem; }
+        .docbody h5 { font-size: 0.84rem; font-weight: 600; line-height: 1.4; color: var(--text); margin: 1.25rem 0 0.4rem; }
+        .docbody h3 > span, .docbody h4 > span, .docbody h5 > span { color: var(--text-tertiary); font-weight: 500; margin-right: 0.35rem; }
+        .docbody p { margin-bottom: 0.9rem; }
+        .docbody a { color: var(--text); text-underline-offset: 3px; }
+        .docbody b { color: var(--text); font-weight: 600; }
+        .docbody code { font-family: inherit; font-size: 0.86em; color: var(--text); background: var(--bg-soft); border: 1px solid var(--border); border-radius: 3px; padding: 0.05rem 0.3rem; }
+        .brand { color: var(--text); font-weight: 700; }
+        .plain { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 0.9rem; }
+        .plain li { position: relative; padding-left: 1.15rem; }
+        .plain li::before { content: ""; position: absolute; left: 0.15rem; top: 0.68em; width: 5px; height: 5px; border-radius: 50%; background: var(--text); }
+        .docbody .scrollx { margin: 0.35rem 0 1rem; }
+        .doctable { width: 100%; border-collapse: separate; border-spacing: 0; background: var(--bg-card); border: 1.5px solid var(--text); border-radius: 4px; font-size: 0.8rem; }
+        .doctable th, .doctable td { text-align: left; padding: 0.5rem 0.85rem; border-top: 1px solid var(--border); white-space: nowrap; }
+        .doctable td:not(.n) { white-space: normal; }
+        .doctable thead th { border-top: none; font-size: 0.64rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-tertiary); }
+        .doctable td { color: var(--text); }
+        .doctable .n { text-align: right; font-variant-numeric: tabular-nums; }
+        .doctable .mono { font-weight: 700; width: 3.5rem; }
+
+        /* The six decisions, one card each */
+        .compguide { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.9rem; margin: 0.6rem 0 1.25rem; }
+        .cg { position: relative; padding: 0.95rem 1.05rem 0.35rem; background: var(--bg-card); border: 1.5px solid var(--text); border-radius: 4px; font-size: 0.78rem; line-height: 1.6; }
+        .docbody .cg h5 { display: flex; align-items: center; gap: 0.55rem; margin: 0 0 0.7rem; padding-right: 5.5rem; font-size: 0.88rem; }
+        .cgc { font-size: 0.66rem; font-weight: 700; padding: 0.1rem 0.35rem; border: 1px solid var(--text); border-radius: 3px; color: var(--text); }
+        .cgw { position: absolute; top: 1.05rem; right: 1.05rem; font-size: 0.68rem; color: var(--text-tertiary); font-variant-numeric: tabular-nums; }
+        .docbody .cg p { margin-bottom: 0.6rem; }
+        .docbody .cg .cgl { margin-bottom: 0.1rem; font-size: 0.6rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.14em; color: var(--text-tertiary); }
+
+        /* Example */
+        .claim { padding: 1.2rem 1.3rem; display: flex; flex-direction: column; gap: 0.85rem; }
+        .claim q { font-size: 1rem; line-height: 1.65; font-weight: 500; quotes: "\201C" "\201D"; }
+        .claim-meta { font-size: 0.76rem; color: var(--text-tertiary); }
+        .claim-meta a { color: var(--text-secondary); }
+        .sees { display: flex; flex-wrap: wrap; align-items: center; gap: 0.45rem; }
+        .sees .rd-label { margin-right: 0.2rem; }
+        .file { font-size: 0.72rem; padding: 0.15rem 0.5rem; border: 1px solid var(--text); border-radius: 3px; background: var(--bg); }
+        .gal { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.1rem; margin-top: 1.25rem; }
+        .shot { margin: 0; display: flex; flex-direction: column; background: var(--bg-card); border: 1.5px solid var(--text); border-radius: 4px; overflow: hidden; }
+        .shot.ref { box-shadow: 6px 6px 0 var(--pale-green); }
+        .plate { display: block; width: 100%; border: none; border-bottom: 1.5px solid var(--text); background: #fff; padding: 0.6rem; cursor: zoom-in; aspect-ratio: 16 / 9; }
+        .plate img { width: 100%; height: 100%; object-fit: contain; display: block; }
+        .shot figcaption { padding: 0.85rem 1rem 1rem; display: flex; flex-direction: column; gap: 0.6rem; font-size: 0.8rem; }
+        .sh { display: flex; align-items: center; gap: 0.6rem; }
+        .sh b { font-weight: 600; }
+        .score { margin-left: auto; font-size: 0.85rem; font-weight: 700; padding: 0.1rem 0.5rem; border: 1.5px solid var(--text); border-radius: 999px; font-variant-numeric: tabular-nums; }
+        .score.ref { background: var(--pale-green); }
+        .shot figcaption p { color: var(--text-secondary); line-height: 1.6; }
+        .cb { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.35rem 1.1rem; }
+        .cb div { display: grid; grid-template-columns: 4.6rem 1fr 1.8rem; align-items: center; gap: 0.45rem; font-size: 0.7rem; color: var(--text-secondary); }
+        .cb .track { height: 7px; }
+        .cb .v { text-align: right; font-variant-numeric: tabular-nums; color: var(--text); }
+
+
+        /* Lightbox */
+        .lightbox { position: fixed; inset: 0; z-index: 400; display: none; align-items: center; justify-content: center; padding: 2rem; background: rgba(20, 20, 20, 0.82); cursor: zoom-out; }
+        .lightbox.open { display: flex; }
+        .lightbox img { max-width: 100%; max-height: 100%; background: #fff; border-radius: 4px; }
+
+        .footer { padding: 1.6rem 2rem 1.4rem; }
+        .footer-copyright { margin-top: 1rem; }
+
+        @media (max-width: 900px) {
+            .gal { grid-template-columns: 1fr; }
+            .docs { grid-template-columns: minmax(0, 1fr); gap: 1.75rem; }
+            .doctoc { position: static; max-height: none; }
+            .doctoc ol ol { display: none; }
+        }
+        @media (max-width: 768px) {
+            .header-nav { display: none; }
+            .header-right { gap: 0.75rem; }
+            .bm { padding: 1.75rem 1rem 3.5rem; }
+            .bm-title { font-size: 1.75rem; }
+            .bm-stats { gap: 0.75rem 2rem; }
+            .compguide { grid-template-columns: 1fr; }
+            .cb { grid-template-columns: 1fr; }
+            /* Leaderboard: drop the bar so all four columns fit */
+            table.lb { min-width: 0; font-size: 0.8rem; }
+            .lb th, .lb td { padding: 0.55rem 0.5rem; }
+            .lb th:first-child, .lb td:first-child { padding-left: 0.75rem; }
+            .lb th:last-child, .lb td:last-child { padding-right: 0.75rem; }
+            .lb th { letter-spacing: 0.08em; }
+            .meanc { display: block; text-align: right; }
+            .meanc .track { display: none; }
+            .who { gap: 0.5rem; }
+            .who small { display: none; }
+            /* Heatmap: short headers, no provider marks */
+            table.hm { min-width: 0; font-size: 0.74rem; padding: 0.35rem; border-spacing: 2px; }
+            .hm .lg, .hm .prov { display: none; }
+            .hm .sm { display: inline; }
+            .hm th { letter-spacing: 0.02em; font-size: 0.56rem; padding: 0.3rem 0.1rem 0.45rem; }
+            .hm td.c { padding: 0.5rem 0.1rem; }
+            .hm td.m { padding-right: 0.4rem; white-space: normal; }
+            /* Scatter: keep labels legible, scroll inside the panel */
+            .sc { overflow-x: auto; }
+            .sc svg { min-width: 640px; }
+        }
+        @media (max-width: 480px) {
+            .bm-top { gap: 1rem; }
+            .bm-title { font-size: 1.5rem; }
+            .tab { padding: 0.55rem 0.8rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Brand glyphs used by the provider marks -->
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+        <symbol id="g-claude" viewBox="0 0 24 24"><path d="m4.7144 15.9555 4.7174-2.6471.079-.2307-.079-.1275h-.2307l-.7893-.0486-2.6956-.0729-2.3375-.0971-2.2646-.1214-.5707-.1215-.5343-.7042.0546-.3522.4797-.3218.686.0608 1.5179.1032 2.2767.1578 1.6514.0972 2.4468.255h.3886l.0546-.1579-.1336-.0971-.1032-.0972L6.973 9.8356l-2.55-1.6879-1.3356-.9714-.7225-.4918-.3643-.4614-.1578-1.0078.6557-.7225.8803.0607.2246.0607.8925.686 1.9064 1.4754 2.4893 1.8336.3643.3035.1457-.1032.0182-.0728-.164-.2733-1.3539-2.4467-1.445-2.4893-.6435-1.032-.17-.6194c-.0607-.255-.1032-.4674-.1032-.7285L6.287.1335 6.6997 0l.9957.1336.419.3642.6192 1.4147 1.0018 2.2282 1.5543 3.0296.4553.8985.2429.8318.091.255h.1579v-.1457l.1275-1.706.2368-2.0947.2307-2.6957.0789-.7589.3764-.9107.7468-.4918.5828.2793.4797.686-.0668.4433-.2853 1.8517-.5586 2.9021-.3643 1.9429h.2125l.2429-.2429.9835-1.3053 1.6514-2.0643.7286-.8196.85-.9046.5464-.4311h1.0321l.759 1.1293-.34 1.1657-1.0625 1.3478-.8804 1.1414-1.2628 1.7-.7893 1.36.0729.1093.1882-.0183 2.8535-.607 1.5421-.2794 1.8396-.3157.8318.3886.091.3946-.3278.8075-1.967.4857-2.3072.4614-3.4364.8136-.0425.0304.0486.0607 1.5482.1457.6618.0364h1.621l3.0175.2247.7892.522.4736.6376-.079.4857-1.2142.6193-1.6393-.3886-3.825-.9107-1.3113-.3279h-.1822v.1093l1.0929 1.0686 2.0035 1.8092 2.5075 2.3314.1275.5768-.3218.4554-.34-.0486-2.2039-1.6575-.85-.7468-1.9246-1.621h-.1275v.17l.4432.6496 2.3436 3.5214.1214 1.0807-.17.3521-.6071.2125-.6679-.1214-1.3721-1.9246L14.38 17.959l-1.1414-1.9428-.1397.079-.674 7.2552-.3156.3703-.7286.2793-.6071-.4614-.3218-.7468.3218-1.4753.3886-1.9246.3157-1.53.2853-1.9004.17-.6314-.0121-.0425-.1397.0182-1.4328 1.9672-2.1796 2.9446-1.7243 1.8456-.4128.164-.7164-.3704.0667-.6618.4008-.5889 2.386-3.0357 1.4389-1.882.929-1.0868-.0062-.1579h-.0546l-6.3385 4.1164-1.1293.1457-.4857-.4554.0608-.7467.2307-.2429 1.9064-1.3114Z"/></symbol>
+        <symbol id="g-openai" viewBox="0 0 24 24"><path d="M22.2819 9.8211a5.9847 5.9847 0 0 0-.5157-4.9108 6.0462 6.0462 0 0 0-6.5098-2.9A6.0651 6.0651 0 0 0 4.9807 4.1818a5.9847 5.9847 0 0 0-3.9977 2.9 6.0462 6.0462 0 0 0 .7427 7.0966 5.98 5.98 0 0 0 .511 4.9107 6.051 6.051 0 0 0 6.5146 2.9001A5.9847 5.9847 0 0 0 13.2599 24a6.0557 6.0557 0 0 0 5.7718-4.2058 5.9894 5.9894 0 0 0 3.9977-2.9001 6.0557 6.0557 0 0 0-.7475-7.0729zm-9.022 12.6081a4.4755 4.4755 0 0 1-2.8764-1.0408l.1419-.0804 4.7783-2.7582a.7948.7948 0 0 0 .3927-.6813v-6.7369l2.02 1.1686a.071.071 0 0 1 .038.052v5.5826a4.504 4.504 0 0 1-4.4945 4.4944zm-9.6607-4.1254a4.4708 4.4708 0 0 1-.5346-3.0137l.142.0852 4.783 2.7582a.7712.7712 0 0 0 .7806 0l5.8428-3.3685v2.3324a.0804.0804 0 0 1-.0332.0615L9.74 19.9502a4.4992 4.4992 0 0 1-6.1408-1.6464zM2.3408 7.8956a4.485 4.485 0 0 1 2.3655-1.9728V11.6a.7664.7664 0 0 0 .3879.6765l5.8144 3.3543-2.0201 1.1685a.0757.0757 0 0 1-.071 0l-4.8303-2.7865A4.504 4.504 0 0 1 2.3408 7.872zm16.5963 3.8558L13.1038 8.364 15.1192 7.2a.0757.0757 0 0 1 .071 0l4.8303 2.7913a4.4944 4.4944 0 0 1-.6765 8.1042v-5.6772a.79.79 0 0 0-.407-.667zm2.0107-3.0231l-.142-.0852-4.7735-2.7818a.7759.7759 0 0 0-.7854 0L9.409 9.2297V6.8974a.0662.0662 0 0 1 .0284-.0615l4.8303-2.7866a4.4992 4.4992 0 0 1 6.6802 4.66zM8.3065 12.863l-2.02-1.1638a.0804.0804 0 0 1-.038-.0567V6.0742a4.4992 4.4992 0 0 1 7.3757-3.4537l-.142.0805L8.704 5.459a.7948.7948 0 0 0-.3927.6813zm1.0976-2.3654l2.602-1.4998 2.6069 1.4998v2.9994l-2.5974 1.4997-2.6067-1.4997Z"/></symbol>
+        <symbol id="g-open" viewBox="0 0 24 24"><path d="M12 3 20 7.5v9L12 21l-8-4.5v-9z"/></symbol>
+    </svg>
+
+    <!-- Header -->
+    <header class="header">
+        <a href="/" class="logo-section">
+            <img src="/Tuva_Logo%20+%20Icon_Black.png" alt="Tuva" class="logo-image" id="logoImage">
+            <span class="logo-text">Tuva AI</span>
+        </a>
+        <div class="header-right">
+            <nav class="header-nav">
+                <a href="/rao">Rao</a>
+                <a href="/research" aria-current="page">Research</a>
+                <a href="/careers">Careers</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <article class="bm">
+            <nav class="crumb" aria-label="Breadcrumb"><a href="/research">Research</a> / matplotgym</nav>
+
+            <div class="bm-top">
+                <h1 class="bm-title">matplotgym</h1>
+                <div class="contact-menu">
+                    <a href="https://cal.com/vamsi-varanasi-wbc53q/30min" target="_blank" rel="noopener noreferrer" class="btn btn-primary has-canvas sm contact-trigger" data-ga="contact_click_matplotgym" aria-haspopup="menu" aria-expanded="false">
+                        <img class="btn-canvas btn-mark-video" src="/Tuva_Logo_Mark_Still.png" alt="" aria-hidden="true">
+                        <span class="btn-text">Get in touch</span>
+                    </a>
+                    <div class="contact-pop" role="menu">
+                        <a role="menuitem" href="https://cal.com/vamsi-varanasi-wbc53q/30min" target="_blank" rel="noopener noreferrer" data-ga="contact_schedule_matplotgym">Schedule a call</a>
+                        <a role="menuitem" href="https://form.typeform.com/to/GWJG2PaQ" target="_blank" rel="noopener noreferrer" data-tf-form="GWJG2PaQ" data-ga="contact_form_matplotgym">Interest form</a>
+                    </div>
+                </div>
+            </div>
+
+            <dl class="bm-stats">
+                <div><dt class="rd-label">Tasks</dt><dd>171</dd></div>
+                <div><dt class="rd-label">Papers</dt><dd>59</dd></div>
+                <div><dt class="rd-label">Measured</dt><dd>Oct 2026</dd></div>
+            </dl>
+
+            <div class="bm-intro">
+                <p>Given a paper's raw data and the claim it supports, the agent has to make the figure that substantiates the claim. We count how many tasks it <b>fully solves</b> (≥ 95 on all three attempts). We also measure partial solves: each attempt is scored <b>decision by decision</b> (which data, chart and axes, error bars and fits, panels, scales, series), so a near-miss earns partial credit. Rubrics are constructed in collaboration with the original authors for several of the figures.</p>
+            </div>
+
+            <div class="chips">
+                <span class="rd-label">Fields</span>
+                <span class="chip">ML systems (81)</span>
+                <span class="chip">Computational physics (40)</span>
+                <span class="chip">Computational biology (17)</span>
+                <span class="chip">Materials science (8)</span>
+                <span class="chip">Ecology &amp; evolution (8)</span>
+                <span class="chip">Computational neuroscience (5)</span>
+                <span class="chip">Earth &amp; climate (5)</span>
+                <span class="chip">Astrophysics &amp; cosmology (4)</span>
+                <span class="chip">Computational chemistry (3)</span>
+            </div>
+
+            <div class="tabs" role="tablist" aria-label="Sections">
+                <button class="tab" role="tab" id="tab-leaderboard" aria-controls="leaderboard" aria-selected="true">Leaderboard</button>
+                <button class="tab" role="tab" id="tab-documentation" aria-controls="documentation" aria-selected="false">Documentation</button>
+                <button class="tab" role="tab" id="tab-example" aria-controls="example" aria-selected="false">Example</button>
+            </div>
+
+            <!-- Leaderboard -->
+            <section class="pane" id="leaderboard" role="tabpanel" aria-labelledby="tab-leaderboard">
+                <div class="blk">
+                    <div class="blk-head">
+                        <div>
+                            <h2>Overall</h2>
+                            <p class="note"><b>Mean</b>: average score out of 100. <b>Solved</b>: ≥ 95 on all three attempts.</p>
+                        </div>
+                        <label class="field">Field
+                            <select id="fieldSel">
+                                <option value="all" selected>All fields (171 tasks)</option>
+                                <option value="not-ml">All except ML &amp; systems (90)</option>
+                                <optgroup label="One field">
+                                    <option value="ml-systems">ML &amp; systems (81)</option>
+                                    <option value="computational-physics">Physics (40)</option>
+                                    <option value="computational-biology">Biology (17)</option>
+                                    <option value="ecology-evolution">Ecology &amp; evolution (8)</option>
+                                    <option value="materials-science">Materials science (8)</option>
+                                    <option value="earth-climate-geospatial">Earth &amp; climate (5)</option>
+                                    <option value="computational-neuroscience">Neuroscience (5)</option>
+                                    <option value="astrophysics-cosmology">Astrophysics (4)</option>
+                                    <option value="computational-chemistry">Chemistry (3)</option>
+                                </optgroup>
+                            </select>
+                        </label>
+                    </div>
+                    <div class="panel scrollx">
+                        <table class="lb" id="board">
+                            <thead><tr><th>Model</th><th>Mean score</th><th class="n">Solved</th><th class="n">Cost / task</th></tr></thead>
+                            <tbody>
+                            <tr data-k="astra" data-mean="57.84"><td><div class="who"><span class="prov oa"><svg><use href="#g-openai"/></svg></span><span><b>GPT-6 Astra</b><small>OpenAI</small></span></div></td><td><div class="meanc"><span class="track"><i style="width:57.8%"></i></span><span class="v">57.8</span></div></td><td class="n solved">10</td><td class="n">$0.156</td></tr>
+                            <tr data-k="sonnet" data-mean="56.24"><td><div class="who"><span class="prov an"><svg><use href="#g-claude"/></svg></span><span><b>Claude Sonnet 5</b><small>Anthropic</small></span></div></td><td><div class="meanc"><span class="track"><i style="width:56.2%"></i></span><span class="v">56.2</span></div></td><td class="n solved">14</td><td class="n">$0.113</td></tr>
+                            <tr data-k="gpt55" data-mean="54.44"><td><div class="who"><span class="prov oa"><svg><use href="#g-openai"/></svg></span><span><b>GPT-5.5</b><small>OpenAI</small></span></div></td><td><div class="meanc"><span class="track"><i style="width:54.4%"></i></span><span class="v">54.4</span></div></td><td class="n solved">1</td><td class="n">$0.211</td></tr>
+                            <tr data-k="opus" data-mean="52.2"><td><div class="who"><span class="prov an"><svg><use href="#g-claude"/></svg></span><span><b>Claude Opus 5</b><small>Anthropic</small></span></div></td><td><div class="meanc"><span class="track"><i style="width:52.2%"></i></span><span class="v">52.2</span></div></td><td class="n solved solved-0">0</td><td class="n">$0.539</td></tr>
+                            <tr data-k="gpt51" data-mean="49.54"><td><div class="who"><span class="prov oa"><svg><use href="#g-openai"/></svg></span><span><b>GPT-5.1</b><small>OpenAI</small></span></div></td><td><div class="meanc"><span class="track"><i style="width:49.5%"></i></span><span class="v">49.5</span></div></td><td class="n solved">3</td><td class="n">$0.154</td></tr>
+                            <tr data-k="qwen" data-mean="49.24"><td><div class="who"><span class="prov ow"><svg><use href="#g-open"/></svg></span><span><b>Qwen3.8-27B</b><small>Open weights</small></span></div></td><td><div class="meanc"><span class="track"><i style="width:49.2%"></i></span><span class="v">49.2</span></div></td><td class="n solved">4</td><td class="n">$0.010</td></tr>
+                            <tr data-k="oss" data-mean="48.26"><td><div class="who"><span class="prov oa"><svg><use href="#g-openai"/></svg></span><span><b>gpt-oss-120b</b><small>OpenAI · open weights</small></span></div></td><td><div class="meanc"><span class="track"><i style="width:48.3%"></i></span><span class="v">48.3</span></div></td><td class="n solved">9</td><td class="n">$0.169</td></tr>
+                            <tr data-k="g31b" data-mean="47.38"><td><div class="who"><span class="prov ow"><svg><use href="#g-open"/></svg></span><span><b>Gemma 4 31B</b><small>Open weights</small></span></div></td><td><div class="meanc"><span class="track"><i style="width:47.4%"></i></span><span class="v">47.4</span></div></td><td class="n solved">14</td><td class="n">$0.007</td></tr>
+                            <tr data-k="haiku" data-mean="41.85"><td><div class="who"><span class="prov an"><svg><use href="#g-claude"/></svg></span><span><b>Claude Haiku 4.5</b><small>Anthropic</small></span></div></td><td><div class="meanc"><span class="track"><i style="width:41.9%"></i></span><span class="v">41.9</span></div></td><td class="n solved">5</td><td class="n">$0.251</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p class="fieldnote" id="fieldNote" aria-live="polite"></p>
+                </div>
+
+                <div class="blk">
+                    <div class="blk-head">
+                        <h2>By decision</h2>
+                        <div class="hm-key"><span class="hm-ramp">0<i></i>100</span><span class="hm-best"><i></i>Best in column</span></div>
+                    </div>
+                    <div class="panel scrollx">
+                        <table class="hm">
+                            <thead><tr><th>Model</th><th><span class="lg">Data selection</span><span class="sm">Data</span></th><th><span class="lg">Encoding</span><span class="sm">Chart</span></th><th><span class="lg">Overlays</span><span class="sm">Overlay</span></th><th><span class="lg">Panel structure</span><span class="sm">Panels</span></th><th><span class="lg">Axis scales</span><span class="sm">Axes</span></th><th><span class="lg">Series coverage</span><span class="sm">Series</span></th></tr></thead>
+                            <tbody>
+                                <tr><td class="m"><div class="who"><span class="prov oa"><svg><use href="#g-openai"/></svg></span><span>GPT-6 Astra</span></div></td><td class="c" style="background:#86b6ef;color:#1a1a1a">46</td><td class="c" style="background:#256abf;color:#ffffff">67</td><td class="c" style="background:#104281;color:#ffffff">79</td><td class="c" style="background:#5598e7;color:#1a1a1a">53</td><td class="c best" style="background:#6da7ec;color:#1a1a1a">47</td><td class="c best" style="background:#184f95;color:#ffffff">74</td></tr>
+                                <tr><td class="m"><div class="who"><span class="prov an"><svg><use href="#g-claude"/></svg></span><span>Claude Sonnet 5</span></div></td><td class="c best" style="background:#6da7ec;color:#1a1a1a">47</td><td class="c" style="background:#2a78d6;color:#ffffff">61</td><td class="c" style="background:#1c5cab;color:#ffffff">71</td><td class="c" style="background:#5598e7;color:#1a1a1a">51</td><td class="c" style="background:#9ec5f4;color:#1a1a1a">41</td><td class="c best" style="background:#184f95;color:#ffffff">74</td></tr>
+                                <tr><td class="m"><div class="who"><span class="prov oa"><svg><use href="#g-openai"/></svg></span><span>GPT-5.5</span></div></td><td class="c" style="background:#9ec5f4;color:#1a1a1a">40</td><td class="c" style="background:#256abf;color:#ffffff">65</td><td class="c best" style="background:#0d366b;color:#ffffff">83</td><td class="c best" style="background:#5598e7;color:#1a1a1a">54</td><td class="c" style="background:#9ec5f4;color:#1a1a1a">41</td><td class="c" style="background:#1c5cab;color:#ffffff">71</td></tr>
+                                <tr><td class="m"><div class="who"><span class="prov an"><svg><use href="#g-claude"/></svg></span><span>Claude Opus 5</span></div></td><td class="c" style="background:#b7d3f6;color:#1a1a1a">35</td><td class="c best" style="background:#1c5cab;color:#ffffff">70</td><td class="c" style="background:#104281;color:#ffffff">82</td><td class="c" style="background:#5598e7;color:#1a1a1a">53</td><td class="c" style="background:#b7d3f6;color:#1a1a1a">33</td><td class="c" style="background:#256abf;color:#ffffff">67</td></tr>
+                                <tr><td class="m"><div class="who"><span class="prov oa"><svg><use href="#g-openai"/></svg></span><span>GPT-5.1</span></div></td><td class="c" style="background:#9ec5f4;color:#1a1a1a">39</td><td class="c" style="background:#5598e7;color:#1a1a1a">55</td><td class="c" style="background:#2a78d6;color:#ffffff">63</td><td class="c" style="background:#6da7ec;color:#1a1a1a">48</td><td class="c" style="background:#9ec5f4;color:#1a1a1a">38</td><td class="c" style="background:#1c5cab;color:#ffffff">71</td></tr>
+                                <tr><td class="m"><div class="who"><span class="prov ow"><svg><use href="#g-open"/></svg></span><span>Qwen3.8-27B</span></div></td><td class="c" style="background:#9ec5f4;color:#1a1a1a">39</td><td class="c" style="background:#5598e7;color:#1a1a1a">55</td><td class="c" style="background:#6da7ec;color:#1a1a1a">49</td><td class="c" style="background:#9ec5f4;color:#1a1a1a">41</td><td class="c" style="background:#b7d3f6;color:#1a1a1a">35</td><td class="c" style="background:#256abf;color:#ffffff">67</td></tr>
+                                <tr><td class="m"><div class="who"><span class="prov oa"><svg><use href="#g-openai"/></svg></span><span>gpt-oss-120b</span></div></td><td class="c" style="background:#9ec5f4;color:#1a1a1a">40</td><td class="c" style="background:#5598e7;color:#1a1a1a">52</td><td class="c" style="background:#5598e7;color:#1a1a1a">53</td><td class="c" style="background:#6da7ec;color:#1a1a1a">47</td><td class="c" style="background:#b7d3f6;color:#1a1a1a">33</td><td class="c" style="background:#256abf;color:#ffffff">68</td></tr>
+                                <tr><td class="m"><div class="who"><span class="prov ow"><svg><use href="#g-open"/></svg></span><span>Gemma 4 31B</span></div></td><td class="c" style="background:#9ec5f4;color:#1a1a1a">40</td><td class="c" style="background:#5598e7;color:#1a1a1a">52</td><td class="c" style="background:#9ec5f4;color:#1a1a1a">41</td><td class="c" style="background:#86b6ef;color:#1a1a1a">42</td><td class="c" style="background:#9ec5f4;color:#1a1a1a">37</td><td class="c" style="background:#256abf;color:#ffffff">67</td></tr>
+                                <tr><td class="m"><div class="who"><span class="prov an"><svg><use href="#g-claude"/></svg></span><span>Claude Haiku 4.5</span></div></td><td class="c" style="background:#b7d3f6;color:#1a1a1a">34</td><td class="c" style="background:#86b6ef;color:#1a1a1a">44</td><td class="c" style="background:#b7d3f6;color:#1a1a1a">34</td><td class="c" style="background:#b7d3f6;color:#1a1a1a">33</td><td class="c" style="background:#b7d3f6;color:#1a1a1a">36</td><td class="c" style="background:#3987e5;color:#1a1a1a">58</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="blk">
+                    <div class="blk-head"><h2>Cost vs. score</h2></div>
+                    <div class="panel sc">
+                        <svg viewBox="0 0 760 380" role="img" aria-labelledby="scT">
+                            <title id="scT">Mean score against cost per task (log scale, cheaper to the right). Gemma 4 31B and Qwen3.8-27B cost about a cent or less; Claude Sonnet 5 and GPT-6 Astra score highest. Those four form the frontier.</title>
+                            <line class="grid" x1="58" y1="322.0" x2="730" y2="322.0"/><text class="tick" x="48" y="326.0" text-anchor="end">40</text>
+                            <line class="grid" x1="58" y1="247.5" x2="730" y2="247.5"/><text class="tick" x="48" y="251.5" text-anchor="end">45</text>
+                            <line class="grid" x1="58" y1="173.0" x2="730" y2="173.0"/><text class="tick" x="48" y="177.0" text-anchor="end">50</text>
+                            <line class="grid" x1="58" y1="98.5" x2="730" y2="98.5"/><text class="tick" x="48" y="102.5" text-anchor="end">55</text>
+                            <line class="grid" x1="58" y1="24.0" x2="730" y2="24.0"/><text class="tick" x="48" y="28.0" text-anchor="end">60</text>
+                            <line class="grid" x1="730.0" y1="24" x2="730.0" y2="322"/><text class="tick" x="730.0" y="340" text-anchor="middle">$0.005</text>
+                            <line class="grid" x1="642.1" y1="24" x2="642.1" y2="322"/><text class="tick" x="642.1" y="340" text-anchor="middle">$0.01</text>
+                            <line class="grid" x1="502.7" y1="24" x2="502.7" y2="322"/><text class="tick" x="502.7" y="340" text-anchor="middle">$0.03</text>
+                            <line class="grid" x1="350.0" y1="24" x2="350.0" y2="322"/><text class="tick" x="350.0" y="340" text-anchor="middle">$0.10</text>
+                            <line class="grid" x1="210.7" y1="24" x2="210.7" y2="322"/><text class="tick" x="210.7" y="340" text-anchor="middle">$0.30</text>
+                            <line class="grid" x1="58.0" y1="24" x2="58.0" y2="322"/><text class="tick" x="58.0" y="340" text-anchor="middle">$1</text>
+                            <text class="axt" x="394" y="376" text-anchor="middle">Cost per task (log scale) &#183; cheaper &#8594;</text>
+                            <text class="axt" x="14" y="173" text-anchor="middle" transform="rotate(-90 14 173)">Mean score</text>
+                            <text class="better" x="722" y="38" text-anchor="end">cheaper and better &#8599;</text>
+                            <polyline class="front" points="687.3,212.0 642.1,184.3 334.5,80.0 293.6,56.2"/>
+                            <g class="pt on" tabindex="0" data-tip="<b>GPT-6 Astra</b>$0.156 per task &middot; mean 57.8"><circle class="hit" cx="293.6" cy="56.2" r="14"/><circle class="dot" cx="293.6" cy="56.2" r="5.5"/><text x="283.6" y="48.2" text-anchor="end">GPT-6 Astra</text></g>
+                            <g class="pt on" tabindex="0" data-tip="<b>Claude Sonnet 5</b>$0.113 per task &middot; mean 56.2"><circle class="hit" cx="334.5" cy="80.0" r="14"/><circle class="dot" cx="334.5" cy="80.0" r="5.5"/><text x="344.5" y="72.0" text-anchor="start">Claude Sonnet 5</text></g>
+                            <g class="pt" tabindex="0" data-tip="<b>GPT-5.5</b>$0.211 per task &middot; mean 54.4"><circle class="hit" cx="255.3" cy="106.8" r="14"/><circle class="dot" cx="255.3" cy="106.8" r="5.5"/><text x="245.3" y="110.8" text-anchor="end">GPT-5.5</text></g>
+                            <g class="pt" tabindex="0" data-tip="<b>Claude Opus 5</b>$0.539 per task &middot; mean 52.2"><circle class="hit" cx="136.4" cy="140.2" r="14"/><circle class="dot" cx="136.4" cy="140.2" r="5.5"/><text x="146.4" y="144.2" text-anchor="start">Claude Opus 5</text></g>
+                            <g class="pt" tabindex="0" data-tip="<b>GPT-5.1</b>$0.154 per task &middot; mean 49.5"><circle class="hit" cx="295.3" cy="179.9" r="14"/><circle class="dot" cx="295.3" cy="179.9" r="5.5"/><text x="305.3" y="183.9" text-anchor="start">GPT-5.1</text></g>
+                            <g class="pt on" tabindex="0" data-tip="<b>Qwen3.8-27B</b>$0.010 per task &middot; mean 49.2"><circle class="hit" cx="642.1" cy="184.3" r="14"/><circle class="dot" cx="642.1" cy="184.3" r="5.5"/><text x="632.1" y="197.0" text-anchor="end">Qwen3.8-27B</text></g>
+                            <g class="pt" tabindex="0" data-tip="<b>gpt-oss-120b</b>$0.169 per task &middot; mean 48.3"><circle class="hit" cx="283.5" cy="198.9" r="14"/><circle class="dot" cx="283.5" cy="198.9" r="5.5"/><text x="273.5" y="207.9" text-anchor="end">gpt-oss-120b</text></g>
+                            <g class="pt on" tabindex="0" data-tip="<b>Gemma 4 31B</b>$0.007 per task &middot; mean 47.4"><circle class="hit" cx="687.3" cy="212.0" r="14"/><circle class="dot" cx="687.3" cy="212.0" r="5.5"/><text x="677.3" y="222.0" text-anchor="end">Gemma 4 31B</text></g>
+                            <g class="pt" tabindex="0" data-tip="<b>Claude Haiku 4.5</b>$0.251 per task &middot; mean 41.9"><circle class="hit" cx="233.3" cy="294.4" r="14"/><circle class="dot" cx="233.3" cy="294.4" r="5.5"/><text x="223.3" y="298.4" text-anchor="end">Claude Haiku 4.5</text></g>
+                        </svg>
+                    </div>
+                    <p class="note">Scores are mean reward &times; 100 over 171 tasks, with at least three attempts per model on each task (6,147 scored attempts). Cost is per task at three attempts: hosted models are priced per token from their transcripts, open-weight models by GPU time.</p>
+                </div>
+            </section>
+
+            <!-- Documentation -->
+            <section class="pane" id="documentation" role="tabpanel" aria-labelledby="tab-documentation" hidden>
+                <div class="docs">
+                <nav class="doctoc" aria-label="Documentation contents"><ol>
+                  <li><a href="#doc-1"><span>1.</span> Overview</a></li>
+                  <li><a href="#doc-2"><span>2.</span> Source material</a>
+                    <ol>
+                      <li><a href="#doc-2-1"><span>2.1</span> Real figures, real decisions</a></li>
+                      <li><a href="#doc-2-2"><span>2.2</span> Raw data, not answers</a></li>
+                      <li><a href="#doc-2-3"><span>2.3</span> Licensing</a></li>
+                    </ol></li>
+                  <li><a href="#doc-3"><span>3.</span> What is tested</a>
+                    <ol>
+                      <li><a href="#doc-3-1"><span>3.1</span> Six decisions</a></li>
+                      <li><a href="#doc-3-2"><span>3.2</span> What each decision measures, and why</a></li>
+                      <li><a href="#doc-3-3"><span>3.3</span> What the claim gives away</a></li>
+                      <li><a href="#doc-3-4"><span>3.4</span> Fields</a></li>
+                    </ol></li>
+                  <li><a href="#doc-4"><span>4.</span> Environment interface</a>
+                    <ol>
+                      <li><a href="#doc-4-1"><span>4.1</span> What the agent receives</a></li>
+                      <li><a href="#doc-4-2"><span>4.2</span> Actions</a></li>
+                      <li><a href="#doc-4-3"><span>4.3</span> Submission</a></li>
+                    </ol></li>
+                  <li><a href="#doc-5"><span>5.</span> Reward design</a>
+                    <ol>
+                      <li><a href="#doc-5-1"><span>5.1</span> Structure</a></li>
+                      <li><a href="#doc-5-2"><span>5.2</span> More than one right answer</a></li>
+                      <li><a href="#doc-5-3"><span>5.3</span> Where models lose points</a></li>
+                      <li><a href="#doc-5-4"><span>5.4</span> Observed model failures</a>
+                        <ol>
+                          <li><a href="#doc-5-4-1"><span>5.4.1</span> Choosing the wrong data</a></li>
+                          <li><a href="#doc-5-4-2"><span>5.4.2</span> Encoding the data differently</a></li>
+                          <li><a href="#doc-5-4-3"><span>5.4.3</span> Leaving out overlays</a></li>
+                          <li><a href="#doc-5-4-4"><span>5.4.4</span> Laying out panels differently</a></li>
+                          <li><a href="#doc-5-4-5"><span>5.4.5</span> Choosing different axis scales</a></li>
+                          <li><a href="#doc-5-4-6"><span>5.4.6</span> Failing to complete the task</a></li>
+                        </ol></li>
+                    </ol></li>
+                  <li><a href="#doc-6"><span>6.</span> False positives and reward hacking</a></li>
+                  <li><a href="#doc-7"><span>7.</span> Human review</a></li>
+                  <li><a href="#doc-8"><span>8.</span> Fairness invariants</a></li>
+                  <li><a href="#doc-9"><span>9.</span> Limits</a></li>
+                </ol></nav>
+
+                <div class="docbody">
+
+                <h3 id="doc-1"><span>1.</span> Overview</h3>
+                <p><span class="brand">matplotgym</span> measures whether an agent can turn a scientific dataset into the figure the
+                  paper's authors drew. Each of the 171 tasks comes from a published paper whose authors
+                  released both their data and the code that drew the figure. The agent receives the data and a
+                  one-sentence claim, and decides what to plot.</p>
+                <p>The benchmark tests analytical judgment, not plotting skill. What separates the models is choosing the right subset, aggregation, encoding and
+                  panel layout. Nine models were evaluated with at least three attempts per task, for 6,147 scored episodes.</p>
+
+                <h3 id="doc-2"><span>2.</span> Source material</h3>
+                <h4 id="doc-2-1"><span>2.1</span> Real figures, real decisions</h4>
+                <p>The reference is the figure produced by running the authors' own plotting code, unmodified,
+                  on their released data. We do not redraw, simplify or invent figures. The ground truth is a
+                  decision a working scientist made about their own results. The authors' plotting code is
+                  used only to build the reference spec; it is not shipped with the task.</p>
+                <h4 id="doc-2-2"><span>2.2</span> Raw data, not answers</h4>
+                <p>The agent receives the rows as released, including columns and values the figure does not
+                  use. In the <a href="#example">example task</a> the data holds runs at two network sizes,
+                  and the authors plot only the 16-node runs. A gate blocks any task whose files contain a pre-aggregated
+                  table, a column named after the conclusion, or a header that describes the comparison.</p>
+                <h4 id="doc-2-3"><span>2.3</span> Licensing</h4>
+                <p>Every file (<code>task.yaml</code>, <code>reference_spec.json</code> and
+                  the workspace) is under a license that permits commercial use. We check each task's shipped
+                  files rather than the repository as a whole, and read each upstream's own terms.</p>
+
+                <h3 id="doc-3"><span>3.</span> What is tested</h3>
+                <h4 id="doc-3-1"><span>3.1</span> Six decisions</h4>
+                <p>Every task is scored on the decisions below. A task exercises the ones its reference figure
+                  makes; all six are present in 45 of the 171 tasks, and every task has at least three.</p>
+                <div class="scrollx">
+                <table class="doctable">
+                  <thead><tr><th>Code</th><th>Decision</th><th class="n">Weight</th><th class="n">Tasks using it</th></tr></thead>
+                  <tbody>
+                    <tr><td class="mono">D1</td><td>Data selection</td><td class="n">0.37</td><td class="n">171</td></tr>
+                    <tr><td class="mono">D2</td><td>Encoding</td><td class="n">0.21</td><td class="n">171</td></tr>
+                    <tr><td class="mono">D3</td><td>Overlays</td><td class="n">0.15</td><td class="n">89</td></tr>
+                    <tr><td class="mono">D4</td><td>Panel structure</td><td class="n">0.10</td><td class="n">76</td></tr>
+                    <tr><td class="mono">D5</td><td>Axis transforms</td><td class="n">0.10</td><td class="n">103</td></tr>
+                    <tr><td class="mono">D6</td><td>Series coverage</td><td class="n">0.07</td><td class="n">171</td></tr>
+                  </tbody>
+                </table>
+                </div>
+                <p>A weight is that decision&rsquo;s share of a task&rsquo;s score; the six add up to 1. Each
+                  decision is scored from 0 to 1, and the task score is their weighted average. A task only counts
+                  the decisions its reference figure makes. When one is missing, its weight is dropped and the
+                  rest are scaled up to fill the gap. On a task with no overlays, for example, data selection
+                  counts for 0.37 / 0.85, about 44% of the score.</p>
+                <h4 id="doc-3-2"><span>3.2</span> What each decision measures, and why</h4>
+                <div class="compguide">
+                  <div class="cg"><span class="cgw">weight 0.37</span><h5><span class="cgc">D1</span>Data selection</h5>
+                    <p class="cgl">Measures</p><p>Whether each plotted series holds the same values as the authors&rsquo;: the same rows, filtered and aggregated the same way.</p>
+                    <p class="cgl">Why it matters</p><p>Choosing what to plot is the main analytical decision. A clean figure of the wrong subset supports a different claim.</p></div>
+                  <div class="cg"><span class="cgw">weight 0.21</span><h5><span class="cgc">D2</span>Encoding</h5>
+                    <p class="cgl">Measures</p><p>The chart type, which variable goes on each axis, what drives colour and size, and the category levels on each axis.</p>
+                    <p class="cgl">Why it matters</p><p>The same numbers read differently as bars or lines, and swapping the axes changes what is being compared. Axis roles carry half of this component.</p></div>
+                  <div class="cg"><span class="cgw">weight 0.15</span><h5><span class="cgc">D3</span>Overlays</h5>
+                    <p class="cgl">Measures</p><p>Error bars, confidence bands, fitted lines, reference lines and significance marks, on tasks where the authors drew them.</p>
+                    <p class="cgl">Why it matters</p><p>Without error bars, a reader can&rsquo;t tell a real effect from noise. A fitted line or a threshold is often the finding itself: the trend, or the point where a curve crosses the line.</p></div>
+                  <div class="cg"><span class="cgw">weight 0.10</span><h5><span class="cgc">D4</span>Panel structure</h5>
+                    <p class="cgl">Measures</p><p>The number of panels, how the data is split across them, and insets.</p>
+                    <p class="cgl">Why it matters</p><p>The layout decides which series share a set of axes, and so which comparisons the reader can make directly.</p></div>
+                  <div class="cg"><span class="cgw">weight 0.10</span><h5><span class="cgc">D5</span>Axis transforms</h5>
+                    <p class="cgl">Measures</p><p>Log and symlog scales, and whether panels share axis limits.</p>
+                    <p class="cgl">Why it matters</p><p>A log scale or a shared axis changes what a difference looks like. It is scored only where the authors made one of these choices.</p></div>
+                  <div class="cg"><span class="cgw">weight 0.07</span><h5><span class="cgc">D6</span>Series coverage</h5>
+                    <p class="cgl">Measures</p><p>Whether every series the claim is read against is there, and no series the authors left out.</p>
+                    <p class="cgl">Why it matters</p><p>A figure missing its baseline can&rsquo;t support the claim, and charging extras means plotting every column doesn&rsquo;t pay.</p></div>
+                </div>
+
+                <h4 id="doc-3-3"><span>3.3</span> What the claim gives away</h4>
+                <p>The claim names the conditions and quantities at issue. It never names a chart type, an axis
+                  assignment or an aggregation, because those are the decisions under test.</p>
+                <h4 id="doc-3-4"><span>3.4</span> Fields</h4>
+                <p>The tasks span nine fields. ML &amp; systems holds 81 of them; five fields hold fewer than ten
+                  each, too few to rank models on alone. The results table above can be split by field.</p>
+
+                <h3 id="doc-4"><span>4.</span> Environment interface</h3>
+                <h4 id="doc-4-1"><span>4.1</span> What the agent receives</h4>
+                <p>The claim, a listing of its working directory, <code>data/SCHEMA.md</code> describing columns
+                  and units, the data files, and a one-line <code>make_figure.py</code> stub. It never receives
+                  the reference spec, the authors' plotting code, the published figure, or the task's list of
+                  scored decisions.</p>
+                <h4 id="doc-4-2"><span>4.2</span> Actions</h4>
+                <p>One action per turn, as a fenced block: <code>bash</code> runs a shell command,
+                  <code>python</code> runs a throwaway script, <code>write &lt;path&gt;</code> writes a file, and
+                  <code>done</code> ends the episode. Python has numpy, pandas and matplotlib. The budget is 14
+                  turns and 120 seconds per command.</p>
+                <p>The protocol is plain text and identical for every model. Native tool calling is off for all
+                  of them, so no provider's tool format is an advantage.</p>
+                <h4 id="doc-4-3"><span>4.3</span> Submission</h4>
+                <p>Only <code>make_figure.py</code> is scored. When the episode ends, the harness runs the script
+                  again in a fresh process and scores the figure object it builds. The image the agent saved is
+                  never looked at, and the agent sees no score during the episode.</p>
+
+                <h3 id="doc-5"><span>5.</span> Reward design</h3>
+                <h4 id="doc-5-1"><span>5.1</span> Structure</h4>
+                <p>Both figures are reduced to a spec: panels, marks, the values each mark plots, axis scales
+                  and overlays. The six decisions are compared one by one and combined by weight. Decisions a
+                  task does not exercise leave the denominator, so a task with no error bars gives no credit
+                  for drawing none. A script that crashes or draws nothing scores 0.</p>
+                <h4 id="doc-5-2"><span>5.2</span> More than one right answer</h4>
+                <ul class="plain">
+                  <li><b>Style is never read.</b> Palette, fonts, figure size, tick placement, legend position
+                    and resolution appear nowhere in the scoring code. Nor do series order or plotting idiom.</li>
+                  <li><b>Near-equivalent encodings earn partial credit.</b> Bars where the authors drew points,
+                    or a histogram drawn as bars, earn half on the chart-type signal rather than zero.</li>
+                  <li><b>Faithful additions cost less than omissions.</b> An extra series costs half what a
+                    missing one costs. Leaving out what the claim is read against is a failure; adding context
+                    is at worst clutter.</li>
+                  <li><b>Units do not matter where shape does.</b> Heatmaps and scalar fields are compared up to a
+                    change of scale and offset.</li>
+                </ul>
+                <h4 id="doc-5-3"><span>5.3</span> Where models lose points</h4>
+                <p>Across all 6,147 episodes, choosing the wrong data costs more than everything else except
+                  encoding combined.</p>
+                <div class="scrollx">
+                <table class="doctable">
+                  <thead><tr><th>Source of lost reward</th><th class="n">Share</th></tr></thead>
+                  <tbody>
+                    <tr><td>D1 Data selection: wrong subset or aggregation</td><td class="n">48%</td></tr>
+                    <tr><td>D2 Encoding: wrong chart type or axis roles</td><td class="n">18%</td></tr>
+                    <tr><td>No figure: script crashed or was never written (385 episodes)</td><td class="n">13%</td></tr>
+                    <tr><td>D5 Axis transforms</td><td class="n">7%</td></tr>
+                    <tr><td>D4 Panel structure</td><td class="n">5%</td></tr>
+                    <tr><td>D3 Overlays</td><td class="n">5%</td></tr>
+                    <tr><td>D6 Series coverage</td><td class="n">4%</td></tr>
+                  </tbody>
+                </table>
+                </div>
+                <h4 id="doc-5-4"><span>5.4</span> Observed model failures</h4>
+                <p>Across all episodes on the benchmark, we have observed the following failure modes:</p>
+                <h5 id="doc-5-4-1"><span>5.4.1</span> Choosing the wrong data</h5>
+                <ul class="plain"><li>Plotting the right series with the wrong filter, subset or aggregation</li>
+                  <li>Reducing a series over time to a single average</li>
+                  <li>Plotting conditions or runs the authors left out</li>
+                  <li>Dropping a condition the authors plotted</li></ul>
+                <h5 id="doc-5-4-2"><span>5.4.2</span> Encoding the data differently</h5>
+                <ul class="plain"><li>Drawing a series as a different kind of mark</li>
+                  <li>Stacking bars the authors grouped, or joining points they left separate</li>
+                  <li>Dropping the colour mapping that tells conditions apart</li></ul>
+                <h5 id="doc-5-4-3"><span>5.4.3</span> Leaving out overlays</h5>
+                <ul class="plain"><li>Leaving out error bars or confidence bands</li>
+                  <li>Leaving out a fitted line or a reference line the claim is read against</li></ul>
+                <h5 id="doc-5-4-4"><span>5.4.4</span> Laying out panels differently</h5>
+                <ul class="plain"><li>Splitting one comparison across panels so the series no longer share axes</li>
+                  <li>Merging the authors&rsquo; panels into one crowded plot</li>
+                  <li>Dropping some of the authors&rsquo; panels</li></ul>
+                <h5 id="doc-5-4-5"><span>5.4.5</span> Choosing different axis scales</h5>
+                <ul class="plain"><li>Adding a log scale the authors didn&rsquo;t use</li>
+                  <li>Using a linear scale where the authors used log</li>
+                  <li>Sharing axis limits across panels the authors scaled separately, or the reverse</li></ul>
+                <h5 id="doc-5-4-6"><span>5.4.6</span> Failing to complete the task</h5>
+                <ul class="plain"><li>Ending the episode without submitting <code>make_figure.py</code></li>
+                  <li>Drawing the figure in a scratch command but never writing it to the submission</li>
+                  <li>Submitting a script that crashes</li>
+                  <li>Submitting a script that runs but draws nothing</li></ul>
+
+                <h3 id="doc-6"><span>6.</span> False positives and reward hacking</h3>
+                <p>A score is only useful if it cannot be earned without doing the task. Each promise below says
+                  how we know.</p>
+                <ul class="plain">
+                  <li><b>The agent cannot read the answer.</b> Four static scans run on every task, and a task that fails any of them is blocked: everything the agent can see is searched for the answer's tokens, the reference's derived columns are checked against the shipped ones, filenames and headers are linted, and claims that list their own answer are flagged. We also audited every command and every output across all 6,147 episodes: no reference spec, hidden task field or author code ever reached an agent.</li>
+                  <li><b>The scorer cannot be tampered with.</b> Scoring re-runs the submitted script after the episode, so a saved image or a printed number cannot stand in for a figure. None of the 5,983 submitted scripts we can read imports the harness or patches matplotlib. The other 164 episodes submitted no script and scored 0.</li>
+                  <li><b>A non-answer scores well below a real attempt.</b> We build the lazy figures ourselves (plot every column, plot nothing, plot the raw table) and score them on all 171 tasks. A task where one of them scores too close to a real attempt is flagged, because it can no longer tell a non-answer from analysis.</li>
+                  <li><b>No credit for style or volume.</b> The scoring code reads nothing cosmetic (5.2) and charges for extra series (D6), so neither polish nor plotting everything raises a score.</li>
+                  <li><b>The reward is deterministic.</b> No model and no network call sits in the scoring path. We re-scored recorded scripts and got the same score on every run.</li>
+                  <li><b>Every task can be solved.</b> Each reference, scored against itself, gets 1.000 on all 171 tasks, so no attempt is charged for a fault in the harness. We also check that each task can be solved in practice: a strong model is told the decisions the authors made (which rows, which chart, which panels) and asked to draw the figure. It has to score 0.95 or higher, or the task is blocked: if it cannot, the fault is in the task, not the model.</li>
+                  <li><b>Every task discriminates.</b> Five independent attempts must produce a real spread of scores, and deliberately degraded versions of the reference must score clearly lower. A task that fails either check is blocked.</li>
+                  <li><b>The criteria are stated up front.</b> The agent's prompt lists the decisions it is judged on and the ones it is not (palette, fonts, size, ticks, legend position). There is no hidden criterion.</li>
+                </ul>
+
+                <h3 id="doc-7"><span>7.</span> Human review</h3>
+                <p>The automated gates check that a task is solvable, discriminating and free of leaks. They
+                  cannot check that a claim is faithful to the paper it came from; only an author knows that. So
+                  for a selected set of about twenty tasks, we met with their authors to review
+                  each claim against the work it came from, and asked for their input on the weights of the rubric's components.</p>
+
+                <h3 id="doc-8"><span>8.</span> Fairness invariants</h3>
+                <p>An agent is charged only for a decision it could have made correctly from what it was
+                  given.</p>
+                <ul class="plain">
+                  <li><b>One mistake costs once.</b> The six decisions are scored independently, so a wrong
+                    choice is charged in the decision responsible and nowhere else.</li>
+                  <li><b>Only exercised decisions count.</b> A decision the reference does not make is not
+                    scored.</li>
+                  <li><b>Format slips are not failures.</b> The parser accepts a mislabelled code fence, such as
+                    <code>sh</code> for <code>bash</code>. A strict parser once cost one provider about 40% of
+                    its turns, which measured formatting rather than judgment.</li>
+                  <li><b>One reminder to submit.</b> An agent that ends with the stub untouched is told once that
+                    only <code>make_figure.py</code> is scored. The reminder says nothing about the figure, and
+                    its turn counts against the budget.</li>
+                  <li><b>The agent tests on the scorer's interpreter.</b> The <code>python</code> the agent runs is
+                    the one that runs its script for scoring, with the same libraries.</li>
+                  <li><b>Solved means every time.</b> A task counts as solved only when all three attempts reach
+                    95, so a single lucky attempt is not a solve.</li>
+                </ul>
+
+                <h3 id="doc-9"><span>9.</span> Limits</h3>
+                <ul class="plain">
+                  <li><b>The open-weight runs were audited, not sealed.</b> Gemma 4 31B and Qwen3.8-27B ran on our
+                    GPU workers, where the shell could reach the task store. In 118 episodes
+                    Qwen3.8-27B ran commands outside its workspace, mostly while looking for its own files; one
+                    printed 50 lines of harness source code, which contains no answers. No episode opened an answer file (section 6).</li>
+                  <li><b>Small fields do not rank.</b> Five fields have fewer than ten tasks, and the results table
+                    marks them as too small to rank models on.</li>
+                </ul>
+                </div>
+                </div>
+            </section>
+
+            <!-- Example -->
+            <section class="pane" id="example" role="tabpanel" aria-labelledby="tab-example" hidden>
+                <div class="panel claim">
+                    <span class="rd-label">The claim</span>
+                    <q>At 16 nodes, detection depends far more on the attack family than on training time; time-delayed poisoning collapses RL, DRL and MARL alike once its sleepers activate.</q>
+                    <span class="claim-meta">From <a href="https://github.com/soham-padia/blockchain-iot-trust" target="_blank" rel="noopener noreferrer">blockchain-iot-trust</a> (arXiv 2512.22860). The data covers two network sizes; the authors plot only the 16-node runs.</span>
+                    <div class="sees"><span class="rd-label">Agent gets</span><span class="file">episode_metrics.csv &middot; 2,100 rows</span><span class="file">SCHEMA.md</span><span class="file">make_figure.py (empty)</span></div>
+                </div>
+                <div class="gal">
+                        <figure class="shot ref"><button type="button" class="plate" aria-label="Enlarge: Authors' figure"><img src="/research/matplotgym/fig/f1_reference.png" alt="Published reference: five panels, one per attack family, each with RL, DRL and MARL detection F1 over training episodes; the time-delayed poisoning panel runs 100 episodes with a dashed line at episode 25." loading="lazy"></button><figcaption><div class="sh"><b>Authors' figure</b><span class="score ref">100</span></div><p>Five panels, one per attack family, with all three defenders in each. The poisoning panel marks activation at episode 25.</p></figcaption></figure>
+                        <figure class="shot"><button type="button" class="plate" aria-label="Enlarge: Claude Opus 5"><img src="/research/matplotgym/fig/f1_opus.png" alt="Claude Opus 5 attempt: five attack-family panels plus a sixth summary panel; the poisoning panel also shows the 50-episode runs." loading="lazy"></button><figcaption><div class="sh"><b>Claude Opus 5</b><span class="score">90.7</span></div><p>Right panels and activation line, but an extra summary panel and the 50-episode runs crowd the collapse.</p><div class="cb"><div><span>Data</span><span class="track"><i style="width:77%"></i></span><span class="v">77</span></div><div><span>Chart</span><span class="track"><i style="width:100%"></i></span><span class="v">100</span></div><div><span>Overlay</span><span class="track"><i style="width:100%"></i></span><span class="v">100</span></div><div><span>Panels</span><span class="track"><i style="width:100%"></i></span><span class="v">100</span></div><div><span>Axes</span><span class="track"><i style="width:100%"></i></span><span class="v">100</span></div><div><span>Series</span><span class="track"><i style="width:87%"></i></span><span class="v">87</span></div></div></figcaption></figure>
+                        <figure class="shot"><button type="button" class="plate" aria-label="Enlarge: GPT-6 Astra"><img src="/research/matplotgym/fig/f1_astra.png" alt="GPT-6 Astra attempt: fifteen panels, one per defender and attack family, each with a single line." loading="lazy"></button><figcaption><div class="sh"><b>GPT-6 Astra</b><span class="score">82.6</span></div><p>Right data, split into fifteen one-line panels, so the defenders can't be compared on one set of axes.</p><div class="cb"><div><span>Data</span><span class="track"><i style="width:100%"></i></span><span class="v">100</span></div><div><span>Chart</span><span class="track"><i style="width:100%"></i></span><span class="v">100</span></div><div><span>Overlay</span><span class="track"><i style="width:100%"></i></span><span class="v">100</span></div><div><span>Panels</span><span class="track"><i style="width:26%"></i></span><span class="v">26</span></div><div><span>Axes</span><span class="track"><i style="width:0%"></i></span><span class="v">0</span></div><div><span>Series</span><span class="track"><i style="width:100%"></i></span><span class="v">100</span></div></div></figcaption></figure>
+                        <figure class="shot"><button type="button" class="plate" aria-label="Enlarge: GPT-5.5"><img src="/research/matplotgym/fig/f1_gpt55.png" alt="GPT-5.5 attempt: a dot summary of mean F1 per attack family and one line panel for time-delayed poisoning." loading="lazy"></button><figcaption><div class="sh"><b>GPT-5.5</b><span class="score">56.3</span></div><p>Averages four attacks down to single numbers, hiding the change over training the claim is about.</p><div class="cb"><div><span>Data</span><span class="track"><i style="width:29%"></i></span><span class="v">29</span></div><div><span>Chart</span><span class="track"><i style="width:57%"></i></span><span class="v">57</span></div><div><span>Overlay</span><span class="track"><i style="width:100%"></i></span><span class="v">100</span></div><div><span>Panels</span><span class="track"><i style="width:21%"></i></span><span class="v">21</span></div><div><span>Axes</span><span class="track"><i style="width:100%"></i></span><span class="v">100</span></div><div><span>Series</span><span class="track"><i style="width:89%"></i></span><span class="v">89</span></div></div></figcaption></figure>
+                </div>
+            </section>
+
+        </article>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-row">
+            <span class="footer-label">Connect</span>
+            <a href="https://twitter.com/TuvaAI" target="_blank" rel="noopener noreferrer">Twitter</a>
+            <a href="https://www.linkedin.com/company/tuva-ai/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <a href="mailto:hello@tuva.ai" data-ga="email_click_footer">hello@tuva.ai</a>
+        </div>
+        <div class="footer-row footer-row-legal">
+            <a href="/terms" data-ga="terms_click_footer">Terms</a>
+            <a href="/privacy" data-ga="privacy_click_footer">Privacy Policy</a>
+        </div>
+        <div class="footer-copyright">© 2026 Tuva AI, Inc. All rights reserved.</div>
+    </footer>
+
+    <div class="tip" id="tip" role="tooltip"></div>
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Enlarged figure"><img id="lightboxImg" src="" alt=""></div>
+
+    <!-- Consent Mode v2 banner -->
+    <div class="consent-banner" id="consentBanner" role="dialog" aria-live="polite" aria-label="Cookie consent">
+        <p class="consent-text">
+            We use cookies to measure traffic and improve the site. Accept analytics cookies
+            or decline &mdash; see our <a href="/privacy">privacy policy</a>.
+        </p>
+        <div class="consent-actions">
+            <button type="button" class="consent-btn decline" id="consentDecline">Decline</button>
+            <button type="button" class="consent-btn accept" id="consentAccept">Accept</button>
+        </div>
+    </div>
+
+    <script>
+        (function () {
+            const banner = document.getElementById('consentBanner');
+            if (!banner) return;
+            let saved = null;
+            try { saved = localStorage.getItem('tuva-consent'); } catch (e) {}
+            if (saved !== 'granted' && saved !== 'denied') banner.classList.add('show');
+            function choose(value) {
+                try { localStorage.setItem('tuva-consent', value); } catch (e) {}
+                if (typeof gtag === 'function') {
+                    gtag('consent', 'update', {
+                        ad_storage: value, ad_user_data: value,
+                        ad_personalization: value, analytics_storage: value
+                    });
+                }
+                banner.classList.remove('show');
+            }
+            document.getElementById('consentAccept').addEventListener('click', function () { choose('granted'); });
+            document.getElementById('consentDecline').addEventListener('click', function () { choose('denied'); });
+        })();
+
+
+        // Tabs, synced with the URL hash
+        (function () {
+            const tabs = Array.from(document.querySelectorAll('.tab'));
+            const ids = tabs.map((t) => t.getAttribute('aria-controls'));
+            const OLD = { 'how-it-works': 'documentation', 'sample': 'example' };
+            const show = (id, push) => {
+                if (OLD[id]) { id = OLD[id]; push = true; }
+                // A link to a heading inside a pane (#doc-3) opens that pane at the heading
+                const target = !ids.includes(id) && id ? document.getElementById(id) : null;
+                const pane = target && target.closest('.pane');
+                if (pane) id = pane.id;
+                if (!ids.includes(id)) id = 'leaderboard';
+                tabs.forEach((t) => {
+                    const on = t.getAttribute('aria-controls') === id;
+                    t.setAttribute('aria-selected', on);
+                    document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
+                });
+                if (pane) target.scrollIntoView();
+                if (push) history.replaceState(null, '', '#' + id);
+            };
+            tabs.forEach((t) => t.addEventListener('click', () => show(t.getAttribute('aria-controls'), true)));
+            show(location.hash.slice(1), false);
+            window.addEventListener('hashchange', () => show(location.hash.slice(1), false));
+        })();
+
+        // Leaderboard: re-rank by field
+        (function () {
+            const FIELDS = {"all":{"n":171,"m":{"haiku":[41.85,5.0],"opus":[52.2,0.0],"sonnet":[56.24,14.0],"gpt51":[49.54,3.0],"gpt55":[54.44,1.0],"astra":[57.84,10.0],"oss":[48.26,9.0],"g31b":[47.38,14.0],"qwen":[49.24,4.0]}},"not-ml":{"n":90,"m":{"haiku":[41.91,4.0],"opus":[53.61,0.0],"sonnet":[55.58,5.0],"gpt51":[49.43,1.0],"gpt55":[53.49,0.0],"astra":[56.46,4.0],"oss":[46.83,6.0],"g31b":[42.2,8.0],"qwen":[47.1,1.8]}},"computational-physics":{"n":40,"m":{"haiku":[43.06,1.0],"opus":[54.12,0.0],"sonnet":[56.26,2.0],"gpt51":[51.22,0.0],"gpt55":[53.35,0.0],"astra":[55.99,3.0],"oss":[48.32,2.0],"g31b":[46.82,6.0],"qwen":[50.47,1.6]}},"materials-science":{"n":8,"m":{"haiku":[36.28,0.0],"opus":[67.85,0.0],"sonnet":[59.77,1.0],"gpt51":[48.21,0.0],"gpt55":[63.76,0.0],"astra":[69.83,0.0],"oss":[47.43,0.0],"g31b":[40.93,0.0],"qwen":[41.16,0.0]}},"ml-systems":{"n":81,"m":{"haiku":[41.78,1.0],"opus":[50.63,0.0],"sonnet":[56.96,9.0],"gpt51":[49.67,2.0],"gpt55":[55.49,1.0],"astra":[59.39,6.0],"oss":[49.85,3.0],"g31b":[53.13,6.0],"qwen":[51.63,2.2]}},"ecology-evolution":{"n":8,"m":{"haiku":[18.02,0.0],"opus":[39.28,0.0],"sonnet":[41.1,0.0],"gpt51":[29.8,0.0],"gpt55":[40.04,0.0],"astra":[39.18,0.0],"oss":[24.39,0.0],"g31b":[25.5,0.0],"qwen":[23.85,0.0]}},"computational-chemistry":{"n":3,"m":{"haiku":[29.74,0.0],"opus":[59.68,0.0],"sonnet":[50.45,0.0],"gpt51":[29.48,0.0],"gpt55":[37.29,0.0],"astra":[50.42,0.0],"oss":[24.96,0.0],"g31b":[28.7,0.0],"qwen":[33.8,0.0]}},"computational-neuroscience":{"n":5,"m":{"haiku":[46.79,0.0],"opus":[55.44,0.0],"sonnet":[49.63,0.0],"gpt51":[50.78,0.0],"gpt55":[52.64,0.0],"astra":[51.27,0.0],"oss":[56.18,0.0],"g31b":[28.23,0.0],"qwen":[57.62,0.0]}},"computational-biology":{"n":17,"m":{"haiku":[55.71,3.0],"opus":[49.17,0.0],"sonnet":[65.09,2.0],"gpt51":[60.94,1.0],"gpt55":[57.63,0.0],"astra":[60.84,1.0],"oss":[59.71,4.0],"g31b":[51.28,2.0],"qwen":[54.85,0.1]}},"astrophysics-cosmology":{"n":4,"m":{"haiku":[36.28,0.0],"opus":[54.87,0.0],"sonnet":[48.31,0.0],"gpt51":[44.42,0.0],"gpt55":[47.65,0.0],"astra":[57.57,0.0],"oss":[40.79,0.0],"g31b":[25.85,0.0],"qwen":[43.37,0.0]}},"earth-climate-geospatial":{"n":5,"m":{"haiku":[40.03,0.0],"opus":[58.29,0.0],"sonnet":[49.14,0.0],"gpt51":[43.86,0.0],"gpt55":[60.89,0.0],"astra":[59.54,0.0],"oss":[34.6,0.0],"g31b":[38.3,0.0],"qwen":[40.86,0.0]}}};
+            const sel = document.getElementById('fieldSel'), tb = document.querySelector('#board tbody'), note = document.getElementById('fieldNote');
+            function show(f) {
+                const d = FIELDS[f], rows = Array.from(tb.querySelectorAll('tr[data-k]'));
+                rows.forEach((tr) => {
+                    const [mean, solved] = d.m[tr.dataset.k];
+                    tr.querySelector('.track i').style.width = mean.toFixed(1) + '%';
+                    tr.querySelector('.v').textContent = mean.toFixed(1);
+                    const s = tr.querySelector('.solved');
+                    s.textContent = Math.round(solved);
+                    s.classList.toggle('solved-0', Math.round(solved) === 0);
+                    tr.dataset.mean = mean;
+                });
+                rows.sort((a, b) => b.dataset.mean - a.dataset.mean).forEach((tr) => tb.appendChild(tr));
+                note.textContent = d.n < 10 ? 'Only ' + d.n + ' tasks in this field, too few to rank models reliably.' : '';
+            }
+            sel.addEventListener('change', () => show(sel.value));
+        })();
+
+        // Tooltips on chart marks
+        (function () {
+            const tip = document.getElementById('tip');
+            const place = (e) => {
+                const r = tip.getBoundingClientRect();
+                let x = e.clientX + 14, y = e.clientY + 14;
+                if (x + r.width > innerWidth - 8) x = e.clientX - r.width - 14;
+                if (y + r.height > innerHeight - 8) y = e.clientY - r.height - 14;
+                tip.style.left = x + 'px'; tip.style.top = y + 'px';
+            };
+            document.querySelectorAll('[data-tip]').forEach((el) => {
+                const html = el.getAttribute('data-tip');
+                el.addEventListener('mouseenter', (e) => { tip.innerHTML = html; tip.classList.add('show'); place(e); });
+                el.addEventListener('mousemove', place);
+                el.addEventListener('mouseleave', () => tip.classList.remove('show'));
+                el.addEventListener('focus', () => {
+                    const r = el.getBoundingClientRect();
+                    tip.innerHTML = html; tip.classList.add('show'); place({ clientX: r.right, clientY: r.top });
+                });
+                el.addEventListener('blur', () => tip.classList.remove('show'));
+            });
+        })();
+
+        // Lightbox for example figures
+        (function () {
+            const box = document.getElementById('lightbox'), img = document.getElementById('lightboxImg');
+            const close = () => { box.classList.remove('open'); img.src = ''; document.body.style.overflow = ''; };
+            document.querySelectorAll('.plate').forEach((p) => p.addEventListener('click', () => {
+                const i = p.querySelector('img'); img.src = i.src; img.alt = i.alt;
+                box.classList.add('open'); document.body.style.overflow = 'hidden';
+            }));
+            box.addEventListener('click', close);
+            document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && box.classList.contains('open')) close(); });
+        })();
+
+        document.querySelectorAll('[data-ga]').forEach(el => {
+            el.addEventListener('click', () => {
+                if (typeof gtag !== 'function') return;
+                const name = el.getAttribute('data-ga');
+                const params = name.includes('_click_')
+                    ? { location: name.slice(name.lastIndexOf('_click_') + '_click_'.length), page: 'matplotgym' }
+                    : { location: 'matplotgym' };
+                gtag('event', name, params);
+            });
+        });
+    </script>
+</body>
+</html>

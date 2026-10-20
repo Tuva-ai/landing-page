@@ -98,7 +98,7 @@ body {
 }
 
 .legal-title {
-    font-size: 2rem;
+    font-size: 1.75rem;
     font-weight: 600;
     letter-spacing: -0.02em;
     line-height: 1.2;
@@ -274,7 +274,155 @@ body {
     .header { padding: 1rem 1.5rem; }
     .header-nav { gap: 1rem; }
     .main-content { padding: 2.5rem 1.5rem; }
-    .legal-title { font-size: 1.6rem; }
+    .legal-title { font-size: 1.4rem; }
     .footer-row { gap: 1.25rem; }
     .legal-body table { display: block; overflow-x: auto; }
+}
+
+/* Consent Mode v2 banner */
+.consent-banner {
+    position: fixed;
+    left: 1.25rem;
+    right: 1.25rem;
+    bottom: 1.25rem;
+    z-index: 200;
+    max-width: 640px;
+    margin: 0 auto;
+    display: none;
+    gap: 1.25rem;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 1.15rem 1.35rem;
+    background: var(--bg-card);
+    border: 2px solid var(--text);
+    border-radius: 4px;
+    box-shadow: 6px 6px 0 var(--pale-green);
+}
+.consent-banner.show { display: flex; }
+.consent-text {
+    flex: 1 1 300px;
+    font-size: 0.82rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+}
+.consent-text a { color: var(--text); text-decoration: underline; }
+.consent-actions { display: flex; gap: 0.6rem; flex-shrink: 0; }
+.consent-btn {
+    padding: 0.55rem 1.1rem;
+    border-radius: 4px;
+    border: 2px solid var(--accent);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.82rem;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.2s ease;
+}
+.consent-btn.decline { background: transparent; color: var(--text); }
+.consent-btn.decline:hover { background: var(--bg-soft); }
+.consent-btn.accept { background: var(--accent); border-color: var(--accent); color: var(--accent-fg); }
+.consent-btn.accept:hover { transform: scale(1.04); }
+@media (max-width: 480px) {
+    .consent-actions { width: 100%; }
+    .consent-btn { flex: 1; }
+}
+
+/* "Get in touch" menu (contact-menu.js)
+   .contact-menu wraps the button (.contact-trigger) and its .contact-pop list.
+   The script sets .is-open; .is-ready marks menus it has wired up. */
+.contact-menu { position: relative; display: inline-flex; }
+
+.contact-pop {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    z-index: 150;
+    min-width: 210px;
+    max-width: calc(100vw - 2rem);
+    padding: 0.35rem;
+    background: var(--bg-card);
+    border: 2px solid var(--text);
+    border-radius: 4px;
+    box-shadow: 6px 6px 0 var(--pale-green);
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(-4px);
+    transition: opacity 0.15s ease, transform 0.15s ease, visibility 0s linear 0.15s;
+}
+.contact-pop.to-left { right: auto; left: 0; }
+
+/* Bridges the gap so the pointer can move from the button into the menu */
+.contact-pop::before {
+    content: "";
+    position: absolute;
+    left: -2px;
+    right: -2px;
+    top: -10px;
+    height: 10px;
+}
+
+.contact-menu.is-open .contact-pop,
+.contact-pop:focus-within {
+    visibility: visible;
+    opacity: 1;
+    transform: none;
+    transition-delay: 0s;
+}
+
+/* Without the script, plain hover still shows the menu */
+@media (hover: hover) {
+    .contact-menu:not(.is-ready):hover .contact-pop {
+        visibility: visible;
+        opacity: 1;
+        transform: none;
+        transition-delay: 0s;
+    }
+}
+
+.contact-pop a {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.6rem 0.75rem;
+    border-radius: 3px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    font-weight: 500;
+    line-height: 1.2;
+    color: var(--text);
+    text-decoration: none;
+    white-space: nowrap;
+}
+.contact-pop a:hover,
+.contact-pop a:focus { background: var(--bg-soft); }
+
+.contact-pop a::before {
+    content: "";
+    flex: none;
+    width: 16px;
+    height: 16px;
+    background: currentColor;
+    -webkit-mask: var(--contact-icon) center / 16px 16px no-repeat;
+    mask: var(--contact-icon) center / 16px 16px no-repeat;
+}
+.contact-pop a::after {
+    content: "\2197";
+    margin-left: auto;
+    padding-left: 1rem;
+    color: var(--text-tertiary);
+}
+.contact-pop a:hover::after,
+.contact-pop a:focus::after { color: var(--text); }
+
+/* Calendar for "Schedule a call", clipboard for "Interest form" */
+.contact-pop a {
+    --contact-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='4.5' width='18' height='17' rx='2'/%3E%3Cpath d='M8 2.5v4M16 2.5v4M3 10h18'/%3E%3C/svg%3E");
+}
+.contact-pop a[data-tf-form] {
+    --contact-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='8' y='2' width='8' height='4' rx='1'/%3E%3Cpath d='M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2M9 12h6M9 16h4'/%3E%3C/svg%3E");
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .contact-pop { transform: none; transition: none; }
 }

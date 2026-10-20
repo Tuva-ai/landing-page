@@ -19,12 +19,19 @@
         ad_personalization: 'denied',
         analytics_storage: 'denied',
         functionality_storage: 'granted',
-        security_storage: 'granted'
+        security_storage: 'granted',
+        wait_for_update: 500
       });
       gtag('set', 'ads_data_redaction', true);
-      // url_passthrough would append a _gl linker param to internal links; we stay cookieless
-      // and single-domain, so we take clean URLs over cross-page session stitching.
       gtag('set', 'url_passthrough', false);
+      try {
+        if (localStorage.getItem('tuva-consent') === 'granted') {
+          gtag('consent', 'update', {
+            ad_storage: 'granted', ad_user_data: 'granted',
+            ad_personalization: 'granted', analytics_storage: 'granted'
+          });
+        }
+      } catch (e) {}
 
       gtag('config', 'G-1SGTJKG3T7');
     </script>
@@ -60,9 +67,10 @@
             <span class="logo-text">Tuva AI</span>
         </a>
         <nav class="header-nav">
-            <a href="/">Home</a>
-            <a href="/privacy">Privacy Policy</a>
-        </nav>
+                <a href="/rao">Rao</a>
+                <a href="/research">Research</a>
+                <a href="/careers">Careers</a>
+            </nav>
     </header>
 
     <!-- Main Content -->
@@ -154,5 +162,39 @@
             <a href="/privacy">Privacy Policy</a>        </div>
         <div class="footer-copyright">© 2026 Tuva AI, Inc. All rights reserved.</div>
     </footer>
+
+    <!-- Consent Mode v2 banner -->
+    <div class="consent-banner" id="consentBanner" role="dialog" aria-live="polite" aria-label="Cookie consent">
+        <p class="consent-text">
+            We use cookies to measure traffic and improve the site. Accept analytics cookies
+            or decline &mdash; see our <a href="/privacy">privacy policy</a>.
+        </p>
+        <div class="consent-actions">
+            <button type="button" class="consent-btn decline" id="consentDecline">Decline</button>
+            <button type="button" class="consent-btn accept" id="consentAccept">Accept</button>
+        </div>
+    </div>
+
+    <script>
+        (function () {
+            var banner = document.getElementById('consentBanner');
+            if (!banner) return;
+            var saved = null;
+            try { saved = localStorage.getItem('tuva-consent'); } catch (e) {}
+            if (saved !== 'granted' && saved !== 'denied') banner.classList.add('show');
+            function choose(value) {
+                try { localStorage.setItem('tuva-consent', value); } catch (e) {}
+                if (typeof gtag === 'function') {
+                    gtag('consent', 'update', {
+                        ad_storage: value, ad_user_data: value,
+                        ad_personalization: value, analytics_storage: value
+                    });
+                }
+                banner.classList.remove('show');
+            }
+            document.getElementById('consentAccept').addEventListener('click', function () { choose('granted'); });
+            document.getElementById('consentDecline').addEventListener('click', function () { choose('denied'); });
+        })();
+    </script>
 </body>
 </html>
