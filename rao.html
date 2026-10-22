@@ -1190,6 +1190,7 @@
         .rp-chart text { font-family: 'JetBrains Mono', monospace; font-size: 8px; fill: var(--text-tertiary); }
         .rp-row { display: flex; align-items: center; gap: 0.45rem; }
         .rp-row i { height: 6px; border-radius: 3px; background: var(--bg-soft); border: 1px solid var(--border); flex: 1 1 auto; min-width: 1.5rem; }
+        .rp-txt { flex: 1 1 auto; min-width: 0; font-size: 0.66rem; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
         .rp-row .rd-src { margin: 0; flex: none; max-width: 65%; overflow: hidden; text-overflow: ellipsis; }
         .rp-ex { display: flex; gap: 0.35rem; }
         .rp-ex span { border: 1px solid var(--border); border-radius: 3px; padding: 0.1rem 0.45rem; background: var(--bg-card); color: var(--text-secondary); font-size: 0.64rem; }
@@ -1241,7 +1242,8 @@
         .kx-svg .hi { opacity: 0; animation: kxRead 6s linear infinite; animation-delay: calc(var(--i) * 1s); }
         .kx-svg .hi .doc { fill: rgba(91, 79, 214, 0.18); stroke: var(--c-indigo); stroke-width: 2.2; }
         .kx-svg .hi .seek { fill: none; stroke: var(--c-indigo); stroke-width: 1.8; stroke-dasharray: 4 4; }
-        .kx-svg .mag { fill: var(--bg-card); stroke: var(--c-indigo); stroke-width: 1.5; stroke-linecap: round; }
+        .kx-svg .mag { fill: var(--bg-card); stroke: var(--c-indigo); stroke-width: 1.8; }
+        .kx-svg .mag-h { fill: none; stroke: var(--c-indigo); stroke-width: 3; stroke-linecap: round; }
         @keyframes kxRead { 0% { opacity: 0; } 3% { opacity: 1; } 14% { opacity: 1; } 17% { opacity: 0; } 100% { opacity: 0; } }
 
         .kx-svg.kx-v { display: none; }
@@ -1722,7 +1724,7 @@
                         </header>
                         <div class="ag-vis">
                             <div class="rp-doc">
-                                <div class="rp-top"><b>Weekly ensemble report</b><span>Oct 12</span></div>
+                                <div class="rp-top"><b>Weekly research summary</b><span>Oct 12</span></div>
                                 <svg class="rp-chart" viewBox="0 0 220 58" aria-hidden="true">
                                     <line x1="10" y1="46" x2="214" y2="46"/>
                                     <rect x="22" y="14" width="26" height="32" fill="#3b82f6"/>
@@ -1731,10 +1733,9 @@
                                     <rect x="162" y="24" width="26" height="22" fill="#a855f7"/>
                                     <text x="55" y="57" text-anchor="middle">2050</text><text x="155" y="57" text-anchor="middle">2100</text>
                                 </svg>
-                                <div class="rp-row"><i></i><span class="rd-src">02_ensembles.ipynb</span></div>
-                                <div class="rp-row"><i></i><span class="rd-src ext">Notion · Sep 16</span></div>
-                                <div class="rp-row"><i></i><span class="rd-src">GitHub · #42</span></div>
-                                <div class="rp-row"><i style="flex:0 1 55%"></i></div>
+                                <div class="rp-row"><span class="rp-txt">+1.8&nbsp;&deg;C by 2050</span><span class="rd-src">02_ensembles.ipynb</span></div>
+                                <div class="rp-row"><span class="rp-txt">Drops 2 outlier models</span><span class="rd-src ext">Notion · Oct 9</span></div>
+                                <div class="rp-row"><span class="rp-txt">Uses the bias fix</span><span class="rd-src">GitHub · #42</span></div>
                             </div>
                             <div class="rp-ex"><span>Slides</span><span>Docs</span><span>Markdown</span></div>
                         </div>
@@ -1788,12 +1789,12 @@
 <rect class="ic-openai" x="166" y="18" width="22" height="22" rx="5"/><use class="g" href="#g-openai" x="170" y="22" width="14" height="14"/>
 <image href="/logos/cursor.svg" x="194" y="18" width="22" height="22"/>
 <line class="link" x1="177" y1="54" x2="177" y2="64"/>
-<g><path class="doc" d="M37 72 H55 L63 80 V104 H37 Z"/><path class="fold" d="M55 72 V80 H63"/><text class="fl" x="50" y="119" text-anchor="middle">detrend_lc.py</text><g class="hi" style="--i:0"><path class="seek" d="M177 64 H50 V72"/><path class="doc" d="M37 72 H55 L63 80 V104 H37 Z"/><path class="fold" d="M55 72 V80 H63"/><circle class="mag" cx="58" cy="94" r="4.5"/><path class="mag" d="M61.2 97.2 l3.5 3.5"/></g></g>
-<g><path class="doc" d="M137 72 H155 L163 80 V104 H137 Z"/><path class="fold" d="M155 72 V80 H163"/><text class="fl" x="150" y="119" text-anchor="middle">kim2026.pdf</text><g class="hi" style="--i:1"><path class="seek" d="M177 64 H150 V72"/><path class="doc" d="M137 72 H155 L163 80 V104 H137 Z"/><path class="fold" d="M155 72 V80 H163"/><circle class="mag" cx="158" cy="94" r="4.5"/><path class="mag" d="M161.2 97.2 l3.5 3.5"/></g></g>
-<g><path class="doc" d="M237 72 H255 L263 80 V104 H237 Z"/><path class="fold" d="M255 72 V80 H263"/><text class="fl" x="250" y="119" text-anchor="middle">fig3.png</text><g class="hi" style="--i:2"><path class="seek" d="M177 64 H250 V72"/><path class="doc" d="M237 72 H255 L263 80 V104 H237 Z"/><path class="fold" d="M255 72 V80 H263"/><circle class="mag" cx="258" cy="94" r="4.5"/><path class="mag" d="M261.2 97.2 l3.5 3.5"/></g></g>
-<g><path class="doc" d="M37 130 H55 L63 138 V162 H37 Z"/><path class="fold" d="M55 130 V138 H63"/><text class="fl" x="50" y="177" text-anchor="middle">02_tess.ipynb</text><g class="hi" style="--i:3"><path class="seek" d="M177 64 H100 V146 H63"/><path class="doc" d="M37 130 H55 L63 138 V162 H37 Z"/><path class="fold" d="M55 130 V138 H63"/><circle class="mag" cx="42" cy="152" r="4.5"/><path class="mag" d="M38.8 155.2 l-3.5 3.5"/></g></g>
-<g><path class="doc" d="M137 130 H155 L163 138 V162 H137 Z"/><path class="fold" d="M155 130 V138 H163"/><text class="fl" x="150" y="177" text-anchor="middle">targets.csv</text><g class="hi" style="--i:4"><path class="seek" d="M177 64 H100 V146 H137"/><path class="doc" d="M137 130 H155 L163 138 V162 H137 Z"/><path class="fold" d="M155 130 V138 H163"/><circle class="mag" cx="158" cy="152" r="4.5"/><path class="mag" d="M161.2 155.2 l3.5 3.5"/></g></g>
-<g><path class="doc" d="M237 130 H255 L263 138 V162 H237 Z"/><path class="fold" d="M255 130 V138 H263"/><text class="fl" x="250" y="177" text-anchor="middle">obs_log.xlsx</text><g class="hi" style="--i:5"><path class="seek" d="M177 64 H200 V146 H237"/><path class="doc" d="M237 130 H255 L263 138 V162 H237 Z"/><path class="fold" d="M255 130 V138 H263"/><circle class="mag" cx="258" cy="152" r="4.5"/><path class="mag" d="M261.2 155.2 l3.5 3.5"/></g></g>
+<g><path class="doc" d="M37 72 H55 L63 80 V104 H37 Z"/><path class="fold" d="M55 72 V80 H63"/><text class="fl" x="50" y="119" text-anchor="middle">detrend_lc.py</text><g class="hi" style="--i:0"><path class="seek" d="M177 64 H50 V72"/><path class="doc" d="M37 72 H55 L63 80 V104 H37 Z"/><path class="fold" d="M55 72 V80 H63"/><path class="mag-h" d="M53.5 91.5 L58.5 96.5"/><circle class="mag" cx="49" cy="87" r="5.5"/></g></g>
+<g><path class="doc" d="M137 72 H155 L163 80 V104 H137 Z"/><path class="fold" d="M155 72 V80 H163"/><text class="fl" x="150" y="119" text-anchor="middle">kim2026.pdf</text><g class="hi" style="--i:1"><path class="seek" d="M177 64 H150 V72"/><path class="doc" d="M137 72 H155 L163 80 V104 H137 Z"/><path class="fold" d="M155 72 V80 H163"/><path class="mag-h" d="M153.5 91.5 L158.5 96.5"/><circle class="mag" cx="149" cy="87" r="5.5"/></g></g>
+<g><path class="doc" d="M237 72 H255 L263 80 V104 H237 Z"/><path class="fold" d="M255 72 V80 H263"/><text class="fl" x="250" y="119" text-anchor="middle">fig3.png</text><g class="hi" style="--i:2"><path class="seek" d="M177 64 H250 V72"/><path class="doc" d="M237 72 H255 L263 80 V104 H237 Z"/><path class="fold" d="M255 72 V80 H263"/><path class="mag-h" d="M253.5 91.5 L258.5 96.5"/><circle class="mag" cx="249" cy="87" r="5.5"/></g></g>
+<g><path class="doc" d="M37 130 H55 L63 138 V162 H37 Z"/><path class="fold" d="M55 130 V138 H63"/><text class="fl" x="50" y="177" text-anchor="middle">02_tess.ipynb</text><g class="hi" style="--i:3"><path class="seek" d="M177 64 H100 V146 H63"/><path class="doc" d="M37 130 H55 L63 138 V162 H37 Z"/><path class="fold" d="M55 130 V138 H63"/><path class="mag-h" d="M53.5 149.5 L58.5 154.5"/><circle class="mag" cx="49" cy="145" r="5.5"/></g></g>
+<g><path class="doc" d="M137 130 H155 L163 138 V162 H137 Z"/><path class="fold" d="M155 130 V138 H163"/><text class="fl" x="150" y="177" text-anchor="middle">targets.csv</text><g class="hi" style="--i:4"><path class="seek" d="M177 64 H100 V146 H137"/><path class="doc" d="M137 130 H155 L163 138 V162 H137 Z"/><path class="fold" d="M155 130 V138 H163"/><path class="mag-h" d="M153.5 149.5 L158.5 154.5"/><circle class="mag" cx="149" cy="145" r="5.5"/></g></g>
+<g><path class="doc" d="M237 130 H255 L263 138 V162 H237 Z"/><path class="fold" d="M255 130 V138 H263"/><text class="fl" x="250" y="177" text-anchor="middle">obs_log.xlsx</text><g class="hi" style="--i:5"><path class="seek" d="M177 64 H200 V146 H237"/><path class="doc" d="M237 130 H255 L263 138 V162 H237 Z"/><path class="fold" d="M255 130 V138 H263"/><path class="mag-h" d="M253.5 149.5 L258.5 154.5"/><circle class="mag" cx="249" cy="145" r="5.5"/></g></g>
 </svg>
                         <figcaption class="kx-cap">Only sees saved files and has to re&#8209;infer connections.</figcaption>
                     </figure>
