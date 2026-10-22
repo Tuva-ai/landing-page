@@ -1184,13 +1184,14 @@
         .rp-top { display: flex; justify-content: space-between; align-items: baseline; }
         .rp-top b { font-size: 0.74rem; }
         .rp-top span { color: var(--text-tertiary); font-size: 0.62rem; }
-        .rp-chart { width: 100%; height: 58px; display: block; }
+        .rp-chart { width: 100%; max-width: 260px; height: auto; display: block; margin-inline: auto; }
         .rp-chart rect { stroke: var(--text); stroke-width: 1; }
         .rp-chart line { stroke: var(--text); stroke-width: 1; }
         .rp-chart text { font-family: 'JetBrains Mono', monospace; font-size: 8px; fill: var(--text-tertiary); }
         .rp-row { display: flex; align-items: center; gap: 0.45rem; }
-        .rp-row i { height: 6px; border-radius: 3px; background: var(--bg-soft); border: 1px solid var(--border); flex: none; }
-        .rp-row .rd-src { margin: 0 0 0 auto; }
+        .rp-row i { height: 6px; border-radius: 3px; background: var(--bg-soft); border: 1px solid var(--border); flex: 1 1 auto; min-width: 1.5rem; }
+        .rp-txt { flex: 1 1 auto; min-width: 0; font-size: 0.66rem; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .rp-row .rd-src { margin: 0; flex: none; max-width: 65%; overflow: hidden; text-overflow: ellipsis; }
         .rp-ex { display: flex; gap: 0.35rem; }
         .rp-ex span { border: 1px solid var(--border); border-radius: 3px; padding: 0.1rem 0.45rem; background: var(--bg-card); color: var(--text-secondary); font-size: 0.64rem; }
 
@@ -1241,9 +1242,11 @@
         .kx-svg .hi { opacity: 0; animation: kxRead 6s linear infinite; animation-delay: calc(var(--i) * 1s); }
         .kx-svg .hi .doc { fill: rgba(91, 79, 214, 0.18); stroke: var(--c-indigo); stroke-width: 2.2; }
         .kx-svg .hi .seek { fill: none; stroke: var(--c-indigo); stroke-width: 1.8; stroke-dasharray: 4 4; }
-        .kx-svg .mag { fill: var(--bg-card); stroke: var(--c-indigo); stroke-width: 2.4; stroke-linecap: round; }
+        .kx-svg .mag { fill: var(--bg-card); stroke: var(--c-indigo); stroke-width: 1.8; }
+        .kx-svg .mag-h { fill: none; stroke: var(--c-indigo); stroke-width: 3; stroke-linecap: round; }
         @keyframes kxRead { 0% { opacity: 0; } 3% { opacity: 1; } 14% { opacity: 1; } 17% { opacity: 0; } 100% { opacity: 0; } }
 
+        .kx-svg.kx-v { display: none; }
         .kx-svg .brain { fill: var(--pale-green); stroke: var(--text); stroke-width: 1.5; }
         .kx-svg .flow { stroke: var(--c-indigo); stroke-width: 3; stroke-dasharray: 7 6; animation: kxFlow 1s linear infinite; }
         .kx-svg .badge { fill: #fff; stroke: var(--c-indigo); stroke-width: 1.5; }
@@ -1299,6 +1302,18 @@
             .rd-brain { padding: 1rem 0.9rem 0.8rem; }
             .rd-brain .rd-brain-svg:not(.rd-brain-v) { display: none; }
             .rd-brain .rd-brain-v { display: block; }
+            .rd-brain-v .lb { font-size: 16px; }
+            .rd-brain-v .lbs { font-size: 15px; }
+            .rd-brain-v .gt { font-size: 13px; }
+            .rd-brain-v .rao { font-size: 26px; }
+            .kx-card.rao .kx-svg:not(.kx-v) { display: none; }
+            .kx-card.rao .kx-v { display: block; }
+        }
+        @media (max-width: 400px) {
+            .header { padding: 0.85rem 1rem; gap: 0.75rem; }
+            .logo-section { gap: 0.5rem; flex: none; }
+            .logo-text { white-space: nowrap; }
+            .header .btn { padding-inline: 0.9rem; white-space: nowrap; }
         }
 
         /* Responsive */
@@ -1600,7 +1615,7 @@
 <rect class="card" x="310" y="40" width="270" height="36"/><circle class="nd c4" cx="328.0" cy="58.0" r="6.0"/><text class="lb" x="346" y="63">Notebooks</text>
 <rect class="card" x="20" y="86" width="270" height="36"/><path class="nd c3" d="M38.0 96.8 L45.2 109.8 L30.8 109.8 Z"/><text class="lb" x="56" y="109">Papers &amp; PDFs</text>
 <rect class="card" x="310" y="86" width="270" height="36"/><rect class="nd c4" x="322.0" y="98.0" width="12.0" height="12.0"/><text class="lb" x="346" y="109">Data files</text>
-<rect class="card" x="20" y="132" width="270" height="36"/><circle class="nd c2" cx="38.0" cy="150.0" r="6.0"/><text class="lb" x="56" y="155">Past AI sessions</text>
+<rect class="card" x="165" y="132" width="270" height="36"/><circle class="nd c2" cx="183.0" cy="150.0" r="6.0"/><text class="lb" x="201" y="155">Past AI sessions</text>
 <rect class="grp" x="20" y="184" width="560" height="132" rx="4"/>
 <text class="gt" x="36" y="208">CONNECTED APPS</text>
 <rect class="card" x="32" y="220" width="262" height="34"/><image href="/logos/notion-logo.png" x="40.0" y="229.0" width="16" height="16"/><text class="lb lbs" x="64" y="242">Notion</text>
@@ -1709,19 +1724,18 @@
                         </header>
                         <div class="ag-vis">
                             <div class="rp-doc">
-                                <div class="rp-top"><b>Weekly ensemble report</b><span>Oct 12</span></div>
-                                <svg class="rp-chart" viewBox="0 0 220 58" preserveAspectRatio="none" aria-hidden="true">
+                                <div class="rp-top"><b>Weekly research summary</b><span>Oct 12</span></div>
+                                <svg class="rp-chart" viewBox="0 0 220 58" aria-hidden="true">
                                     <line x1="10" y1="46" x2="214" y2="46"/>
                                     <rect x="22" y="14" width="26" height="32" fill="#3b82f6"/>
                                     <rect x="62" y="22" width="26" height="24" fill="#3b82f6"/>
                                     <rect x="122" y="6" width="26" height="40" fill="#a855f7"/>
                                     <rect x="162" y="24" width="26" height="22" fill="#a855f7"/>
-                                    <text x="44" y="56">2050</text><text x="146" y="56">2100</text>
+                                    <text x="55" y="57" text-anchor="middle">2050</text><text x="155" y="57" text-anchor="middle">2100</text>
                                 </svg>
-                                <div class="rp-row"><i style="width:58%"></i><span class="rd-src">02_ensembles.ipynb</span></div>
-                                <div class="rp-row"><i style="width:44%"></i><span class="rd-src ext">Notion · Sep 16</span></div>
-                                <div class="rp-row"><i style="width:52%"></i><span class="rd-src">GitHub · #42</span></div>
-                                <div class="rp-row"><i style="width:36%"></i></div>
+                                <div class="rp-row"><span class="rp-txt">+1.8&nbsp;&deg;C by 2050</span><span class="rd-src">02_ensembles.ipynb</span></div>
+                                <div class="rp-row"><span class="rp-txt">Drops 2 outlier models</span><span class="rd-src ext">Notion · Oct 9</span></div>
+                                <div class="rp-row"><span class="rp-txt">Uses the bias fix</span><span class="rd-src">GitHub · #42</span></div>
                             </div>
                             <div class="rp-ex"><span>Slides</span><span>Docs</span><span>Markdown</span></div>
                         </div>
@@ -1775,12 +1789,12 @@
 <rect class="ic-openai" x="166" y="18" width="22" height="22" rx="5"/><use class="g" href="#g-openai" x="170" y="22" width="14" height="14"/>
 <image href="/logos/cursor.svg" x="194" y="18" width="22" height="22"/>
 <line class="link" x1="177" y1="54" x2="177" y2="64"/>
-<g><path class="doc" d="M37 72 H55 L63 80 V104 H37 Z"/><path class="fold" d="M55 72 V80 H63"/><text class="fl" x="50" y="119" text-anchor="middle">detrend_lc.py</text><g class="hi" style="--i:0"><path class="seek" d="M177 64 H50 V72"/><path class="doc" d="M37 72 H55 L63 80 V104 H37 Z"/><path class="fold" d="M55 72 V80 H63"/><circle class="mag" cx="60" cy="96" r="7.5"/><path class="mag" d="M65 101 l6 6"/></g></g>
-<g><path class="doc" d="M137 72 H155 L163 80 V104 H137 Z"/><path class="fold" d="M155 72 V80 H163"/><text class="fl" x="150" y="119" text-anchor="middle">kim2026.pdf</text><g class="hi" style="--i:1"><path class="seek" d="M177 64 H150 V72"/><path class="doc" d="M137 72 H155 L163 80 V104 H137 Z"/><path class="fold" d="M155 72 V80 H163"/><circle class="mag" cx="160" cy="96" r="7.5"/><path class="mag" d="M165 101 l6 6"/></g></g>
-<g><path class="doc" d="M237 72 H255 L263 80 V104 H237 Z"/><path class="fold" d="M255 72 V80 H263"/><text class="fl" x="250" y="119" text-anchor="middle">fig3.png</text><g class="hi" style="--i:2"><path class="seek" d="M177 64 H250 V72"/><path class="doc" d="M237 72 H255 L263 80 V104 H237 Z"/><path class="fold" d="M255 72 V80 H263"/><circle class="mag" cx="260" cy="96" r="7.5"/><path class="mag" d="M265 101 l6 6"/></g></g>
-<g><path class="doc" d="M37 130 H55 L63 138 V162 H37 Z"/><path class="fold" d="M55 130 V138 H63"/><text class="fl" x="50" y="177" text-anchor="middle">02_tess.ipynb</text><g class="hi" style="--i:3"><path class="seek" d="M177 64 H100 V146 H63"/><path class="doc" d="M37 130 H55 L63 138 V162 H37 Z"/><path class="fold" d="M55 130 V138 H63"/><circle class="mag" cx="40" cy="154" r="7.5"/><path class="mag" d="M35 159 l-6 6"/></g></g>
-<g><path class="doc" d="M137 130 H155 L163 138 V162 H137 Z"/><path class="fold" d="M155 130 V138 H163"/><text class="fl" x="150" y="177" text-anchor="middle">targets.csv</text><g class="hi" style="--i:4"><path class="seek" d="M177 64 H100 V146 H137"/><path class="doc" d="M137 130 H155 L163 138 V162 H137 Z"/><path class="fold" d="M155 130 V138 H163"/><circle class="mag" cx="160" cy="154" r="7.5"/><path class="mag" d="M165 159 l6 6"/></g></g>
-<g><path class="doc" d="M237 130 H255 L263 138 V162 H237 Z"/><path class="fold" d="M255 130 V138 H263"/><text class="fl" x="250" y="177" text-anchor="middle">obs_log.xlsx</text><g class="hi" style="--i:5"><path class="seek" d="M177 64 H200 V146 H237"/><path class="doc" d="M237 130 H255 L263 138 V162 H237 Z"/><path class="fold" d="M255 130 V138 H263"/><circle class="mag" cx="260" cy="154" r="7.5"/><path class="mag" d="M265 159 l6 6"/></g></g>
+<g><path class="doc" d="M37 72 H55 L63 80 V104 H37 Z"/><path class="fold" d="M55 72 V80 H63"/><text class="fl" x="50" y="119" text-anchor="middle">detrend_lc.py</text><g class="hi" style="--i:0"><path class="seek" d="M177 64 H50 V72"/><path class="doc" d="M37 72 H55 L63 80 V104 H37 Z"/><path class="fold" d="M55 72 V80 H63"/><path class="mag-h" d="M53.5 91.5 L58.5 96.5"/><circle class="mag" cx="49" cy="87" r="5.5"/></g></g>
+<g><path class="doc" d="M137 72 H155 L163 80 V104 H137 Z"/><path class="fold" d="M155 72 V80 H163"/><text class="fl" x="150" y="119" text-anchor="middle">kim2026.pdf</text><g class="hi" style="--i:1"><path class="seek" d="M177 64 H150 V72"/><path class="doc" d="M137 72 H155 L163 80 V104 H137 Z"/><path class="fold" d="M155 72 V80 H163"/><path class="mag-h" d="M153.5 91.5 L158.5 96.5"/><circle class="mag" cx="149" cy="87" r="5.5"/></g></g>
+<g><path class="doc" d="M237 72 H255 L263 80 V104 H237 Z"/><path class="fold" d="M255 72 V80 H263"/><text class="fl" x="250" y="119" text-anchor="middle">fig3.png</text><g class="hi" style="--i:2"><path class="seek" d="M177 64 H250 V72"/><path class="doc" d="M237 72 H255 L263 80 V104 H237 Z"/><path class="fold" d="M255 72 V80 H263"/><path class="mag-h" d="M253.5 91.5 L258.5 96.5"/><circle class="mag" cx="249" cy="87" r="5.5"/></g></g>
+<g><path class="doc" d="M37 130 H55 L63 138 V162 H37 Z"/><path class="fold" d="M55 130 V138 H63"/><text class="fl" x="50" y="177" text-anchor="middle">02_tess.ipynb</text><g class="hi" style="--i:3"><path class="seek" d="M177 64 H100 V146 H63"/><path class="doc" d="M37 130 H55 L63 138 V162 H37 Z"/><path class="fold" d="M55 130 V138 H63"/><path class="mag-h" d="M53.5 149.5 L58.5 154.5"/><circle class="mag" cx="49" cy="145" r="5.5"/></g></g>
+<g><path class="doc" d="M137 130 H155 L163 138 V162 H137 Z"/><path class="fold" d="M155 130 V138 H163"/><text class="fl" x="150" y="177" text-anchor="middle">targets.csv</text><g class="hi" style="--i:4"><path class="seek" d="M177 64 H100 V146 H137"/><path class="doc" d="M137 130 H155 L163 138 V162 H137 Z"/><path class="fold" d="M155 130 V138 H163"/><path class="mag-h" d="M153.5 149.5 L158.5 154.5"/><circle class="mag" cx="149" cy="145" r="5.5"/></g></g>
+<g><path class="doc" d="M237 130 H255 L263 138 V162 H237 Z"/><path class="fold" d="M255 130 V138 H263"/><text class="fl" x="250" y="177" text-anchor="middle">obs_log.xlsx</text><g class="hi" style="--i:5"><path class="seek" d="M177 64 H200 V146 H237"/><path class="doc" d="M237 130 H255 L263 138 V162 H237 Z"/><path class="fold" d="M255 130 V138 H263"/><path class="mag-h" d="M253.5 149.5 L258.5 154.5"/><circle class="mag" cx="249" cy="145" r="5.5"/></g></g>
 </svg>
                         <figcaption class="kx-cap">Only sees saved files and has to re&#8209;infer connections.</figcaption>
                     </figure>
@@ -1789,7 +1803,7 @@
                     <figure class="kx-card rao" id="kxRao">
                         <span class="kx-tag">With Rao's brain</span>
 <svg class="kx-svg" viewBox="0 0 480 296" role="img" aria-label="With Rao, your AI plugs into Rao's research brain, which remembers automatically, including how things connect: an idea from the Kim et al. paper came up in a group meeting, which prompted detrend_lc.py, which produced Fig 3." xmlns="http://www.w3.org/2000/svg">
-<defs><marker id="kxArrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path class="arrow" d="M0 0 L8 4 L0 8 Z"/></marker></defs>
+<defs><marker id="kxArrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="arrow" d="M0 0 L8 4 L0 8 Z"/></marker></defs>
 <rect class="brain" x="186" y="14" width="288" height="272" rx="22"/>
 <line class="flow" x1="104" y1="150" x2="186" y2="150"/>
 <circle class="badge" cx="145" cy="150" r="15"/><image href="/logos/tuva-mark.png" x="135" y="143" width="20" height="15"/>
@@ -1800,13 +1814,33 @@
 <text class="lb" x="56" y="202" text-anchor="middle">Your AI</text>
 <g class="more"><line x1="440" y1="46" x2="430" y2="96"/><line x1="212" y1="118" x2="222" y2="64"/><line x1="212" y1="118" x2="222" y2="158"/><line x1="452" y1="184" x2="440" y2="220"/><line x1="452" y1="184" x2="446" y2="126"/><line x1="222" y1="240" x2="244" y2="188"/><line x1="440" y1="268" x2="400" y2="250"/><rect class="nd c1" x="436" y="42" width="8" height="8"/><circle class="nd c4" cx="212" cy="118" r="4.5"/><path class="nd c3" d="M452 179 L457 188 L447 188 Z"/><rect class="nd c5" x="218" y="236" width="8" height="8"/><circle class="nd c2" cx="440" cy="268" r="4.5"/></g>
 <g class="step" style="--s:0"><rect class="card" x="194" y="34" width="152" height="30" rx="4"/><path class="nd c3" d="M208 42 L215 55 L201 55 Z"/><text class="lb" x="221" y="53">Kim et al. 2026</text><g class="tick"><circle cx="346" cy="34" r="7"/><path d="M342 34 l2.5 2.5 l4.5 -5"/></g></g>
-<g class="step" style="--s:1"><path class="rel" d="M282 64 C282 82, 382 76, 382 94" marker-end="url(#kxArrow)"/><text class="rl" x="318" y="88" text-anchor="end">came up in</text></g>
+<g class="step" style="--s:1"><path class="rel" d="M282 64 C282 80, 382 66, 382 82 V94" marker-end="url(#kxArrow)"/><text class="rl" x="318" y="88" text-anchor="end">came up in</text></g>
 <g class="step" style="--s:1"><rect class="card" x="312" y="96" width="152" height="30" rx="4"/><circle class="nd c4" cx="326" cy="111" r="6"/><text class="lb" x="339" y="115">Group meeting</text><g class="tick"><circle cx="464" cy="96" r="7"/><path d="M460 96 l2.5 2.5 l4.5 -5"/></g></g>
-<g class="step" style="--s:2"><path class="rel" d="M382 126 C382 144, 282 138, 282 156" marker-end="url(#kxArrow)"/><text class="rl" x="346" y="149" text-anchor="start">prompted</text></g>
+<g class="step" style="--s:2"><path class="rel" d="M382 126 C382 142, 282 128, 282 144 V156" marker-end="url(#kxArrow)"/><text class="rl" x="390" y="146" text-anchor="start">prompted</text></g>
 <g class="step" style="--s:2"><rect class="card" x="194" y="158" width="152" height="30" rx="4"/><rect class="nd c1" x="202" y="167" width="12" height="12"/><text class="lb" x="221" y="177">detrend_lc.py</text><g class="tick"><circle cx="346" cy="158" r="7"/><path d="M342 158 l2.5 2.5 l4.5 -5"/></g></g>
-<g class="step" style="--s:3"><path class="rel" d="M282 188 C282 206, 382 200, 382 218" marker-end="url(#kxArrow)"/><text class="rl" x="318" y="212" text-anchor="end">produced</text></g>
+<g class="step" style="--s:3"><path class="rel" d="M282 188 C282 204, 382 190, 382 206 V218" marker-end="url(#kxArrow)"/><text class="rl" x="318" y="212" text-anchor="end">produced</text></g>
 <g class="step" style="--s:3"><rect class="card" x="312" y="220" width="152" height="30" rx="4"/><rect class="nd c2" x="320" y="229" width="12" height="12"/><text class="lb" x="339" y="239">Fig 3</text><g class="tick"><circle cx="464" cy="220" r="7"/><path d="M460 220 l2.5 2.5 l4.5 -5"/></g></g>
 <text class="bt" x="330" y="276" text-anchor="middle">Rao research brain</text>
+</svg>
+<svg class="kx-svg kx-v" viewBox="0 0 300 366" role="img" aria-label="With Rao, your AI plugs into Rao's research brain, which remembers automatically, including how things connect: an idea from the Kim et al. paper came up in a group meeting, which prompted detrend_lc.py, which produced Fig 3." xmlns="http://www.w3.org/2000/svg">
+<defs><marker id="kxArrowV" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="arrow" d="M0 0 L8 4 L0 8 Z"/></marker></defs>
+<rect class="brain" x="4" y="90" width="292" height="272" rx="22"/>
+<line class="flow" x1="150" y1="54" x2="150" y2="90"/>
+<circle class="badge" cx="150" cy="72" r="14"/><image href="/logos/tuva-mark.png" x="140" y="65" width="20" height="15"/>
+<text class="lb" x="94" y="33" text-anchor="end">Your AI</text>
+<rect class="agent" x="102" y="4" width="96" height="50" rx="6"/>
+<rect class="ic-claude" x="111" y="18" width="22" height="22" rx="5"/><use class="g" href="#g-claude" x="115" y="22" width="14" height="14"/>
+<rect class="ic-openai" x="139" y="18" width="22" height="22" rx="5"/><use class="g" href="#g-openai" x="143" y="22" width="14" height="14"/>
+<image href="/logos/cursor.svg" x="167" y="18" width="22" height="22"/>
+<g class="more"><line x1="266" y1="116" x2="276" y2="152"/><line x1="40" y1="196" x2="52" y2="234"/><line x1="276" y1="244" x2="262" y2="296"/><line x1="40" y1="318" x2="132" y2="311"/><line x1="272" y1="344" x2="250" y2="326"/><rect class="nd c1" x="262" y="112" width="8" height="8"/><circle class="nd c4" cx="40" cy="196" r="4.5"/><path class="nd c3" d="M276 239 L281 248 L271 248 Z"/><circle class="nd c2" cx="40" cy="318" r="4.5"/><rect class="nd c5" x="268" y="340" width="8" height="8"/></g>
+<g class="step" style="--s:0"><rect class="card" x="16" y="110" width="152" height="30" rx="4"/><path class="nd c3" d="M30 118 L37 131 L23 131 Z"/><text class="lb" x="43" y="129">Kim et al. 2026</text><g class="tick"><circle cx="168" cy="110" r="7"/><path d="M164 110 l2.5 2.5 l4.5 -5"/></g></g>
+<g class="step" style="--s:1"><path class="rel" d="M104 140 C104 156, 202 142, 202 158 V170" marker-end="url(#kxArrowV)"/><text class="rl" x="144" y="168" text-anchor="end">came up in</text></g>
+<g class="step" style="--s:1"><rect class="card" x="132" y="172" width="152" height="30" rx="4"/><circle class="nd c4" cx="146" cy="187" r="6"/><text class="lb" x="159" y="191">Group meeting</text><g class="tick"><circle cx="284" cy="172" r="7"/><path d="M280 172 l2.5 2.5 l4.5 -5"/></g></g>
+<g class="step" style="--s:2"><path class="rel" d="M202 202 C202 218, 104 204, 104 220 V232" marker-end="url(#kxArrowV)"/><text class="rl" x="210" y="222" text-anchor="start">prompted</text></g>
+<g class="step" style="--s:2"><rect class="card" x="16" y="234" width="152" height="30" rx="4"/><rect class="nd c1" x="24" y="243" width="12" height="12"/><text class="lb" x="43" y="253">detrend_lc.py</text><g class="tick"><circle cx="168" cy="234" r="7"/><path d="M164 234 l2.5 2.5 l4.5 -5"/></g></g>
+<g class="step" style="--s:3"><path class="rel" d="M104 264 C104 280, 202 266, 202 282 V294" marker-end="url(#kxArrowV)"/><text class="rl" x="144" y="292" text-anchor="end">produced</text></g>
+<g class="step" style="--s:3"><rect class="card" x="132" y="296" width="152" height="30" rx="4"/><rect class="nd c2" x="140" y="305" width="12" height="12"/><text class="lb" x="159" y="315">Fig 3</text><g class="tick"><circle cx="284" cy="296" r="7"/><path d="M280 296 l2.5 2.5 l4.5 -5"/></g></g>
+<text class="bt" x="150" y="350" text-anchor="middle">Rao research brain</text>
 </svg>
                         <figcaption class="kx-cap">Automatically remembers every detail and their relations.</figcaption>
                     </figure>
@@ -1817,12 +1851,12 @@
         <!-- Getting Started -->
         <section class="how-it-works" id="how-it-works">
             <div class="section-container">
-                <h2 class="section-title">Get started in 30 seconds.</h2>
+                <h2 class="section-title">Get started in minutes.</h2>
 
                 <div class="steps-grid">
                     <div class="step-card">
                         <div class="step-number s-1">01</div>
-                        <h3>Index your project in minutes</h3>
+                        <h3>Index your project</h3>
                         <p>Open Rao and point it at a project folder. It automatically builds a knowledge graph of how your files relate, both scientifically and structurally.</p>
                     </div>
                     <div class="step-card">
