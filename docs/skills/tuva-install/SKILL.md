@@ -6,12 +6,15 @@ description: Install or repair the Tuva CLI (persistent memory and project conte
 # Install Tuva
 
 Tuva is a small daemon that runs on the user's machine (or on their cluster) and gives
-their coding agent a persistent memory of each project through an MCP server called
-`tuva-context`. Installing it means: get the `tuva` command, start the daemon, sign in,
+their coding agent a persistent memory of each project through an MCP server (the
+Tuva plugin for Claude Code and Codex, a `tuva-context` entry for other agents).
+Installing it means: get the `tuva` command, start the daemon, sign in,
 initialise the user's project folders, turn on learning from agent sessions, point the
-agent at the MCP server, and build the first index. The CLI has a guided `tuva onboard`
-command for humans; this skill runs the same steps one at a time so you can verify
-each one and recover from the failures seen in real onboardings.
+agent at the MCP server, and build the first index. On most machines a plain
+`pip install tuva` followed by `tuva` does nearly all of that in a few minutes, so a
+first install always tries that first ("Quick install"). The phases after it run the
+same steps one at a time, so you can verify each one and recover from the failures
+seen in real onboardings. Use them only when the quick install fails.
 
 **You do the work.** The user is an intelligent researcher with no software background.
 Run every command yourself and ask only for what you cannot detect: their email, which
@@ -20,13 +23,14 @@ transcripts. Only give the user commands to paste if your shell tool is unavaila
 every command is being denied. Explain what you are doing in one line per phase.
 
 At the start, say once: you will run about a dozen commands, and if their agent asks
-for approval, allowing `tuva` and `uv` commands for this session saves clicking through
-each one. Never suggest disabling permissions globally.
+for approval, allowing `tuva`, `pip` and `uv` commands for this session saves clicking
+through each one. Never suggest disabling permissions globally.
 
-Work through the phases in order. Every phase ends with a check. Do not move on until
-the check passes. When something fails, the documented fixes are a starting point, not
-a limit: keep working the problem as described in "When you are stuck", and only hand
-off to a human once you have run out of things to try.
+When you fall back to the phases, work through them in order. Every phase ends with a
+check. Do not move on until the check passes. When something fails, the documented
+fixes are a starting point, not a limit: keep working the problem as described in
+"When you are stuck", and only hand off to a human once you have run out of things to
+try.
 
 ## Two routes, keyed on the CLI version
 
@@ -57,6 +61,91 @@ Ask it as one short question listing the four options, and wait for the answer. 
 answer names a cluster, ask whether you are running on it now or reaching it over SSH,
 and read "Remote target mode" at the end of this file before doing anything else. If
 the answer is a repair, say what you are about to do before upgrading anything.
+
+For a first install (options 1 and 2), go to "Quick install" next. For a repair
+(options 3 and 4), skip it and start at Phase 1.
+
+## Quick install
+
+Try the plain install before anything else. Do not run the Phase 1 checks first, and
+do not install uv separately: the `tuva` package brings its own. Fall back to the
+phases only when a step here fails, and say so in one line when you do.
+
+**1. Install and run it** from the user's main project folder (ask which folder if you
+are not already in one; not their home folder):
+
+```bash
+cd /path/to/project
+python3 -m pip install tuva
+tuva --version
+tuva
+```
+
+On Windows use `python -m pip install tuva`, then the same `tuva` commands.
+
+- If pip refuses with "externally-managed-environment" or a permissions error, retry
+  once with `python3 -m pip install --user tuva` and
+  `export PATH="$HOME/.local/bin:$PATH"`.
+- If `tuva` is still not found, or pip fails any other way (no network, build errors,
+  Python older than 3.10), stop here and go to Phase 1.
+
+Bare `tuva` runs Tuva's guided setup. With no terminal attached it asks nothing: it
+checks the environment, starts the daemon, sets up the current folder as a project,
+then prints a checklist marking the steps it skipped because they need an answer. The
+first run downloads Tuva's backend, which takes about a minute on a laptop and can take
+several on a cluster. Do not kill it and do not start a second one.
+
+Check: the checklist shows "Check your environment" and "Start the Tuva daemon" as
+done. If either failed, go to Phase 1. The install itself is probably fine; the phases
+will find what is wrong.
+
+**2. Ask the user for what setup skipped**, in one message:
+
+- the email they use with Tuva;
+- whether they agree to the terms (https://tuva.ai/terms) and privacy policy
+  (https://tuva.ai/privacy); Tuva cannot be used without this;
+- whether Tuva may learn from their past Claude Code, Codex and Cursor sessions for
+  this project (the last 60 days of transcripts become project memory and are sent to
+  the model that writes memory summaries);
+- which agents to connect: Claude Code, Codex, Cursor. Default to the one you are.
+
+**3. Sign in and finish setup:**
+
+```bash
+tuva auth login --email "<email>" --no-prompt
+tuva auth verify --email "<email>" --code "<code>" --accept-terms
+```
+
+Ask the user to read you the code from the email. Pass `--accept-terms` only if they
+agreed; without it a new account is signed straight back out. If the code never
+arrives or is rejected, see Phase 4.
+
+Then, from the project folder, with the first agent they chose:
+
+```bash
+# Session learning: yes. Also builds the first index and connects the agent.
+tuva onboard --yes --agent claude
+
+# Session learning: no.
+tuva onboard --agent claude
+tuva index .
+```
+
+`--agent` takes `claude`, `codex` or `cursor`. Connect any other agent they chose with
+`tuva mcp configure <agent>`.
+
+**4. Check:**
+
+```bash
+tuva
+tuva mcp status
+```
+
+Once setup is complete, bare `tuva` prints a status view instead of running setup. It
+should show the daemon running, the user signed in, terms agreed and this folder as a
+project, and `tuva mcp status` should show each chosen agent as enabled. If all of
+that holds, go to Phase 9. If anything is missing, run the phase that covers it
+(sign-in is Phase 4, sessions Phase 6, agents Phase 7, index Phase 8), then Phase 9.
 
 ## Phase 1: Detect the environment
 
@@ -125,9 +214,9 @@ export PATH="$HOME/.local/bin:$PATH"
 tuva --version
 ```
 
-On Windows the same command works in PowerShell. Never use plain `pip install tuva`
-on Windows: it leaves `tuva` off PATH so every command needs `python -m tuva.cli`, and
-it does not install uv, which the daemon needs.
+On Windows the same command works in PowerShell. If the quick install's plain
+`pip install tuva` left `tuva` off PATH (every command needing `python -m tuva.cli`),
+this is the fix: install with uv instead.
 
 Make PATH persist: append `export PATH="$HOME/.local/bin:$PATH"` to the user's shell rc
 file (`~/.zshrc` or `~/.bashrc`; on Windows, the PowerShell `$PROFILE`) if it is not
@@ -219,14 +308,17 @@ again. Launch the backend only through `tuva start`, never by hand.
 ## Phase 4: Sign in
 
 Sign-in is an email one-time code. Ask the user for the email address they use with
-Tuva and confirm it back in one line. Then:
+Tuva and confirm it back in one line, and ask whether they agree to the terms
+(https://tuva.ai/terms) and privacy policy (https://tuva.ai/privacy). Then:
 
 **Route B (newer than 0.1.11):** send the code, ask the user to read it to you from
-their inbox, and verify it. The code is single-use and expires in minutes.
+their inbox, and verify it. The code is single-use and expires in minutes. Pass
+`--accept-terms` only if the user agreed; without it a new account is signed straight
+back out, because there is no terminal to ask on.
 
 ```bash
 tuva auth login --email "<email>" --no-prompt      # sends the code and exits
-tuva auth verify --email "<email>" --code "<code>"
+tuva auth verify --email "<email>" --code "<code>" --accept-terms
 ```
 
 **Route A (0.1.11):** the command prompts for the code in a terminal you do not have.
@@ -315,12 +407,38 @@ For each chosen agent:
 tuva mcp configure claude     # or codex, or cursor
 ```
 
-This writes a `tuva-context` entry into that agent's own config file
-(`~/.claude.json`, `~/.codex/config.toml`, or `~/.cursor/mcp.json`). It must run on the
-machine where that agent runs.
+It must run on the machine where that agent runs. What it writes depends on the agent:
 
-Check, per agent: `claude mcp list` or `codex mcp list` shows `tuva-context`; for
-Cursor, confirm the entry exists in `~/.cursor/mcp.json`.
+- **Claude Code and Codex (tuva 0.1.15 or newer):** it installs the Tuva plugin through
+  the agent's own `claude plugin` or `codex plugin` command, from Tuva's public plugin
+  marketplace on GitHub. If the plugin cannot be installed, it falls back to a
+  `tuva-context` entry in the agent's config file. It can take a minute.
+- **Cursor, and every agent on older CLIs:** a `tuva-context` entry in the agent's
+  config file (`~/.cursor/mcp.json`, `~/.claude.json`, `~/.codex/config.toml`).
+
+Check:
+
+```bash
+tuva mcp status
+```
+
+Each chosen agent shows as enabled; "enabled (Tuva plugin)" means the plugin route.
+Use this rather than `claude mcp list` or `codex mcp list`: a plugin install does not
+add a `tuva-context` entry, so its absence there is expected. Inside Claude Code the
+plugin's server is called `plugin:tuva:tuva` in `/mcp`.
+
+If an agent shows something else:
+
+- **stale** (`!`): the entry points at a backend that is gone. Run `tuva mcp repair`,
+  which also moves Claude Code and Codex onto the plugin.
+- **foreign** (`?`): a `tuva-context` entry someone wrote by hand is in the way, and
+  Tuva will not touch it. `tuva mcp status --json` gives its `config_path`. Show the
+  user, and with their OK remove that one entry, then run `tuva mcp configure` again.
+- **not enabled** after configure: re-run it once and read its error. For Claude Code
+  or Codex, check the agent's own CLI is on PATH (`claude --version`, `codex --version`).
+
+For Codex, tell the user: if Codex asks them to review a Tuva hook, run `/hooks` in
+Codex once to turn on the session banner.
 
 ## Phase 8: Build the first index
 
@@ -349,7 +467,7 @@ Tell the user these are done, and only claim what you verified:
 - `tuva auth whoami` prints their email.
 - Each project directory is initialised and indexed.
 - Session ingestion is enabled (or the user declined).
-- Each chosen agent's config lists `tuva-context`.
+- `tuva mcp status` shows each chosen agent as enabled.
 
 Tell the user to **start a new agent session** for the tools to appear; an existing
 session will not pick them up. If Claude Code refuses to start in the project folder or
@@ -362,7 +480,7 @@ platforms and clusters work. If the user says yes:
 ```bash
 # Route B
 tuva feedback --category general --comment "install ok" \
-  --metadata-json '{"install_report":true,"platform":"<os>","cluster":<true|false>,"path":"<A|B>","version":"<tuva version>"}'
+  --metadata-json '{"install_report":true,"platform":"<os>","cluster":<true|false>,"path":"<quick|A|B>","version":"<tuva version>"}'
 ```
 
 On Route A, or if the install did not complete, offer to draft an email to
@@ -377,8 +495,8 @@ When Tuva is going onto a host you reach over SSH:
   fresh shell: re-export PATH and any `TUVA_*` or `XDG_*` variables in every call, or
   write them into the remote rc file first and rely on that.
 - The agent being wired in Phase 7 is the one the user runs **on the cluster**, so
-  `tuva mcp configure` runs over SSH and writes the cluster's config file. Wiring the
-  agent on the laptop would point it at a daemon it cannot reach.
+  `tuva mcp configure` runs over SSH and installs the plugin or entry on the cluster.
+  Wiring the agent on the laptop would point it at a daemon it cannot reach.
 - On Route B every phase runs from here over SSH, including sign-in: send the code over
   SSH, get it from the user in chat, verify over SSH.
 - On Route A, sign-in still needs a terminal on the cluster. Hand the user the exact
@@ -397,7 +515,9 @@ reasonable variation of them. Fixing PATH, picking a different Python, moving st
 local disk, setting a proxy variable, and retrying a flaky download are all fair game.
 Two things are off limits: launching the backend by hand instead of through `tuva
 start`, and editing the agent's MCP config by hand instead of through `tuva mcp
-configure`, because both leave the user with a setup the CLI cannot repair later.
+configure`, because both leave the user with a setup the CLI cannot repair later. The
+one exception is removing a foreign entry that `tuva mcp status` names, with the
+user's OK (Phase 7).
 
 Escalate only as a last resort, when you have genuinely run out of things to try or
 the blocker is outside your reach (a cluster policy, an account not on the alpha
