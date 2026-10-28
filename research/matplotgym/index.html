@@ -369,8 +369,8 @@
             </dl>
 
             <div class="bm-intro">
-                <p>Researchers told us that language models can rarely one-shot quality figures given data. The issue isn't knowing how to draw a figure. The hard part is knowing <b>what to aggregate, how to represent it, and how to make it meaningful to the human researcher</b>. We built a benchmark from public repositories that measures how close agents get to the figures the papers' authors made.</p>
-                <p>Every task comes from a paper whose authors released both the data and the code that drew the figure. The reference is the <b>publication-quality figure</b> that the authors' own plotting code produces, run unmodified. Each claim is written from the data. It names the conditions compared, and withholds the chart type, the axes and the aggregation.</p>
+                <p>A scientific paper starts and ends with its figures. While language models can reason through increasingly difficult scientific problems and can generate artifacts when the task is well specified, we find that they struggle to generate quality scientific figures given a claim and data. We built matplotgym to quantify this gap.</p>
+                <p>Each task in matplotgym gives an agent a paper's released data and a one-line claim, and scores how close its figure comes to the one the authors drew. The agent must decide which data to keep, how to aggregate them, and how to encode them to substantiate a quantitative claim. A well-drawn figure of the wrong subset supports a different conclusion, and is appropriately scored poorly. Even the strongest model averages 58 out of 100, and no model solves more than 14 of the 171 tasks on every attempt.</p>
             </div>
 
             <div class="chips">
