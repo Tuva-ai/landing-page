@@ -152,20 +152,26 @@ html { scroll-behavior: smooth; }
 .steps > li > strong { display: block; color: var(--text); margin-bottom: 0.25rem; }
 .steps > li > p:last-child { margin-bottom: 0; }
 
-/* Surface cards (getting started) */
-.surface-grid { list-style: none; padding: 0; margin: 0.25rem 0 1.25rem; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 210px), 1fr)); gap: 1rem; }
-.surface-grid li { display: flex; }
-.surface-card {
-    flex: 1; display: flex; flex-direction: column; gap: 0.5rem; padding: 1.3rem 1.3rem 1.1rem;
-    background: var(--bg-card); border: 2px solid var(--border); border-radius: 4px;
-    color: var(--text); text-decoration: none; transition: border-color 0.2s ease;
-}
-.docs-prose a.surface-card, .docs-prose a.surface-card:hover { text-decoration: none; color: var(--text); }
-.surface-card:hover { border-color: var(--border-strong); }
-.surface-card::before { content: attr(data-kind); font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.15em; color: var(--text-tertiary); }
-.surface-title { font-size: 1.02rem; font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
-.surface-desc { flex: 1; font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6; text-wrap: pretty; }
-.surface-more { margin-top: 0.6rem; font-size: 0.85rem; font-weight: 500; }
+/* Surface toggles (getting started): one Show/Hide row per surface */
+.surface-folds { display: flex; flex-direction: column; gap: 0.6rem; margin: 0.25rem 0 1.25rem; }
+.surface-fold .docs-fold { border: 2px solid var(--border-strong); border-radius: 4px; background: var(--bg-soft); }
+.surface-fold .docs-fold summary { padding: 0.85rem 1.1rem; }
+.surface-fold .docs-fold summary:hover { background: var(--pale-green); }
+.docs-prose .surface-fold summary h3 { margin: 0; font-size: 1rem; }
+.surface-fold .docs-fold[open] summary { margin-bottom: 0; border-bottom: 2px solid var(--border); }
+.surface-fold .docs-fold > .docs-prose { padding: 1rem 1.1rem 0.25rem; }
+.toc a.toc-sub { padding-left: 0.75rem; }
+
+/* Feature cards (getting started) */
+.docs-prose .feature-grid { list-style: none; padding: 0; margin: 1.25rem 0 1.5rem; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+.docs-prose .feature-card { margin: 0; display: flex; flex-direction: column; gap: 0.45rem; padding: 1.2rem 1.2rem 1.15rem; background: var(--pale-green); border: 2px solid var(--border-strong); border-radius: 4px; }
+.feature-num { align-self: flex-start; padding: 0.15rem 0.5rem; border-radius: 3px; background: var(--accent); color: var(--accent-fg); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.15em; }
+.feature-title { font-size: 1.05rem; font-weight: 600; color: var(--text); }
+.feature-desc { font-size: 0.88rem; line-height: 1.6; color: var(--text); text-wrap: pretty; }
+.docs-prose .also-list { list-style: none; margin-left: 0; }
+.also-list li { padding-left: 1.5rem; position: relative; }
+.also-list li::before { content: "\2013"; color: var(--text); position: absolute; left: 0; }
+@media (max-width: 1000px) { .docs-prose .feature-grid { grid-template-columns: minmax(0, 1fr); } }
 
 .next-links { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 0.5rem; }
 .docs-prose a.btn, .docs-prose a.btn:hover { text-decoration: none; }
