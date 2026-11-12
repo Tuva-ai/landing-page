@@ -181,6 +181,35 @@ html { scroll-behavior: smooth; }
 .download-kind { font-size: 1.05rem; font-weight: 600; color: var(--text); }
 .download-meta { flex: 1; font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 0.75rem; }
 .download-card .btn { display: block; text-align: center; }
+/* Linux: a split button. The main half downloads the x64 deb; the arrow opens every other build */
+.split-btn { position: relative; display: flex; align-items: stretch; }
+.split-btn .btn:hover { transform: none; }
+.download-card .split-main { flex: 1; min-width: 0; padding-left: 1rem; padding-right: 1rem; border-top-right-radius: 0; border-bottom-right-radius: 0; }
+.linux-more { display: flex; }
+.download-card .split-toggle {
+    display: flex; align-items: center; height: 100%; padding: 0 0.85rem;
+    border-top-left-radius: 0; border-bottom-left-radius: 0; list-style: none;
+}
+.split-toggle, .split-toggle:hover { border-left-color: rgba(250, 250, 248, 0.3); }
+.split-toggle::-webkit-details-marker { display: none; }
+.linux-chevron { width: 14px; height: 14px; transition: transform 0.2s ease; }
+.linux-more[open] .linux-chevron { transform: rotate(180deg); }
+.linux-menu-list {
+    position: absolute; top: calc(100% + 0.5rem); right: 0; z-index: 20;
+    min-width: 100%; width: max-content; max-width: calc(100vw - 3rem); padding: 0.4rem;
+    display: flex; flex-direction: column;
+    background: var(--bg-card); border: 2px solid var(--border-strong); border-radius: 4px;
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.1);
+}
+.linux-menu-label { padding: 0.55rem 0.75rem 0.3rem; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; color: var(--text-tertiary); }
+.linux-menu-list a + .linux-menu-label { margin-top: 0.35rem; padding-top: 0.75rem; border-top: 1px solid var(--border); }
+.docs-prose .linux-menu-list a {
+    display: flex; justify-content: space-between; align-items: baseline; gap: 1.75rem;
+    padding: 0.55rem 0.75rem; border-radius: 3px;
+    color: var(--text); text-decoration: none; font-size: 0.9rem; font-weight: 500;
+}
+.docs-prose .linux-menu-list a:hover, .docs-prose .linux-menu-list a:focus-visible { background: var(--bg-soft); color: var(--text); outline: none; }
+.linux-menu-list a span { font-size: 0.78rem; font-weight: 400; color: var(--text-tertiary); }
 
 .footer { padding: 1.6rem 2rem 1.4rem; }
 .footer-copyright { margin-top: 1rem; }
