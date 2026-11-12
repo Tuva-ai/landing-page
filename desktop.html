@@ -24,14 +24,14 @@
     </script>
 
     <title>Desktop App | Tuva AI</title>
-    <meta name="description" content="Download the Tuva desktop app.">
+    <meta name="description" content="Download the Tuva desktop app for macOS, Windows, and Linux.">
     <meta name="robots" content="noindex, follow">
     <link rel="canonical" href="https://tuva.ai/desktop">
 
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://tuva.ai/desktop">
     <meta property="og:title" content="Desktop App | Tuva AI">
-    <meta property="og:description" content="Download the Tuva desktop app.">
+    <meta property="og:description" content="Download the Tuva desktop app for macOS, Windows, and Linux.">
     <meta property="og:image" content="https://tuva.ai/og-image.jpg">
     <meta property="og:site_name" content="Tuva">
     <meta property="twitter:card" content="summary_large_image">
@@ -107,7 +107,7 @@
         /* Desktop download layout — single centered column, one screen */
         .main-content { flex: 1; padding: 0; display: flex; }
         .desktop-main { flex: 1; display: flex; align-items: center; padding: 4rem 2rem; }
-        .desktop-inner { max-width: 640px; width: 100%; margin: 0 auto; text-align: center; }
+        .desktop-inner { max-width: 1000px; width: 100%; margin: 0 auto; text-align: center; }
 
         .desktop-inner .eyebrow {
             display: inline-block; font-size: 0.75rem; font-weight: 600; text-transform: uppercase;
@@ -119,7 +119,7 @@
         }
         .desktop-copy {
             font-size: 1rem; color: var(--text-secondary); line-height: 1.7;
-            margin: 0 auto 2rem;
+            max-width: 640px; margin: 0 auto 2rem;
         }
 
         .desktop-meta {
@@ -128,6 +128,39 @@
         }
 
         .desktop-downloads { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; }
+        /* Linux: a split button. The main half downloads the x64 deb; the arrow opens every other build */
+        .desktop-download-linux .nowrap { white-space: nowrap; }
+        .split-btn { position: relative; display: inline-flex; align-items: stretch; }
+        .split-btn .btn:hover { transform: none; }
+        .split-main { border-top-right-radius: 0; border-bottom-right-radius: 0; }
+        .linux-more { display: flex; }
+        .split-toggle {
+            display: flex; align-items: center; height: 100%; padding: 0 0.85rem;
+            border-top-left-radius: 0; border-bottom-left-radius: 0; list-style: none;
+        }
+        .split-toggle, .split-toggle:hover { border-left-color: rgba(250, 250, 248, 0.3); }
+        .split-toggle::-webkit-details-marker { display: none; }
+        .linux-chevron { width: 14px; height: 14px; transition: transform 0.2s ease; }
+        .linux-more[open] .linux-chevron { transform: rotate(180deg); }
+        .linux-menu-list {
+            position: absolute; top: calc(100% + 0.5rem); right: 0;
+            z-index: 20; width: max-content; max-width: calc(100vw - 2rem); padding: 0.4rem;
+            display: flex; flex-direction: column; text-align: left;
+            background: var(--bg-card); border: 2px solid var(--border-strong); border-radius: 4px;
+            box-shadow: 0 10px 28px rgba(0, 0, 0, 0.1);
+        }
+        .linux-menu-label {
+            padding: 0.55rem 0.75rem 0.3rem; font-size: 0.75rem; font-weight: 600;
+            letter-spacing: 0.08em; color: var(--text-tertiary);
+        }
+        .linux-menu-list a + .linux-menu-label { margin-top: 0.35rem; padding-top: 0.75rem; border-top: 1px solid var(--border); }
+        .linux-menu-list a {
+            display: flex; justify-content: space-between; align-items: baseline; gap: 1.75rem;
+            padding: 0.55rem 0.75rem; border-radius: 3px;
+            color: var(--text); text-decoration: none; font-size: 0.9rem; font-weight: 500;
+        }
+        .linux-menu-list a:hover, .linux-menu-list a:focus-visible { background: var(--bg-soft); color: var(--text); outline: none; }
+        .linux-menu-list a span { font-size: 0.78rem; font-weight: 400; color: var(--text-tertiary); }
         /* Inline Typeform trigger styled as a link inside body copy */
         .link-inline {
             background: none; border: 0; padding: 0; margin: 0;
@@ -151,6 +184,10 @@
             .desktop-inner .btn { width: 100%; white-space: normal; }
             .desktop-downloads { flex-direction: column; gap: 1.25rem; }
             .desktop-download { width: 100%; }
+            .split-btn { display: flex; }
+            .desktop-inner .split-main { flex: 1; width: auto; }
+            .desktop-inner .split-toggle { width: auto; }
+            .linux-menu-list { left: 0; right: 0; transform: none; width: auto; max-width: none; }
         }
     </style>
 </head>
@@ -199,12 +236,30 @@
                 </p>
                 <div class="desktop-downloads">
                     <div class="desktop-download">
-                        <a href="https://waygpstzrwwyvhhzjokw.supabase.co/storage/v1/object/public/downloads/desktop/Tuva-0.1.24-universal.dmg?download=Tuva-0.1.24-universal.dmg" class="btn btn-primary" data-ga="desktop_click_download">Download for macOS&nbsp;&darr;</a>
-                        <p class="desktop-meta">macOS &middot; Universal &middot; 180&nbsp;MB &middot; v0.1.24</p>
+                        <a href="https://waygpstzrwwyvhhzjokw.supabase.co/storage/v1/object/public/downloads/desktop/Tuva-0.1.25-universal.dmg?download=Tuva-0.1.25-universal.dmg" class="btn btn-primary" data-ga="desktop_click_download">Download for macOS&nbsp;&darr;</a>
+                        <p class="desktop-meta">macOS &middot; Universal &middot; 180&nbsp;MB &middot; v0.1.25</p>
                     </div>
                     <div class="desktop-download">
-                        <a href="https://waygpstzrwwyvhhzjokw.supabase.co/storage/v1/object/public/downloads/desktop/Tuva-Setup-0.1.24.exe?download=Tuva-Setup-0.1.24.exe" class="btn btn-primary" data-ga="desktop_click_download_windows">Download for Windows&nbsp;&darr;</a>
-                        <p class="desktop-meta">Windows &middot; x64 &middot; 82&nbsp;MB &middot; v0.1.24</p>
+                        <a href="https://waygpstzrwwyvhhzjokw.supabase.co/storage/v1/object/public/downloads/desktop/Tuva-Setup-0.1.25.exe?download=Tuva-Setup-0.1.25.exe" class="btn btn-primary" data-ga="desktop_click_download_windows">Download for Windows&nbsp;&darr;</a>
+                        <p class="desktop-meta">Windows &middot; x64 &middot; 83&nbsp;MB &middot; v0.1.25</p>
+                    </div>
+                    <div class="desktop-download desktop-download-linux">
+                        <div class="split-btn">
+                            <a href="https://waygpstzrwwyvhhzjokw.supabase.co/storage/v1/object/public/downloads/desktop/Tuva-0.1.25-amd64.deb?download=Tuva-0.1.25-amd64.deb" class="btn btn-primary split-main" data-ga="desktop_click_download_linux_deb">Download for Linux&nbsp;&darr;</a>
+                            <details class="linux-more">
+                                <summary class="btn btn-primary split-toggle" aria-label="Other Linux builds" data-ga="desktop_click_linux_more"><svg class="linux-chevron" viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 6l4.5 4.5L12.5 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
+                                <div class="linux-menu-list">
+                                    <span class="linux-menu-label">x64</span>
+                                    <a href="https://waygpstzrwwyvhhzjokw.supabase.co/storage/v1/object/public/downloads/desktop/Tuva-0.1.25-x86_64.rpm?download=Tuva-0.1.25-x86_64.rpm" data-ga="desktop_click_download_linux_rpm">.rpm <span>Fedora &middot; 88&nbsp;MB</span></a>
+                                    <a href="https://waygpstzrwwyvhhzjokw.supabase.co/storage/v1/object/public/downloads/desktop/Tuva-0.1.25-x86_64.AppImage?download=Tuva-0.1.25-x86_64.AppImage" data-ga="desktop_click_download_linux_appimage">AppImage <span>Other distros &middot; 127&nbsp;MB</span></a>
+                                    <span class="linux-menu-label">arm64</span>
+                                    <a href="https://waygpstzrwwyvhhzjokw.supabase.co/storage/v1/object/public/downloads/desktop/Tuva-0.1.25-arm64.deb?download=Tuva-0.1.25-arm64.deb" data-ga="desktop_click_download_linux_arm64_deb">.deb <span>Debian, Ubuntu &middot; 96&nbsp;MB</span></a>
+                                    <a href="https://waygpstzrwwyvhhzjokw.supabase.co/storage/v1/object/public/downloads/desktop/Tuva-0.1.25-aarch64.rpm?download=Tuva-0.1.25-aarch64.rpm" data-ga="desktop_click_download_linux_arm64_rpm">.rpm <span>Fedora &middot; 82&nbsp;MB</span></a>
+                                    <a href="https://waygpstzrwwyvhhzjokw.supabase.co/storage/v1/object/public/downloads/desktop/Tuva-0.1.25-arm64.AppImage?download=Tuva-0.1.25-arm64.AppImage" data-ga="desktop_click_download_linux_arm64_appimage">AppImage <span>Other distros &middot; 126&nbsp;MB</span></a>
+                                </div>
+                            </details>
+                        </div>
+                        <p class="desktop-meta"><span class="nowrap">x64 &middot; .deb &middot; Debian, Ubuntu &middot;</span> <span class="nowrap">87&nbsp;MB &middot; v0.1.25</span></p>
                     </div>
                 </div>
             </div>
@@ -253,6 +308,17 @@
             apply();
             window.addEventListener('scroll', onScroll, { passive: true });
             window.addEventListener('resize', onScroll);
+        })();
+
+        // Linux split-button menu: close on Escape, on a click outside it, and once a package is picked
+        (function () {
+            const menu = document.querySelector('.linux-more');
+            if (!menu) return;
+            document.addEventListener('click', (e) => { if (menu.open && !menu.contains(e.target)) menu.open = false; });
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && menu.open) { menu.open = false; menu.querySelector('summary').focus(); }
+            });
+            menu.querySelectorAll('.linux-menu-list a').forEach((a) => a.addEventListener('click', () => { menu.open = false; }));
         })();
 
         // GA4 click tracking — any element with a [data-ga] fires that event name

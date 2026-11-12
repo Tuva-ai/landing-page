@@ -24,14 +24,14 @@
     </script>
 
     <title>Install the desktop app | Tuva AI</title>
-    <meta name="description" content="Download and install the Tuva desktop app on macOS or Windows.">
+    <meta name="description" content="Download and install the Tuva desktop app on macOS, Windows, or Linux.">
     <meta name="robots" content="noindex, follow">
     <link rel="canonical" href="https://tuva.ai/docs/install/desktop">
 
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://tuva.ai/docs/install/desktop">
     <meta property="og:title" content="Install the desktop app | Tuva AI">
-    <meta property="og:description" content="Download and install the Tuva desktop app on macOS or Windows.">
+    <meta property="og:description" content="Download and install the Tuva desktop app on macOS, Windows, or Linux.">
     <meta property="og:image" content="https://tuva.ai/og-image.jpg">
     <meta property="og:site_name" content="Tuva">
     <meta property="twitter:card" content="summary_large_image">
@@ -53,7 +53,7 @@
 
     <!-- Shared base (tokens, header, footer) + docs shell -->
     <link rel="stylesheet" href="/legal.css?v=2">
-    <link rel="stylesheet" href="/docs/docs.css?v=8">
+    <link rel="stylesheet" href="/docs/docs.css?v=14">
 </head>
 <body>
     <!-- Header (identical to home page) -->
@@ -119,14 +119,14 @@
                 <a href="/docs">Docs</a><span aria-hidden="true">/</span><span>Install</span><span aria-hidden="true">/</span><span aria-current="page">Desktop app</span>
             </nav>
             <h1 class="docs-title">Installing the desktop app</h1>
-            <p class="docs-copy docs-lede">The desktop app is the full Tuva experience in one window: projects, chats, your knowledge base, research memory, and a daily paper digest. It runs on macOS and Windows.</p>
+            <p class="docs-copy docs-lede">The desktop app is the full Tuva experience in one window: projects, chats, your knowledge base, research memory, and a daily paper digest. It runs on macOS, Windows, and Linux.</p>
 
             <section class="docs-section" id="what-you-need">
                 <h2 class="docs-h2">What you need</h2>
                 <div class="docs-prose">
 
 <ul class="needs">
-    <li>macOS (Apple silicon or Intel) or Windows 10 or later (64-bit).</li>
+    <li>macOS (Apple silicon or Intel), Windows 10 or later (64-bit), or Linux (x64 or arm64): Ubuntu 22.04 or later, Debian 12 or later, Fedora 40 or later, or another distribution through the AppImage.</li>
     <li>Python 3.10 or newer. We recommend 3.12. Check with <code>python3 --version</code> in a terminal, and install from <a href="https://www.python.org/downloads/" target="_blank" rel="noopener noreferrer">python.org</a> if it is missing.</li>
     <li>Internet access. The first launch downloads Tuva's backend, and chat runs through Tuva's cloud.</li>
     <li>An email address on the Tuva access list.</li>
@@ -141,13 +141,32 @@
 <ul class="download-grid">
     <li class="download-card">
         <span class="download-kind">macOS</span>
-        <span class="download-meta">Universal, for Apple silicon and Intel<br>180&nbsp;MB &middot; v0.1.24</span>
-        <a href="https://waygpstzrwwyvhhzjokw.supabase.co/storage/v1/object/public/downloads/desktop/Tuva-0.1.24-universal.dmg?download=Tuva-0.1.24-universal.dmg" class="btn btn-primary" data-ga="desktop_click_download">Download for macOS&nbsp;&darr;</a>
+        <span class="download-meta">Universal, for Apple silicon and Intel<br>180&nbsp;MB &middot; v0.1.25</span>
+        <a href="https://waygpstzrwwyvhhzjokw.supabase.co/storage/v1/object/public/downloads/desktop/Tuva-0.1.25-universal.dmg?download=Tuva-0.1.25-universal.dmg" class="btn btn-primary" data-ga="desktop_click_download">Download for macOS&nbsp;&darr;</a>
     </li>
     <li class="download-card">
         <span class="download-kind">Windows</span>
-        <span class="download-meta">64-bit, Windows 10 or later<br>82&nbsp;MB &middot; v0.1.24</span>
-        <a href="https://waygpstzrwwyvhhzjokw.supabase.co/storage/v1/object/public/downloads/desktop/Tuva-Setup-0.1.24.exe?download=Tuva-Setup-0.1.24.exe" class="btn btn-primary" data-ga="desktop_click_download_windows">Download for Windows&nbsp;&darr;</a>
+        <span class="download-meta">64-bit, Windows 10 or later<br>83&nbsp;MB &middot; v0.1.25</span>
+        <a href="https://waygpstzrwwyvhhzjokw.supabase.co/storage/v1/object/public/downloads/desktop/Tuva-Setup-0.1.25.exe?download=Tuva-Setup-0.1.25.exe" class="btn btn-primary" data-ga="desktop_click_download_windows">Download for Windows&nbsp;&darr;</a>
+    </li>
+    <li class="download-card">
+        <span class="download-kind">Linux</span>
+        <span class="download-meta">x64 .deb, for Debian and Ubuntu<br>87&nbsp;MB &middot; v0.1.25</span>
+        <div class="split-btn">
+            <a href="https://waygpstzrwwyvhhzjokw.supabase.co/storage/v1/object/public/downloads/desktop/Tuva-0.1.25-amd64.deb?download=Tuva-0.1.25-amd64.deb" class="btn btn-primary split-main" data-ga="desktop_click_download_linux_deb">Download for Linux&nbsp;&darr;</a>
+            <details class="linux-more">
+                <summary class="btn btn-primary split-toggle" aria-label="Other Linux builds" data-ga="desktop_click_linux_more"><svg class="linux-chevron" viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 6l4.5 4.5L12.5 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
+                <div class="linux-menu-list">
+                    <span class="linux-menu-label">x64</span>
+                    <a href="https://waygpstzrwwyvhhzjokw.supabase.co/storage/v1/object/public/downloads/desktop/Tuva-0.1.25-x86_64.rpm?download=Tuva-0.1.25-x86_64.rpm" data-ga="desktop_click_download_linux_rpm">.rpm <span>Fedora &middot; 88&nbsp;MB</span></a>
+                    <a href="https://waygpstzrwwyvhhzjokw.supabase.co/storage/v1/object/public/downloads/desktop/Tuva-0.1.25-x86_64.AppImage?download=Tuva-0.1.25-x86_64.AppImage" data-ga="desktop_click_download_linux_appimage">AppImage <span>Other distros &middot; 127&nbsp;MB</span></a>
+                    <span class="linux-menu-label">arm64</span>
+                    <a href="https://waygpstzrwwyvhhzjokw.supabase.co/storage/v1/object/public/downloads/desktop/Tuva-0.1.25-arm64.deb?download=Tuva-0.1.25-arm64.deb" data-ga="desktop_click_download_linux_arm64_deb">.deb <span>Debian, Ubuntu &middot; 96&nbsp;MB</span></a>
+                    <a href="https://waygpstzrwwyvhhzjokw.supabase.co/storage/v1/object/public/downloads/desktop/Tuva-0.1.25-aarch64.rpm?download=Tuva-0.1.25-aarch64.rpm" data-ga="desktop_click_download_linux_arm64_rpm">.rpm <span>Fedora &middot; 82&nbsp;MB</span></a>
+                    <a href="https://waygpstzrwwyvhhzjokw.supabase.co/storage/v1/object/public/downloads/desktop/Tuva-0.1.25-arm64.AppImage?download=Tuva-0.1.25-arm64.AppImage" data-ga="desktop_click_download_linux_arm64_appimage">AppImage <span>Other distros &middot; 126&nbsp;MB</span></a>
+                </div>
+            </details>
+        </div>
     </li>
 </ul>
 
@@ -174,6 +193,20 @@
 <ol class="steps">
     <li><strong>Run <code>Tuva-Setup.exe</code>.</strong><p>If Windows SmartScreen shows a prompt, choose <strong>More info</strong>, then <strong>Run anyway</strong>. Tuva opens when the installer finishes. The first launch sets up Tuva's backend, which takes about a minute, before the sign-in screen appears.</p></li>
     <li><strong>Closing the window keeps Tuva running.</strong><p>Closing the window does not quit the app; Tuva keeps indexing and running background work from the system tray.</p></li>
+</ol>
+
+                    </div>
+                </details>
+            </section>
+            <section class="docs-section" id="install-on-linux">
+                <details class="docs-fold">
+                    <summary><h2 class="docs-h2">Install on Linux</h2><span class="docs-fold-toggle" aria-hidden="true"></span></summary>
+                    <div class="docs-prose">
+
+<ol class="steps">
+    <li><strong>Install the package for your distribution.</strong><p>On Ubuntu or Debian: <code>sudo apt install ./Tuva-0.1.25-amd64.deb</code>. On Fedora: <code>sudo dnf install ./Tuva-0.1.25-x86_64.rpm</code>. Use the arm64 file names on an arm64 machine. Then open Tuva from your applications menu, or run <code>tuva-desktop</code>. The first launch sets up Tuva's backend, which takes about a minute, before the sign-in screen appears.</p></li>
+    <li><strong>Or run the AppImage.</strong><p>On any other distribution, make it executable with <code>chmod +x Tuva-0.1.25-x86_64.AppImage</code> and run it. The AppImage needs FUSE 2: <code>libfuse2t64</code> on Ubuntu 24.04, <code>libfuse2</code> on Ubuntu 22.04 and Debian, <code>fuse-libs</code> on Fedora, <code>fuse2</code> on Arch.</p></li>
+    <li><strong>Closing the window keeps Tuva running, if your desktop has a system tray.</strong><p>Where there is a tray, Tuva keeps indexing and running background work from it. Stock GNOME has none unless you add the AppIndicator extension, so closing the window quits Tuva there.</p></li>
 </ol>
 
                     </div>
@@ -221,6 +254,7 @@
                     <div class="docs-prose">
 
 <ul>
+    <li><strong>The AppImage does not start on Linux.</strong> Install FUSE 2 (see Install on Linux), or run it with <code>APPIMAGE_EXTRACT_AND_RUN=1</code> in front of the command.</li>
     <li><strong>The app stays on the loading screen.</strong> The first launch needs internet to fetch the backend. Check your connection, and if you are on a VPN or a corporate proxy, try without it.</li>
     <li><strong>The sign-in code never arrives.</strong> Check spam. Wait ten minutes before requesting another. If your address is not on the access list, email <a href="mailto:hello@tuva.ai">hello@tuva.ai</a>.</li>
     <li><strong>My coding agent does not see Tuva.</strong> Check the agent's card in Connected apps, then start a new agent session.</li>
@@ -239,6 +273,7 @@
               <a href="#download">Download</a>
               <a href="#install-on-macos">Install on macOS</a>
               <a href="#install-on-windows">Install on Windows</a>
+              <a href="#install-on-linux">Install on Linux</a>
               <a href="#first-launch">First launch</a>
               <a href="#with-the-cli-and-extension">Using it with the CLI and the extension</a>
               <a href="#updates">Updates</a>
@@ -276,6 +311,17 @@
             };
             openFor();
             window.addEventListener('hashchange', openFor);
+        })();
+
+        // Linux split-button menu: close on Escape, on a click outside it, and once a package is picked
+        (function () {
+            const menu = document.querySelector('.linux-more');
+            if (!menu) return;
+            document.addEventListener('click', (e) => { if (menu.open && !menu.contains(e.target)) menu.open = false; });
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && menu.open) { menu.open = false; menu.querySelector('summary').focus(); }
+            });
+            menu.querySelectorAll('.linux-menu-list a').forEach((a) => a.addEventListener('click', () => { menu.open = false; }));
         })();
 
         // Copy buttons — copy the box contents, flip the label to "Copied" for a moment
